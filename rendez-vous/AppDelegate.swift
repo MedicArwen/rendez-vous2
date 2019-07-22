@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import CoreLocation
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,7 +19,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        return true
+        LocationManager.SharedInstance.delegate = self
+        print("app delegate")
+        if CLLocationManager.locationServicesEnabled()
+        {
+            print("geolocalisation active")
+            LocationManager.SharedInstance.desiredAccuracy = kCLLocationAccuracyBest
+            LocationManager.SharedInstance.requestWhenInUseAuthorization()
+            LocationManager.SharedInstance.startUpdatingLocation()
+            LocationManager.SharedInstance.allowsBackgroundLocationUpdates = true
+        }
+        else
+        {
+            print("geoloc non active")
+        }
+           return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -89,5 +105,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+}
+extension AppDelegate:CLLocationManagerDelegate
+{
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+     //   print("position found:\(locations[0])")
+
+    }
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if CLLocationManager.authorizationStatus() == .notDetermined {
+            manager.requestWhenInUseAuthorization()
+            manager.startUpdatingLocation()
+            print("update changement autorisation")
+        }
+    }
 }
 

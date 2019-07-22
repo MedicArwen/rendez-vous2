@@ -3,19 +3,77 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3AC1741FCAE3F998CE20A614 /* Pods_rendez_vous.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 426EB8E78F78CF26D1D69728 /* Pods_rendez_vous.framework */; };
+		7F36AD1C22D875FF00F91E19 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F36AD1B22D875FF00F91E19 /* LocationManager.swift */; };
+		7F55FF1A22D474EB004C0683 /* NewProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55FF1922D474EB004C0683 /* NewProfile.swift */; };
+		7F55FF1C22D4B5CF004C0683 /* CentreInteret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55FF1B22D4B5CF004C0683 /* CentreInteret.swift */; };
+		7F55FF1E22D4B755004C0683 /* CentreInteretTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55FF1D22D4B755004C0683 /* CentreInteretTableViewCell.swift */; };
+		7F55FF2022D4BCBD004C0683 /* InteretsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55FF1F22D4BCBD004C0683 /* InteretsViewController.swift */; };
 		7F59936F22C51090005658DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F59936E22C51090005658DD /* AppDelegate.swift */; };
 		7F59937122C51090005658DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F59937022C51090005658DD /* ViewController.swift */; };
 		7F59937422C51090005658DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F59937222C51090005658DD /* Main.storyboard */; };
 		7F59937722C51090005658DD /* rendez_vous.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7F59937522C51090005658DD /* rendez_vous.xcdatamodeld */; };
 		7F59937922C51092005658DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F59937822C51092005658DD /* Assets.xcassets */; };
 		7F59937C22C51092005658DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F59937A22C51092005658DD /* LaunchScreen.storyboard */; };
+		7F814B7C22D5D0EC00425325 /* StyleCuisineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F814B7B22D5D0EC00425325 /* StyleCuisineTableViewCell.swift */; };
+		7F814B7E22D5D19900425325 /* StyleCuisine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F814B7D22D5D19900425325 /* StyleCuisine.swift */; };
+		7F814B8022D5D27800425325 /* TypeCuisineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F814B7F22D5D27800425325 /* TypeCuisineViewController.swift */; };
+		7F814B8422D5E7B200425325 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F814B8322D5E7B200425325 /* DescriptionViewController.swift */; };
+		7F814B8622D5E7C700425325 /* CatchPhraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F814B8522D5E7C700425325 /* CatchPhraseViewController.swift */; };
+		7F814B8822D5E7FA00425325 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F814B8722D5E7FA00425325 /* PreviewViewController.swift */; };
+		7F814B8A22D5EF5800425325 /* EndProcedureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F814B8922D5EF5800425325 /* EndProcedureViewController.swift */; };
+		7F814B8C22D6244D00425325 /* RendezVousWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F814B8B22D6244D00425325 /* RendezVousWebService.swift */; };
+		7F814B8E22D62F2900425325 /* RamonUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F814B8D22D62F2900425325 /* RamonUITextField.swift */; };
+		7F814B9022D6365200425325 /* RamonUITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F814B8F22D6365200425325 /* RamonUITextView.swift */; };
+		7F98532022E0989D00C28C8E /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98531F22E0989D00C28C8E /* RestaurantTableViewCell.swift */; };
+		7F98532222E0993300C28C8E /* ListRestaurantUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98532122E0993300C28C8E /* ListRestaurantUIView.swift */; };
+		7F98532422E09E6B00C28C8E /* RoundUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98532322E09E6B00C28C8E /* RoundUIView.swift */; };
+		7F98532722E0A05D00C28C8E /* MapRestaurantUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98532622E0A05D00C28C8E /* MapRestaurantUIView.swift */; };
+		7F98532922E0BE9200C28C8E /* AboutRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98532822E0BE9200C28C8E /* AboutRestaurantViewController.swift */; };
+		7F98532C22E1A7A000C28C8E /* CreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98532B22E1A7A000C28C8E /* CreateGroupViewController.swift */; };
+		7F98532E22E1ADA200C28C8E /* GuestCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98532D22E1ADA200C28C8E /* GuestCollectionViewCell.swift */; };
+		7F98533222E1E90200C28C8E /* Utilisateur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98533122E1E90200C28C8E /* Utilisateur.swift */; };
+		7F98533822E1ECF700C28C8E /* RankedUtilisateur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98533722E1ECF700C28C8E /* RankedUtilisateur.swift */; };
+		7F98533A22E1EECF00C28C8E /* GuestRankedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98533922E1EECF00C28C8E /* GuestRankedTableViewCell.swift */; };
+		7F98533C22E1EFC100C28C8E /* GuestRankedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F98533B22E1EFC100C28C8E /* GuestRankedTableView.swift */; };
+		7FA7DC4D22C5FAA000E74F6B /* RamonUserUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA7DC4C22C5FAA000E74F6B /* RamonUserUITextField.swift */; };
+		7FA7DC4F22C5FB8600E74F6B /* NewAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA7DC4E22C5FB8600E74F6B /* NewAccount.swift */; };
+		7FA7DC5122C5FCC800E74F6B /* RamonUserUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA7DC5022C5FCC800E74F6B /* RamonUserUIButton.swift */; };
+		7FB2E30B22E59DC600E13ABF /* RendezVous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E30A22E59DC600E13ABF /* RendezVous.swift */; };
+		7FB2E30D22E5BB5100E13ABF /* Invitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E30C22E5BB5100E13ABF /* Invitation.swift */; };
+		7FB2E30F22E5CA4E00E13ABF /* GuestUICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E30E22E5CA4E00E13ABF /* GuestUICollectionView.swift */; };
+		7FB2E31122E5E09600E13ABF /* RendezVousApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E31022E5E09600E13ABF /* RendezVousApplication.swift */; };
+		7FB2E31422E5E85100E13ABF /* ConnectedRamonUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E31322E5E85100E13ABF /* ConnectedRamonUser.swift */; };
+		7FB2E31622E5FB9700E13ABF /* ListeRestaurants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E31522E5FB9700E13ABF /* ListeRestaurants.swift */; };
+		7FB2E31822E6054E00E13ABF /* ListeMatchingUtilisateurs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E31722E6054E00E13ABF /* ListeMatchingUtilisateurs.swift */; };
+		7FBB5E4B22C6083000AB448C /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB5E4A22C6083000AB448C /* RegisterVC.swift */; };
+		7FBB5E4D22C9EBFA00AB448C /* RamonUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB5E4C22C9EBFA00AB448C /* RamonUser.swift */; };
+		7FBB5E4F22CA0C2100AB448C /* AuthWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB5E4E22CA0C2100AB448C /* AuthWebService.swift */; };
+		7FBB5E5122CA0D8800AB448C /* AuthentificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB5E5022CA0D8800AB448C /* AuthentificationVC.swift */; };
+		7FBB5E5322CB580B00AB448C /* RegExp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB5E5222CB580B00AB448C /* RegExp.swift */; };
+		7FBB5E5822CC948900AB448C /* RamonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB5E5722CC948900AB448C /* RamonViewController.swift */; };
+		7FBB5E5E22CF792B00AB448C /* RoundPortraitUIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB5E5D22CF792A00AB448C /* RoundPortraitUIImageView.swift */; };
+		7FBB5E6022CF7DA300AB448C /* RoundButtonUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB5E5F22CF7DA300AB448C /* RoundButtonUIButton.swift */; };
+		7FBB5E6222CF7F7F00AB448C /* PictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB5E6122CF7F7F00AB448C /* PictureViewController.swift */; };
+		7FE66E4B22DCAE21005F46C1 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE66E4A22DCAE21005F46C1 /* Restaurant.swift */; };
+		7FE66E4D22DCB1F4005F46C1 /* MapRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE66E4C22DCB1F4005F46C1 /* MapRestaurantViewController.swift */; };
+		7FE66E5322DDB969005F46C1 /* RestaurantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE66E5222DDB969005F46C1 /* RestaurantCollectionViewCell.swift */; };
+		7FE66E5922DF5881005F46C1 /* RoundUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE66E5822DF5881005F46C1 /* RoundUILabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C4EECA8B6882C6E13B0C001 /* Pods-rendez-vous.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rendez-vous.release.xcconfig"; path = "Target Support Files/Pods-rendez-vous/Pods-rendez-vous.release.xcconfig"; sourceTree = "<group>"; };
+		157AEFDABC67843ED556B363 /* Pods-rendez-vous.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rendez-vous.debug.xcconfig"; path = "Target Support Files/Pods-rendez-vous/Pods-rendez-vous.debug.xcconfig"; sourceTree = "<group>"; };
+		426EB8E78F78CF26D1D69728 /* Pods_rendez_vous.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rendez_vous.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F36AD1B22D875FF00F91E19 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		7F55FF1922D474EB004C0683 /* NewProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfile.swift; sourceTree = "<group>"; };
+		7F55FF1B22D4B5CF004C0683 /* CentreInteret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreInteret.swift; sourceTree = "<group>"; };
+		7F55FF1D22D4B755004C0683 /* CentreInteretTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreInteretTableViewCell.swift; sourceTree = "<group>"; };
+		7F55FF1F22D4BCBD004C0683 /* InteretsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteretsViewController.swift; sourceTree = "<group>"; };
 		7F59936B22C51090005658DD /* rendez-vous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rendez-vous.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F59936E22C51090005658DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F59937022C51090005658DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +82,51 @@
 		7F59937822C51092005658DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F59937B22C51092005658DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7F59937D22C51092005658DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7F814B7B22D5D0EC00425325 /* StyleCuisineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleCuisineTableViewCell.swift; sourceTree = "<group>"; };
+		7F814B7D22D5D19900425325 /* StyleCuisine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleCuisine.swift; sourceTree = "<group>"; };
+		7F814B7F22D5D27800425325 /* TypeCuisineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeCuisineViewController.swift; sourceTree = "<group>"; };
+		7F814B8322D5E7B200425325 /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
+		7F814B8522D5E7C700425325 /* CatchPhraseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchPhraseViewController.swift; sourceTree = "<group>"; };
+		7F814B8722D5E7FA00425325 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		7F814B8922D5EF5800425325 /* EndProcedureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndProcedureViewController.swift; sourceTree = "<group>"; };
+		7F814B8B22D6244D00425325 /* RendezVousWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RendezVousWebService.swift; sourceTree = "<group>"; };
+		7F814B8D22D62F2900425325 /* RamonUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamonUITextField.swift; sourceTree = "<group>"; };
+		7F814B8F22D6365200425325 /* RamonUITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamonUITextView.swift; sourceTree = "<group>"; };
+		7F98531F22E0989D00C28C8E /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
+		7F98532122E0993300C28C8E /* ListRestaurantUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRestaurantUIView.swift; sourceTree = "<group>"; };
+		7F98532322E09E6B00C28C8E /* RoundUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundUIView.swift; sourceTree = "<group>"; };
+		7F98532622E0A05D00C28C8E /* MapRestaurantUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRestaurantUIView.swift; sourceTree = "<group>"; };
+		7F98532822E0BE9200C28C8E /* AboutRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutRestaurantViewController.swift; sourceTree = "<group>"; };
+		7F98532B22E1A7A000C28C8E /* CreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupViewController.swift; sourceTree = "<group>"; };
+		7F98532D22E1ADA200C28C8E /* GuestCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestCollectionViewCell.swift; sourceTree = "<group>"; };
+		7F98533122E1E90200C28C8E /* Utilisateur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilisateur.swift; sourceTree = "<group>"; };
+		7F98533722E1ECF700C28C8E /* RankedUtilisateur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankedUtilisateur.swift; sourceTree = "<group>"; };
+		7F98533922E1EECF00C28C8E /* GuestRankedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestRankedTableViewCell.swift; sourceTree = "<group>"; };
+		7F98533B22E1EFC100C28C8E /* GuestRankedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestRankedTableView.swift; sourceTree = "<group>"; };
+		7FA7DC4C22C5FAA000E74F6B /* RamonUserUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamonUserUITextField.swift; sourceTree = "<group>"; };
+		7FA7DC4E22C5FB8600E74F6B /* NewAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAccount.swift; sourceTree = "<group>"; };
+		7FA7DC5022C5FCC800E74F6B /* RamonUserUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamonUserUIButton.swift; sourceTree = "<group>"; };
+		7FB2E30A22E59DC600E13ABF /* RendezVous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RendezVous.swift; sourceTree = "<group>"; };
+		7FB2E30C22E5BB5100E13ABF /* Invitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitation.swift; sourceTree = "<group>"; };
+		7FB2E30E22E5CA4E00E13ABF /* GuestUICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestUICollectionView.swift; sourceTree = "<group>"; };
+		7FB2E31022E5E09600E13ABF /* RendezVousApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RendezVousApplication.swift; sourceTree = "<group>"; };
+		7FB2E31322E5E85100E13ABF /* ConnectedRamonUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedRamonUser.swift; sourceTree = "<group>"; };
+		7FB2E31522E5FB9700E13ABF /* ListeRestaurants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeRestaurants.swift; sourceTree = "<group>"; };
+		7FB2E31722E6054E00E13ABF /* ListeMatchingUtilisateurs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeMatchingUtilisateurs.swift; sourceTree = "<group>"; };
+		7FBB5E4A22C6083000AB448C /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		7FBB5E4C22C9EBFA00AB448C /* RamonUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamonUser.swift; sourceTree = "<group>"; };
+		7FBB5E4E22CA0C2100AB448C /* AuthWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWebService.swift; sourceTree = "<group>"; };
+		7FBB5E5022CA0D8800AB448C /* AuthentificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthentificationVC.swift; sourceTree = "<group>"; };
+		7FBB5E5222CB580B00AB448C /* RegExp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegExp.swift; sourceTree = "<group>"; };
+		7FBB5E5422CB5F4500AB448C /* rendez-vous.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "rendez-vous.entitlements"; sourceTree = "<group>"; };
+		7FBB5E5722CC948900AB448C /* RamonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamonViewController.swift; sourceTree = "<group>"; };
+		7FBB5E5D22CF792A00AB448C /* RoundPortraitUIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundPortraitUIImageView.swift; sourceTree = "<group>"; };
+		7FBB5E5F22CF7DA300AB448C /* RoundButtonUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButtonUIButton.swift; sourceTree = "<group>"; };
+		7FBB5E6122CF7F7F00AB448C /* PictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureViewController.swift; sourceTree = "<group>"; };
+		7FE66E4A22DCAE21005F46C1 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		7FE66E4C22DCB1F4005F46C1 /* MapRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRestaurantViewController.swift; sourceTree = "<group>"; };
+		7FE66E5222DDB969005F46C1 /* RestaurantCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCollectionViewCell.swift; sourceTree = "<group>"; };
+		7FE66E5822DF5881005F46C1 /* RoundUILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundUILabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +134,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AC1741FCAE3F998CE20A614 /* Pods_rendez_vous.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F36AD1D22DC8B7400F91E19 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				7F98532522E09F8200C28C8E /* Views */,
+				7FE66E4C22DCB1F4005F46C1 /* MapRestaurantViewController.swift */,
+				7F98532822E0BE9200C28C8E /* AboutRestaurantViewController.swift */,
+				7F98532B22E1A7A000C28C8E /* CreateGroupViewController.swift */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
 		7F59936222C51090005658DD = {
 			isa = PBXGroup;
 			children = (
 				7F59936D22C51090005658DD /* rendez-vous */,
 				7F59936C22C51090005658DD /* Products */,
+				C7A758397A4DAA0077951D6C /* Pods */,
+				8133343638046B0E129FEE23 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +173,9 @@
 		7F59936D22C51090005658DD /* rendez-vous */ = {
 			isa = PBXGroup;
 			children = (
+				7FBB5E5422CB5F4500AB448C /* rendez-vous.entitlements */,
+				7F814B8122D5E35300425325 /* Application */,
+				7FBB5E4922C600C500AB448C /* RamonUser */,
 				7F59936E22C51090005658DD /* AppDelegate.swift */,
 				7F59937022C51090005658DD /* ViewController.swift */,
 				7F59937222C51090005658DD /* Main.storyboard */,
@@ -67,6 +187,179 @@
 			path = "rendez-vous";
 			sourceTree = "<group>";
 		};
+		7F814B8122D5E35300425325 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				7F98532A22E0C7E100C28C8E /* WebService */,
+				7FBB5E5B22CF782E00AB448C /* Controllers */,
+				7FBB5E5922CF780F00AB448C /* Models */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		7F814B8222D5E75500425325 /* SaisieProfil */ = {
+			isa = PBXGroup;
+			children = (
+				7FBB5E5A22CF781D00AB448C /* Views */,
+				7FBB5E6122CF7F7F00AB448C /* PictureViewController.swift */,
+				7F814B8322D5E7B200425325 /* DescriptionViewController.swift */,
+				7F814B8522D5E7C700425325 /* CatchPhraseViewController.swift */,
+				7F814B8722D5E7FA00425325 /* PreviewViewController.swift */,
+				7F55FF1F22D4BCBD004C0683 /* InteretsViewController.swift */,
+				7F814B7F22D5D27800425325 /* TypeCuisineViewController.swift */,
+				7F814B8922D5EF5800425325 /* EndProcedureViewController.swift */,
+			);
+			path = SaisieProfil;
+			sourceTree = "<group>";
+		};
+		7F98532522E09F8200C28C8E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7FE66E5222DDB969005F46C1 /* RestaurantCollectionViewCell.swift */,
+				7F98531F22E0989D00C28C8E /* RestaurantTableViewCell.swift */,
+				7F98532122E0993300C28C8E /* ListRestaurantUIView.swift */,
+				7F98532622E0A05D00C28C8E /* MapRestaurantUIView.swift */,
+				7F98532D22E1ADA200C28C8E /* GuestCollectionViewCell.swift */,
+				7F98533922E1EECF00C28C8E /* GuestRankedTableViewCell.swift */,
+				7F98533B22E1EFC100C28C8E /* GuestRankedTableView.swift */,
+				7FB2E30E22E5CA4E00E13ABF /* GuestUICollectionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7F98532A22E0C7E100C28C8E /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				7F814B8B22D6244D00425325 /* RendezVousWebService.swift */,
+				7FB2E31022E5E09600E13ABF /* RendezVousApplication.swift */,
+				7F36AD1B22D875FF00F91E19 /* LocationManager.swift */,
+			);
+			path = WebService;
+			sourceTree = "<group>";
+		};
+		7FA7DC4822C5F91B00E74F6B /* VIEWS */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = VIEWS;
+			sourceTree = "<group>";
+		};
+		7FA7DC4922C5F92300E74F6B /* CONTROLLERS */ = {
+			isa = PBXGroup;
+			children = (
+				7FA7DC4B22C5FA3800E74F6B /* USERCONTROLS */,
+				7FBB5E4A22C6083000AB448C /* RegisterVC.swift */,
+				7FBB5E5022CA0D8800AB448C /* AuthentificationVC.swift */,
+			);
+			path = CONTROLLERS;
+			sourceTree = "<group>";
+		};
+		7FA7DC4A22C5F93100E74F6B /* MODELS */ = {
+			isa = PBXGroup;
+			children = (
+				7FA7DC4E22C5FB8600E74F6B /* NewAccount.swift */,
+				7FBB5E4C22C9EBFA00AB448C /* RamonUser.swift */,
+				7FBB5E5222CB580B00AB448C /* RegExp.swift */,
+			);
+			path = MODELS;
+			sourceTree = "<group>";
+		};
+		7FA7DC4B22C5FA3800E74F6B /* USERCONTROLS */ = {
+			isa = PBXGroup;
+			children = (
+				7FA7DC4C22C5FAA000E74F6B /* RamonUserUITextField.swift */,
+				7FA7DC5022C5FCC800E74F6B /* RamonUserUIButton.swift */,
+				7FBB5E5722CC948900AB448C /* RamonViewController.swift */,
+			);
+			path = USERCONTROLS;
+			sourceTree = "<group>";
+		};
+		7FB2E31222E5E2C600E13ABF /* WebService */ = {
+			isa = PBXGroup;
+			children = (
+				7FBB5E4E22CA0C2100AB448C /* AuthWebService.swift */,
+			);
+			path = WebService;
+			sourceTree = "<group>";
+		};
+		7FBB5E4922C600C500AB448C /* RamonUser */ = {
+			isa = PBXGroup;
+			children = (
+				7FB2E31222E5E2C600E13ABF /* WebService */,
+				7FA7DC4822C5F91B00E74F6B /* VIEWS */,
+				7FA7DC4922C5F92300E74F6B /* CONTROLLERS */,
+				7FA7DC4A22C5F93100E74F6B /* MODELS */,
+			);
+			path = RamonUser;
+			sourceTree = "<group>";
+		};
+		7FBB5E5922CF780F00AB448C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7F55FF1922D474EB004C0683 /* NewProfile.swift */,
+				7F55FF1B22D4B5CF004C0683 /* CentreInteret.swift */,
+				7F814B7D22D5D19900425325 /* StyleCuisine.swift */,
+				7FE66E4A22DCAE21005F46C1 /* Restaurant.swift */,
+				7F98533122E1E90200C28C8E /* Utilisateur.swift */,
+				7F98533722E1ECF700C28C8E /* RankedUtilisateur.swift */,
+				7FB2E30A22E59DC600E13ABF /* RendezVous.swift */,
+				7FB2E30C22E5BB5100E13ABF /* Invitation.swift */,
+				7FB2E31322E5E85100E13ABF /* ConnectedRamonUser.swift */,
+				7FB2E31522E5FB9700E13ABF /* ListeRestaurants.swift */,
+				7FB2E31722E6054E00E13ABF /* ListeMatchingUtilisateurs.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7FBB5E5A22CF781D00AB448C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7F55FF1D22D4B755004C0683 /* CentreInteretTableViewCell.swift */,
+				7F814B7B22D5D0EC00425325 /* StyleCuisineTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7FBB5E5B22CF782E00AB448C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7FBB5E5C22CF78D800AB448C /* UserControls */,
+				7F36AD1D22DC8B7400F91E19 /* HomePage */,
+				7F814B8222D5E75500425325 /* SaisieProfil */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		7FBB5E5C22CF78D800AB448C /* UserControls */ = {
+			isa = PBXGroup;
+			children = (
+				7FBB5E5D22CF792A00AB448C /* RoundPortraitUIImageView.swift */,
+				7FBB5E5F22CF7DA300AB448C /* RoundButtonUIButton.swift */,
+				7F814B8D22D62F2900425325 /* RamonUITextField.swift */,
+				7F814B8F22D6365200425325 /* RamonUITextView.swift */,
+				7FE66E5822DF5881005F46C1 /* RoundUILabel.swift */,
+				7F98532322E09E6B00C28C8E /* RoundUIView.swift */,
+			);
+			path = UserControls;
+			sourceTree = "<group>";
+		};
+		8133343638046B0E129FEE23 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				426EB8E78F78CF26D1D69728 /* Pods_rendez_vous.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C7A758397A4DAA0077951D6C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				157AEFDABC67843ED556B363 /* Pods-rendez-vous.debug.xcconfig */,
+				0C4EECA8B6882C6E13B0C001 /* Pods-rendez-vous.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +367,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7F59938022C51092005658DD /* Build configuration list for PBXNativeTarget "rendez-vous" */;
 			buildPhases = (
+				C12C5FDEE27946E713F8A1DB /* [CP] Check Pods Manifest.lock */,
 				7F59936722C51090005658DD /* Sources */,
 				7F59936822C51090005658DD /* Frameworks */,
 				7F59936922C51090005658DD /* Resources */,
+				4C6424D96B041B89BF463712 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -99,6 +394,23 @@
 				TargetAttributes = {
 					7F59936A22C51090005658DD = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.AutoFillCredentialProvider = {
+								enabled = 0;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+							com.apple.SafariKeychain = {
+								enabled = 0;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -133,14 +445,105 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4C6424D96B041B89BF463712 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-rendez-vous/Pods-rendez-vous-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-rendez-vous/Pods-rendez-vous-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-rendez-vous/Pods-rendez-vous-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C12C5FDEE27946E713F8A1DB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-rendez-vous-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7F59936722C51090005658DD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F55FF1E22D4B755004C0683 /* CentreInteretTableViewCell.swift in Sources */,
+				7F98532422E09E6B00C28C8E /* RoundUIView.swift in Sources */,
+				7FBB5E6222CF7F7F00AB448C /* PictureViewController.swift in Sources */,
+				7F36AD1C22D875FF00F91E19 /* LocationManager.swift in Sources */,
+				7FBB5E5822CC948900AB448C /* RamonViewController.swift in Sources */,
+				7F98532222E0993300C28C8E /* ListRestaurantUIView.swift in Sources */,
+				7FBB5E4F22CA0C2100AB448C /* AuthWebService.swift in Sources */,
+				7FE66E5322DDB969005F46C1 /* RestaurantCollectionViewCell.swift in Sources */,
+				7FA7DC4F22C5FB8600E74F6B /* NewAccount.swift in Sources */,
 				7F59937122C51090005658DD /* ViewController.swift in Sources */,
+				7F98533822E1ECF700C28C8E /* RankedUtilisateur.swift in Sources */,
+				7F98532C22E1A7A000C28C8E /* CreateGroupViewController.swift in Sources */,
+				7FB2E30B22E59DC600E13ABF /* RendezVous.swift in Sources */,
+				7FBB5E5122CA0D8800AB448C /* AuthentificationVC.swift in Sources */,
+				7F55FF1A22D474EB004C0683 /* NewProfile.swift in Sources */,
+				7FB2E31422E5E85100E13ABF /* ConnectedRamonUser.swift in Sources */,
+				7F55FF1C22D4B5CF004C0683 /* CentreInteret.swift in Sources */,
+				7FE66E4B22DCAE21005F46C1 /* Restaurant.swift in Sources */,
+				7FE66E5922DF5881005F46C1 /* RoundUILabel.swift in Sources */,
+				7FA7DC5122C5FCC800E74F6B /* RamonUserUIButton.swift in Sources */,
+				7FBB5E6022CF7DA300AB448C /* RoundButtonUIButton.swift in Sources */,
+				7FB2E31122E5E09600E13ABF /* RendezVousApplication.swift in Sources */,
+				7F98532022E0989D00C28C8E /* RestaurantTableViewCell.swift in Sources */,
+				7F55FF2022D4BCBD004C0683 /* InteretsViewController.swift in Sources */,
 				7F59937722C51090005658DD /* rendez_vous.xcdatamodeld in Sources */,
+				7F98532722E0A05D00C28C8E /* MapRestaurantUIView.swift in Sources */,
+				7FBB5E4B22C6083000AB448C /* RegisterVC.swift in Sources */,
+				7FA7DC4D22C5FAA000E74F6B /* RamonUserUITextField.swift in Sources */,
+				7F98533C22E1EFC100C28C8E /* GuestRankedTableView.swift in Sources */,
+				7FBB5E4D22C9EBFA00AB448C /* RamonUser.swift in Sources */,
+				7FBB5E5E22CF792B00AB448C /* RoundPortraitUIImageView.swift in Sources */,
+				7FBB5E5322CB580B00AB448C /* RegExp.swift in Sources */,
+				7F814B7C22D5D0EC00425325 /* StyleCuisineTableViewCell.swift in Sources */,
+				7F814B7E22D5D19900425325 /* StyleCuisine.swift in Sources */,
+				7F98533A22E1EECF00C28C8E /* GuestRankedTableViewCell.swift in Sources */,
 				7F59936F22C51090005658DD /* AppDelegate.swift in Sources */,
+				7FB2E31622E5FB9700E13ABF /* ListeRestaurants.swift in Sources */,
+				7F814B9022D6365200425325 /* RamonUITextView.swift in Sources */,
+				7FB2E30F22E5CA4E00E13ABF /* GuestUICollectionView.swift in Sources */,
+				7F814B8422D5E7B200425325 /* DescriptionViewController.swift in Sources */,
+				7F98532922E0BE9200C28C8E /* AboutRestaurantViewController.swift in Sources */,
+				7F814B8A22D5EF5800425325 /* EndProcedureViewController.swift in Sources */,
+				7F98533222E1E90200C28C8E /* Utilisateur.swift in Sources */,
+				7FE66E4D22DCB1F4005F46C1 /* MapRestaurantViewController.swift in Sources */,
+				7F814B8022D5D27800425325 /* TypeCuisineViewController.swift in Sources */,
+				7FB2E31822E6054E00E13ABF /* ListeMatchingUtilisateurs.swift in Sources */,
+				7F814B8822D5E7FA00425325 /* PreviewViewController.swift in Sources */,
+				7F98532E22E1ADA200C28C8E /* GuestCollectionViewCell.swift in Sources */,
+				7F814B8E22D62F2900425325 /* RamonUITextField.swift in Sources */,
+				7F814B8622D5E7C700425325 /* CatchPhraseViewController.swift in Sources */,
+				7FB2E30D22E5BB5100E13ABF /* Invitation.swift in Sources */,
+				7F814B8C22D6244D00425325 /* RendezVousWebService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,9 +687,11 @@
 		};
 		7F59938122C51092005658DD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 157AEFDABC67843ED556B363 /* Pods-rendez-vous.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8G9A2V5Z8U;
 				INFOPLIST_FILE = "rendez-vous/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -295,15 +700,17 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "ramon-technologies.rendez-vous";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		7F59938222C51092005658DD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C4EECA8B6882C6E13B0C001 /* Pods-rendez-vous.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8G9A2V5Z8U;
 				INFOPLIST_FILE = "rendez-vous/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -312,7 +719,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "ramon-technologies.rendez-vous";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
