@@ -15,13 +15,13 @@ import AlamofireImage
 class MapRestaurantViewController: RamonViewController {
     var currentRestaurant: Restaurant?
 
-    @IBOutlet weak var restaurantTable: UITableView!    
+    @IBOutlet weak var restaurantTable: RamonTableView!
     @IBOutlet weak var viewWithMap: MapRestaurantUIView!
     @IBOutlet weak var viewWithList: ListRestaurantUIView!
     @IBOutlet weak var switchViewMode: UISegmentedControl!
-    @IBOutlet weak var restaurantCollection: UICollectionView!
+    @IBOutlet weak var restaurantCollection: RamonCollectionView!
 
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapView: RamonMKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -35,6 +35,10 @@ class MapRestaurantViewController: RamonViewController {
         viewWithMap.currentControleur = self
         viewWithList.currentControleur = self
         
+        // abonnement des listes, tables, collections et maps aux changements éventuyels de la liste de restaurants
+        ListeRestaurants.subscribe(vue: self.restaurantTable)
+        ListeRestaurants.subscribe(vue: self.restaurantCollection)
+        ListeRestaurants.subscribe(vue: self.mapView)
         
         restaurantCollection.layer.backgroundColor = UIColor.clear.cgColor
         self.restaurantCollection.delegate = self.viewWithMap
@@ -63,7 +67,9 @@ class MapRestaurantViewController: RamonViewController {
         }
         if segue.identifier == "showCreateGroup"
         {
-            self.currentRestaurant = RendezVousApplication.getListeRestaurants()[viewWithMap.currentRestaurant]
+            //self.currentRestaurant = RendezVousApplication.getListeRestaurants()[viewWithMap.currentRestaurant]
+            let dest = segue.destination as! CreateGroupViewController
+            dest.currentRestaurant = RendezVousApplication.getListeRestaurants()[viewWithMap.currentRestaurant]
         }
     }
     /*
@@ -100,7 +106,7 @@ class MapRestaurantViewController: RamonViewController {
 }
 extension MapRestaurantViewController:CLLocationManagerDelegate
 {
-    fileprivate func refreshRestaurantList() {
+   /* fileprivate func refreshRestaurantList() {
         ListeRestaurants.getListRestaurant{ (json: JSON?, error: Error?) in
             guard error == nil else {
                 print("Une erreur est survenue")
@@ -127,7 +133,7 @@ extension MapRestaurantViewController:CLLocationManagerDelegate
                 }
             }
         }
-    }
+    }*/
     
     fileprivate func recentrageCarte() {
         let span : MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
@@ -139,7 +145,7 @@ extension MapRestaurantViewController:CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         recentrageCarte()
         LocationManager.SharedInstance.stopUpdatingLocation()
-        refreshRestaurantList()
+        ListeRestaurants.refreshList(controleur: self)
     }
 }
 

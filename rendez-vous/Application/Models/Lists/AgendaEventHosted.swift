@@ -20,13 +20,11 @@ class AgendaEventHosted {
         for item in json.arrayValue
         {
             print("element n°\(i)")
-            print("les invitations:\(item["Invitations"])")
-            print("le restaurant:\(item["Restaurant"])")
-            print("le rendezvous:\(item["Rendez-Vous"])")
+        //    print("les invitations:\(item["Invitations"])")
+         //   print("le restaurant:\(item["Restaurant"])")
+         //   print("le rendezvous:\(item["Rendez-Vous"])")
             let rendezVous = RendezVous(json: item["Rendez-Vous"])
-            rendezVous.restaurant = Restaurant(json: item["Restaurant"])
-            
-            
+            rendezVous.restaurant = Restaurant(json: item["Restaurant"]) 
             for jUtilisateur in item["Invitations"]
             {
                 print("jutilisateur: \(jUtilisateur.1["Utilisateur"])")
@@ -50,5 +48,27 @@ class AgendaEventHosted {
         print("signature=\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)onmangeensembleb20")
         print(RendezVousWebService.sharedInstance.webServiceCalling(params, completion))
         
+    }
+    static func refreshList()
+    {
+        AgendaEventHosted.loadHostedRendezVous{ (json: JSON?, error: Error?) in
+            guard error == nil else {
+                print("Une erreur est survenue")
+                return
+            }
+            if let json = json {
+                print(json)
+                if json["returnCode"].intValue != 200
+                {
+                    AuthWebService.sendAlertMessage(vc: self, returnCode: json["returnCode"].intValue)
+                }
+                else
+                {
+                    RendezVousApplication.sharedInstance.listeRendezVousCrees = AgendaEventHosted(json:json["data"])
+                    
+                    //  self.tableRendezVousHosted.reloadData()
+                }
+            }
+        }
     }
 }

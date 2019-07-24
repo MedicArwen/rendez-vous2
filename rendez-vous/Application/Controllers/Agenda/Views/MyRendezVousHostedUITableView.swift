@@ -62,3 +62,11 @@ extension MyRendezVousHostedUITableView:UITableViewDelegate,UITableViewDataSourc
     }
     
 }
+extension MyRendezVousHostedUITableView:WebServiceLinkable
+{
+    func refresh() {
+        self.reloadData()
+    }
+    
+    
+}

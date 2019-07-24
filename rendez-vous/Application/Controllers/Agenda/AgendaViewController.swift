@@ -19,28 +19,10 @@ class AgendaViewController: RamonViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableRendezVousHosted.currentControleur = self
-
+        self.tableRendezVousHosted.delegate = self.tableRendezVousHosted
+        self.tableRendezVousHosted.dataSource = self.tableRendezVousHosted
         // Do any additional setup after loading the view.
-        AgendaEventHosted.loadHostedRendezVous{ (json: JSON?, error: Error?) in
-            guard error == nil else {
-                print("Une erreur est survenue")
-                return
-            }
-            if let json = json {
-                print(json)
-                if json["returnCode"].intValue != 200
-                {
-                    AuthWebService.sendAlertMessage(vc: self, returnCode: json["returnCode"].intValue)
-                }
-                else
-                {
-                    RendezVousApplication.sharedInstance.listeRendezVousCrees = AgendaEventHosted(json:json["data"])
-                    self.tableRendezVousHosted.delegate = self.tableRendezVousHosted
-                    self.tableRendezVousHosted.dataSource = self.tableRendezVousHosted
-                    self.tableRendezVousHosted.reloadData()
-                }
-            }
-        }
+        
     }
     
 

@@ -37,3 +37,9 @@ extension GuestHostedRendezVousUICollectionView:UICollectionViewDelegate,UIColle
         return cell
     }
 }
+extension GuestHostedRendezVousUICollectionView:WebServiceLinkable
+{
+    func refresh() {
+        reloadData()
+    }
+}

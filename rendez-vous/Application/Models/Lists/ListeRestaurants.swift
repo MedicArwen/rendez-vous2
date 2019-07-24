@@ -7,13 +7,15 @@
 //
 
 import Foundation
-import  SwiftHash
+import SwiftHash
 import SwiftyJSON
+import MapKit
 
 
-class ListeRestaurants
+class ListeRestaurants:WebServiceSubscribable
 {
     var liste = [Restaurant]()
+
     init(json:JSON) {
         for jRestaurant in json {
             self.liste.append(Restaurant(json:jRestaurant.1))
@@ -36,5 +38,31 @@ class ListeRestaurants
         print("signature=\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)10.0\(LocationManager.SharedInstance.location!.coordinate.latitude)\(LocationManager.SharedInstance.location!.coordinate.longitude)onmangeensembleb20")
         print(RendezVousWebService.sharedInstance.webServiceCalling(params, completion))
         
+    }
+    
+    static func refreshList(controleur: RamonViewController)
+    {
+    print("refreshList Restaurant")
+    ListeRestaurants.getListRestaurant
+    { (json: JSON?, error: Error?) in
+    guard error == nil else
+    {
+    print("Une erreur est survenue")
+    return
+    }
+    if let json = json
+    {
+        print(json)
+        if json["returnCode"].intValue != 200
+            {
+                AuthWebService.sendAlertMessage(vc: controleur, returnCode: json["returnCode"].intValue)
+            }
+        else
+            {
+                RendezVousApplication.sharedInstance.listeRestaurantsProches = ListeRestaurants(json:json["data"])
+                ListeRestaurants.reloadViews()
+            }
+    }
+    }
     }
 }

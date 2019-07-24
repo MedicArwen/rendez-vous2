@@ -56,6 +56,12 @@
 		7FB2E32C22E733B100E13ABF /* GuestHostedRendezVousUICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E32B22E733B100E13ABF /* GuestHostedRendezVousUICollectionView.swift */; };
 		7FB2E32E22E733FE00E13ABF /* GuestHostedRendezVousUICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E32D22E733FE00E13ABF /* GuestHostedRendezVousUICollectionViewCell.swift */; };
 		7FB2E33022E8822500E13ABF /* AgendaEventHosted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E32F22E8822500E13ABF /* AgendaEventHosted.swift */; };
+		7FB2E33222E8A7E600E13ABF /* RamonMKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E33122E8A7E600E13ABF /* RamonMKMapView.swift */; };
+		7FB2E33522E8AB7F00E13ABF /* WebServiceLinkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E33422E8AB7F00E13ABF /* WebServiceLinkable.swift */; };
+		7FB2E33722E8ADB100E13ABF /* RamonCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E33622E8ADB100E13ABF /* RamonCollectionView.swift */; };
+		7FB2E33922E8ADF300E13ABF /* RamonTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E33822E8ADF300E13ABF /* RamonTableView.swift */; };
+		7FB2E33E22E8B1DF00E13ABF /* WebServiceSubscribable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E33D22E8B1DF00E13ABF /* WebServiceSubscribable.swift */; };
+		7FB2E34022E8B45100E13ABF /* WebServiceRefreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E33F22E8B45100E13ABF /* WebServiceRefreshable.swift */; };
 		7FBB5E4B22C6083000AB448C /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB5E4A22C6083000AB448C /* RegisterVC.swift */; };
 		7FBB5E4D22C9EBFA00AB448C /* RamonUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB5E4C22C9EBFA00AB448C /* RamonUser.swift */; };
 		7FBB5E4F22CA0C2100AB448C /* AuthWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB5E4E22CA0C2100AB448C /* AuthWebService.swift */; };
@@ -125,6 +131,12 @@
 		7FB2E32B22E733B100E13ABF /* GuestHostedRendezVousUICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestHostedRendezVousUICollectionView.swift; sourceTree = "<group>"; };
 		7FB2E32D22E733FE00E13ABF /* GuestHostedRendezVousUICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestHostedRendezVousUICollectionViewCell.swift; sourceTree = "<group>"; };
 		7FB2E32F22E8822500E13ABF /* AgendaEventHosted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaEventHosted.swift; sourceTree = "<group>"; };
+		7FB2E33122E8A7E600E13ABF /* RamonMKMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamonMKMapView.swift; sourceTree = "<group>"; };
+		7FB2E33422E8AB7F00E13ABF /* WebServiceLinkable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceLinkable.swift; sourceTree = "<group>"; };
+		7FB2E33622E8ADB100E13ABF /* RamonCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamonCollectionView.swift; sourceTree = "<group>"; };
+		7FB2E33822E8ADF300E13ABF /* RamonTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamonTableView.swift; sourceTree = "<group>"; };
+		7FB2E33D22E8B1DF00E13ABF /* WebServiceSubscribable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceSubscribable.swift; sourceTree = "<group>"; };
+		7FB2E33F22E8B45100E13ABF /* WebServiceRefreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceRefreshable.swift; sourceTree = "<group>"; };
 		7FBB5E4A22C6083000AB448C /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		7FBB5E4C22C9EBFA00AB448C /* RamonUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamonUser.swift; sourceTree = "<group>"; };
 		7FBB5E4E22CA0C2100AB448C /* AuthWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWebService.swift; sourceTree = "<group>"; };
@@ -156,6 +168,7 @@
 		7F36AD1D22DC8B7400F91E19 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				7FB2E33A22E8AEFA00E13ABF /* Cells */,
 				7F98532522E09F8200C28C8E /* Views */,
 				7FE66E4C22DCB1F4005F46C1 /* MapRestaurantViewController.swift */,
 				7F98532822E0BE9200C28C8E /* AboutRestaurantViewController.swift */,
@@ -201,8 +214,10 @@
 		7F814B8122D5E35300425325 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				7F98532A22E0C7E100C28C8E /* WebService */,
+				7FB2E33322E8AB4100E13ABF /* Protocols */,
 				7FBB5E5B22CF782E00AB448C /* Controllers */,
+				7FBB5E5C22CF78D800AB448C /* UserControls */,
+				7F98532A22E0C7E100C28C8E /* WebService */,
 				7FBB5E5922CF780F00AB448C /* Models */,
 			);
 			path = Application;
@@ -226,12 +241,8 @@
 		7F98532522E09F8200C28C8E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7FE66E5222DDB969005F46C1 /* RestaurantCollectionViewCell.swift */,
-				7F98531F22E0989D00C28C8E /* RestaurantTableViewCell.swift */,
 				7F98532122E0993300C28C8E /* ListRestaurantUIView.swift */,
 				7F98532622E0A05D00C28C8E /* MapRestaurantUIView.swift */,
-				7F98532D22E1ADA200C28C8E /* GuestCollectionViewCell.swift */,
-				7F98533922E1EECF00C28C8E /* GuestRankedTableViewCell.swift */,
 				7F98533B22E1EFC100C28C8E /* GuestRankedTableView.swift */,
 				7FB2E30E22E5CA4E00E13ABF /* GuestUICollectionView.swift */,
 			);
@@ -296,6 +307,7 @@
 		7FB2E31B22E6EC0C00E13ABF /* Agenda */ = {
 			isa = PBXGroup;
 			children = (
+				7FB2E33B22E8AF3400E13ABF /* Cells */,
 				7FB2E31C22E6EC2200E13ABF /* Views */,
 				7FB2E31F22E6F58B00E13ABF /* AgendaViewController.swift */,
 			);
@@ -305,12 +317,51 @@
 		7FB2E31C22E6EC2200E13ABF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7FB2E31D22E6EC4500E13ABF /* MyRendezVousTableViewCell.swift */,
 				7FB2E32322E6FA3F00E13ABF /* MyRendezVousHostedUITableView.swift */,
 				7FB2E32B22E733B100E13ABF /* GuestHostedRendezVousUICollectionView.swift */,
-				7FB2E32D22E733FE00E13ABF /* GuestHostedRendezVousUICollectionViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		7FB2E33322E8AB4100E13ABF /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				7FB2E33422E8AB7F00E13ABF /* WebServiceLinkable.swift */,
+				7FB2E33D22E8B1DF00E13ABF /* WebServiceSubscribable.swift */,
+				7FB2E33F22E8B45100E13ABF /* WebServiceRefreshable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		7FB2E33A22E8AEFA00E13ABF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7FE66E5222DDB969005F46C1 /* RestaurantCollectionViewCell.swift */,
+				7F98531F22E0989D00C28C8E /* RestaurantTableViewCell.swift */,
+				7F98532D22E1ADA200C28C8E /* GuestCollectionViewCell.swift */,
+				7F98533922E1EECF00C28C8E /* GuestRankedTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		7FB2E33B22E8AF3400E13ABF /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7FB2E31D22E6EC4500E13ABF /* MyRendezVousTableViewCell.swift */,
+				7FB2E32D22E733FE00E13ABF /* GuestHostedRendezVousUICollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		7FB2E33C22E8AF5100E13ABF /* Lists */ = {
+			isa = PBXGroup;
+			children = (
+				7FB2E31522E5FB9700E13ABF /* ListeRestaurants.swift */,
+				7FB2E32722E70AFB00E13ABF /* ListeUtilisateurs.swift */,
+				7FB2E32F22E8822500E13ABF /* AgendaEventHosted.swift */,
+				7FB2E31722E6054E00E13ABF /* ListeMatchingUtilisateurs.swift */,
+			);
+			path = Lists;
 			sourceTree = "<group>";
 		};
 		7FBB5E4922C600C500AB448C /* RamonUser */ = {
@@ -327,6 +378,7 @@
 		7FBB5E5922CF780F00AB448C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7FB2E33C22E8AF5100E13ABF /* Lists */,
 				7F55FF1922D474EB004C0683 /* NewProfile.swift */,
 				7F55FF1B22D4B5CF004C0683 /* CentreInteret.swift */,
 				7F814B7D22D5D19900425325 /* StyleCuisine.swift */,
@@ -336,10 +388,6 @@
 				7FB2E30A22E59DC600E13ABF /* RendezVous.swift */,
 				7FB2E30C22E5BB5100E13ABF /* Invitation.swift */,
 				7FB2E31322E5E85100E13ABF /* ConnectedRamonUser.swift */,
-				7FB2E31522E5FB9700E13ABF /* ListeRestaurants.swift */,
-				7FB2E31722E6054E00E13ABF /* ListeMatchingUtilisateurs.swift */,
-				7FB2E32722E70AFB00E13ABF /* ListeUtilisateurs.swift */,
-				7FB2E32F22E8822500E13ABF /* AgendaEventHosted.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -357,7 +405,6 @@
 			isa = PBXGroup;
 			children = (
 				7FB2E31B22E6EC0C00E13ABF /* Agenda */,
-				7FBB5E5C22CF78D800AB448C /* UserControls */,
 				7F36AD1D22DC8B7400F91E19 /* HomePage */,
 				7F814B8222D5E75500425325 /* SaisieProfil */,
 			);
@@ -373,6 +420,9 @@
 				7F814B8F22D6365200425325 /* RamonUITextView.swift */,
 				7FE66E5822DF5881005F46C1 /* RoundUILabel.swift */,
 				7F98532322E09E6B00C28C8E /* RoundUIView.swift */,
+				7FB2E33122E8A7E600E13ABF /* RamonMKMapView.swift */,
+				7FB2E33622E8ADB100E13ABF /* RamonCollectionView.swift */,
+				7FB2E33822E8ADF300E13ABF /* RamonTableView.swift */,
 			);
 			path = UserControls;
 			sourceTree = "<group>";
@@ -528,12 +578,15 @@
 			files = (
 				7F55FF1E22D4B755004C0683 /* CentreInteretTableViewCell.swift in Sources */,
 				7F98532422E09E6B00C28C8E /* RoundUIView.swift in Sources */,
+				7FB2E33E22E8B1DF00E13ABF /* WebServiceSubscribable.swift in Sources */,
 				7FBB5E6222CF7F7F00AB448C /* PictureViewController.swift in Sources */,
 				7F36AD1C22D875FF00F91E19 /* LocationManager.swift in Sources */,
 				7FBB5E5822CC948900AB448C /* RamonViewController.swift in Sources */,
 				7F98532222E0993300C28C8E /* ListRestaurantUIView.swift in Sources */,
 				7FBB5E4F22CA0C2100AB448C /* AuthWebService.swift in Sources */,
+				7FB2E34022E8B45100E13ABF /* WebServiceRefreshable.swift in Sources */,
 				7FE66E5322DDB969005F46C1 /* RestaurantCollectionViewCell.swift in Sources */,
+				7FB2E33522E8AB7F00E13ABF /* WebServiceLinkable.swift in Sources */,
 				7FA7DC4F22C5FB8600E74F6B /* NewAccount.swift in Sources */,
 				7F98533822E1ECF700C28C8E /* RankedUtilisateur.swift in Sources */,
 				7F98532C22E1A7A000C28C8E /* CreateGroupViewController.swift in Sources */,
@@ -550,6 +603,7 @@
 				7FBB5E6022CF7DA300AB448C /* RoundButtonUIButton.swift in Sources */,
 				7FB2E31122E5E09600E13ABF /* RendezVousApplication.swift in Sources */,
 				7F98532022E0989D00C28C8E /* RestaurantTableViewCell.swift in Sources */,
+				7FB2E33922E8ADF300E13ABF /* RamonTableView.swift in Sources */,
 				7F55FF2022D4BCBD004C0683 /* InteretsViewController.swift in Sources */,
 				7F59937722C51090005658DD /* rendez_vous.xcdatamodeld in Sources */,
 				7FB2E32C22E733B100E13ABF /* GuestHostedRendezVousUICollectionView.swift in Sources */,
@@ -558,6 +612,7 @@
 				7FA7DC4D22C5FAA000E74F6B /* RamonUserUITextField.swift in Sources */,
 				7FB2E32E22E733FE00E13ABF /* GuestHostedRendezVousUICollectionViewCell.swift in Sources */,
 				7F98533C22E1EFC100C28C8E /* GuestRankedTableView.swift in Sources */,
+				7FB2E33222E8A7E600E13ABF /* RamonMKMapView.swift in Sources */,
 				7FBB5E4D22C9EBFA00AB448C /* RamonUser.swift in Sources */,
 				7FBB5E5E22CF792B00AB448C /* RoundPortraitUIImageView.swift in Sources */,
 				7FBB5E5322CB580B00AB448C /* RegExp.swift in Sources */,
@@ -581,6 +636,7 @@
 				7FB2E33022E8822500E13ABF /* AgendaEventHosted.swift in Sources */,
 				7F814B8E22D62F2900425325 /* RamonUITextField.swift in Sources */,
 				7F814B8622D5E7C700425325 /* CatchPhraseViewController.swift in Sources */,
+				7FB2E33722E8ADB100E13ABF /* RamonCollectionView.swift in Sources */,
 				7FB2E30D22E5BB5100E13ABF /* Invitation.swift in Sources */,
 				7F814B8C22D6244D00425325 /* RendezVousWebService.swift in Sources */,
 				7FB2E32822E70AFB00E13ABF /* ListeUtilisateurs.swift in Sources */,

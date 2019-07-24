@@ -1328,10 +1328,10 @@ CQ
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sJN-zd-e6i" customClass="MapRestaurantUIView" customModule="rendez_vous" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="0.0"/>
                                         <subviews>
-                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sFX-Sy-wOb">
+                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="sFX-Sy-wOb" customClass="RamonMKMapView" customModule="rendez_vous" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="0.0"/>
                                             </mapView>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sfA-WS-3lA">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sfA-WS-3lA" customClass="RamonCollectionView" customModule="rendez_vous" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="-150" width="303" height="150"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="sfA-WS-3lA" secondAttribute="height" multiplier="101:50" id="T7j-1R-inH"/>
@@ -1387,7 +1387,7 @@ CQ
                                                                             <rect key="frame" x="0.0" y="26.5" width="170" height="93.5"/>
                                                                             <subviews>
                                                                                 <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="02J-q2-FvX">
-                                                                                    <rect key="frame" x="0.0" y="22" width="56.5" height="50"/>
+                                                                                    <rect key="frame" x="0.0" y="36" width="56.5" height="22"/>
                                                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <state key="normal" image="iconPhoneCall">
                                                                                         <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1466,7 +1466,7 @@ CQ
                                                 <rect key="frame" x="0.0" y="55" width="320" height="56"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </searchBar>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AAu-FR-nyk">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AAu-FR-nyk" customClass="RamonTableView" customModule="rendez_vous" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="111" width="320" height="388"/>
                                                 <color key="backgroundColor" red="0.94927436109999996" green="0.93755418059999995" blue="0.92066174749999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <prototypes>
@@ -1519,7 +1519,7 @@ CQ
                                                                                     <rect key="frame" x="0.0" y="26.5" width="200.5" height="77"/>
                                                                                     <subviews>
                                                                                         <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6AM-2W-sRf">
-                                                                                            <rect key="frame" x="0.0" y="13.5" width="67" height="50"/>
+                                                                                            <rect key="frame" x="0.0" y="27.5" width="67" height="22"/>
                                                                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                             <state key="normal" image="iconPhoneCall">
                                                                                                 <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
