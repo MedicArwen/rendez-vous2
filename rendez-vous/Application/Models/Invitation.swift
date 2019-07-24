@@ -17,14 +17,16 @@ class Invitation{
     var numInvite:Int
     var numRendezVous:Int
     var numStatusInvitation:Int
+    var utilisateur:Utilisateur
     
-    init(numInvite:Int,numRendezVous:Int,numStatusInvitation:Int) {
+    init(numInvite:Int,numRendezVous:Int,numStatusInvitation:Int,utilisateur:Utilisateur) {
         self.numInvite = numInvite
         self.numRendezVous = numRendezVous
         self.numStatusInvitation = numStatusInvitation
+        self.utilisateur = utilisateur
     }
-    convenience init(json:JSON) {
-        self.init(numInvite:json["numInvite"].intValue,numRendezVous:json["numRendezVous"].intValue,numStatusInvitation:json["numStatusInvitation"].intValue)
+    convenience init(jsonInvitation:JSON,jsonUtilisateur:JSON) {
+        self.init(numInvite:jsonInvitation["numInvite"].intValue,numRendezVous:jsonInvitation["numRendezVous"].intValue,numStatusInvitation:jsonInvitation["numStatusInvitation"].intValue,utilisateur: Utilisateur(json: jsonUtilisateur))
     }
     func Save(_ completion: @escaping ServiceResponse) {
         var params = [String:String]()
@@ -41,5 +43,16 @@ class Invitation{
         print("signature=\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)\(params["numInvite"]!)\(params["numRendezVous"]!)\(params["numStatusInvitation"]!)onmangeensembleb20")
         print(RendezVousWebService.sharedInstance.webServiceCalling(params, completion))
         
+    }
+    func getStatusSymbol()->String
+    {
+        if self.numStatusInvitation == 1
+        {
+            return "?"
+        }
+        else
+        {
+        return ""
+        }
     }
 }

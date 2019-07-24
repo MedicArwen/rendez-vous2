@@ -45,8 +45,9 @@ class GuestRankedTableViewCell: UITableViewCell {
         self.scoreRanking.text = "\(trunc(rankedUtilisateur.ranking!*100))"
     }
     @IBAction func onClickInvite(_ sender: RoundButtonUIButton) {
-        let invitation = Invitation(numInvite:self.utilisateur!.idUtilisateur,numRendezVous:RendezVousApplication.sharedInstance.currentRendezVous!.idRendezVous ,numStatusInvitation:1)
-        let utilisateur = self.utilisateur as Utilisateur?
+         let utilisateur = self.utilisateur as Utilisateur?
+        let invitation = Invitation(numInvite:self.utilisateur!.idUtilisateur,numRendezVous:currentControleur!.currentRendezVous!.idRendezVous ,numStatusInvitation:1,utilisateur: utilisateur!)
+       
         invitation.Save { (json: JSON?, error: Error?) in
             guard error == nil else {
                 print("Une erreur est survenue")
@@ -61,9 +62,9 @@ class GuestRankedTableViewCell: UITableViewCell {
                 else
                 {
                 print("UtilisateurInvite")
-                    RendezVousApplication.sharedInstance.currentRendezVous!.addInvitation(invitation: invitation)
-                    RendezVousApplication.sharedInstance.currentRendezVous!.addGuest(utilisateur: utilisateur! )
-                    RendezVousApplication.sharedInstance.matchList!.remove(rankedUser: utilisateur!)
+                    self.currentControleur!.currentRendezVous!.addInvitation(invitation: invitation)
+                 //   RendezVousApplication.sharedInstance.currentRendezVous!.addGuest(utilisateur: utilisateur! )
+                    RendezVousApplication.sharedInstance.listeUtilisateursMatch!.remove(rankedUser: utilisateur!)
                     self.currentControleur!.guestInvitedCollection.reloadData()
                     self.currentControleur!.GuestRankedTable.reloadData()
                   

@@ -11,6 +11,8 @@ import SwiftyJSON
 
 class CreateGroupViewController: UIViewController {
 
+    var currentRendezVous: RendezVous?
+    var currentRestaurant: Restaurant?
     
     @IBOutlet weak var photoRestaurant: UIImageView!
     @IBOutlet weak var raisonSociale: UILabel!
@@ -46,17 +48,17 @@ class CreateGroupViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.raisonSociale.text = RendezVousApplication.sharedInstance.currentRestaurant!.raisonSociale
-        let url = URL(string: "https://api.ramon-technologies.com/rendez-vous/img/places/\(RendezVousApplication.sharedInstance.currentRestaurant!.urlPhoto)")!
+        self.raisonSociale.text = self.currentRestaurant!.raisonSociale
+        let url = URL(string: "https://api.ramon-technologies.com/rendez-vous/img/places/\(self.currentRestaurant!.urlPhoto)")!
         //  print(url)
         self.photoRestaurant.af_setImage(withURL: url)
         self.photoRestaurant.layer.cornerRadius = 10.0
-        self.pourcentReduction.text = "-\(RendezVousApplication.sharedInstance.currentRestaurant!.pourcentReduction)%"
+        self.pourcentReduction.text = "-\(self.currentRestaurant!.pourcentReduction)%"
         self.noteRestaurant.text = "9/10"
-        self.adresseRestaurant.text = RendezVousApplication.sharedInstance.currentRestaurant!.adressse
-        self.codePostalRestaurant.text = RendezVousApplication.sharedInstance.currentRestaurant!.codePostal
-        self.villeRestaurant.text = RendezVousApplication.sharedInstance.currentRestaurant!.ville
-        self.telephoneRestaurant.text = RendezVousApplication.sharedInstance.currentRestaurant!.telephone
+        self.adresseRestaurant.text = self.currentRestaurant!.adressse
+        self.codePostalRestaurant.text = self.currentRestaurant!.codePostal
+        self.villeRestaurant.text = self.currentRestaurant!.ville
+        self.telephoneRestaurant.text = self.currentRestaurant!.telephone
         
       
         self.GuestRankedTable.currentControleur = self
@@ -79,7 +81,7 @@ class CreateGroupViewController: UIViewController {
                 }
                 else
                 {
-                    RendezVousApplication.sharedInstance.matchList = ListeMatchingUtilisateurs(json: json["data"])
+                    RendezVousApplication.sharedInstance.listeUtilisateursMatch = ListeMatchingUtilisateurs(json: json["data"])
                     print("il y a \(RendezVousApplication.getListeMatching().count) utilisateurs à choisir")
                     self.GuestRankedTable.delegate = self.GuestRankedTable
                     self.GuestRankedTable.dataSource = self.GuestRankedTable
@@ -104,8 +106,8 @@ class CreateGroupViewController: UIViewController {
 
     @IBAction func onClickCreateGroupe(_ sender: UIButton) {
         
-        RendezVousApplication.sharedInstance.currentRendezVous = RendezVous(idRendezVous: 0, numUtilisateurSource: RendezVousApplication.getUtilisateurId(), date: "\(pickDateRendezVous.date)", numStatusRendezVous: 1, numRestaurant: RendezVousApplication.sharedInstance.currentRestaurant!.idRestaurant)
-        RendezVousApplication.sharedInstance.currentRendezVous?.save { (json: JSON?, error: Error?) in
+        self.currentRendezVous = RendezVous(idRendezVous: 0, numUtilisateurSource: RendezVousApplication.getUtilisateurId(), date: "\(pickDateRendezVous.date)", numStatusRendezVous: 1, numRestaurant: self.currentRestaurant!.idRestaurant)
+        self.currentRendezVous?.save { (json: JSON?, error: Error?) in
             guard error == nil else {
                 print("Une erreur est survenue")
                 return
@@ -118,13 +120,13 @@ class CreateGroupViewController: UIViewController {
                 }
                 else
                 {
-                    RendezVousApplication.sharedInstance.currentRendezVous = RendezVous(json: json["data"])
+                    self.currentRendezVous = RendezVous(json: json["data"])
                     self.constraintHeightViewAdd.constant = 0.0
                     self.vieuwButtonCreateGroupe.isHidden = true
                     self.viewGuestList.isHidden = false
                     self.constraintHeightViewTop.constant = 160.0
                     self.dateRendezVous.isHidden = false
-                    self.dateRendezVous.text = "\(RendezVousApplication.sharedInstance.currentRendezVous!.getDate())"
+                    self.dateRendezVous.text = "\(self.currentRendezVous!.getDate())"
                 }
             }
         }

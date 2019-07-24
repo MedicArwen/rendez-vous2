@@ -13,6 +13,7 @@ import MapKit
 import AlamofireImage
 
 class MapRestaurantViewController: RamonViewController {
+    var currentRestaurant: Restaurant?
 
     @IBOutlet weak var restaurantTable: UITableView!    
     @IBOutlet weak var viewWithMap: MapRestaurantUIView!
@@ -23,22 +24,33 @@ class MapRestaurantViewController: RamonViewController {
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         LocationManager.SharedInstance.delegate = self
         // PREPARATION VUE CARTE RESTAURANTS
         viewWithMap.currentCollection = restaurantCollection
         viewWithMap.currentMap = mapView
-       
         // PREPARATION VUE LISTE RESTAURANTS
-       
         
         viewWithMap.currentRestaurant = 0
         viewWithMap.currentControleur = self
         viewWithList.currentControleur = self
-
-        mapView.register(Restaurant.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(Restaurant.self))
+        
+        
         restaurantCollection.layer.backgroundColor = UIColor.clear.cgColor
+        self.restaurantCollection.delegate = self.viewWithMap
+        self.restaurantCollection.dataSource = self.viewWithMap
+        self.restaurantTable.delegate = self.viewWithList
+        self.restaurantTable.dataSource = self.viewWithList
+        
+        // CONFIGURATION DE LA CARTE
+        self.mapView.delegate = self.viewWithMap
+        self.mapView.showsUserLocation = true
+        self.mapView.showsScale = true
+        self.mapView.showsCompass = true
+        self.mapView.showsBuildings = true
+        self.mapView.register(Restaurant.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(Restaurant.self))
+        
+       
     }
     override func viewWillAppear(_ animated: Bool) {
         setViewMapMode(switchViewMode)
@@ -51,8 +63,7 @@ class MapRestaurantViewController: RamonViewController {
         }
         if segue.identifier == "showCreateGroup"
         {
-            let dest = segue.destination as! CreateGroupViewController
-            RendezVousApplication.sharedInstance.currentRestaurant = RendezVousApplication.getListeRestaurants()[viewWithMap.currentRestaurant]
+            self.currentRestaurant = RendezVousApplication.getListeRestaurants()[viewWithMap.currentRestaurant]
         }
     }
     /*
@@ -89,7 +100,7 @@ class MapRestaurantViewController: RamonViewController {
 }
 extension MapRestaurantViewController:CLLocationManagerDelegate
 {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    fileprivate func refreshRestaurantList() {
         ListeRestaurants.getListRestaurant{ (json: JSON?, error: Error?) in
             guard error == nil else {
                 print("Une erreur est survenue")
@@ -103,36 +114,32 @@ extension MapRestaurantViewController:CLLocationManagerDelegate
                 }
                 else
                 {
-                    RendezVousApplication.sharedInstance.listeRestaurants = ListeRestaurants(json:json["data"])
+                    RendezVousApplication.sharedInstance.listeRestaurantsProches = ListeRestaurants(json:json["data"])
                     var i = 0
-                    for item in RendezVousApplication.sharedInstance.listeRestaurants!.liste
+                    for item in RendezVousApplication.sharedInstance.listeRestaurantsProches!.liste
                     {
                         item.indice = i
                         self.mapView.addAnnotation(item)
                         i += 1
                     }
                     print("il y a \(RendezVousApplication.getListeRestaurants().count) restaurants à afficher sur la carte")
-                    self.mapView.delegate = self.viewWithMap
-                    self.restaurantCollection.delegate = self.viewWithMap
-                    self.restaurantCollection.dataSource = self.viewWithMap
-                    self.restaurantTable.delegate = self.viewWithList
-                    self.restaurantTable.dataSource = self.viewWithList
                     self.restaurantCollection.reloadData()
                 }
             }
         }
-        mapView.showsUserLocation = true
-        mapView.showsScale = true
-        mapView.showsCompass = true
-        mapView.showsBuildings = true
+    }
+    
+    fileprivate func recentrageCarte() {
         let span : MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-      
         let region : MKCoordinateRegion = MKCoordinateRegion(center: mapView!.centerCoordinate, span: span)
         mapView.region = region
         mapView.setCenter(LocationManager.SharedInstance.location!.coordinate, animated: false)
-   
-        
-    LocationManager.SharedInstance.stopUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        recentrageCarte()
+        LocationManager.SharedInstance.stopUpdatingLocation()
+        refreshRestaurantList()
     }
 }
 

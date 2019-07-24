@@ -23,16 +23,17 @@ class GuestUICollectionView: UICollectionView {
 extension GuestUICollectionView:UICollectionViewDelegate,UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if RendezVousApplication.sharedInstance.currentRendezVous == nil
+        if currentControleur!.currentRendezVous == nil
         {return 0}
        
-        return RendezVousApplication.sharedInstance.currentRendezVous!.guestList.count
+       // return RendezVousApplication.sharedInstance.currentRendezVous!.guestList.count
+        return currentControleur!.currentRendezVous!.invitationList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         print("update the cell n°#\(indexPath.row)")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "guestCollectionCell", for: indexPath) as! GuestCollectionViewCell
-        cell.update(utilisateur: RendezVousApplication.sharedInstance.currentRendezVous!.guestList[indexPath.row],controleur:self.currentControleur!)
+        cell.update(invitation: currentControleur!.currentRendezVous!.invitationList[indexPath.row],controleur:self.currentControleur!)
         return cell
     }
 }

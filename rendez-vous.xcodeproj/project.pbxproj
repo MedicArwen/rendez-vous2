@@ -14,7 +14,6 @@
 		7F55FF1E22D4B755004C0683 /* CentreInteretTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55FF1D22D4B755004C0683 /* CentreInteretTableViewCell.swift */; };
 		7F55FF2022D4BCBD004C0683 /* InteretsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55FF1F22D4BCBD004C0683 /* InteretsViewController.swift */; };
 		7F59936F22C51090005658DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F59936E22C51090005658DD /* AppDelegate.swift */; };
-		7F59937122C51090005658DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F59937022C51090005658DD /* ViewController.swift */; };
 		7F59937422C51090005658DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F59937222C51090005658DD /* Main.storyboard */; };
 		7F59937722C51090005658DD /* rendez_vous.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7F59937522C51090005658DD /* rendez_vous.xcdatamodeld */; };
 		7F59937922C51092005658DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F59937822C51092005658DD /* Assets.xcassets */; };
@@ -50,6 +49,13 @@
 		7FB2E31422E5E85100E13ABF /* ConnectedRamonUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E31322E5E85100E13ABF /* ConnectedRamonUser.swift */; };
 		7FB2E31622E5FB9700E13ABF /* ListeRestaurants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E31522E5FB9700E13ABF /* ListeRestaurants.swift */; };
 		7FB2E31822E6054E00E13ABF /* ListeMatchingUtilisateurs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E31722E6054E00E13ABF /* ListeMatchingUtilisateurs.swift */; };
+		7FB2E31E22E6EC4500E13ABF /* MyRendezVousTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E31D22E6EC4500E13ABF /* MyRendezVousTableViewCell.swift */; };
+		7FB2E32022E6F58B00E13ABF /* AgendaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E31F22E6F58B00E13ABF /* AgendaViewController.swift */; };
+		7FB2E32422E6FA3F00E13ABF /* MyRendezVousHostedUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E32322E6FA3F00E13ABF /* MyRendezVousHostedUITableView.swift */; };
+		7FB2E32822E70AFB00E13ABF /* ListeUtilisateurs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E32722E70AFB00E13ABF /* ListeUtilisateurs.swift */; };
+		7FB2E32C22E733B100E13ABF /* GuestHostedRendezVousUICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E32B22E733B100E13ABF /* GuestHostedRendezVousUICollectionView.swift */; };
+		7FB2E32E22E733FE00E13ABF /* GuestHostedRendezVousUICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E32D22E733FE00E13ABF /* GuestHostedRendezVousUICollectionViewCell.swift */; };
+		7FB2E33022E8822500E13ABF /* AgendaEventHosted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E32F22E8822500E13ABF /* AgendaEventHosted.swift */; };
 		7FBB5E4B22C6083000AB448C /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB5E4A22C6083000AB448C /* RegisterVC.swift */; };
 		7FBB5E4D22C9EBFA00AB448C /* RamonUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB5E4C22C9EBFA00AB448C /* RamonUser.swift */; };
 		7FBB5E4F22CA0C2100AB448C /* AuthWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBB5E4E22CA0C2100AB448C /* AuthWebService.swift */; };
@@ -76,7 +82,6 @@
 		7F55FF1F22D4BCBD004C0683 /* InteretsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteretsViewController.swift; sourceTree = "<group>"; };
 		7F59936B22C51090005658DD /* rendez-vous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rendez-vous.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F59936E22C51090005658DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7F59937022C51090005658DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7F59937322C51090005658DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7F59937622C51090005658DD /* rendez_vous.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = rendez_vous.xcdatamodel; sourceTree = "<group>"; };
 		7F59937822C51092005658DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -113,6 +118,13 @@
 		7FB2E31322E5E85100E13ABF /* ConnectedRamonUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedRamonUser.swift; sourceTree = "<group>"; };
 		7FB2E31522E5FB9700E13ABF /* ListeRestaurants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeRestaurants.swift; sourceTree = "<group>"; };
 		7FB2E31722E6054E00E13ABF /* ListeMatchingUtilisateurs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeMatchingUtilisateurs.swift; sourceTree = "<group>"; };
+		7FB2E31D22E6EC4500E13ABF /* MyRendezVousTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRendezVousTableViewCell.swift; sourceTree = "<group>"; };
+		7FB2E31F22E6F58B00E13ABF /* AgendaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaViewController.swift; sourceTree = "<group>"; };
+		7FB2E32322E6FA3F00E13ABF /* MyRendezVousHostedUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRendezVousHostedUITableView.swift; sourceTree = "<group>"; };
+		7FB2E32722E70AFB00E13ABF /* ListeUtilisateurs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeUtilisateurs.swift; sourceTree = "<group>"; };
+		7FB2E32B22E733B100E13ABF /* GuestHostedRendezVousUICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestHostedRendezVousUICollectionView.swift; sourceTree = "<group>"; };
+		7FB2E32D22E733FE00E13ABF /* GuestHostedRendezVousUICollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestHostedRendezVousUICollectionViewCell.swift; sourceTree = "<group>"; };
+		7FB2E32F22E8822500E13ABF /* AgendaEventHosted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgendaEventHosted.swift; sourceTree = "<group>"; };
 		7FBB5E4A22C6083000AB448C /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		7FBB5E4C22C9EBFA00AB448C /* RamonUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamonUser.swift; sourceTree = "<group>"; };
 		7FBB5E4E22CA0C2100AB448C /* AuthWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthWebService.swift; sourceTree = "<group>"; };
@@ -177,7 +189,6 @@
 				7F814B8122D5E35300425325 /* Application */,
 				7FBB5E4922C600C500AB448C /* RamonUser */,
 				7F59936E22C51090005658DD /* AppDelegate.swift */,
-				7F59937022C51090005658DD /* ViewController.swift */,
 				7F59937222C51090005658DD /* Main.storyboard */,
 				7F59937822C51092005658DD /* Assets.xcassets */,
 				7F59937A22C51092005658DD /* LaunchScreen.storyboard */,
@@ -282,6 +293,26 @@
 			path = WebService;
 			sourceTree = "<group>";
 		};
+		7FB2E31B22E6EC0C00E13ABF /* Agenda */ = {
+			isa = PBXGroup;
+			children = (
+				7FB2E31C22E6EC2200E13ABF /* Views */,
+				7FB2E31F22E6F58B00E13ABF /* AgendaViewController.swift */,
+			);
+			path = Agenda;
+			sourceTree = "<group>";
+		};
+		7FB2E31C22E6EC2200E13ABF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7FB2E31D22E6EC4500E13ABF /* MyRendezVousTableViewCell.swift */,
+				7FB2E32322E6FA3F00E13ABF /* MyRendezVousHostedUITableView.swift */,
+				7FB2E32B22E733B100E13ABF /* GuestHostedRendezVousUICollectionView.swift */,
+				7FB2E32D22E733FE00E13ABF /* GuestHostedRendezVousUICollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		7FBB5E4922C600C500AB448C /* RamonUser */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +338,8 @@
 				7FB2E31322E5E85100E13ABF /* ConnectedRamonUser.swift */,
 				7FB2E31522E5FB9700E13ABF /* ListeRestaurants.swift */,
 				7FB2E31722E6054E00E13ABF /* ListeMatchingUtilisateurs.swift */,
+				7FB2E32722E70AFB00E13ABF /* ListeUtilisateurs.swift */,
+				7FB2E32F22E8822500E13ABF /* AgendaEventHosted.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -323,6 +356,7 @@
 		7FBB5E5B22CF782E00AB448C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7FB2E31B22E6EC0C00E13ABF /* Agenda */,
 				7FBB5E5C22CF78D800AB448C /* UserControls */,
 				7F36AD1D22DC8B7400F91E19 /* HomePage */,
 				7F814B8222D5E75500425325 /* SaisieProfil */,
@@ -501,14 +535,15 @@
 				7FBB5E4F22CA0C2100AB448C /* AuthWebService.swift in Sources */,
 				7FE66E5322DDB969005F46C1 /* RestaurantCollectionViewCell.swift in Sources */,
 				7FA7DC4F22C5FB8600E74F6B /* NewAccount.swift in Sources */,
-				7F59937122C51090005658DD /* ViewController.swift in Sources */,
 				7F98533822E1ECF700C28C8E /* RankedUtilisateur.swift in Sources */,
 				7F98532C22E1A7A000C28C8E /* CreateGroupViewController.swift in Sources */,
 				7FB2E30B22E59DC600E13ABF /* RendezVous.swift in Sources */,
 				7FBB5E5122CA0D8800AB448C /* AuthentificationVC.swift in Sources */,
+				7FB2E31E22E6EC4500E13ABF /* MyRendezVousTableViewCell.swift in Sources */,
 				7F55FF1A22D474EB004C0683 /* NewProfile.swift in Sources */,
 				7FB2E31422E5E85100E13ABF /* ConnectedRamonUser.swift in Sources */,
 				7F55FF1C22D4B5CF004C0683 /* CentreInteret.swift in Sources */,
+				7FB2E32422E6FA3F00E13ABF /* MyRendezVousHostedUITableView.swift in Sources */,
 				7FE66E4B22DCAE21005F46C1 /* Restaurant.swift in Sources */,
 				7FE66E5922DF5881005F46C1 /* RoundUILabel.swift in Sources */,
 				7FA7DC5122C5FCC800E74F6B /* RamonUserUIButton.swift in Sources */,
@@ -517,9 +552,11 @@
 				7F98532022E0989D00C28C8E /* RestaurantTableViewCell.swift in Sources */,
 				7F55FF2022D4BCBD004C0683 /* InteretsViewController.swift in Sources */,
 				7F59937722C51090005658DD /* rendez_vous.xcdatamodeld in Sources */,
+				7FB2E32C22E733B100E13ABF /* GuestHostedRendezVousUICollectionView.swift in Sources */,
 				7F98532722E0A05D00C28C8E /* MapRestaurantUIView.swift in Sources */,
 				7FBB5E4B22C6083000AB448C /* RegisterVC.swift in Sources */,
 				7FA7DC4D22C5FAA000E74F6B /* RamonUserUITextField.swift in Sources */,
+				7FB2E32E22E733FE00E13ABF /* GuestHostedRendezVousUICollectionViewCell.swift in Sources */,
 				7F98533C22E1EFC100C28C8E /* GuestRankedTableView.swift in Sources */,
 				7FBB5E4D22C9EBFA00AB448C /* RamonUser.swift in Sources */,
 				7FBB5E5E22CF792B00AB448C /* RoundPortraitUIImageView.swift in Sources */,
@@ -535,15 +572,18 @@
 				7F98532922E0BE9200C28C8E /* AboutRestaurantViewController.swift in Sources */,
 				7F814B8A22D5EF5800425325 /* EndProcedureViewController.swift in Sources */,
 				7F98533222E1E90200C28C8E /* Utilisateur.swift in Sources */,
+				7FB2E32022E6F58B00E13ABF /* AgendaViewController.swift in Sources */,
 				7FE66E4D22DCB1F4005F46C1 /* MapRestaurantViewController.swift in Sources */,
 				7F814B8022D5D27800425325 /* TypeCuisineViewController.swift in Sources */,
 				7FB2E31822E6054E00E13ABF /* ListeMatchingUtilisateurs.swift in Sources */,
 				7F814B8822D5E7FA00425325 /* PreviewViewController.swift in Sources */,
 				7F98532E22E1ADA200C28C8E /* GuestCollectionViewCell.swift in Sources */,
+				7FB2E33022E8822500E13ABF /* AgendaEventHosted.swift in Sources */,
 				7F814B8E22D62F2900425325 /* RamonUITextField.swift in Sources */,
 				7F814B8622D5E7C700425325 /* CatchPhraseViewController.swift in Sources */,
 				7FB2E30D22E5BB5100E13ABF /* Invitation.swift in Sources */,
 				7F814B8C22D6244D00425325 /* RendezVousWebService.swift in Sources */,
+				7FB2E32822E70AFB00E13ABF /* ListeUtilisateurs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

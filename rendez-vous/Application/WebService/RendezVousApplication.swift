@@ -9,32 +9,44 @@
 import Foundation
 class RendezVousApplication
 {
+    /*
+     Informations sur la connection de l'utilisateur
+     il est connecté en RamonUser (commun à toutes les applications
+    et en Utilisateur(spécifique à RendezVous)
+     */
     var connectedUtilisateur: Utilisateur?
     var connectedRamonUser: ConnectedRamonUser?
-    var listeRestaurants: ListeRestaurants?
-    var currentRendezVous: RendezVous?
-    var currentRestaurant: Restaurant?
-    var matchList:ListeMatchingUtilisateurs?
-    
-    
-    
+   
+    // liste des utilisateurs qui matchent (notion de distance, calcul d'un score de match)
+    var listeUtilisateursMatch:ListeMatchingUtilisateurs?
+    // liste des restaurants proches de l'utilisateur ou de la position indiquée
+    var listeRestaurantsProches: ListeRestaurants?
+    // liste des rendez-vous créés par l'utilisateur
+    var listeRendezVousCrees:AgendaEventHosted?
+
     static var sharedInstance = RendezVousApplication()
 
+    static func getHostedRendezVous()->[RendezVous]
+    {
+        return RendezVousApplication.sharedInstance.listeRendezVousCrees!.events
+    }
     static func getListeMatching()->[RankedUtilisateur]
     {
         
-        return RendezVousApplication.sharedInstance.matchList!.liste
+        return RendezVousApplication.sharedInstance.listeUtilisateursMatch!.liste
         
     }
     static func getListeRestaurants()->[Restaurant]
     {
-        
-    return RendezVousApplication.sharedInstance.listeRestaurants!.liste
-    
+        if let listeRestaurant = RendezVousApplication.sharedInstance.listeRestaurantsProches
+        {
+            return listeRestaurant.liste
+        }
+    return [Restaurant]()
     }
     static func isRestaurantListReady()->Bool
     {
-    return !(RendezVousApplication.sharedInstance.listeRestaurants == nil)
+    return !(RendezVousApplication.sharedInstance.listeRestaurantsProches == nil)
     }
     
     func isProfileLoad()->Bool

@@ -16,8 +16,9 @@ class RendezVous{
     var date:String
     var numStatusRendezVous:Int
     var numRestaurant:Int
+  //  var guestList = [Utilisateur]()
     var invitationList = [Invitation]()
-    var guestList = [Utilisateur]()
+    var restaurant : Restaurant?
     
     init(idRendezVous:Int,numUtilisateurSource:Int,date:String,numStatusRendezVous:Int,numRestaurant:Int) {
         self.idRendezVous = idRendezVous
@@ -58,12 +59,45 @@ class RendezVous{
         print(RendezVousWebService.sharedInstance.webServiceCalling(params, completion))
         
     }
+    
+    func cancel(_ completion: @escaping ServiceResponse) {
+        let timestamp = String(NSDate().timeIntervalSince1970)
+        var params = [String:String]()
+        params["APIKEY"] = RendezVousApplication.getApiKey()
+        params["CMD"] = "UPDATE"
+        params["ENTITY"] = "RendezVousCancel"
+        params["NUMRAMONUSER"] = "\(RendezVousApplication.getRamonUserId())"
+        params["TIMESTAMP"] = timestamp
+        params["idRendezVous"] = "\(self.idRendezVous)"
+        params[ "SIGNATURE"] =  MD5("\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)\(self.idRendezVous)onmangeensembleb20")
+        print("enregistrement des types de cuisine")
+        print("signature=\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)\(self.idRendezVous)onmangeensembleb20")
+        print(RendezVousWebService.sharedInstance.webServiceCalling(params, completion))
+        
+    }
+    
     func addInvitation(invitation:Invitation)
     {
         self.invitationList.append(invitation)
     }
-    func addGuest(utilisateur:Utilisateur)
+   /* func addGuest(utilisateur:Utilisateur)
     {
         self.guestList.append(utilisateur)
+    }*/
+    func getDay()->String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.init(identifier: "fr_FR")
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        print("Dateobj: \(dateFormatter.string(from: self.getDate()))")
+        return dateFormatter.string(from: self.getDate())
+    }
+   func getHour()->String
+   {
+    let dateFormatter = DateFormatter()
+    dateFormatter.locale = Locale.init(identifier: "fr_FR")
+    dateFormatter.dateFormat = "hh:mm"
+    print("Dateobj: \(dateFormatter.string(from: self.getDate()))")
+    return dateFormatter.string(from: self.getDate())
     }
 }
