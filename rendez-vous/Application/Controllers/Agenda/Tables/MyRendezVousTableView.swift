@@ -10,8 +10,8 @@ import UIKit
 import SwiftyJSON
 import SwiftHash
 
-class MyRendezVousHostedUITableView: UITableView {
-    var currentControleur : UIViewController?
+class MyRendezVousTableView: UITableView {
+    var currentControleur : RamonViewController?
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -21,7 +21,7 @@ class MyRendezVousHostedUITableView: UITableView {
     */
 
 }
-extension MyRendezVousHostedUITableView:UITableViewDelegate,UITableViewDataSource
+extension MyRendezVousTableView:UITableViewDelegate,UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return RendezVousApplication.getHostedRendezVous().count
@@ -37,32 +37,12 @@ extension MyRendezVousHostedUITableView:UITableViewDelegate,UITableViewDataSourc
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete
         {
-           
-            RendezVousApplication.sharedInstance.listeRendezVousCrees!.events[indexPath.row].cancel{ (json: JSON?, error: Error?) in
-                guard error == nil else {
-                    print("Une erreur est survenue")
-                    return
-                }
-                if let json = json {
-                    print(json)
-                    if json["returnCode"].intValue != 200
-                    {
-                        AuthWebService.sendAlertMessage(vc: self.currentControleur!, returnCode: json["returnCode"].intValue)
-                    }
-                    else
-                    {
-
-                        RendezVousApplication.sharedInstance.listeRendezVousCrees!.events.remove(at: indexPath.row)
-                        self.reloadData()
-                    }
-                }
-            }
-            
+           ListeRendezVousAsHote.remove(controleur: currentControleur!, indexPath: indexPath)
         }
     }
     
 }
-extension MyRendezVousHostedUITableView:WebServiceLinkable
+extension MyRendezVousTableView:WebServiceLinkable
 {
     func refresh() {
         self.reloadData()

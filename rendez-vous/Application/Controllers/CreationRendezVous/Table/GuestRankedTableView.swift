@@ -33,3 +33,11 @@ extension GuestRankedTableView:UITableViewDelegate,UITableViewDataSource
     }
   
 }
+extension GuestRankedTableView:WebServiceLinkable
+{
+    func refresh() {
+        self.reloadData()
+    }
+    
+    
+}

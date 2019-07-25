@@ -16,19 +16,21 @@ class RendezVous{
     var date:String
     var numStatusRendezVous:Int
     var numRestaurant:Int
+    var hote:Utilisateur
   //  var guestList = [Utilisateur]()
     var invitationList = [Invitation]()
     var restaurant : Restaurant?
     
-    init(idRendezVous:Int,numUtilisateurSource:Int,date:String,numStatusRendezVous:Int,numRestaurant:Int) {
+    init(idRendezVous:Int,numUtilisateurSource:Int,date:String,numStatusRendezVous:Int,numRestaurant:Int,hote:Utilisateur) {
         self.idRendezVous = idRendezVous
         self.numUtilisateurSource = numUtilisateurSource
         self.date = date
         self.numStatusRendezVous = numStatusRendezVous
         self.numRestaurant = numRestaurant
+        self.hote = hote
     }
-    convenience init(json:JSON) {
-        self.init(idRendezVous:json["idRendezVous"].intValue,numUtilisateurSource:json["numUtilisateurSource"].intValue,date:json["date"].stringValue,numStatusRendezVous:json["numStatusRendezVous"].intValue,numRestaurant:json["numRestaurant"].intValue)
+    convenience init(jRendezVous:JSON,jHote:JSON) {
+        self.init(idRendezVous:jRendezVous["idRendezVous"].intValue,numUtilisateurSource:jRendezVous["numUtilisateurSource"].intValue,date:jRendezVous["date"].stringValue,numStatusRendezVous:jRendezVous["numStatusRendezVous"].intValue,numRestaurant:jRendezVous["numRestaurant"].intValue,hote:Utilisateur(json: jHote))
     }
     func getDate()->Date
     {
@@ -37,7 +39,7 @@ class RendezVous{
         // dateFormatter.locale = Locale(identifier: "en_EN") // edited
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
-        print(" la timezone: \(String(describing: dateFormatter.timeZone))")
+       // print(" la timezone: \(String(describing: dateFormatter.timeZone))")
         return dateFormatter.date(from:self.date)!
     }
     func save(_ completion: @escaping ServiceResponse) {
@@ -54,7 +56,7 @@ class RendezVous{
         params["numStatusRendezVous"] = "1"
         params["numUtilisateurSource"] = "\(self.numUtilisateurSource)"
         params[ "SIGNATURE"] =  MD5("\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)\(params["date"]!)\(params["numRestaurant"]!)\(params["numStatusRendezVous"]!)\(params["numUtilisateurSource"]!)onmangeensembleb20")
-        print("enregistrement des types de cuisine")
+        print("enregistrement d un rendez vous")
         print("signature=\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)\(params["date"]!)\(params["numRestaurant"]!)\(params["numStatusRendezVous"]!)\(params["numUtilisateurSource"]!)onmangeensembleb20")
         print(RendezVousWebService.sharedInstance.webServiceCalling(params, completion))
         
@@ -70,7 +72,7 @@ class RendezVous{
         params["TIMESTAMP"] = timestamp
         params["idRendezVous"] = "\(self.idRendezVous)"
         params[ "SIGNATURE"] =  MD5("\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)\(self.idRendezVous)onmangeensembleb20")
-        print("enregistrement des types de cuisine")
+        print("Annulation d'un rendez vous")
         print("signature=\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)\(self.idRendezVous)onmangeensembleb20")
         print(RendezVousWebService.sharedInstance.webServiceCalling(params, completion))
         

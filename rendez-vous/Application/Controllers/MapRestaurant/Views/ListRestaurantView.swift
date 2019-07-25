@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListRestaurantUIView: UIView {
+class ListRestaurantView: UIView {
 
     var currentControleur: UIViewController?
     /*
@@ -20,7 +20,7 @@ class ListRestaurantUIView: UIView {
     */
 
 }
-extension ListRestaurantUIView:UITableViewDelegate,UITableViewDataSource
+extension ListRestaurantView:UITableViewDelegate,UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("je compte les restaurants")

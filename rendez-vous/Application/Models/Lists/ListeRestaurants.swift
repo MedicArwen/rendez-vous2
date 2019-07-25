@@ -21,8 +21,39 @@ class ListeRestaurants:WebServiceSubscribable
             self.liste.append(Restaurant(json:jRestaurant.1))
         }
     }
-    
-    static func getListRestaurant(_ completion: @escaping ServiceResponse) {
+}
+extension ListeRestaurants: WebServiceListable
+{
+    // cette méthode permet d'invoquer le web service et de gérer le call back
+    // cela utilise la classe mère WebServiceSubscribable pour abonner les différences éléments d'interface à sa mise à jour
+    // afin de les synchroniser
+    static func load(controleur: RamonViewController)
+    {
+        print("Load: ListeRestaurant")
+        ListeRestaurants.createListRequest
+            { (json: JSON?, error: Error?) in
+                guard error == nil else
+                {
+                    print("Une erreur est survenue")
+                    return
+                }
+                if let json = json
+                {
+                    print(json)
+                    if json["returnCode"].intValue != 200
+                    {
+                        AuthWebService.sendAlertMessage(vc: controleur, returnCode: json["returnCode"].intValue)
+                    }
+                    else
+                    {
+                        RendezVousApplication.sharedInstance.listeRestaurantsProches = ListeRestaurants(json:json["data"])
+                        ListeRestaurants.reloadViews()
+                    }
+                }
+        }
+    }
+    // cette méthode permet de construire l'appel du web service en lui-même ainsi que la requête http qui est envoyée.
+    static func createListRequest(_ completion: @escaping ServiceResponse) {
         let timestamp = String(NSDate().timeIntervalSince1970)
         var params = [String:String]()
         params["APIKEY"] = RendezVousApplication.getApiKey()
@@ -40,29 +71,8 @@ class ListeRestaurants:WebServiceSubscribable
         
     }
     
-    static func refreshList(controleur: RamonViewController)
+    static func remove(controleur:RamonViewController,indexPath:IndexPath)
     {
-    print("refreshList Restaurant")
-    ListeRestaurants.getListRestaurant
-    { (json: JSON?, error: Error?) in
-    guard error == nil else
-    {
-    print("Une erreur est survenue")
-    return
-    }
-    if let json = json
-    {
-        print(json)
-        if json["returnCode"].intValue != 200
-            {
-                AuthWebService.sendAlertMessage(vc: controleur, returnCode: json["returnCode"].intValue)
-            }
-        else
-            {
-                RendezVousApplication.sharedInstance.listeRestaurantsProches = ListeRestaurants(json:json["data"])
-                ListeRestaurants.reloadViews()
-            }
-    }
-    }
+        
     }
 }

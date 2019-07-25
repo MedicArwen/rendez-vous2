@@ -42,6 +42,7 @@ class Restaurant:NSObject {
         self.urlSite = urlSite
         self.urlPhoto = urlPhoto
         self.pourcentReduction = pourcentReduction
+        print("instantiation du restaurant  \(self.raisonSociale) id: \(self.idRestaurant)")
       //  self.title =  libelle
        // self.subtitle = "-\(pourcentReduction)%"
     }

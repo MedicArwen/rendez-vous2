@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RamonCollectionView: UICollectionView, WebServiceLinkable {
+class RestaurantCollectionView: UICollectionView, WebServiceLinkable {
     func refresh() {
         reloadData()
     }

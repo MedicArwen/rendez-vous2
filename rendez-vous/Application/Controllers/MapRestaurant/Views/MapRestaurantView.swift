@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapRestaurantUIView: UIView {
+class MapRestaurantView: UIView {
     var currentRestaurant = 0
     var currentCollection :UICollectionView?
     var currentMap : MKMapView?
@@ -23,7 +23,7 @@ class MapRestaurantUIView: UIView {
     */
 
 }
-extension MapRestaurantUIView:MKMapViewDelegate
+extension MapRestaurantView:MKMapViewDelegate
 {
     fileprivate func returnImageMapPinLitteral(_ restau: Restaurant)->UIImage {
         if restau.indice == self.currentRestaurant
@@ -101,7 +101,7 @@ extension MapRestaurantUIView:MKMapViewDelegate
         currentMap!.addAnnotations(saveList)
     }
 }
-extension MapRestaurantUIView:UICollectionViewDelegate,UICollectionViewDataSource
+extension MapRestaurantView:UICollectionViewDelegate,UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return RendezVousApplication.getListeRestaurants().count

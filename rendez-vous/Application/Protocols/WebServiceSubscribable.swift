@@ -12,6 +12,7 @@ class WebServiceSubscribable {
     
     static func subscribe(vue:WebServiceLinkable)
     {
+        print("inscription d'une vue...")
         self.suscribedViews.append(vue)
     }
     

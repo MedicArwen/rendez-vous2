@@ -1,14 +1,14 @@
 //
-//  GuestHostedRendezVousUICollectionViewCell.swift
+//  ConvivesCollectionViewCell.swift
 //  rendez-vous
 //
-//  Created by Thierry BRU on 23/07/2019.
+//  Created by Thierry BRU on 25/07/2019.
 //  Copyright © 2019 Ramon Technologies. All rights reserved.
 //
 
 import UIKit
 
-class GuestHostedRendezVousUICollectionViewCell: UICollectionViewCell {
+class ConvivesCollectionViewCell: UICollectionViewCell {    
     var currentControleur: UIViewController?
     var invitation:Invitation?
     @IBOutlet weak var pseudoLabel: UILabel!

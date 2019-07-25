@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class RamonMKMapView: MKMapView, WebServiceLinkable {
+class RestaurantMapView: MKMapView, WebServiceLinkable {
 
     /*
     // Only override draw() if you perform custom drawing.

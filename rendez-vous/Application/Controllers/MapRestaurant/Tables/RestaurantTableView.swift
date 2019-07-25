@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RamonTableView: UITableView, WebServiceLinkable {
+class RestaurantTableView: UITableView, WebServiceLinkable {
     func refresh() {
         reloadData()
     }

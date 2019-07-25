@@ -22,19 +22,35 @@ class RendezVousApplication
     // liste des restaurants proches de l'utilisateur ou de la position indiquée
     var listeRestaurantsProches: ListeRestaurants?
     // liste des rendez-vous créés par l'utilisateur
-    var listeRendezVousCrees:AgendaEventHosted?
+    var listeRendezVousCrees:ListeRendezVousAsHote?
+    var listeInvitationsRecues:ListeRendezVousAsConvive?
 
     static var sharedInstance = RendezVousApplication()
 
+    static func getInvitationsRendezVous()->[RendezVous]
+    {
+        if let listRDV = RendezVousApplication.sharedInstance.listeInvitationsRecues
+        {
+            return listRDV.liste
+        }
+        return [RendezVous]()
+    }
+    
     static func getHostedRendezVous()->[RendezVous]
     {
-        return RendezVousApplication.sharedInstance.listeRendezVousCrees!.events
+        if let listRDV = RendezVousApplication.sharedInstance.listeRendezVousCrees
+        {
+            return listRDV.liste
+        }
+        return [RendezVous]()
     }
     static func getListeMatching()->[RankedUtilisateur]
     {
-        
-        return RendezVousApplication.sharedInstance.listeUtilisateursMatch!.liste
-        
+        if let listMatches = RendezVousApplication.sharedInstance.listeUtilisateursMatch
+        {
+            return listMatches.liste
+        }
+        return [RankedUtilisateur]()
     }
     static func getListeRestaurants()->[Restaurant]
     {

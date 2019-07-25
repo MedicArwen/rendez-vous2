@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GuestUICollectionView: UICollectionView {
+class GuestCollectionView: UICollectionView {
     var currentControleur: CreateGroupViewController?
 
     /*
@@ -20,7 +20,7 @@ class GuestUICollectionView: UICollectionView {
     */
 
 }
-extension GuestUICollectionView:UICollectionViewDelegate,UICollectionViewDataSource
+extension GuestCollectionView:UICollectionViewDelegate,UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if currentControleur!.currentRendezVous == nil
@@ -35,5 +35,11 @@ extension GuestUICollectionView:UICollectionViewDelegate,UICollectionViewDataSou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "guestCollectionCell", for: indexPath) as! GuestCollectionViewCell
         cell.update(invitation: currentControleur!.currentRendezVous!.invitationList[indexPath.row],controleur:self.currentControleur!)
         return cell
+    }
+}
+extension GuestCollectionView:WebServiceLinkable
+{
+    func refresh() {
+        self.reloadData()
     }
 }

@@ -31,11 +31,11 @@ class Utilisateur {
         self.pseudo = pseudo
         self.latitude = latitude
         self.longitude = longitude
-        print("Instantiation d'un utilisateur")
-        self.debugPrint()
+        print("Instantiation de l'utilisateur \(self.pseudo) id:  \(self.idUtilisateur) num: \(self.numRamonUser)")
+      //  self.debugPrint()
     }
     init(json:JSON) {
-        print("jason recupéré:\(json)")
+       // print("jason recupéré:\(json)")
         self.construct(idUtilisateur:json["idUtilisateur"].intValue,
                   numRamonUser:json["libelle"].intValue,
                   urlImage:json["urlPhoto"].stringValue,

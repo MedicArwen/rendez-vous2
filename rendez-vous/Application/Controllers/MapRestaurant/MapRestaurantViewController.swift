@@ -15,13 +15,13 @@ import AlamofireImage
 class MapRestaurantViewController: RamonViewController {
     var currentRestaurant: Restaurant?
 
-    @IBOutlet weak var restaurantTable: RamonTableView!
-    @IBOutlet weak var viewWithMap: MapRestaurantUIView!
-    @IBOutlet weak var viewWithList: ListRestaurantUIView!
+    @IBOutlet weak var restaurantTable: RestaurantTableView!
+    @IBOutlet weak var viewWithMap: MapRestaurantView!
+    @IBOutlet weak var viewWithList: ListRestaurantView!
     @IBOutlet weak var switchViewMode: UISegmentedControl!
-    @IBOutlet weak var restaurantCollection: RamonCollectionView!
+    @IBOutlet weak var restaurantCollection: RestaurantCollectionView!
 
-    @IBOutlet weak var mapView: RamonMKMapView!
+    @IBOutlet weak var mapView: RestaurantMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -145,7 +145,7 @@ extension MapRestaurantViewController:CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         recentrageCarte()
         LocationManager.SharedInstance.stopUpdatingLocation()
-        ListeRestaurants.refreshList(controleur: self)
+        ListeRestaurants.load(controleur: self)
     }
 }
 
