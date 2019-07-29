@@ -12,6 +12,6 @@ protocol WebServiceListable
 {
     static func load(controleur: RamonViewController)
     static func remove(controleur:RamonViewController,indexPath:IndexPath)
-    static func createListRequest(_ completion: @escaping ServiceResponse)
+    static func remove(controleur:RamonViewController,item:Any)
+    static func append(controleur:RamonViewController,item:Any)
 }
-

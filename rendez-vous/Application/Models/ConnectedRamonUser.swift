@@ -15,6 +15,7 @@ class ConnectedRamonUser
     var ramonUser: RamonUser
     var apiKey: String?
     init(json:JSON) {
+        print("ConnectedRamonUser:init")
         self.ramonUser = RamonUser(ramonUserJson:json["ramonUser"])
         self.apiKey = json["apiKey"].stringValue
     }

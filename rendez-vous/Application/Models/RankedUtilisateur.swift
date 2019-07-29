@@ -13,6 +13,7 @@ import SwiftyJSON
 class RankedUtilisateur: Utilisateur {
     var ranking: Double?
     override init(json:JSON) {
+        print("RankedUtilisateur:init")
         super.init(json: json["Utilisateur"])
         ranking = json["Score"].doubleValue
     }

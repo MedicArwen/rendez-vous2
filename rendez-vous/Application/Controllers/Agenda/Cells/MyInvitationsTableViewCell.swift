@@ -9,20 +9,19 @@
 import UIKit
 
 class MyInvitationsTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var dateRendezVousLabel: UILabel!
     @IBOutlet weak var heureRendezVousLabel: UILabel!
     @IBOutlet weak var collectionGuestsCollectionView: GuestCollectionView!
     @IBOutlet weak var nomRestaurant: UILabel!
     @IBOutlet weak var nomHoteLabel: UILabel!
     
-    
     @IBOutlet weak var buttonCancel: RoundButtonUIButton!
     @IBOutlet weak var buttonReject: RoundButtonUIButton!
     @IBOutlet weak var buttonAccept: RoundButtonUIButton!
     
     var rendezVous:RendezVous?
-    var currentControleur: UIViewController?
+    var currentControleur: RamonViewController?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,27 +33,52 @@ class MyInvitationsTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
-    func update(rendezvous:RendezVous, controleur:UIViewController)
+    func update(rendezvous:RendezVous, controleur:RamonViewController)
     {
-        dateRendezVousLabel.text = rendezvous.getDay()
-        heureRendezVousLabel.text = rendezvous.getHour()
-        nomRestaurant.text = "\(rendezvous.restaurant!.raisonSociale)"
-        nomHoteLabel.text = "\(rendezvous.hote.pseudo)"
+        print("MyInvitationsTableViewCell:update (id rdv:\(rendezvous.idRendezVous))")
+        self.dateRendezVousLabel.text = rendezvous.getDay()
+        self.heureRendezVousLabel.text = rendezvous.getHour()
+        self.nomRestaurant.text = "\(rendezvous.restaurant!.raisonSociale)"
+        self.nomHoteLabel.text = "\(rendezvous.hote.pseudo)"
         self.rendezVous = rendezvous
         self.currentControleur = controleur
         self.collectionGuestsCollectionView.delegate = self
         self.collectionGuestsCollectionView.dataSource = self
         self.collectionGuestsCollectionView.reloadData()
+        if rendezvous.getInvitationOfOneUser(utilisateur: RendezVousApplication.sharedInstance.connectedUtilisateur!)!.numStatusInvitation == 2
+        {
+            print("MyInvitationsTableViewCell:update - le rendez-vous a le statut 2")
+            self.buttonAccept.isHidden = true
+            self.buttonReject.isHidden = true
+            self.buttonCancel.isHidden = false
+        }
     }
     
     @IBAction func onClickCancel(_ sender: RoundButtonUIButton) {
+        print("MyInvitationsTableViewCell:onClickCancel ")
+        ListeRendezVousAsConvive.reject(controleur: currentControleur!, rendezVous: rendezVous!)
     }
     
     @IBAction func onClickReject(_ sender: RoundButtonUIButton) {
+        print("MyInvitationsTableViewCell:onClickReject ")
+        ListeRendezVousAsConvive.reject(controleur: currentControleur!, rendezVous: rendezVous!)
     }
     @IBAction func onClickAccept(_ sender: RoundButtonUIButton) {
+        print("MyInvitationsTableViewCell:onClickAccept ")
+        ListeRendezVousAsConvive.accept(controleur: currentControleur!,rendezVous: rendezVous!)
+        buttonAccept.isHidden = true
+        buttonReject.isHidden = true
+        buttonCancel.isHidden = false
     }
-    
+    @IBAction func onClickInvite(_ sender: Any) {
+        print("MyRendezVousTableViewCellclick:onClickInvite (id rdv: \(self.rendezVous!.idRendezVous))")
+        /* let vc = self.currentControleur as! AgendaViewController
+         vc.currentRendezVous = rendezVous
+         vc.currentRestaurant = rendezVous!.restaurant*/
+        RendezVous.sharedInstance = self.rendezVous!
+        Restaurant.sharedInstance = self.rendezVous!.restaurant!
+        self.currentControleur!.performSegue(withIdentifier: "showUpdateGroup", sender: self.currentControleur!)
+    }
 }
 extension MyInvitationsTableViewCell:UICollectionViewDelegate,UICollectionViewDataSource
 {

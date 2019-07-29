@@ -1,19 +1,14 @@
 //
-//  RamonTableView.swift
+//  TopBarView.swift
 //  rendez-vous
 //
-//  Created by Thierry BRU on 24/07/2019.
+//  Created by Thierry BRU on 26/07/2019.
 //  Copyright © 2019 Ramon Technologies. All rights reserved.
 //
 
 import UIKit
 
-class RestaurantTableView: UITableView, WebServiceLinkable {
-    func refresh() {
-        print("RestaurantTableView: refresh")
-        reloadData()
-    }
-    
+class TopBarView: UIView {
 
     /*
     // Only override draw() if you perform custom drawing.

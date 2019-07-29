@@ -20,6 +20,7 @@ class Invitation{
     var utilisateur:Utilisateur
     
     init(numInvite:Int,numRendezVous:Int,numStatusInvitation:Int,utilisateur:Utilisateur) {
+        print("Invitation:init - num invite:\(numInvite), num rdv: \(numRendezVous)")
         self.numInvite = numInvite
         self.numRendezVous = numRendezVous
         self.numStatusInvitation = numStatusInvitation
@@ -44,15 +45,48 @@ class Invitation{
         print(RendezVousWebService.sharedInstance.webServiceCalling(params, completion))
         
     }
+    func accept(_ completion: @escaping ServiceResponse) {
+        var params = [String:String]()
+        params["APIKEY"] = RendezVousApplication.getApiKey()
+        params["CMD"] = "UPDATE"
+        params["ENTITY"] = "InvitationAccept"
+        params["NUMRAMONUSER"] = "\(RendezVousApplication.getRamonUserId())"
+        params["TIMESTAMP"] = String(NSDate().timeIntervalSince1970)
+        params["numInvite"] = "\(self.numInvite)"
+        params["numRendezVous"] = "\(self.numRendezVous)"
+        params[ "SIGNATURE"] =  MD5("\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)\(params["numInvite"]!)\(params["numRendezVous"]!)onmangeensembleb20")
+        print("enregistrement des types de cuisine")
+        print("signature=\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)\(params["numInvite"]!)\(params["numRendezVous"]!)onmangeensembleb20")
+        print(RendezVousWebService.sharedInstance.webServiceCalling(params, completion))
+        
+    }
+    func reject(_ completion: @escaping ServiceResponse) {
+        var params = [String:String]()
+        params["APIKEY"] = RendezVousApplication.getApiKey()
+        params["CMD"] = "UPDATE"
+        params["ENTITY"] = "InvitationReject"
+        params["NUMRAMONUSER"] = "\(RendezVousApplication.getRamonUserId())"
+        params["TIMESTAMP"] = String(NSDate().timeIntervalSince1970)
+        params["numInvite"] = "\(self.numInvite)"
+        params["numRendezVous"] = "\(self.numRendezVous)"
+        params[ "SIGNATURE"] =  MD5("\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)\(params["numInvite"]!)\(params["numRendezVous"]!)onmangeensembleb20")
+        print("enregistrement des types de cuisine")
+        print("signature=\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)\(params["numInvite"]!)\(params["numRendezVous"]!)onmangeensembleb20")
+        print(RendezVousWebService.sharedInstance.webServiceCalling(params, completion))
+        
+    }
     func getStatusSymbol()->String
     {
-        if self.numStatusInvitation == 1
-        {
+        print("Invitation:getStatusSymbol")
+        switch self.numStatusInvitation {
+        case 1:
             return "?"
-        }
-        else
-        {
-        return ""
+        case 2:
+            return "A"
+        case 3:
+            return "X"
+        default:
+            return ""
         }
     }
 }

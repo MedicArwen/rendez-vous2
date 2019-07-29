@@ -13,6 +13,8 @@ import MapKit
 
 
 class Restaurant:NSObject {
+   
+    static var sharedInstance: Restaurant?
     //idRestaurant     libelle     raisonSociale     adresse     ville     codePostal     telephone     latitude     longitude     urlSite     pourcentReduction
     var idRestaurant = 0
     var libelle = ""
@@ -29,7 +31,7 @@ class Restaurant:NSObject {
     var indice = 0
     
     init(idRestaurant:Int,libelle:String,raisonSociale:String,adresse:String,ville:String, codePostal:String,telephone:String,latitude:Double,longitude:Double,urlSite:String,   urlPhoto:String,pourcentReduction:Int) {
-      //  super.init(coordinate: CLLocationCoordinate2D(latitude: CLLocationDegrees(exactly: latitude)!, longitude: CLLocationDegrees(exactly: longitude)!))
+        print("Restaurant:init (id:\(idRestaurant)")
         self.idRestaurant = idRestaurant
         self.libelle = libelle
         self.raisonSociale = raisonSociale
@@ -42,9 +44,6 @@ class Restaurant:NSObject {
         self.urlSite = urlSite
         self.urlPhoto = urlPhoto
         self.pourcentReduction = pourcentReduction
-        print("instantiation du restaurant  \(self.raisonSociale) id: \(self.idRestaurant)")
-      //  self.title =  libelle
-       // self.subtitle = "-\(pourcentReduction)%"
     }
     convenience init(json:JSON) {
         self.init(idRestaurant:json["idRestaurant"].intValue,

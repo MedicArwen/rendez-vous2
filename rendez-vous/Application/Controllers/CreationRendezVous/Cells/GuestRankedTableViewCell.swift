@@ -16,9 +16,7 @@ class GuestRankedTableViewCell: UITableViewCell {
     var utilisateur: RankedUtilisateur?
     
     @IBOutlet weak var photoUtilisateur: RoundPortraitUIImageView!
-    
     @IBOutlet weak var pseudoUtilisateur: UILabel!
-    
     @IBOutlet weak var scoreRanking: UILabel!
     
     
@@ -36,6 +34,7 @@ class GuestRankedTableViewCell: UITableViewCell {
     
     func update(rankedUtilisateur:RankedUtilisateur,controleur: CreateGroupViewController)
     {
+        print("GuestRankedTableViewCell:update (id:\(rankedUtilisateur.idUtilisateur))")
         self.currentControleur = controleur
         self.utilisateur = rankedUtilisateur
         let url = URL(string: "https://api.ramon-technologies.com/rendez-vous/img/rdv/\(rankedUtilisateur.urlImage)")!
@@ -45,9 +44,13 @@ class GuestRankedTableViewCell: UITableViewCell {
         self.scoreRanking.text = "\(trunc(rankedUtilisateur.ranking!*100))"
     }
     @IBAction func onClickInvite(_ sender: RoundButtonUIButton) {
-         let utilisateur = self.utilisateur as Utilisateur?
-        let invitation = Invitation(numInvite:self.utilisateur!.idUtilisateur,numRendezVous:currentControleur!.currentRendezVous!.idRendezVous ,numStatusInvitation:1,utilisateur: utilisateur!)
-       
+        guard self.utilisateur != nil else {
+            print("GuestRankedTableViewCell:onClickInvite - aucun utilisateur trouvé")
+            return
+        }
+        print("GuestRankedTableViewCell:onClickInvite (id:\(self.utilisateur!.idUtilisateur))")
+        let utilisateur = self.utilisateur as Utilisateur?
+        let invitation = Invitation(numInvite:self.utilisateur!.idUtilisateur,numRendezVous:RendezVous.sharedInstance!.idRendezVous ,numStatusInvitation:1,utilisateur: utilisateur!)
         invitation.Save { (json: JSON?, error: Error?) in
             guard error == nil else {
                 print("Une erreur est survenue")
@@ -62,11 +65,8 @@ class GuestRankedTableViewCell: UITableViewCell {
                 else
                 {
                 print("UtilisateurInvite")
-                    self.currentControleur!.currentRendezVous!.addInvitation(invitation: invitation)
-                 //   RendezVousApplication.sharedInstance.currentRendezVous!.addGuest(utilisateur: utilisateur! )
-                    RendezVousApplication.sharedInstance.listeUtilisateursMatch!.remove(rankedUser: utilisateur!)
-                    self.currentControleur!.guestInvitedCollection.reloadData()
-                    self.currentControleur!.GuestRankedTable.reloadData()
+                RendezVous.sharedInstance!.addInvitation(invitation: invitation)
+                ListeMatchingUtilisateurs.remove(controleur: self.currentControleur!, item: self.utilisateur!)
                   
                 }
             }

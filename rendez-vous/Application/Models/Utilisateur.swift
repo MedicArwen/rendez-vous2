@@ -11,8 +11,7 @@ import MapKit
 
 
 class Utilisateur {
-    //idRestaurant     libelle     raisonSociale     adresse     ville     codePostal     telephone     latitude     longitude     urlSite     pourcentReduction
-    var idUtilisateur = 0
+     var idUtilisateur = 0
     var numRamonUser = 0
     var urlImage = ""
     var uiImage : UIImage?
@@ -23,6 +22,7 @@ class Utilisateur {
     var longitude = 0.0
     
    func construct(idUtilisateur: Int,numRamonUser:Int,urlImage:String,catchPhrase:String,description:String,pseudo: String,latitude:Double,longitude:Double) {
+    print("Utilisateur:init pseudo:\(pseudo)")
      self.idUtilisateur = idUtilisateur
         self.numRamonUser = numRamonUser
         self.urlImage = urlImage
@@ -32,10 +32,9 @@ class Utilisateur {
         self.latitude = latitude
         self.longitude = longitude
         print("Instantiation de l'utilisateur \(self.pseudo) id:  \(self.idUtilisateur) num: \(self.numRamonUser)")
-      //  self.debugPrint()
+
     }
     init(json:JSON) {
-       // print("jason recupéré:\(json)")
         self.construct(idUtilisateur:json["idUtilisateur"].intValue,
                   numRamonUser:json["libelle"].intValue,
                   urlImage:json["urlPhoto"].stringValue,

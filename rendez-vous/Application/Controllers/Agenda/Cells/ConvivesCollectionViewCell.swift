@@ -23,6 +23,7 @@ class ConvivesCollectionViewCell: UICollectionViewCell {
      */
     func update(invitation:Invitation,controleur: UIViewController)
     {
+        print("ConvivesCollectionViewCell: update (num rdv:\(invitation.numRendezVous), num invite:\(invitation.numInvite))")
         self.currentControleur = controleur
         self.invitation = invitation
         self.pseudoLabel.text = invitation.utilisateur.pseudo

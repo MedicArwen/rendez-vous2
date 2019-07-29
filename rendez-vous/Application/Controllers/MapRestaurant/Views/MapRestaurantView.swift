@@ -37,7 +37,7 @@ extension MapRestaurantView:MKMapViewDelegate
     }
     
     fileprivate func getAndUpdateAnotationView(_ mapView: MKMapView, _ annotation: MKAnnotation) -> MKAnnotationView? {
-        print("getAndUpdateAnotationView")
+        
         var av = mapView.dequeueReusableAnnotationView(withIdentifier: "id")
         if av == nil {
             av = MKAnnotationView(annotation: annotation, reuseIdentifier: "id")
@@ -47,10 +47,8 @@ extension MapRestaurantView:MKMapViewDelegate
             return nil
         }
         let restau = annotation as! Restaurant
-        print("Construction de la view n°\(restau.indice) du restaurant \(restau.idRestaurant)")
+        print("MapRestaurantView:getAndUpdateAnotationView - view n°\(restau.indice) du restaurant \(restau.idRestaurant)")
         av!.canShowCallout = true
-        
-        
         // Provide the annotation view's image.
         let image = returnImageMapPinLitteral(restau)
         // Offset the flag annotation so that the flag pole rests on the map coordinate.
@@ -62,23 +60,23 @@ extension MapRestaurantView:MKMapViewDelegate
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        print("mapView viewFor")
         if annotation is MKUserLocation
         {
             return nil
         }
+        print("MapRestaurantView:viewFor")
         return getAndUpdateAnotationView(mapView, annotation)
         
     }
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        print("mapView-DidSelect")
+        print("MapRestaurantView:DidSelect")
         if view.annotation is MKUserLocation
         {
             print ("user location")
         }
         else{
             let restau = view.annotation as! Restaurant
-            print("select le restaurant n°\(restau.indice) - id:\(restau.idRestaurant)")
+            print("selection du restaurant n°\(restau.indice) - id:\(restau.idRestaurant)")
             if currentRestaurant != restau.indice
             {
                 print("CHANGEMENT DE RESTAURANT SELECTIONNE du \(self.currentRestaurant) au \(restau.indice)")
@@ -87,11 +85,10 @@ extension MapRestaurantView:MKMapViewDelegate
             }
             view.isSelected = true
             currentCollection!.scrollToItem(at: IndexPath(item: restau.indice, section: 0), at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
-            //restaurantCollection.reloadData()
         }
     }
     fileprivate func forceUpdateMapPin() {
-        print("forceUpdateMapPin()")
+        print("MapRestaurantView:forceUpdateMapPin()")
         var saveList = [MKAnnotation]()
         for item in currentMap!.annotations
         {
@@ -104,12 +101,17 @@ extension MapRestaurantView:MKMapViewDelegate
 extension MapRestaurantView:UICollectionViewDelegate,UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return RendezVousApplication.getListeRestaurants().count
+        guard ListeRestaurants.sharedInstance != nil else {
+            print("MapRestaurantView:count - aucun restaurant trouvé")
+            return 0
+        }
+        print("MapRestaurantView:count \(ListeRestaurants.sharedInstance!.liste.count) trouvé(s)")
+        return ListeRestaurants.sharedInstance!.liste.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("update the cell n°#\(indexPath.row)")
+        print("MapRestaurantView:update the cell n°#\(indexPath.row)")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "restaurantCell", for: indexPath) as! RestaurantCollectionViewCell
-        cell.update(restaurant: RendezVousApplication.getListeRestaurants()[indexPath.row],controleur:self.currentControleur!)
+        cell.update(restaurant: ListeRestaurants.sharedInstance!.liste[indexPath.row],controleur:self.currentControleur!)
         return cell
     }
     
@@ -118,13 +120,13 @@ extension MapRestaurantView:UICollectionViewDelegate,UICollectionViewDataSource
         print("collectionView-didSelectItemAt")
         if self.currentRestaurant != indexPath.row
         {
-            let deltaLat = abs(LocationManager.SharedInstance.location!.coordinate.latitude - RendezVousApplication.getListeRestaurants()[indexPath.row].coordinate.latitude) * 2.25
-            let deltaLon = abs(LocationManager.SharedInstance.location!.coordinate.longitude - RendezVousApplication.getListeRestaurants()[indexPath.row].coordinate.longitude) * 2.25
+            let deltaLat = abs(LocationManager.SharedInstance.location!.coordinate.latitude - ListeRestaurants.sharedInstance!.liste[indexPath.row].coordinate.latitude) * 2.25
+            let deltaLon = abs(LocationManager.SharedInstance.location!.coordinate.longitude - ListeRestaurants.sharedInstance!.liste[indexPath.row].coordinate.longitude) * 2.25
             let span : MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: deltaLat, longitudeDelta: deltaLon)
             let region : MKCoordinateRegion = MKCoordinateRegion(center: self.currentMap!.centerCoordinate, span: span)
             self.currentMap!.region = region
-            print("recentrage de la carte aux positions lat:\(RendezVousApplication.getListeRestaurants()[indexPath.row].coordinate.latitude) +-\(deltaLat)  long,\(RendezVousApplication.getListeRestaurants()[indexPath.row].coordinate.longitude) +-\(deltaLon)  ")
-            self.currentMap!.setCenter(RendezVousApplication.getListeRestaurants()[indexPath.row].coordinate, animated: true)
+            print("-> recentrage de la carte aux positions lat:\(ListeRestaurants.sharedInstance!.liste[indexPath.row].coordinate.latitude) +-\(deltaLat)  long,\(ListeRestaurants.sharedInstance!.liste[indexPath.row].coordinate.longitude) +-\(deltaLon)  ")
+            self.currentMap!.setCenter(ListeRestaurants.sharedInstance!.liste[indexPath.row].coordinate, animated: true)
             self.currentRestaurant = indexPath.row
             forceUpdateMapPin()
         }

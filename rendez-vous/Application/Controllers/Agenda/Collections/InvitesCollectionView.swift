@@ -23,23 +23,25 @@ class InvitesCollectionView: UICollectionView {
 extension InvitesCollectionView:UICollectionViewDelegate,UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if currentControleur!.currentRendezVous == nil
-        {return 0}
-        
-        return currentControleur!.currentRendezVous!.invitationList.count
+        guard RendezVous.sharedInstance != nil else {
+            print("InvitesCollectionView:count - aucun rendez-vous trouvé")
+            return 0
+        }
+         print("InvitesCollectionView:count - \(RendezVous.sharedInstance!.invitationList.count) invitations")
+        return RendezVous.sharedInstance!.invitationList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("update the cell n°#\(indexPath.row)")
+        print("InvitesCollectionView: update the cell n°#\(indexPath.row)")
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "guestCollectionCell", for: indexPath) as! GuestCollectionViewCell
-    
-        cell.update(invitation: currentControleur!.currentRendezVous!.invitationList[indexPath.row], controleur:  self.currentControleur!)
+        cell.update(invitation: RendezVous.sharedInstance!.invitationList[indexPath.row], controleur:  self.currentControleur!)
         return cell
     }
 }
 extension InvitesCollectionView:WebServiceLinkable
 {
     func refresh() {
+        print("InvitesCollectionView:refresh")
         reloadData()
     }
 }

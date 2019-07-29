@@ -12,11 +12,13 @@ import SwiftyJSON
 import MapKit
 
 
-class ListeRestaurants:WebServiceSubscribable
+class ListeRestaurants
 {
+    static var sharedInstance: ListeRestaurants?
     var liste = [Restaurant]()
 
     init(json:JSON) {
+        print("ListeRestaurants:init")
         for jRestaurant in json {
             self.liste.append(Restaurant(json:jRestaurant.1))
         }
@@ -29,7 +31,7 @@ extension ListeRestaurants: WebServiceListable
     // afin de les synchroniser
     static func load(controleur: RamonViewController)
     {
-        print("Load: ListeRestaurant")
+        print("ListeRestaurants:Load")
         ListeRestaurants.createListRequest
             { (json: JSON?, error: Error?) in
                 guard error == nil else
@@ -46,7 +48,7 @@ extension ListeRestaurants: WebServiceListable
                     }
                     else
                     {
-                        RendezVousApplication.sharedInstance.listeRestaurantsProches = ListeRestaurants(json:json["data"])
+                        ListeRestaurants.sharedInstance = ListeRestaurants(json:json["data"])
                         ListeRestaurants.reloadViews()
                     }
                 }
@@ -70,9 +72,40 @@ extension ListeRestaurants: WebServiceListable
         print(RendezVousWebService.sharedInstance.webServiceCalling(params, completion))
         
     }
-    
     static func remove(controleur:RamonViewController,indexPath:IndexPath)
     {
-        
+        print("ListeRestaurants:remove (IndexPath) - non implémenté")
+        // pas utile
+    }
+    static func remove(controleur:RamonViewController,item:Any)
+    {
+         print("ListeRestaurants:remove (any) - non implémenté")
+        // pas utile car on y touche pas
+    }
+     static func append(controleur:RamonViewController,item:Any)
+     {
+         print("ListeRestaurants:append - non implémenté")
+        // pas utile car on y touche pas
+    }
+}
+extension ListeRestaurants:WebServiceSubscribable
+{
+    private static var suscribedViews = [WebServiceLinkable]()
+    
+    static func subscribe(vue:WebServiceLinkable)
+    {
+        print("ListeRestaurants:subscribe")
+        self.suscribedViews.append(vue)
+        print("Il y a \(self.suscribedViews.count) vues abonnée(s) à ListeRestaurants")
+    }
+    
+    static func reloadViews()
+    {
+        print("ListeRestaurants:reloadViews")
+        print("Il y a \(self.suscribedViews.count) vues abonnée(s) à ListeRestaurants")
+        for vue in self.suscribedViews
+        {
+            vue.refresh()
+        }
     }
 }

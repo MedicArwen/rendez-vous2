@@ -13,69 +13,41 @@ import SwiftyJSON
  il a choisi a priori le groupe, avant d'arriver dans ce contrôleur
  */
 class CreateGroupViewController: RamonViewController {
+    
+    var mode = "create"
 
-    var currentRendezVous: RendezVous?
-    var currentRestaurant: Restaurant?
-    
+   // var currentRestaurant: Restaurant?
     // infos pour remplir la vue du groupe
-    @IBOutlet weak var photoRestaurant: UIImageView!
-    @IBOutlet weak var raisonSociale: UILabel!
-    @IBOutlet weak var pourcentReduction: RoundUILabel!
-    @IBOutlet weak var noteRestaurant: UILabel!
-    @IBOutlet weak var adresseRestaurant: UILabel!
-    @IBOutlet weak var codePostalRestaurant: UILabel!
-    @IBOutlet weak var villeRestaurant: UILabel!
-    @IBOutlet weak var telephoneRestaurant: UILabel!
-    @IBOutlet weak var dateRendezVous: UILabel!
+    @IBOutlet weak var ficheRendezVous: RendezVousView!
+    @IBOutlet weak var listeInvitesRDV: GuestCollectionView!
     
-    // choix de la date et heure pour le rendez-vous
-    @IBOutlet weak var pickDateRendezVous: UIDatePicker!
+    
     //liste des personnes qui matchent (distance + note ranking)
-    @IBOutlet weak var GuestRankedTable: GuestRankedTableView!
-    // liste des invités dans le groupe
-    @IBOutlet weak var guestInvitedCollection: GuestCollectionView!
-    
-    
     //vues et contraintes
     @IBOutlet weak var vieuwButtonCreateGroupe: UIView!
-    @IBOutlet weak var constraintHeightViewAdd: NSLayoutConstraint!
-    @IBOutlet weak var constraintHeightViewTop: NSLayoutConstraint!
-    @IBOutlet weak var viewGuestList: UIView!
+    @IBOutlet weak var viewMatchingPeople: MatchingPeopleView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("currentRestaurant:viewDidLoad")
         // Do any additional setup after loading the view.
+        // mise a jour du panel d'info sur le restaurant choisi: il y a forcément un restaurant choisi!
+        self.ficheRendezVous.update(restaurant:Restaurant.sharedInstance!,controleur: self)
+        RendezVous.subscribe(vue: self.ficheRendezVous)
+        RendezVous.subscribe(vue: self.listeInvitesRDV)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        // mise a jour du panel d'info sur le restaurant choisi
-        self.raisonSociale.text = self.currentRestaurant!.raisonSociale
-        let url = URL(string: "https://api.ramon-technologies.com/rendez-vous/img/places/\(self.currentRestaurant!.urlPhoto)")!
-        //  print(url)
-        self.photoRestaurant.af_setImage(withURL: url)
-        self.photoRestaurant.layer.cornerRadius = 10.0
-        self.pourcentReduction.text = "-\(self.currentRestaurant!.pourcentReduction)%"
-        self.noteRestaurant.text = "9/10"
-        self.adresseRestaurant.text = self.currentRestaurant!.adressse
-        self.codePostalRestaurant.text = self.currentRestaurant!.codePostal
-        self.villeRestaurant.text = self.currentRestaurant!.ville
-        self.telephoneRestaurant.text = self.currentRestaurant!.telephone
-        
-      
-        self.GuestRankedTable.currentControleur = self
-        // création du lien entre la collection des invités et la source de données des invités
-        self.guestInvitedCollection.delegate = self.guestInvitedCollection
-        self.guestInvitedCollection.dataSource = self.guestInvitedCollection
-        self.guestInvitedCollection.currentControleur = self
-        
-        // création du lien entre la liste des gens pouvant être invité et la table permettant de les choisir
-        self.GuestRankedTable.delegate = self.GuestRankedTable
-        self.GuestRankedTable.dataSource = self.GuestRankedTable
-        ListeMatchingUtilisateurs.subscribe(vue: self.GuestRankedTable)
-        ListeMatchingUtilisateurs.load(controleur: self)
-     
+        print("CreateGroupViewController: viewWillAppear")
+        // Est ce qu'il y a un rendez-vous qui a été déjà créé?
+      // bug, ca prend le dernier dans la liste à l'indice donné
+         if self.mode != "create"
+            {
+                print("let rendez vous")
+                ficheRendezVous.setRendezVous(rendezVous: RendezVous.sharedInstance!)
+                  self.viewMatchingPeople.show(controleur: self)
+            }
     }
     
     /*
@@ -88,38 +60,8 @@ class CreateGroupViewController: RamonViewController {
      }
      */
     @IBAction func onClickClose(_ sender: RoundButtonUIButton) {
+        print("CreateGroupViewController: onClickClose")
         self.dismiss(animated: true, completion: nil)
-    }
-
-    @IBAction func onClickCreateGroupe(_ sender: UIButton) {
-        
-        self.currentRendezVous = RendezVous(idRendezVous: 0, numUtilisateurSource: RendezVousApplication.getUtilisateurId(), date: "\(pickDateRendezVous.date)", numStatusRendezVous: 1, numRestaurant: self.currentRestaurant!.idRestaurant,hote:RendezVousApplication.sharedInstance.connectedUtilisateur!)
-        self.currentRendezVous?.save { (json: JSON?, error: Error?) in
-            guard error == nil else {
-                print("Une erreur est survenue")
-                return
-            }
-            if let json = json {
-                print(json)
-                if json["returnCode"].intValue != 200
-                {
-                    AuthWebService.sendAlertMessage(vc: self, returnCode: json["returnCode"].intValue)
-                }
-                else
-                {
-                    let item = json["data"]
-                    self.currentRendezVous = RendezVous(jRendezVous:item["Rendez-Vous"],jHote:item["Hote"])
-                    self.constraintHeightViewAdd.constant = 0.0
-                    self.vieuwButtonCreateGroupe.isHidden = true
-                    self.viewGuestList.isHidden = false
-                    self.constraintHeightViewTop.constant = 160.0
-                    self.dateRendezVous.isHidden = false
-                    self.dateRendezVous.text = "\(self.currentRendezVous!.getDate())"
-                }
-            }
-        }
-        
-        
     }
     
 }

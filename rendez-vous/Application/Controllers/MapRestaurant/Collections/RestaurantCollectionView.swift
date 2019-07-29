@@ -10,6 +10,7 @@ import UIKit
 
 class RestaurantCollectionView: UICollectionView, WebServiceLinkable {
     func refresh() {
+        print("RestaurantCollectionView: refresh")
         reloadData()
     }
 

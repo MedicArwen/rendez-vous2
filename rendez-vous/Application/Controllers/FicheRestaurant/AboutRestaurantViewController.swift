@@ -16,10 +16,9 @@ class AboutRestaurantViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
+        print("AboutRestaurantViewController - viewWillAppear")
         self.raisonSociale.text = currentRestaurant!.raisonSociale
         let url = URL(string: "https://api.ramon-technologies.com/rendez-vous/img/places/\(currentRestaurant!.urlPhoto)")!
         //  print(url)
@@ -27,16 +26,8 @@ class AboutRestaurantViewController: UIViewController {
         self.photoRestaurant.layer.cornerRadius = 10.0
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func onClickClose(_ sender: RoundButtonUIButton) {
+        print("AboutRestaurantViewController - onClickClose")
         self.dismiss(animated: true, completion: nil)
     }
     

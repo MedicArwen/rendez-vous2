@@ -22,13 +22,18 @@ class GuestRankedTableView: UITableView {
 extension GuestRankedTableView:UITableViewDelegate,UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return RendezVousApplication.getListeMatching().count
+        guard ListeMatchingUtilisateurs.sharedInstance != nil else {
+            print("GuestRankedTableView:Count - ListeMatchingUtilisateurs.sharedInstance = nil")
+            return 0
+        }
+        print("GuestRankedTableView:Count - ListeMatchingUtilisateurs.sharedInstance != nil")
+        return ListeMatchingUtilisateurs.sharedInstance!.liste.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("update the cell n°#\(indexPath.row)")
+        print("update GuestRankedTableViewCell n°#\(indexPath.row)")
         let cell = tableView.dequeueReusableCell(withIdentifier: "guestRankedCell", for: indexPath) as! GuestRankedTableViewCell
-        cell.update(rankedUtilisateur: RendezVousApplication.getListeMatching()[indexPath.row],controleur:self.currentControleur!)
+        cell.update(rankedUtilisateur: ListeMatchingUtilisateurs.sharedInstance!.liste[indexPath.row],controleur:self.currentControleur!)
         return cell
     }
   
@@ -36,6 +41,8 @@ extension GuestRankedTableView:UITableViewDelegate,UITableViewDataSource
 extension GuestRankedTableView:WebServiceLinkable
 {
     func refresh() {
+        print("GuestRankedTableView:refresh")
+        print(" il y a \(ListeMatchingUtilisateurs.sharedInstance!.liste.count) personne(s) qui matche(nt)")
         self.reloadData()
     }
     

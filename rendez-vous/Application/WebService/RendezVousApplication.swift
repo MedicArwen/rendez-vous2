@@ -18,52 +18,15 @@ class RendezVousApplication
     var connectedRamonUser: ConnectedRamonUser?
    
     // liste des utilisateurs qui matchent (notion de distance, calcul d'un score de match)
-    var listeUtilisateursMatch:ListeMatchingUtilisateurs?
+ //   var listeUtilisateursMatch:ListeMatchingUtilisateurs?
     // liste des restaurants proches de l'utilisateur ou de la position indiquée
-    var listeRestaurantsProches: ListeRestaurants?
+   // var listeRestaurantsProches: ListeRestaurants?
     // liste des rendez-vous créés par l'utilisateur
-    var listeRendezVousCrees:ListeRendezVousAsHote?
-    var listeInvitationsRecues:ListeRendezVousAsConvive?
-
+   // var listeRendezVousCrees:ListeRendezVousAsHote?
+   // var listeInvitationsRecues:ListeRendezVousAsConvive?
+  //  var currentRendezVous: RendezVous?
     static var sharedInstance = RendezVousApplication()
 
-    static func getInvitationsRendezVous()->[RendezVous]
-    {
-        if let listRDV = RendezVousApplication.sharedInstance.listeInvitationsRecues
-        {
-            return listRDV.liste
-        }
-        return [RendezVous]()
-    }
-    
-    static func getHostedRendezVous()->[RendezVous]
-    {
-        if let listRDV = RendezVousApplication.sharedInstance.listeRendezVousCrees
-        {
-            return listRDV.liste
-        }
-        return [RendezVous]()
-    }
-    static func getListeMatching()->[RankedUtilisateur]
-    {
-        if let listMatches = RendezVousApplication.sharedInstance.listeUtilisateursMatch
-        {
-            return listMatches.liste
-        }
-        return [RankedUtilisateur]()
-    }
-    static func getListeRestaurants()->[Restaurant]
-    {
-        if let listeRestaurant = RendezVousApplication.sharedInstance.listeRestaurantsProches
-        {
-            return listeRestaurant.liste
-        }
-    return [Restaurant]()
-    }
-    static func isRestaurantListReady()->Bool
-    {
-    return !(RendezVousApplication.sharedInstance.listeRestaurantsProches == nil)
-    }
     
     func isProfileLoad()->Bool
     {

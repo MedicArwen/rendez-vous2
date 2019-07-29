@@ -23,21 +23,18 @@ class ListRestaurantView: UIView {
 extension ListRestaurantView:UITableViewDelegate,UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("je compte les restaurants")
-        if RendezVousApplication.isRestaurantListReady()
-        {
-            return RendezVousApplication.getListeRestaurants().count
-        }
-        else{
+        guard ListeRestaurants.sharedInstance != nil else {
+            print("ListRestaurantView:count - aucune liste de restaurant trouvée")
             return 0
         }
-        
+        print("ListRestaurantView:count - \(ListeRestaurants.sharedInstance!.liste.count) trouvé(s)")
+        return ListeRestaurants.sharedInstance!.liste.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("update the cell n°#\(indexPath.row)")
+        print("ListRestaurantView:update - cell n°#\(indexPath.row)")
         let cell = tableView.dequeueReusableCell(withIdentifier: "restaurantTableCell", for: indexPath) as! RestaurantTableViewCell
-        cell.update(restaurant: RendezVousApplication.getListeRestaurants()[indexPath.row],controleur:self.currentControleur!)
+        cell.update(restaurant: ListeRestaurants.sharedInstance!.liste[indexPath.row],controleur:self.currentControleur!)
         return cell
     }
     

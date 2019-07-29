@@ -23,23 +23,25 @@ class ConvivesCollectionView: UICollectionView {
     extension ConvivesCollectionView:UICollectionViewDelegate,UICollectionViewDataSource
     {
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            if currentControleur!.currentRendezVous == nil
-            {return 0}
-            
-            return currentControleur!.currentRendezVous!.invitationList.count
+            guard RendezVous.sharedInstance != nil else {
+                print("ConvivesCollectionView:count - aucun rendez-vous trouvé")
+                return 0
+            }
+            print("ConvivesCollectionView:count - \(RendezVous.sharedInstance!.invitationList.count) invitation(s)")
+            return RendezVous.sharedInstance!.invitationList.count
         }
         
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            print("update the convive cell n°#\(indexPath.row)")
+            print("ConvivesCollectionView:update the convive cell n°#\(indexPath.row)")
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "conviveCollectionCell", for: indexPath) as! GuestCollectionViewCell
-            //cell.update(utilisateur: (RendezVousApplication.sharedInstance.currentRendezVous!.guestList[indexPath.row]),controleur:self.currentControleur!)
-            cell.update(invitation: currentControleur!.currentRendezVous!.invitationList[indexPath.row], controleur:  self.currentControleur!)
+            cell.update(invitation: RendezVous.sharedInstance!.invitationList[indexPath.row], controleur:  self.currentControleur!)
             return cell
         }
     }
     extension ConvivesCollectionView:WebServiceLinkable
     {
         func refresh() {
+            print("ConvivesCollectionView:refresh")
             reloadData()
         }
 }

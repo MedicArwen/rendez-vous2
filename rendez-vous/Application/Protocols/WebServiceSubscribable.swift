@@ -7,21 +7,7 @@
 //
 
 import Foundation
-class WebServiceSubscribable {
-   private static var suscribedViews = [WebServiceLinkable]()
-    
+protocol WebServiceSubscribable {
     static func subscribe(vue:WebServiceLinkable)
-    {
-        print("inscription d'une vue...")
-        self.suscribedViews.append(vue)
-    }
-    
     static func reloadViews()
-    {
-        for vue in self.suscribedViews
-        {
-            vue.refresh()
-        }
-    }
-
 }

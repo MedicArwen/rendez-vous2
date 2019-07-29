@@ -11,35 +11,35 @@ import SwiftyJSON
 import SwiftHash
 
 class RendezVous{
+    static var sharedInstance:RendezVous?
     var idRendezVous:Int
     var numUtilisateurSource:Int
     var date:String
     var numStatusRendezVous:Int
     var numRestaurant:Int
     var hote:Utilisateur
-  //  var guestList = [Utilisateur]()
     var invitationList = [Invitation]()
     var restaurant : Restaurant?
     
-    init(idRendezVous:Int,numUtilisateurSource:Int,date:String,numStatusRendezVous:Int,numRestaurant:Int,hote:Utilisateur) {
+    init(idRendezVous:Int,numUtilisateurSource:Int,date:String,numStatusRendezVous:Int,numRestaurant:Int,hote:Utilisateur,restau:Restaurant) {
+        print("RendezVous:init - id rdv: \(idRendezVous)")
         self.idRendezVous = idRendezVous
         self.numUtilisateurSource = numUtilisateurSource
         self.date = date
         self.numStatusRendezVous = numStatusRendezVous
         self.numRestaurant = numRestaurant
         self.hote = hote
+        self.restaurant = restau
     }
-    convenience init(jRendezVous:JSON,jHote:JSON) {
-        self.init(idRendezVous:jRendezVous["idRendezVous"].intValue,numUtilisateurSource:jRendezVous["numUtilisateurSource"].intValue,date:jRendezVous["date"].stringValue,numStatusRendezVous:jRendezVous["numStatusRendezVous"].intValue,numRestaurant:jRendezVous["numRestaurant"].intValue,hote:Utilisateur(json: jHote))
+    convenience init(jRendezVous:JSON,jHote:JSON,jRestau:JSON) {
+        self.init(idRendezVous:jRendezVous["idRendezVous"].intValue,numUtilisateurSource:jRendezVous["numUtilisateurSource"].intValue,date:jRendezVous["date"].stringValue,numStatusRendezVous:jRendezVous["numStatusRendezVous"].intValue,numRestaurant:jRendezVous["numRestaurant"].intValue,hote:Utilisateur(json: jHote),restau:Restaurant(json: jRestau))
     }
     func getDate()->Date
     {
+        print("RendezVous:getDate")
         let dateFormatter = DateFormatter()
-        
-        // dateFormatter.locale = Locale(identifier: "en_EN") // edited
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
-       // print(" la timezone: \(String(describing: dateFormatter.timeZone))")
         return dateFormatter.date(from:self.date)!
     }
     func save(_ completion: @escaping ServiceResponse) {
@@ -77,10 +77,28 @@ class RendezVous{
         print(RendezVousWebService.sharedInstance.webServiceCalling(params, completion))
         
     }
-    
+    func getInvitationOfOneUser(utilisateur:Utilisateur)->Invitation?
+    {
+        print("RendezVous:getInvitationOfOneUser")
+        for item in self.invitationList
+        {
+            print("\(item.numInvite) ?= \(utilisateur.idUtilisateur)")
+            if item.numInvite == utilisateur.idUtilisateur
+            {
+                print("->trouvé")
+                return item
+            }
+        }
+        return nil
+    }
+   
     func addInvitation(invitation:Invitation)
     {
+        print("RendezVous:addInvitation")
         self.invitationList.append(invitation)
+        RendezVous.reloadViews()
+        ListeRendezVousAsConvive.reloadViews()
+        ListeRendezVousAsHote.reloadViews()
     }
    /* func addGuest(utilisateur:Utilisateur)
     {
@@ -88,6 +106,7 @@ class RendezVous{
     }*/
     func getDay()->String
     {
+        print("RendezVous:getDay")
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale.init(identifier: "fr_FR")
         dateFormatter.dateFormat = "MM-dd-yyyy"
@@ -96,10 +115,58 @@ class RendezVous{
     }
    func getHour()->String
    {
+    print("RendezVous:getHour")
     let dateFormatter = DateFormatter()
     dateFormatter.locale = Locale.init(identifier: "fr_FR")
     dateFormatter.dateFormat = "hh:mm"
     print("Dateobj: \(dateFormatter.string(from: self.getDate()))")
     return dateFormatter.string(from: self.getDate())
+    }
+    
+    static func create(controleur: RamonViewController, rendezVous: RendezVous)
+    {
+        print("CREATE: RendezVous")
+        rendezVous.save { (json: JSON?, error: Error?) in
+            guard error == nil else {
+                print("Une erreur est survenue")
+                return
+            }
+            if let json = json {
+                print(json)
+                if json["returnCode"].intValue != 200
+                {
+                    AuthWebService.sendAlertMessage(vc: controleur, returnCode: json["returnCode"].intValue)
+                }
+                else
+                {
+                    let item = json["data"]
+                    RendezVous.sharedInstance = RendezVous(jRendezVous:item["Rendez-Vous"],jHote:item["Hote"],jRestau:item["Restaurant"])
+                    ListeRendezVousAsHote.append(controleur: controleur, item: RendezVous.sharedInstance!)
+                    self.reloadViews()
+        
+                }
+            }
+        }
+    }
+}
+extension RendezVous:WebServiceSubscribable
+{
+    private static var suscribedViews = [WebServiceLinkable]()
+    
+    static func subscribe(vue:WebServiceLinkable)
+    {
+        print("RendezVous:subscribe")
+        self.suscribedViews.append(vue)
+        print("Il y a \(self.suscribedViews.count) vue(s abonnée(s) à RendezVous")
+    }
+    
+    static func reloadViews()
+    {
+        print("RendezVous:reloadViews")
+          print("Il y a \(self.suscribedViews.count) vue(s abonnée(s) à RendezVous")
+        for vue in self.suscribedViews
+        {
+            vue.refresh()
+        }
     }
 }

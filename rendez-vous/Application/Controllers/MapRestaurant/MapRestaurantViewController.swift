@@ -14,15 +14,16 @@ import AlamofireImage
 
 class MapRestaurantViewController: RamonViewController {
     var currentRestaurant: Restaurant?
-
+    
     @IBOutlet weak var restaurantTable: RestaurantTableView!
     @IBOutlet weak var viewWithMap: MapRestaurantView!
     @IBOutlet weak var viewWithList: ListRestaurantView!
     @IBOutlet weak var switchViewMode: UISegmentedControl!
     @IBOutlet weak var restaurantCollection: RestaurantCollectionView!
-
+    
     @IBOutlet weak var mapView: RestaurantMapView!
     override func viewDidLoad() {
+        print("MapRestaurantViewController:viewDidLoad")
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         LocationManager.SharedInstance.delegate = self
@@ -54,44 +55,45 @@ class MapRestaurantViewController: RamonViewController {
         self.mapView.showsBuildings = true
         self.mapView.register(Restaurant.self, forAnnotationViewWithReuseIdentifier: NSStringFromClass(Restaurant.self))
         
-       
+        
     }
     override func viewWillAppear(_ animated: Bool) {
+        print("MapRestaurantViewController:viewWillAppear")
         setViewMapMode(switchViewMode)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("MapRestaurantViewController:prepare (\(segue.identifier))")
         if segue.identifier == "showAboutRestaurant"
         {
             let dest = segue.destination as! AboutRestaurantViewController
-            dest.currentRestaurant = RendezVousApplication.getListeRestaurants()[viewWithMap.currentRestaurant]
+            dest.currentRestaurant = ListeRestaurants.sharedInstance!.liste[viewWithMap.currentRestaurant]
         }
         if segue.identifier == "showCreateGroup"
         {
-            //self.currentRestaurant = RendezVousApplication.getListeRestaurants()[viewWithMap.currentRestaurant]
-            let dest = segue.destination as! CreateGroupViewController
-            dest.currentRestaurant = RendezVousApplication.getListeRestaurants()[viewWithMap.currentRestaurant]
+            Restaurant.sharedInstance = ListeRestaurants.sharedInstance!.liste[viewWithMap.currentRestaurant]
         }
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
     
     fileprivate func setViewMapMode(_ sender: UISegmentedControl) {
+        print("MapRestaurantViewController:setViewMapMode")
         if sender.selectedSegmentIndex == 0
         {
-            print("afficher la carte")
+            print("-> afficher la carte")
             viewWithMap.isHidden = false
             viewWithList.isHidden = true
         }
         else
         {
-            print("afficher la liste")
+            print("->afficher la liste")
             viewWithMap.isHidden = true
             viewWithList.isHidden = false
             restaurantTable.reloadData()
@@ -99,41 +101,13 @@ class MapRestaurantViewController: RamonViewController {
     }
     
     @IBAction func onChangeViewMode(_ sender: UISegmentedControl) {
-        print("onChangeViewMode")
+        print("MapRestaurantViewController:onChangeViewMode")
         setViewMapMode(sender)
     }
     
 }
 extension MapRestaurantViewController:CLLocationManagerDelegate
 {
-   /* fileprivate func refreshRestaurantList() {
-        ListeRestaurants.getListRestaurant{ (json: JSON?, error: Error?) in
-            guard error == nil else {
-                print("Une erreur est survenue")
-                return
-            }
-            if let json = json {
-                print(json)
-                if json["returnCode"].intValue != 200
-                {
-                    AuthWebService.sendAlertMessage(vc: self, returnCode: json["returnCode"].intValue)
-                }
-                else
-                {
-                    RendezVousApplication.sharedInstance.listeRestaurantsProches = ListeRestaurants(json:json["data"])
-                    var i = 0
-                    for item in RendezVousApplication.sharedInstance.listeRestaurantsProches!.liste
-                    {
-                        item.indice = i
-                        self.mapView.addAnnotation(item)
-                        i += 1
-                    }
-                    print("il y a \(RendezVousApplication.getListeRestaurants().count) restaurants à afficher sur la carte")
-                    self.restaurantCollection.reloadData()
-                }
-            }
-        }
-    }*/
     
     fileprivate func recentrageCarte() {
         let span : MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)

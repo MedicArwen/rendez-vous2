@@ -17,19 +17,26 @@ class MyInvitationsTableView: UITableView {
 extension MyInvitationsTableView:UITableViewDelegate,UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return RendezVousApplication.getInvitationsRendezVous().count
+        guard ListeRendezVousAsConvive.sharedInstance != nil else {
+            print("MyInvitationsTableView:count - aucune liste ListeRendezVousAsConvive trouvée")
+            return 0
+        }
+        print("MyInvitationsTableView:count - \(ListeRendezVousAsConvive.sharedInstance!.liste.count) invitation recue(s)")
+        return ListeRendezVousAsConvive.sharedInstance!.liste.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("update the cell n°#\(indexPath.row)")
+        print("MyInvitationsTableView: update the cell n°#\(indexPath.row)")
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyRendezVousConviveCell", for: indexPath) as! MyInvitationsTableViewCell
-        cell.update(rendezvous: RendezVousApplication.getInvitationsRendezVous()[indexPath.row],controleur: self.currentControleur!)
+        cell.update(rendezvous: ListeRendezVousAsConvive.sharedInstance!.liste[indexPath.row],controleur: self.currentControleur!)
         return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+         print("MyRendezVousTableView: commit editingStyle")
         if editingStyle == UITableViewCell.EditingStyle.delete
         {
+             print("MyInvitationsTableView: editingStyle = .delete")
             ListeRendezVousAsConvive.remove(controleur: currentControleur!, indexPath: indexPath)
         }
     }
@@ -38,6 +45,7 @@ extension MyInvitationsTableView:UITableViewDelegate,UITableViewDataSource
 extension MyInvitationsTableView:WebServiceLinkable
 {
     func refresh() {
+        print("MyInvitationsTableView: refresh")
         self.reloadData()
     }
     

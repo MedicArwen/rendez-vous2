@@ -10,24 +10,19 @@ import Foundation
 import SwiftyJSON
 import SwiftHash
 
-class ListeRendezVousAsConvive:WebServiceSubscribable {
+class ListeRendezVousAsConvive {
+    static var sharedInstance : ListeRendezVousAsConvive?
     var liste = [RendezVous]()
     init(json:JSON) {
-        //print(json)
+        print("ListeRendezVousAsConvive:init")
         var i = 1
-        print(" il y a \(json.arrayValue.count) rendez-vous à afficher")
+        print("-> ajout des \(json.arrayValue.count) invitations reçues")
         for item in json.arrayValue
         {
-            print("element n°\(i)")
-            //    print("les invitations:\(item["Invitations"])")
-            //   print("le restaurant:\(item["Restaurant"])")
-            //   print("le rendezvous:\(item["Rendez-Vous"])")
-          //  let rendezVous = RendezVous(json: item["Rendez-Vous"])
-            let rendezVous = RendezVous(jRendezVous:item["Rendez-Vous"],jHote:item["Hote"])
-            rendezVous.restaurant = Restaurant(json: item["Restaurant"])
+            let rendezVous = RendezVous(jRendezVous:item["Rendez-Vous"],jHote:item["Hote"],jRestau: item["Restaurant"])
+            //rendezVous.restaurant = Restaurant(json: item["Restaurant"])
             for jUtilisateur in item["Invitations"]
             {
-             //   print("jutilisateur: \(jUtilisateur.1["Utilisateur"])")
                 let invitation = Invitation(jsonInvitation: jUtilisateur.1["Invitation"], jsonUtilisateur: jUtilisateur.1["Utilisateur"])
                 rendezVous.addInvitation(invitation: invitation)
             }
@@ -35,10 +30,85 @@ class ListeRendezVousAsConvive:WebServiceSubscribable {
             i += 1
         }
     }
+    func find(rendezVous:RendezVous)->Int
+    {
+        print("ListeRendezVousAsConvive:find")
+        var i = 0
+        var indice = -1
+        for item in self.liste
+        {
+            if item.idRendezVous == rendezVous.idRendezVous
+            {
+                indice = i
+            }
+            i += 1
+        }
+        print("-> indice trouvé: \(indice) (-1 = rien trouvé)")
+        return indice
+    }
+    static func accept(controleur:RamonViewController,rendezVous:RendezVous)
+    {
+        print("ListeRendezVousAsConvive:accept")
+        guard RendezVousApplication.sharedInstance.connectedUtilisateur != nil else {
+            print("-> aucun utilisateur connecté reconnu")
+            return
+        }
+        let utilisateur = RendezVousApplication.sharedInstance.connectedUtilisateur!
+        print("-> utilisateur cherché:\(utilisateur.idUtilisateur)")
+        rendezVous.getInvitationOfOneUser(utilisateur: utilisateur)!.accept{ (json: JSON?, error: Error?) in
+            guard error == nil else {
+                print("Une erreur est survenue")
+                return
+            }
+            if let json = json {
+                print(json)
+                if json["returnCode"].intValue != 200
+                {
+                    AuthWebService.sendAlertMessage(vc: controleur, returnCode: json["returnCode"].intValue)
+                }
+                else
+                {
+                    print("-> rechargement de la liste des rendez-vous")
+                    ListeRendezVousAsConvive.load(controleur: controleur)
+                }
+            }
+        }
+    }
+    static func reject(controleur:RamonViewController,rendezVous:RendezVous)
+    {
+        print("ListeRendezVousAsConvive:reject")
+        guard RendezVousApplication.sharedInstance.connectedUtilisateur != nil else {
+            print("-> aucun utilisateur connecté reconnu")
+            return
+        }
+        let utilisateur = RendezVousApplication.sharedInstance.connectedUtilisateur!
+        print("-> utilisateur cherché:\(utilisateur.idUtilisateur)")
+        rendezVous.getInvitationOfOneUser(utilisateur: utilisateur)!.reject{ (json: JSON?, error: Error?) in
+            guard error == nil else {
+                print("Une erreur est survenue")
+                return
+            }
+            if let json = json {
+                print(json)
+                if json["returnCode"].intValue != 200
+                {
+                    AuthWebService.sendAlertMessage(vc: controleur, returnCode: json["returnCode"].intValue)
+                }
+                else
+                {
+                    
+                    print("-> rechargement de la liste des rendez-vous")
+                    ListeRendezVousAsConvive.load(controleur: controleur)
+                }
+            }
+        }
+    }
 }
 extension ListeRendezVousAsConvive:WebServiceListable
 {
+    
     static func load(controleur: RamonViewController) {
+        print("ListeRendezVousAsConvive:load")
         ListeRendezVousAsConvive.createListRequest{ (json: JSON?, error: Error?) in
             guard error == nil else {
                 print("Une erreur est survenue")
@@ -52,7 +122,7 @@ extension ListeRendezVousAsConvive:WebServiceListable
                 }
                 else
                 {
-                    RendezVousApplication.sharedInstance.listeInvitationsRecues = ListeRendezVousAsConvive(json:json["data"])
+                    ListeRendezVousAsConvive.sharedInstance = ListeRendezVousAsConvive(json:json["data"])
                     ListeRendezVousAsConvive.reloadViews()
                 }
             }
@@ -76,7 +146,12 @@ extension ListeRendezVousAsConvive:WebServiceListable
     
     static func remove(controleur:RamonViewController,indexPath:IndexPath)
     {
-        RendezVousApplication.sharedInstance.listeInvitationsRecues!.liste[indexPath.row].cancel{ (json: JSON?, error: Error?) in
+        guard ListeRendezVousAsConvive.sharedInstance != nil else {
+            print("ListeRendezVousAsConvive:remove(indexPath) - aucune liste ListeRendezVousAsConvive trouvée")
+            return
+        }
+        print("ListeRendezVousAsConvive:removein(dexPath) - il faut annuler l'invitation'")
+        ListeRendezVousAsConvive.sharedInstance!.liste[indexPath.row].cancel{ (json: JSON?, error: Error?) in
             guard error == nil else {
                 print("Une erreur est survenue")
                 return
@@ -89,11 +164,60 @@ extension ListeRendezVousAsConvive:WebServiceListable
                 }
                 else
                 {
-                    
-                    RendezVousApplication.sharedInstance.listeInvitationsRecues!.liste.remove(at: indexPath.row)
+                    ListeRendezVousAsConvive.remove(controleur: controleur, indexPath: indexPath)
                     ListeRendezVousAsConvive.reloadViews()
                 }
             }
+        }
+    }
+    static func append(controleur: RamonViewController, item: Any) {
+        guard ListeRendezVousAsConvive.sharedInstance != nil else {
+            print("ListeRendezVousAsConvive:append- aucune liste ListeRendezVousAsConvive trouvée")
+            return
+        }
+        print("ListeRendezVousAsConvive:append - il faut annuler l'invitation'")
+        let rendezVous = item as! RendezVous
+        ListeRendezVousAsConvive.sharedInstance!.liste.append(rendezVous)
+        ListeRendezVousAsConvive.reloadViews()
+    }
+    static func remove(controleur: RamonViewController, item: Any) {
+        guard ListeRendezVousAsConvive.sharedInstance != nil else {
+            print("ListeRendezVousAsConvive:remove(item) - aucune liste ListeRendezVousAsConvive trouvée")
+            return
+        }
+        print("ListeRendezVousAsConvive:removein(item) - il faut annuler l'invitation'")
+        if let currentList = ListeRendezVousAsConvive.sharedInstance
+        {
+            let rendezVous = item as! RendezVous
+            let indice = currentList.find(rendezVous: rendezVous)
+            if indice != -1
+            {
+                print("-> invitation n°\(indice) trouvée")
+                currentList.liste.remove(at: indice)
+                ListeRendezVousAsConvive.reloadViews()
+            }
+        }
+    }
+    
+}
+extension ListeRendezVousAsConvive:WebServiceSubscribable
+{
+    private static var suscribedViews = [WebServiceLinkable]()
+    
+    static func subscribe(vue:WebServiceLinkable)
+    {
+        print("ListeRendezVousAsConvive:subscribe")
+        self.suscribedViews.append(vue)
+        print("->\(self.suscribedViews.count) vue(s) abonnée(s) à ListeRendezVousAsConvive")
+    }
+    
+    static func reloadViews()
+    {
+        print("ListeRendezVousAsConvive:reloadViews")
+        print("-> \(self.suscribedViews.count) vue(s) abonnée(s) à ListeRendezVousAsConvive")
+        for vue in self.suscribedViews
+        {
+            vue.refresh()
         }
     }
 }

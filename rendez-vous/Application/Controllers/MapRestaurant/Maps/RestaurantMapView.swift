@@ -20,17 +20,22 @@ class RestaurantMapView: MKMapView, WebServiceLinkable {
     */
     func reloadData()
     {
+        guard ListeRestaurants.sharedInstance != nil else {
+            print("RestaurantMapView:reloadData - listeRestaurantsProches non trouvée")
+            return
+        }
         var i = 0
-        for item in RendezVousApplication.sharedInstance.listeRestaurantsProches!.liste
+        for item in ListeRestaurants.sharedInstance!.liste
         {
             item.indice = i
             self.addAnnotation(item)
             i += 1
         }
-        print("il y a \(RendezVousApplication.getListeRestaurants().count) restaurants à afficher sur la carte")
+        print("RestaurantMapView:reloadData - il y a \(ListeRestaurants.sharedInstance!.liste.count) restaurants à afficher sur la carte")
     }
     func refresh()
     {
+        print("RestaurantMapView:refresh")
         reloadData()
     }
 }
