@@ -10,7 +10,7 @@ import UIKit
 
 class InvitesCollectionView: UICollectionView {
     var currentControleur: CreateGroupViewController?
-    
+    fileprivate var indiceSuscribedView = 0
     /*
      // Only override draw() if you perform custom drawing.
      // An empty implementation adversely affects performance during animation.
@@ -43,5 +43,13 @@ extension InvitesCollectionView:WebServiceLinkable
     func refresh() {
         print("InvitesCollectionView:refresh")
         reloadData()
+    }
+    var indice: Int {
+        get {
+            return indiceSuscribedView
+        }
+        set {
+            indiceSuscribedView = newValue
+        }
     }
 }

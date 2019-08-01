@@ -9,11 +9,19 @@
 import UIKit
 
 class RestaurantTableView: UITableView, WebServiceLinkable {
+    fileprivate var indiceSuscribedView = 0
     func refresh() {
         print("RestaurantTableView: refresh")
         reloadData()
     }
-    
+    var indice: Int {
+        get {
+            return indiceSuscribedView
+        }
+        set {
+            indiceSuscribedView = newValue
+        }
+    }
 
     /*
     // Only override draw() if you perform custom drawing.

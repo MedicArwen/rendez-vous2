@@ -52,5 +52,6 @@ class RamonUser{
         print(self.estCompteValide)
         print(self.numGenre)*/
     }
+    
 }
 

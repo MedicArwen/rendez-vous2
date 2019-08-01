@@ -27,6 +27,7 @@ class RendezVousView: UIView{
     @IBOutlet weak var contrainteHauteur : NSLayoutConstraint!
     
     private var parentControleur : RamonViewController?
+    fileprivate var indiceSuscribedView = 0
  
     func update(restaurant:Restaurant, controleur:RamonViewController)
     {
@@ -69,5 +70,13 @@ extension  RendezVousView:WebServiceLinkable {
             {
             print("-> no refresh")
             }
+    }
+    var indice: Int {
+        get {
+            return indiceSuscribedView
+        }
+        set {
+            indiceSuscribedView = newValue
+        }
     }
 }

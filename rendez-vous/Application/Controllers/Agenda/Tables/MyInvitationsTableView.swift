@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class MyInvitationsTableView: UITableView {
     var currentControleur : RamonViewController?
-    
+    fileprivate var indiceSuscribedView = 0
 }
 extension MyInvitationsTableView:UITableViewDelegate,UITableViewDataSource
 {
@@ -48,6 +48,13 @@ extension MyInvitationsTableView:WebServiceLinkable
         print("MyInvitationsTableView: refresh")
         self.reloadData()
     }
-    
+    var indice: Int {
+        get {
+            return indiceSuscribedView
+        }
+        set {
+            indiceSuscribedView = newValue
+        }
+    }
     
 }

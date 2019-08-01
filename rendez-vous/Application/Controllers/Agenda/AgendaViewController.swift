@@ -85,4 +85,12 @@ class AgendaViewController: RamonViewController {
             dest.mode = "update"
         }
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        print("MapRestaurantViewController:viewWillDisappear")
+        print(self)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        print("MapRestaurantViewController:viewDidDisappear")
+        print(self)
+    }
 }

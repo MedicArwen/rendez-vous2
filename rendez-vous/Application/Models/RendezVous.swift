@@ -9,6 +9,7 @@
 import Foundation
 import SwiftyJSON
 import SwiftHash
+import UIKit
 
 class RendezVous{
     static var sharedInstance:RendezVous?
@@ -40,6 +41,9 @@ class RendezVous{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
+        guard dateFormatter.date(from:self.date) != nil else {
+            return Date()
+        }
         return dateFormatter.date(from:self.date)!
     }
     func save(_ completion: @escaping ServiceResponse) {
@@ -109,7 +113,7 @@ class RendezVous{
         print("RendezVous:getDay")
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale.init(identifier: "fr_FR")
-        dateFormatter.dateFormat = "MM-dd-yyyy"
+        dateFormatter.dateFormat = "dd/MM/yyyy"
         print("Dateobj: \(dateFormatter.string(from: self.getDate()))")
         return dateFormatter.string(from: self.getDate())
     }
@@ -156,16 +160,35 @@ extension RendezVous:WebServiceSubscribable
     static func subscribe(vue:WebServiceLinkable)
     {
         print("RendezVous:subscribe")
-        self.suscribedViews.append(vue)
+        var lavue = vue
+        lavue.indice = self.suscribedViews.count
+        self.suscribedViews.append(lavue)
         print("Il y a \(self.suscribedViews.count) vue(s abonnée(s) à RendezVous")
     }
     
+    static func unsuscribe(vue:WebServiceLinkable)
+    {
+        print("RendezVous:unsubscribe")
+        print("Il y a \(self.suscribedViews.count) vue(s abonnée(s) à RendezVous")
+        //listeVuesUI.index(of: vue).map { listeVuesUI.remove(at: $0) }
+        print("indice de la vue:\(vue.indice)")
+        self.suscribedViews.remove(at: vue.indice)
+        var i = 0
+        for var item in self.suscribedViews
+        {
+            item.indice = i
+            i += 1
+        }
+
+        print("Il y a \(self.suscribedViews.count) vue(s abonnée(s) à RendezVous")
+    }
     static func reloadViews()
     {
         print("RendezVous:reloadViews")
           print("Il y a \(self.suscribedViews.count) vue(s abonnée(s) à RendezVous")
         for vue in self.suscribedViews
         {
+            print(vue)
             vue.refresh()
         }
     }

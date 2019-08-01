@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 class RestaurantMapView: MKMapView, WebServiceLinkable {
-
+fileprivate var indiceSuscribedView = 0
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -37,5 +37,13 @@ class RestaurantMapView: MKMapView, WebServiceLinkable {
     {
         print("RestaurantMapView:refresh")
         reloadData()
+    }
+    var indice: Int {
+        get {
+            return indiceSuscribedView
+        }
+        set {
+            indiceSuscribedView = newValue
+        }
     }
 }

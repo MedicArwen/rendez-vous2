@@ -49,6 +49,16 @@ class CreateGroupViewController: RamonViewController {
                   self.viewMatchingPeople.show(controleur: self)
             }
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        print("MapRestaurantViewController:viewWillDisappear")
+        RendezVous.unsuscribe(vue: self.ficheRendezVous)
+        RendezVous.unsuscribe(vue: self.listeInvitesRDV)
+        print(self)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        print("MapRestaurantViewController:viewDidDisappear")
+         print(self)
+    }
     
     /*
      // MARK: - Navigation

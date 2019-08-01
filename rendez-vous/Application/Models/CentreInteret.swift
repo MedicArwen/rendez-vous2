@@ -15,6 +15,7 @@ class CentreInteret
     var libelle = ""
     var order = 0
     init(id:Int,libelle:String, order:Int) {
+        print("creation centre interet: N°\(order) - \(libelle)")
         self.id = id
         self.libelle = libelle
         self.order = order

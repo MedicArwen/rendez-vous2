@@ -36,4 +36,27 @@ class ConnectedRamonUser
         print("signature=\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)onmangeensembleb20")
         print(RendezVousWebService.sharedInstance.webServiceCalling(params, completion))
     }
+    static func saveUserConnected(connectedRamonUser:ConnectedRamonUser)
+    {
+        print("username:\(connectedRamonUser.ramonUser.courriel)")
+        print("pwd:\(connectedRamonUser.ramonUser.motdepasse)")
+        UserDefaults.standard.set(connectedRamonUser.ramonUser.courriel, forKey: "userName")
+        UserDefaults.standard.set(connectedRamonUser.ramonUser.motdepasse, forKey: "password")
+    }
+    static func connectUtilisateurDefault()
+    {
+        print("ConnectedRamonUser:connectUtilisateurDefault")
+        guard UserDefaults.standard.string(forKey: "userName") != nil else {
+            print("userName non trouvé")
+            return
+        }
+        guard UserDefaults.standard.string(forKey: "password") != nil else {
+            print("password non trouvé")
+            return
+        }
+        AuthWebService.sharedInstance.userName = UserDefaults.standard.string(forKey: "userName")!
+        AuthWebService.sharedInstance.password = UserDefaults.standard.string(forKey: "password")!
+        print("username:\(String(describing: AuthWebService.sharedInstance.userName))")
+        print("pwd:\(UserDefaults.standard.string(forKey: "password")!)")
+    }
 }

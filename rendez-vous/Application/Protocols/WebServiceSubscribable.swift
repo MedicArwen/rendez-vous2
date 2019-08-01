@@ -9,5 +9,6 @@
 import Foundation
 protocol WebServiceSubscribable {
     static func subscribe(vue:WebServiceLinkable)
+    static func unsuscribe(vue:WebServiceLinkable)
     static func reloadViews()
 }

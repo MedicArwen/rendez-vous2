@@ -24,6 +24,33 @@ class AuthentificationVC: RamonViewController {
 
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        print("AuthentificationVC:viewWillAppear")
+        ConnectedRamonUser.connectUtilisateurDefault()
+        guard AuthWebService.sharedInstance.userName != nil else {
+            print("username not found")
+            return
+        }
+        guard AuthWebService.sharedInstance.password != nil else {
+            print("pwd not found")
+            return
+        }
+            tryConnect()
+    
+      /*  RendezVousApplication.sharedInstance.connectedRamonUser = ConnectedRamonUser.connectUtilisateurDefault()
+        RendezVousApplication.sharedInstance.connectedUtilisateur = Utilisateur.connectUtilisateurDefault()
+        guard RendezVousApplication.sharedInstance.connectedRamonUser == nil else {
+            print("RamonUser chargé depuis les préférences")
+            guard RendezVousApplication.sharedInstance.connectedUtilisateur == nil else {
+                print("Utilisateur chargé depuis les préférences")
+                self.performSegue(withIdentifier: "GoToHomePage", sender: self)
+                return
+            }
+            tryLoadProfile()
+            return
+        }
+    */
+    }
     
 
     /*
@@ -42,6 +69,7 @@ class AuthentificationVC: RamonViewController {
     }
     func tryConnect()
     {
+        
       AuthWebService.sharedInstance.loginWithPassword { (json: JSON?, error: Error?) in
             guard error == nil else {
                 print("Une erreur est survenue")
@@ -56,6 +84,7 @@ class AuthentificationVC: RamonViewController {
                 else
                 {
                     RendezVousApplication.sharedInstance.connectedRamonUser = ConnectedRamonUser(json: json["data"])
+                    ConnectedRamonUser.saveUserConnected(connectedRamonUser: RendezVousApplication.sharedInstance.connectedRamonUser!)
                     if RendezVousApplication.sharedInstance.connectedRamonUser!.isEmailValide()
                     {
                       self.tryLoadProfile()
@@ -72,6 +101,7 @@ class AuthentificationVC: RamonViewController {
 
   func tryLoadProfile()
   {
+    
     RendezVousApplication.sharedInstance.connectedRamonUser!.loadProfile { (json: JSON?, error: Error?) in
         guard error == nil else {
             print("Une erreur est survenue")
@@ -88,6 +118,7 @@ class AuthentificationVC: RamonViewController {
                 if json["data"] != "null"
                 {
                     RendezVousApplication.sharedInstance.connectedUtilisateur = Utilisateur(json: json["data"])
+                    
                     self.performSegue(withIdentifier: "GoToHomePage", sender: self)
                 }
                 else

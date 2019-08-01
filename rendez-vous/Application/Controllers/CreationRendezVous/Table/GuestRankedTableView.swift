@@ -10,6 +10,7 @@ import UIKit
 
 class GuestRankedTableView: UITableView {
     var currentControleur:CreateGroupViewController?
+    fileprivate var indiceSuscribedView = 0
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -45,6 +46,13 @@ extension GuestRankedTableView:WebServiceLinkable
         print(" il y a \(ListeMatchingUtilisateurs.sharedInstance!.liste.count) personne(s) qui matche(nt)")
         self.reloadData()
     }
-    
+    var indice: Int {
+        get {
+            return indiceSuscribedView
+        }
+        set {
+            indiceSuscribedView = newValue
+        }
+    }
     
 }

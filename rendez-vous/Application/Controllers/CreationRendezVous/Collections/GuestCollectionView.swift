@@ -10,7 +10,7 @@ import UIKit
 
 class GuestCollectionView: UICollectionView {
     var currentControleur: CreateGroupViewController?
-
+    fileprivate var indiceSuscribedView = 0
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -44,5 +44,13 @@ extension GuestCollectionView:WebServiceLinkable
     func refresh() {
         print("GuestCollectionView:refresh")
         self.reloadData()
+    }
+    var indice: Int {
+        get {
+            return indiceSuscribedView
+        }
+        set {
+            indiceSuscribedView = newValue
+        }
     }
 }

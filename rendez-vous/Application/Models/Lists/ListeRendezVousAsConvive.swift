@@ -138,7 +138,7 @@ extension ListeRendezVousAsConvive:WebServiceListable
         params["NUMRAMONUSER"] = "\(RendezVousApplication.getRamonUserId())"
         params["TIMESTAMP"] = timestamp
         params[ "SIGNATURE"] =  MD5("\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)onmangeensembleb20")
-        print("chargement des rendez vous créés par l'utilisateur")
+        print("chargement des rendez vous auquel l'utilisateur est invité")
         print("signature=\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)onmangeensembleb20")
         print(RendezVousWebService.sharedInstance.webServiceCalling(params, completion))
         
@@ -219,5 +219,21 @@ extension ListeRendezVousAsConvive:WebServiceSubscribable
         {
             vue.refresh()
         }
+    }
+    static func unsuscribe(vue:WebServiceLinkable)
+    {
+        print("ListeRendezVousAsConvive:unsubscribe")
+        print("Il y a \(self.suscribedViews.count) vue(s abonnée(s) à ListeRendezVousAsConvive")
+        //listeVuesUI.index(of: vue).map { listeVuesUI.remove(at: $0) }
+        print("indice de la vue:\(vue.indice)")
+        self.suscribedViews.remove(at: vue.indice)
+        var i = 0
+        for var item in self.suscribedViews
+        {
+            item.indice = i
+            i += 1
+        }
+        
+        print("Il y a \(self.suscribedViews.count) vue(s abonnée(s) à ListeRendezVousAsConvive")
     }
 }

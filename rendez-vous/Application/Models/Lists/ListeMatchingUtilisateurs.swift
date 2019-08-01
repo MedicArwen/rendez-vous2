@@ -17,10 +17,12 @@ class ListeMatchingUtilisateurs
     
     init(json:JSON)
     {
+       
         print("ListeMatchingUtilisateurs:init")
         for jUtilisateur in json {
-            self.liste.append(RankedUtilisateur(json:jUtilisateur.1))
+           liste.append(RankedUtilisateur(json:jUtilisateur.1))
         }
+        self.liste = self.getPurgedList()
     }
     // cette méthode permet de construire l'appel du web service en lui-même ainsi que la requête http qui est envoyée.
     private static func createListRequest(_ completion: @escaping ServiceResponse) {
@@ -56,7 +58,36 @@ class ListeMatchingUtilisateurs
         print("-> indice trouvé: \(indice) (-1 = rien trouvé)")
         return indice
     }
-
+ func getPurgedList()-> [RankedUtilisateur]
+ {
+    var liste = [RankedUtilisateur]()
+    for rankedUtilisateur in self.liste
+        {
+            let utilisateur = rankedUtilisateur as Utilisateur
+            if !isHote(utilisateur: utilisateur) && !inInvitationList(utilisateur: utilisateur)
+            {
+                liste.append(rankedUtilisateur)
+            }
+        }
+    return liste
+    }
+    
+    func isHote(utilisateur:Utilisateur)->Bool
+    {
+        return utilisateur == RendezVous.sharedInstance!.hote
+    }
+    func inInvitationList(utilisateur:Utilisateur)->Bool
+    {
+        var found = false
+        for item in RendezVous.sharedInstance!.invitationList
+        {
+            if item.utilisateur == utilisateur
+            {
+                found = true
+            }
+        }
+        return found
+    }
 }
 extension ListeMatchingUtilisateurs: WebServiceListable
 {
@@ -154,5 +185,21 @@ extension ListeMatchingUtilisateurs:WebServiceSubscribable
         {
             vue.refresh()
         }
+    }
+    static func unsuscribe(vue:WebServiceLinkable)
+    {
+        print("ListeMatchingUtilisateurs:unsubscribe")
+        print("Il y a \(self.suscribedViews.count) vue(s abonnée(s) à ListeMatchingUtilisateurs")
+        //listeVuesUI.index(of: vue).map { listeVuesUI.remove(at: $0) }
+        print("indice de la vue:\(vue.indice)")
+        self.suscribedViews.remove(at: vue.indice)
+        var i = 0
+        for var item in self.suscribedViews
+        {
+            item.indice = i
+            i += 1
+        }
+        
+        print("Il y a \(self.suscribedViews.count) vue(s abonnée(s) à ListeMatchingUtilisateurs")
     }
 }

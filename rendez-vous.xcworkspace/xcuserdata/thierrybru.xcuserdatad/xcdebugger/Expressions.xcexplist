@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "AgendaViewController.prepare(for:sender:):AgendaViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MyRendezVousTableViewCell.onClickInvite(_:):MyRendezVousTableViewCell.swift">
+      </ContextState>
+      <ContextState
+         contextName = "static RendezVous.subscribe(vue:):RendezVous.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentvue.accessibilityIdentifier">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "RendezVousView.onClickCreateGroupe(_:):RendezVousView.swift">
+      </ContextState>
+      <ContextState
+         contextName = "static WebServiceSubscribable.reloadViews():WebServiceSubscribable.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MyRendezVousTableViewCell.update(rendezvous:controleur:):MyRendezVousTableViewCell.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

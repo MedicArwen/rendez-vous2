@@ -10,7 +10,7 @@ import UIKit
 
 class ConvivesCollectionView: UICollectionView {
     var currentControleur: CreateGroupViewController?
-    
+    private var indiceSuscribedView = 0
     /*
      // Only override draw() if you perform custom drawing.
      // An empty implementation adversely affects performance during animation.
@@ -40,8 +40,17 @@ class ConvivesCollectionView: UICollectionView {
     }
     extension ConvivesCollectionView:WebServiceLinkable
     {
+       
         func refresh() {
             print("ConvivesCollectionView:refresh")
             reloadData()
+        }
+        var indice: Int {
+            get {
+                return indiceSuscribedView
+            }
+            set {
+                indiceSuscribedView = newValue
+            }
         }
 }

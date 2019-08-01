@@ -61,8 +61,16 @@ class MapRestaurantViewController: RamonViewController {
         print("MapRestaurantViewController:viewWillAppear")
         setViewMapMode(switchViewMode)
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        print("MapRestaurantViewController:viewWillDisappear")
+        print(self)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        print("MapRestaurantViewController:viewDidDisappear")
+        print(self)
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("MapRestaurantViewController:prepare (\(segue.identifier))")
+        print("MapRestaurantViewController:prepare (\(String(describing: segue.identifier)))")
         if segue.identifier == "showAboutRestaurant"
         {
             let dest = segue.destination as! AboutRestaurantViewController

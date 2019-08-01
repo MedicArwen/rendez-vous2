@@ -57,7 +57,44 @@ class Utilisateur {
         print("pseudo :\(self.latitude)")
         print("longitude :\(self.longitude)")
     }
-
+    func setImage(url:String)
+    {
+        self.urlImage = url
+    }
+    func setPseudo(pseudo:String)
+    {
+        self.pseudo = pseudo
+    }
+    func setCatchPhrase(catchPhrase:String)
+    {
+        self.catchPhrase = catchPhrase
+    }
+    func setDescription(description:String)
+    {
+        self.description = description
+    }
+    static func saveUserConnected(utilisateur:Utilisateur)
+    {
+    UserDefaults.standard.set(utilisateur, forKey: "utilisateur")
+    }
+    static func connectUtilisateurDefault()->Utilisateur?
+    {
+        print("\(String(describing: UserDefaults.standard.string(forKey: "utilisateur")))")
+        if let json = UserDefaults.standard.string(forKey: "utilisateur")
+        {
+            return Utilisateur(json: JSON(parseJSON: json))
+        }
+        return nil
+    }
+    
+    
+}
+extension Utilisateur:Equatable
+{
+    static func == (lhs: Utilisateur, rhs: Utilisateur) -> Bool {
+        return lhs.idUtilisateur == rhs.idUtilisateur
+    }
+    
     
 }
 
