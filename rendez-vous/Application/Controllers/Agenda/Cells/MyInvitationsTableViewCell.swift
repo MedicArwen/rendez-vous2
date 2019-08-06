@@ -45,7 +45,7 @@ class MyInvitationsTableViewCell: UITableViewCell {
         self.collectionGuestsCollectionView.delegate = self
         self.collectionGuestsCollectionView.dataSource = self
         self.collectionGuestsCollectionView.reloadData()
-        if rendezvous.getInvitationOfOneUser(utilisateur: RendezVousApplication.sharedInstance.connectedUtilisateur!)!.numStatusInvitation == 2
+        if rendezvous.getInvitationOfOneUser(utilisateur: Utilisateur.sharedInstance!)!.numStatusInvitation == 2
         {
             print("MyInvitationsTableViewCell:update - le rendez-vous a le statut 2")
             self.buttonAccept.isHidden = true
@@ -56,16 +56,16 @@ class MyInvitationsTableViewCell: UITableViewCell {
     
     @IBAction func onClickCancel(_ sender: RoundButtonUIButton) {
         print("MyInvitationsTableViewCell:onClickCancel ")
-        ListeRendezVousAsConvive.reject(controleur: currentControleur!, rendezVous: rendezVous!)
+        ListeInvitationsAsConvive.sharedInstance!.reject(controleur: currentControleur!, rendezVous: rendezVous!)
     }
     
     @IBAction func onClickReject(_ sender: RoundButtonUIButton) {
         print("MyInvitationsTableViewCell:onClickReject ")
-        ListeRendezVousAsConvive.reject(controleur: currentControleur!, rendezVous: rendezVous!)
+        ListeInvitationsAsConvive.sharedInstance!.reject(controleur: currentControleur!, rendezVous: rendezVous!)
     }
     @IBAction func onClickAccept(_ sender: RoundButtonUIButton) {
         print("MyInvitationsTableViewCell:onClickAccept ")
-        ListeRendezVousAsConvive.accept(controleur: currentControleur!,rendezVous: rendezVous!)
+        ListeInvitationsAsConvive.sharedInstance!.accept(controleur: currentControleur!,rendezVous: rendezVous!)
         buttonAccept.isHidden = true
         buttonReject.isHidden = true
         buttonCancel.isHidden = false

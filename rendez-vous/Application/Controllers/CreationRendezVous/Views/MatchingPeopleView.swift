@@ -35,7 +35,42 @@ class MatchingPeopleView: UIView
     self.GuestRankedTable.dataSource = self.GuestRankedTable
     
     ListeMatchingUtilisateurs.subscribe(vue: self.GuestRankedTable)
-    ListeMatchingUtilisateurs.load(controleur: controleur)
+    //ListeMatchingUtilisateurs.load(controleur: controleur)
+    Utilisateur.load(datasource: self, latitude: LocationManager.SharedInstance.location!.coordinate.latitude, longitude: LocationManager.SharedInstance.location!.coordinate.longitude, range: 10)
     }
+    
+}
+extension MatchingPeopleView:UtilisateurDataSource
+{
+    func utilisateurOnLoaded(utilisateur: Utilisateur) {
+        print("MatchingPeopleView:UtilisateurDataSource:utilisateurOnLoaded NON IMPLEMENTED")
+    }
+    
+    func utilisateurOnLoaded(matchs: ListeMatchingUtilisateurs) {
+        print("MatchingPeopleView:UtilisateurDataSource:utilisateurOnLoaded")
+        ListeMatchingUtilisateurs.sharedInstance = matchs
+        ListeMatchingUtilisateurs.reloadViews()
+    }
+    
+    func utilisateurOnUpdated() {
+        print("MatchingPeopleView:UtilisateurDataSource:utilisateurOnLoaded NON IMPLEMENTED")
+    }
+    
+    func utilisateurOnDeleted() {
+        print("MatchingPeopleView:UtilisateurDataSource:utilisateurOnLoaded NON IMPLEMENTED")
+    }
+    
+    func utilisateurOnCreated() {
+        print("MatchingPeopleView:UtilisateurDataSource:utilisateurOnLoaded NON IMPLEMENTED")
+    }
+    
+    func utilisateurOnNotFoundUtilisateur() {
+        print("MatchingPeopleView:UtilisateurDataSource:utilisateurOnLoaded NON IMPLEMENTED")
+    }
+    
+    func utilisateurOnWebServiceError(code: Int) {
+        print("MatchingPeopleView:UtilisateurDataSource:utilisateurOnLoaded NON IMPLEMENTED")
+    }
+    
     
 }

@@ -21,9 +21,12 @@ class FicheMonLongProfilCentreInteretView: UIView {
     */
     func update(controleur:RamonViewController)
     {
+        print("FicheMonLongProfilCentreInteretView:update")
         centreInteretCollection.delegate = centreInteretCollection
         centreInteretCollection.dataSource = centreInteretCollection
-        ListeCentreInteretUtilisateur.load(controleur: controleur)
+       // ListeCentreInteretUtilisateur.load(controleur: controleur)
+        CentreInteretUtilisateur.load(datasource: self)
+        
         ListeCentreInteretUtilisateur.subscribe(vue: centreInteretCollection)
         centreInteretCollection.parentControleur = controleur
         self.parentControleur = controleur
@@ -55,4 +58,40 @@ print("longPressPhotoCollectionView!")
         }
         
     }
+}
+extension FicheMonLongProfilCentreInteretView:CentreInteretUtilisateurDataSource
+{
+    func centreInteretUtilisateurOnLoaded(centreInteret: CentreInteretUtilisateur) {
+        print("FicheMonLongProfilCentreInteretView:CentreInteretDataSource:centreInteretOnLoaded NOT IMPLEMENTED")
+       
+    }
+    
+    func centreInteretUtilisateurOnLoaded(centresInterets: ListeCentreInteretUtilisateur) {
+        print("FicheMonLongProfilCentreInteretView:CentreInteretDataSource:centreInteretOnLoaded")
+        ListeCentreInteretUtilisateur.sharedInstance = centresInterets
+        ListeCentreInteretUtilisateur.reloadViews()
+         print("centre d'interet chargés")
+    }
+    
+    func centreInteretUtilisateurOnUpdated() {
+        print("FicheMonLongProfilCentreInteretView:CentreInteretDataSource:centreInteretOnUpdated NOT IMPLEMENTED")
+    }
+    
+    func centreInteretUtilisateurOnDeleted() {
+        print("FicheMonLongProfilCentreInteretView:CentreInteretDataSource:centreInteretOnDeleted NOT IMPLEMENTED")
+    }
+    
+    func centreInteretUtilisateurOnCreated() {
+        print("FicheMonLongProfilCentreInteretView:CentreInteretDataSource:centreInteretOnCreated NOT IMPLEMENTED")
+    }
+    
+    func centreInteretUtilisateurOnNotFoundCentreInteret() {
+        print("FicheMonLongProfilCentreInteretView:CentreInteretDataSource:centreInteretOnNotFoundCentreInteret NOT IMPLEMENTED")
+    }
+    
+    func centreInteretUtilisateurOnWebServiceError(code: Int) {
+        print("FicheMonLongProfilCentreInteretView:CentreInteretDataSource:centreInteretOnWebServiceError NOT IMPLEMENTED")
+    }
+    
+    
 }

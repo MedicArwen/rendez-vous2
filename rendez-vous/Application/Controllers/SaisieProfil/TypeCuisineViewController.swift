@@ -35,7 +35,7 @@ class TypeCuisineViewController: RamonViewController {
                 }
                 else
                 {
-                    NewProfile.SharedInstance.typeCuisines = StyleCuisine.getTypeCuisineList(json:json["data"])
+                    NewProfile.SharedInstance.typeCuisines = StyleCuisineUtilisateur.getTypeCuisineList(json:json["data"])
                     // activer le bouton next!
                     print("\(NewProfile.SharedInstance.typeCuisines.count)")
                     self.table.reloadData()

@@ -23,7 +23,7 @@ class InvitesCollectionViewCell: UICollectionViewCell {
      */
     func update(invitation:Invitation,controleur: RamonViewController)
     {
-        print("InvitesCollectionViewCell: update (num rdv:\(invitation.numRendezVous), num invite:\(invitation.numInvite))")
+        print("InvitesCollectionViewCell: update (num rdv:\(invitation.getRendezVousID()), num invite:\(invitation.getInviteID()))")
         self.currentControleur = controleur
         self.invitation = invitation
         self.pseudoLabel.text = invitation.utilisateur.pseudo

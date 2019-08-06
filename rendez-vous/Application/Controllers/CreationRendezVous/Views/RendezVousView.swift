@@ -28,7 +28,7 @@ class RendezVousView: UIView{
     
     private var parentControleur : RamonViewController?
     fileprivate var indiceSuscribedView = 0
- 
+    
     func update(restaurant:Restaurant, controleur:RamonViewController)
     {
         print("RendezVousView:update (\(restaurant.raisonSociale))")
@@ -48,8 +48,10 @@ class RendezVousView: UIView{
     
     @IBAction func onClickCreateGroupe(_ sender: UIButton) {
         print("RendezVousView:onClickCreateGroupe")
-   //     let controleur = self.parentControleur as! CreateGroupViewController
-        RendezVous.create(controleur: self.parentControleur!, rendezVous: RendezVous(idRendezVous: 0, numUtilisateurSource: RendezVousApplication.getUtilisateurId(), date: "\(datePicker.date)", numStatusRendezVous: 1, numRestaurant: Restaurant.sharedInstance!.idRestaurant,hote:RendezVousApplication.sharedInstance.connectedUtilisateur!,restau: Restaurant.sharedInstance!))
+       // RendezVous.sharedInstance = RendezVous(idRendezVous: 0, numUtilisateurSource: Utilisateur.sharedInstance!.idUtilisateur, date: "\(datePicker.date)", numStatusRendezVous: 1, numRestaurant: Restaurant.sharedInstance!.idRestaurant,hote:Utilisateur.sharedInstance!,restau: Restaurant.sharedInstance!)
+       // ListeRendezVousAsHote.append(rendezVous: RendezVous.sharedInstance!)
+        RendezVous.append(rendezVous: RendezVous(idRendezVous: 0, numUtilisateurSource: Utilisateur.sharedInstance!.idUtilisateur, date: "\(datePicker.date)", numStatusRendezVous: 1, numRestaurant: Restaurant.sharedInstance!.idRestaurant,hote:Utilisateur.sharedInstance!,restau: Restaurant.sharedInstance!))
+        
     }
 }
 extension  RendezVousView:WebServiceLinkable {
@@ -65,11 +67,11 @@ extension  RendezVousView:WebServiceLinkable {
             setRendezVous(rendezVous: RendezVous.sharedInstance!)
             let controleur = self.parentControleur as! CreateGroupViewController
             controleur.viewMatchingPeople.show(controleur: self.parentControleur!)
-            }
-            else
-            {
+        }
+        else
+        {
             print("-> no refresh")
-            }
+        }
     }
     var indice: Int {
         get {
@@ -79,4 +81,38 @@ extension  RendezVousView:WebServiceLinkable {
             indiceSuscribedView = newValue
         }
     }
+}
+extension RendezVousView:RendezVousDataSource
+{
+    func rendezVousOnLoaded(rendezVous: RendezVous) {
+        print("RendezVousView:RendezVousDataSource:rendezVousOnLoaded - NOT IMPLEMENTED")
+    }
+    func rendezVousOnLoaded(lesRendezVous:ListeRendezVous)
+    {
+        print("ListeRendezVousAsHote:RendezVousDataSource:rendezVousOnLoaded not implemented")
+    }
+    func rendezVousOnUpdated() {
+        print("RendezVousView:RendezVousDataSource:rendezVousOnUpdated - NOT IMPLEMENTED")
+    }
+    
+    func rendezVousOnDeleted() {
+        print("RendezVousView:RendezVousDataSource:rendezVousOnDeleted - NOT IMPLEMENTED")
+    }
+    
+    func rendezVousOnCancelled()
+    {
+          print("RendezVousView:RendezVousDataSource:rendezVousOnCancelled - NOT IMPLEMENTED")
+    }
+    func rendezVousOnCreated() {
+        print("RendezVousView:RendezVousDataSource:rendezVousOnCreated")
+    }
+    
+    func rendezVousOnNotFoundRendezVous() {
+        print("RendezVousView:RendezVousDataSource:rendezVousOnNotFoundRendezVous - NOT IMPLEMENTED")
+    }
+    
+    func rendezVousOnWebServiceError(code: Int) {
+        print("RendezVousView:RendezVousDataSource:rendezVousOnWebServiceError - NOT IMPLEMENTED")
+    }
+    
 }

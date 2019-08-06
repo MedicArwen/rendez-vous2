@@ -39,35 +39,14 @@ struct RendezVousWebService {
             }
         }
     }
-    /*
-     https://api.ramon-technologies.com/rendez-vous/webservice.php?CMD=CREATE&TIMESTAMP=55555&NUMRAMONUSER=28&APIKEY=be085aea-9c0e-11e9-b4d8-fa163e526b5b&SIGNATURE=2EA4CD68F6BE3DDB58DF27E303DFB3A6&ENTITY=Utilisateur&catchPhrase=catchphrase&dateNaissance=1977-10-24&description=description&latitude=3.14&longitude=3.14&urlPhoto=url&numGenre=2&pseudonyme=Pseudo
-     
-     signature : CREDENTIALS1561618457thierry-bru@laposte.net1pwdonmangeensembleb20
-     md5 : 9111015bfccda837ccba445bc8dc69df
-     
-     */
-    
-    func listeCentreInteret(_ completion: @escaping ServiceResponse) {
-        let timestamp = String(NSDate().timeIntervalSince1970)
-        var params = [String:String]()
-        params["APIKEY"] = RendezVousApplication.getApiKey()
-        params["CMD"] = "LIST"
-        params["ENTITY"] = "CentreInteret"
-        params["NUMRAMONUSER"] = "\(RendezVousApplication.getRamonUserId())"
-        params["TIMESTAMP"] = timestamp
-        params[ "SIGNATURE"] =  MD5("\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)onmangeensembleb20")
-        print("chargement des centres d'interet")
-        print("signature=\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)onmangeensembleb20")
-        print(webServiceCalling(params, completion))
-        
-    }
+   
     func listeTypeCuisine(_ completion: @escaping ServiceResponse) {
         let timestamp = String(NSDate().timeIntervalSince1970)
         var params = [String:String]()
-        params["APIKEY"] = RendezVousApplication.getApiKey()
+        params["APIKEY"] = ConnectedRamonUser.sharedInstance!.apiKey
         params["CMD"] = "LIST"
         params["ENTITY"] = "TypeCuisine"
-        params["NUMRAMONUSER"] = "\(RendezVousApplication.getRamonUserId())"
+        params["NUMRAMONUSER"] = "\(ConnectedRamonUser.sharedInstance!.ramonUser.idRamonUser)"
         params["TIMESTAMP"] = timestamp
         params[ "SIGNATURE"] =  MD5("\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)onmangeensembleb20")
         print("chargement des types de cuisine")
@@ -78,10 +57,10 @@ struct RendezVousWebService {
     func registerCentreInteret(_ completion: @escaping ServiceResponse) {
         let timestamp = String(NSDate().timeIntervalSince1970)
         var params = [String:String]()
-        params["APIKEY"] = RendezVousApplication.getApiKey()
+        params["APIKEY"] = ConnectedRamonUser.sharedInstance!.apiKey
         params["CMD"] = "CREATE"
         params["ENTITY"] = "Utilisateur_CentreInteret"
-        params["NUMRAMONUSER"] = "\(RendezVousApplication.getRamonUserId())"
+        params["NUMRAMONUSER"] = "\(ConnectedRamonUser.sharedInstance!.ramonUser.idRamonUser)"
         params["TIMESTAMP"] = timestamp
         var listeInteret = [Int] ()
         for centreInteret in NewProfile.SharedInstance.centresInterets {
@@ -98,10 +77,10 @@ struct RendezVousWebService {
     func registerTypeCuisine(_ completion: @escaping ServiceResponse) {
         let timestamp = String(NSDate().timeIntervalSince1970)
         var params = [String:String]()
-        params["APIKEY"] = RendezVousApplication.getApiKey()
+        params["APIKEY"] = ConnectedRamonUser.sharedInstance!.apiKey
         params["CMD"] = "CREATE"
         params["ENTITY"] = "Utilisateur_TypeCuisine"
-        params["NUMRAMONUSER"] = "\(RendezVousApplication.getRamonUserId())"
+        params["NUMRAMONUSER"] = "\(ConnectedRamonUser.sharedInstance!.ramonUser.idRamonUser)"
         params["TIMESTAMP"] = timestamp
         var listeCuisine = [Int] ()
         for typeCuisine in NewProfile.SharedInstance.typeCuisines {
@@ -115,9 +94,6 @@ struct RendezVousWebService {
         print(webServiceCalling(params, completion))
         
     }
-    
-
-    
     
     static func generateMessageAlert(returnCode: Int)-> String {
         let message: String
@@ -157,6 +133,5 @@ struct RendezVousWebService {
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler:nil))
         vc.present(alert, animated: true, completion: nil)
     }
-  
   
 }

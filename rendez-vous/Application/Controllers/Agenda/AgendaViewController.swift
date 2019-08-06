@@ -31,15 +31,16 @@ class AgendaViewController: RamonViewController {
         self.tableRendezVousHosted.currentControleur = self
         self.tableRendezVousHosted.delegate = self.tableRendezVousHosted
         self.tableRendezVousHosted.dataSource = self.tableRendezVousHosted
-        ListeRendezVousAsHote.subscribe(vue: self.tableRendezVousHosted)
-        ListeRendezVousAsHote.load(controleur: self)
+        ListeRendezVous.subscribe(vue: self.tableRendezVousHosted)
+        //ListeRendezVousAsHote.load(controleur: self)
+        RendezVous.load(datasource: self)
         //Configuration de la table des invitations recues.
         self.tableInvitationsReceived.currentControleur = self
         self.tableInvitationsReceived.delegate = self.tableInvitationsReceived
         self.tableInvitationsReceived.dataSource = self.tableInvitationsReceived
-        ListeRendezVousAsConvive.subscribe(vue: self.tableInvitationsReceived)
-        ListeRendezVousAsConvive.load(controleur: self)
-        
+        ListeInvitationsAsConvive.subscribe(vue: self.tableInvitationsReceived)
+       // ListeRendezVousAsConvive.load(controleur: self)
+        Invitation.load(datasource: self)
         // Do any additional setup after loading the view.
         
     }
@@ -62,14 +63,16 @@ class AgendaViewController: RamonViewController {
             print("-> Afficher les invitations envoyées")
             tableRendezVousHosted.isHidden = false
             tableInvitationsReceived.isHidden = true
-            ListeRendezVousAsHote.load(controleur: self)
+            //ListeRendezVousAsHote.load(controleur: self)
+            RendezVous.load(datasource: self)
         }
         else
         {
             print("-> Afficher les invitations recue")
             tableRendezVousHosted.isHidden = true
             tableInvitationsReceived.isHidden = false
-            ListeRendezVousAsConvive.load(controleur: self)
+           // ListeRendezVousAsConvive.load(controleur: self)
+            Invitation.load(datasource: self)
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -93,4 +96,87 @@ class AgendaViewController: RamonViewController {
         print("MapRestaurantViewController:viewDidDisappear")
         print(self)
     }
+}
+extension AgendaViewController:RendezVousDataSource
+{
+    func rendezVousOnLoaded(rendezVous: RendezVous) {
+        print("AgendaViewController:RendezVousDataSource:rendezVousOnLoaded - NOT IMPLEMENTED")
+    }
+    
+    func rendezVousOnLoaded(lesRendezVous: ListeRendezVous) {
+        print("AgendaViewController:RendezVousDataSource:rendezVousOnLoaded(LIST")
+        ListeRendezVous.sharedInstance = lesRendezVous
+        ListeRendezVous.reloadViews()
+    }
+    
+    func rendezVousOnUpdated() {
+        print("AgendaViewController:RendezVousDataSource:rendezVousOnUpdated - NOT IMPLEMENTED")
+    }
+    
+    func rendezVousOnDeleted() {
+        print("AgendaViewController:RendezVousDataSource:rendezVousOnDeleted - NOT IMPLEMENTED")
+    }
+    
+    func rendezVousOnCancelled() {
+        print("AgendaViewController:RendezVousDataSource:rendezVousOnCancelled - NOT IMPLEMENTED")
+    }
+    
+    func rendezVousOnCreated() {
+        print("AgendaViewController:RendezVousDataSource:AgendaViewController - NOT IMPLEMENTED")
+    }
+    
+    func rendezVousOnNotFoundRendezVous() {
+        print("AgendaViewController:RendezVousDataSource:rendezVousOnLoaded")
+    }
+    
+    func rendezVousOnWebServiceError(code: Int) {
+        print("AgendaViewController:RendezVousDataSource:rendezVousOnLoaded")
+    }
+    
+    
+}
+extension AgendaViewController:InvitationDataSource
+{
+    func invitationOnLoaded(invitation: Invitation) {
+        print("AgendaViewController:InvitationDataSource::invitationOnLoaded")
+        ListeInvitationsAsConvive.reloadViews()
+    }
+    func invitationOnLoaded(invitations: ListeInvitationsAsConvive) {
+        print("GuestRankedTableViewCell:InvitationDataSource:invitationOnLoaded(LIST) ")
+        ListeInvitationsAsConvive.sharedInstance = invitations
+        ListeInvitationsAsConvive.reloadViews()
+    }
+    func invitationOnUpdated() {
+        print("AgendaViewController:InvitationDataSource:invitationOnUpdated - NOT IMPLEMENTED")
+    }
+    
+    func invitationOnDeleted() {
+        print("AgendaViewController:InvitationDataSource:invitationOnDeleted - NOT IMPLEMENTED")
+    }
+    
+    func invitationOnCancelled() {
+        print("AgendaViewController:InvitationDataSource:invitationOnCancelled - NOT IMPLEMENTED")
+    }
+    
+    func invitationOnRejected() {
+        print("AgendaViewController:InvitationDataSource:invitationOnRejected - NOT IMPLEMENTED")
+    }
+    
+    func invitationOnAccepted() {
+        print("AgendaViewController:InvitationDataSource:invitationOnAccepted - NOT IMPLEMENTED")
+    }
+    
+    func invitationOnCreated() {
+        print("AgendaViewController:InvitationDataSource:invitationOnCreated - NOT IMPLEMENTED")
+    }
+    
+    func invitationOnNotFoundInvitation() {
+        print("AgendaViewController:InvitationDataSource:invitationOnNotFoundInvitation - NOT IMPLEMENTED")
+    }
+    
+    func invitationOnWebServiceError(code: Int) {
+        print("AgendaViewController:InvitationDataSource:invitationOnWebServiceError - NOT IMPLEMENTED")
+    }
+    
+    
 }

@@ -8,10 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		3AC1741FCAE3F998CE20A614 /* Pods_rendez_vous.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 426EB8E78F78CF26D1D69728 /* Pods_rendez_vous.framework */; };
+		7F153E5822F2E67D00819C94 /* FicheUtilisateurViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F153E5722F2E67D00819C94 /* FicheUtilisateurViewController.swift */; };
+		7F153E5E22F2FA7600819C94 /* WebServiceParametre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F153E5D22F2FA7600819C94 /* WebServiceParametre.swift */; };
+		7F153E6222F3004800819C94 /* WebServiceUtilisateur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F153E6122F3004800819C94 /* WebServiceUtilisateur.swift */; };
+		7F153E6422F30A4400819C94 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F153E6322F30A4400819C94 /* WebService.swift */; };
+		7F153E6622F31A3200819C94 /* UtilisateurDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F153E6522F31A3200819C94 /* UtilisateurDataSource.swift */; };
+		7F153E6822F321F200819C94 /* WebServiceRamonUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F153E6722F321F200819C94 /* WebServiceRamonUser.swift */; };
+		7F153E6A22F3222A00819C94 /* EnumCommandWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F153E6922F3222A00819C94 /* EnumCommandWebService.swift */; };
+		7F153E6C22F3227100819C94 /* EnumEntityWebServiceTargeted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F153E6B22F3227100819C94 /* EnumEntityWebServiceTargeted.swift */; };
+		7F153E6E22F3235400819C94 /* RamonUserDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F153E6D22F3235400819C94 /* RamonUserDataSource.swift */; };
 		7F1EB69D22EAE0D20068EF48 /* RestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1EB69C22EAE0D20068EF48 /* RestaurantView.swift */; };
 		7F1EB69F22EAE77B0068EF48 /* RendezVousView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1EB69E22EAE77B0068EF48 /* RendezVousView.swift */; };
 		7F1EB6A122EAE7EE0068EF48 /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1EB6A022EAE7EE0068EF48 /* TopBarView.swift */; };
-		7F1EB6A322EAF1950068EF48 /* WebServiceNotifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1EB6A222EAF1950068EF48 /* WebServiceNotifiable.swift */; };
 		7F2A4F5822F2DA6200DAE601 /* MesFavorisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2A4F5722F2DA6200DAE601 /* MesFavorisViewController.swift */; };
 		7F2A4F5B22F2DDE600DAE601 /* MesMatchsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2A4F5A22F2DDE600DAE601 /* MesMatchsViewController.swift */; };
 		7F2A4F5E22F2DE0800DAE601 /* HistoriettesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2A4F5D22F2DE0800DAE601 /* HistoriettesViewController.swift */; };
@@ -19,7 +27,7 @@
 		7F35828622F088F8009CF192 /* FicheMonShortProfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F35828522F088F8009CF192 /* FicheMonShortProfilView.swift */; };
 		7F36AD1C22D875FF00F91E19 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F36AD1B22D875FF00F91E19 /* LocationManager.swift */; };
 		7F55FF1A22D474EB004C0683 /* NewProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55FF1922D474EB004C0683 /* NewProfile.swift */; };
-		7F55FF1C22D4B5CF004C0683 /* CentreInteret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55FF1B22D4B5CF004C0683 /* CentreInteret.swift */; };
+		7F55FF1C22D4B5CF004C0683 /* CentreInteretUtilisateur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55FF1B22D4B5CF004C0683 /* CentreInteretUtilisateur.swift */; };
 		7F55FF1E22D4B755004C0683 /* CentreInteretTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55FF1D22D4B755004C0683 /* CentreInteretTableViewCell.swift */; };
 		7F55FF2022D4BCBD004C0683 /* InteretsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F55FF1F22D4BCBD004C0683 /* InteretsViewController.swift */; };
 		7F59936F22C51090005658DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F59936E22C51090005658DD /* AppDelegate.swift */; };
@@ -29,7 +37,7 @@
 		7F59937C22C51092005658DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F59937A22C51092005658DD /* LaunchScreen.storyboard */; };
 		7F677EAF22EB386F00018A8D /* MatchingPeopleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F677EAE22EB386F00018A8D /* MatchingPeopleView.swift */; };
 		7F814B7C22D5D0EC00425325 /* StyleCuisineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F814B7B22D5D0EC00425325 /* StyleCuisineTableViewCell.swift */; };
-		7F814B7E22D5D19900425325 /* StyleCuisine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F814B7D22D5D19900425325 /* StyleCuisine.swift */; };
+		7F814B7E22D5D19900425325 /* StyleCuisineUtilisateur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F814B7D22D5D19900425325 /* StyleCuisineUtilisateur.swift */; };
 		7F814B8022D5D27800425325 /* TypeCuisineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F814B7F22D5D27800425325 /* TypeCuisineViewController.swift */; };
 		7F814B8422D5E7B200425325 /* DescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F814B8322D5E7B200425325 /* DescriptionViewController.swift */; };
 		7F814B8622D5E7C700425325 /* CatchPhraseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F814B8522D5E7C700425325 /* CatchPhraseViewController.swift */; };
@@ -52,10 +60,38 @@
 		7FA7DC4D22C5FAA000E74F6B /* RamonUserUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA7DC4C22C5FAA000E74F6B /* RamonUserUITextField.swift */; };
 		7FA7DC4F22C5FB8600E74F6B /* NewAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA7DC4E22C5FB8600E74F6B /* NewAccount.swift */; };
 		7FA7DC5122C5FCC800E74F6B /* RamonUserUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA7DC5022C5FCC800E74F6B /* RamonUserUIButton.swift */; };
+		7FA931D222F4400300078529 /* UtilisateurCrudable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA931D122F4400300078529 /* UtilisateurCrudable.swift */; };
+		7FA931D422F4419500078529 /* RamonUserCrudable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA931D322F4419500078529 /* RamonUserCrudable.swift */; };
+		7FA931D922F447C100078529 /* RendezVousDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA931D822F447C100078529 /* RendezVousDataSource.swift */; };
+		7FA931DB22F447D300078529 /* RendezVousCrudable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA931DA22F447D300078529 /* RendezVousCrudable.swift */; };
+		7FA931DD22F448D700078529 /* WebServiceRendezVous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA931DC22F448D700078529 /* WebServiceRendezVous.swift */; };
+		7FA931DF22F484CD00078529 /* WebServiceInvitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA931DE22F484CD00078529 /* WebServiceInvitation.swift */; };
+		7FA931E122F484E900078529 /* InvitationDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA931E022F484E900078529 /* InvitationDataSource.swift */; };
+		7FA931E322F484F600078529 /* InvitationCrudable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA931E222F484F600078529 /* InvitationCrudable.swift */; };
+		7FA931E622F8185B00078529 /* CentreInteretUtilisateurDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA931E522F8185B00078529 /* CentreInteretUtilisateurDataSource.swift */; };
+		7FA931E822F8186E00078529 /* CentreInteretUtilisateurCrudable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA931E722F8186E00078529 /* CentreInteretUtilisateurCrudable.swift */; };
+		7FA931EA22F819BA00078529 /* WebServiceCentreInteret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA931E922F819BA00078529 /* WebServiceCentreInteret.swift */; };
+		7FA931EC22F84D6D00078529 /* RestaurantListable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA931EB22F84D6D00078529 /* RestaurantListable.swift */; };
+		7FA931EE22F8500300078529 /* WebServiceRestaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA931ED22F8500300078529 /* WebServiceRestaurant.swift */; };
+		7FA931F022F8502600078529 /* RestaurantDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA931EF22F8502600078529 /* RestaurantDataSource.swift */; };
+		7FA931F222F854B500078529 /* UtilisateurListable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA931F122F854B500078529 /* UtilisateurListable.swift */; };
+		7FA931F422F85B4C00078529 /* RendezVousListable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA931F322F85B4C00078529 /* RendezVousListable.swift */; };
+		7FA931F622F8745F00078529 /* InvitationListable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA931F522F8745F00078529 /* InvitationListable.swift */; };
+		7FA931FA22F966B300078529 /* ListeCentreInterets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA931F922F966B300078529 /* ListeCentreInterets.swift */; };
+		7FA931FC22F9680D00078529 /* CentreInteretUtilisateurListable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA931FB22F9680D00078529 /* CentreInteretUtilisateurListable.swift */; };
+		7FA931FE22F96DF600078529 /* WebServiceCentreInteretUtilisateur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA931FD22F96DF600078529 /* WebServiceCentreInteretUtilisateur.swift */; };
+		7FA9320022F9788600078529 /* WebServiceTypeCuisine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA931FF22F9788600078529 /* WebServiceTypeCuisine.swift */; };
+		7FA9320222F978B500078529 /* TypeCuisineDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA9320122F978B500078529 /* TypeCuisineDataSource.swift */; };
+		7FA9320622F978E900078529 /* TypeCuisineListable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA9320522F978E900078529 /* TypeCuisineListable.swift */; };
+		7FA9320822F9795400078529 /* ListeTypeCuisine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA9320722F9795400078529 /* ListeTypeCuisine.swift */; };
+		7FA9320A22F97B3200078529 /* TypeCuisine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA9320922F97B3200078529 /* TypeCuisine.swift */; };
+		7FA9320C22F97EBE00078529 /* CentreInteret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA9320B22F97EBE00078529 /* CentreInteret.swift */; };
+		7FA9321522F9801B00078529 /* CentreInteretDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA9321422F9801B00078529 /* CentreInteretDataSource.swift */; };
+		7FA9321722F9802D00078529 /* CentreInteretListable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA9321622F9802D00078529 /* CentreInteretListable.swift */; };
+		7FA9321922F9835F00078529 /* EnumAuthCommandWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA9321822F9835F00078529 /* EnumAuthCommandWS.swift */; };
 		7FB2E30B22E59DC600E13ABF /* RendezVous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E30A22E59DC600E13ABF /* RendezVous.swift */; };
 		7FB2E30D22E5BB5100E13ABF /* Invitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E30C22E5BB5100E13ABF /* Invitation.swift */; };
 		7FB2E30F22E5CA4E00E13ABF /* GuestCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E30E22E5CA4E00E13ABF /* GuestCollectionView.swift */; };
-		7FB2E31122E5E09600E13ABF /* RendezVousApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E31022E5E09600E13ABF /* RendezVousApplication.swift */; };
 		7FB2E31422E5E85100E13ABF /* ConnectedRamonUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E31322E5E85100E13ABF /* ConnectedRamonUser.swift */; };
 		7FB2E31622E5FB9700E13ABF /* ListeRestaurants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E31522E5FB9700E13ABF /* ListeRestaurants.swift */; };
 		7FB2E31822E6054E00E13ABF /* ListeMatchingUtilisateurs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E31722E6054E00E13ABF /* ListeMatchingUtilisateurs.swift */; };
@@ -69,10 +105,9 @@
 		7FB2E33722E8ADB100E13ABF /* RestaurantCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E33622E8ADB100E13ABF /* RestaurantCollectionView.swift */; };
 		7FB2E33922E8ADF300E13ABF /* RestaurantTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E33822E8ADF300E13ABF /* RestaurantTableView.swift */; };
 		7FB2E33E22E8B1DF00E13ABF /* WebServiceSubscribable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E33D22E8B1DF00E13ABF /* WebServiceSubscribable.swift */; };
-		7FB2E34022E8B45100E13ABF /* WebServiceRefreshable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E33F22E8B45100E13ABF /* WebServiceRefreshable.swift */; };
-		7FB2E34222E98DFB00E13ABF /* ListeRendezVousAsHote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E34122E98DFB00E13ABF /* ListeRendezVousAsHote.swift */; };
+		7FB2E34222E98DFB00E13ABF /* ListeRendezVous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E34122E98DFB00E13ABF /* ListeRendezVous.swift */; };
 		7FB2E34422E98F7200E13ABF /* WebServiceListable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E34322E98F7200E13ABF /* WebServiceListable.swift */; };
-		7FB2E34E22E99F6B00E13ABF /* ListeRendezVousAsConvive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E34D22E99F6B00E13ABF /* ListeRendezVousAsConvive.swift */; };
+		7FB2E34E22E99F6B00E13ABF /* ListeInvitationsAsConvive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E34D22E99F6B00E13ABF /* ListeInvitationsAsConvive.swift */; };
 		7FB2E35122E9AA5600E13ABF /* MyInvitationsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E35022E9AA5600E13ABF /* MyInvitationsTableView.swift */; };
 		7FB2E35322E9AF5E00E13ABF /* MyInvitationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E35222E9AF5E00E13ABF /* MyInvitationsTableViewCell.swift */; };
 		7FB2E35622E9B10E00E13ABF /* ConvivesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E35522E9B10E00E13ABF /* ConvivesCollectionView.swift */; };
@@ -101,10 +136,18 @@
 		0C4EECA8B6882C6E13B0C001 /* Pods-rendez-vous.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rendez-vous.release.xcconfig"; path = "Target Support Files/Pods-rendez-vous/Pods-rendez-vous.release.xcconfig"; sourceTree = "<group>"; };
 		157AEFDABC67843ED556B363 /* Pods-rendez-vous.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rendez-vous.debug.xcconfig"; path = "Target Support Files/Pods-rendez-vous/Pods-rendez-vous.debug.xcconfig"; sourceTree = "<group>"; };
 		426EB8E78F78CF26D1D69728 /* Pods_rendez_vous.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rendez_vous.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F153E5722F2E67D00819C94 /* FicheUtilisateurViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FicheUtilisateurViewController.swift; sourceTree = "<group>"; };
+		7F153E5D22F2FA7600819C94 /* WebServiceParametre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceParametre.swift; sourceTree = "<group>"; };
+		7F153E6122F3004800819C94 /* WebServiceUtilisateur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceUtilisateur.swift; sourceTree = "<group>"; };
+		7F153E6322F30A4400819C94 /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		7F153E6522F31A3200819C94 /* UtilisateurDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilisateurDataSource.swift; sourceTree = "<group>"; };
+		7F153E6722F321F200819C94 /* WebServiceRamonUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceRamonUser.swift; sourceTree = "<group>"; };
+		7F153E6922F3222A00819C94 /* EnumCommandWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumCommandWebService.swift; sourceTree = "<group>"; };
+		7F153E6B22F3227100819C94 /* EnumEntityWebServiceTargeted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumEntityWebServiceTargeted.swift; sourceTree = "<group>"; };
+		7F153E6D22F3235400819C94 /* RamonUserDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamonUserDataSource.swift; sourceTree = "<group>"; };
 		7F1EB69C22EAE0D20068EF48 /* RestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantView.swift; sourceTree = "<group>"; };
 		7F1EB69E22EAE77B0068EF48 /* RendezVousView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RendezVousView.swift; sourceTree = "<group>"; };
 		7F1EB6A022EAE7EE0068EF48 /* TopBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
-		7F1EB6A222EAF1950068EF48 /* WebServiceNotifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceNotifiable.swift; sourceTree = "<group>"; };
 		7F2A4F5722F2DA6200DAE601 /* MesFavorisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesFavorisViewController.swift; sourceTree = "<group>"; };
 		7F2A4F5A22F2DDE600DAE601 /* MesMatchsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesMatchsViewController.swift; sourceTree = "<group>"; };
 		7F2A4F5D22F2DE0800DAE601 /* HistoriettesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoriettesViewController.swift; sourceTree = "<group>"; };
@@ -112,7 +155,7 @@
 		7F35828522F088F8009CF192 /* FicheMonShortProfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FicheMonShortProfilView.swift; sourceTree = "<group>"; };
 		7F36AD1B22D875FF00F91E19 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		7F55FF1922D474EB004C0683 /* NewProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewProfile.swift; sourceTree = "<group>"; };
-		7F55FF1B22D4B5CF004C0683 /* CentreInteret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreInteret.swift; sourceTree = "<group>"; };
+		7F55FF1B22D4B5CF004C0683 /* CentreInteretUtilisateur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreInteretUtilisateur.swift; sourceTree = "<group>"; };
 		7F55FF1D22D4B755004C0683 /* CentreInteretTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreInteretTableViewCell.swift; sourceTree = "<group>"; };
 		7F55FF1F22D4BCBD004C0683 /* InteretsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteretsViewController.swift; sourceTree = "<group>"; };
 		7F59936B22C51090005658DD /* rendez-vous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rendez-vous.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,7 +167,7 @@
 		7F59937D22C51092005658DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F677EAE22EB386F00018A8D /* MatchingPeopleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingPeopleView.swift; sourceTree = "<group>"; };
 		7F814B7B22D5D0EC00425325 /* StyleCuisineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleCuisineTableViewCell.swift; sourceTree = "<group>"; };
-		7F814B7D22D5D19900425325 /* StyleCuisine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleCuisine.swift; sourceTree = "<group>"; };
+		7F814B7D22D5D19900425325 /* StyleCuisineUtilisateur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleCuisineUtilisateur.swift; sourceTree = "<group>"; };
 		7F814B7F22D5D27800425325 /* TypeCuisineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeCuisineViewController.swift; sourceTree = "<group>"; };
 		7F814B8322D5E7B200425325 /* DescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionViewController.swift; sourceTree = "<group>"; };
 		7F814B8522D5E7C700425325 /* CatchPhraseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchPhraseViewController.swift; sourceTree = "<group>"; };
@@ -147,10 +190,38 @@
 		7FA7DC4C22C5FAA000E74F6B /* RamonUserUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamonUserUITextField.swift; sourceTree = "<group>"; };
 		7FA7DC4E22C5FB8600E74F6B /* NewAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAccount.swift; sourceTree = "<group>"; };
 		7FA7DC5022C5FCC800E74F6B /* RamonUserUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamonUserUIButton.swift; sourceTree = "<group>"; };
+		7FA931D122F4400300078529 /* UtilisateurCrudable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilisateurCrudable.swift; sourceTree = "<group>"; };
+		7FA931D322F4419500078529 /* RamonUserCrudable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamonUserCrudable.swift; sourceTree = "<group>"; };
+		7FA931D822F447C100078529 /* RendezVousDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RendezVousDataSource.swift; sourceTree = "<group>"; };
+		7FA931DA22F447D300078529 /* RendezVousCrudable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RendezVousCrudable.swift; sourceTree = "<group>"; };
+		7FA931DC22F448D700078529 /* WebServiceRendezVous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceRendezVous.swift; sourceTree = "<group>"; };
+		7FA931DE22F484CD00078529 /* WebServiceInvitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceInvitation.swift; sourceTree = "<group>"; };
+		7FA931E022F484E900078529 /* InvitationDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationDataSource.swift; sourceTree = "<group>"; };
+		7FA931E222F484F600078529 /* InvitationCrudable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationCrudable.swift; sourceTree = "<group>"; };
+		7FA931E522F8185B00078529 /* CentreInteretUtilisateurDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreInteretUtilisateurDataSource.swift; sourceTree = "<group>"; };
+		7FA931E722F8186E00078529 /* CentreInteretUtilisateurCrudable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreInteretUtilisateurCrudable.swift; sourceTree = "<group>"; };
+		7FA931E922F819BA00078529 /* WebServiceCentreInteret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceCentreInteret.swift; sourceTree = "<group>"; };
+		7FA931EB22F84D6D00078529 /* RestaurantListable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantListable.swift; sourceTree = "<group>"; };
+		7FA931ED22F8500300078529 /* WebServiceRestaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceRestaurant.swift; sourceTree = "<group>"; };
+		7FA931EF22F8502600078529 /* RestaurantDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDataSource.swift; sourceTree = "<group>"; };
+		7FA931F122F854B500078529 /* UtilisateurListable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilisateurListable.swift; sourceTree = "<group>"; };
+		7FA931F322F85B4C00078529 /* RendezVousListable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RendezVousListable.swift; sourceTree = "<group>"; };
+		7FA931F522F8745F00078529 /* InvitationListable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvitationListable.swift; sourceTree = "<group>"; };
+		7FA931F922F966B300078529 /* ListeCentreInterets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeCentreInterets.swift; sourceTree = "<group>"; };
+		7FA931FB22F9680D00078529 /* CentreInteretUtilisateurListable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreInteretUtilisateurListable.swift; sourceTree = "<group>"; };
+		7FA931FD22F96DF600078529 /* WebServiceCentreInteretUtilisateur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceCentreInteretUtilisateur.swift; sourceTree = "<group>"; };
+		7FA931FF22F9788600078529 /* WebServiceTypeCuisine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceTypeCuisine.swift; sourceTree = "<group>"; };
+		7FA9320122F978B500078529 /* TypeCuisineDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeCuisineDataSource.swift; sourceTree = "<group>"; };
+		7FA9320522F978E900078529 /* TypeCuisineListable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeCuisineListable.swift; sourceTree = "<group>"; };
+		7FA9320722F9795400078529 /* ListeTypeCuisine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeTypeCuisine.swift; sourceTree = "<group>"; };
+		7FA9320922F97B3200078529 /* TypeCuisine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeCuisine.swift; sourceTree = "<group>"; };
+		7FA9320B22F97EBE00078529 /* CentreInteret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreInteret.swift; sourceTree = "<group>"; };
+		7FA9321422F9801B00078529 /* CentreInteretDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreInteretDataSource.swift; sourceTree = "<group>"; };
+		7FA9321622F9802D00078529 /* CentreInteretListable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreInteretListable.swift; sourceTree = "<group>"; };
+		7FA9321822F9835F00078529 /* EnumAuthCommandWS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumAuthCommandWS.swift; sourceTree = "<group>"; };
 		7FB2E30A22E59DC600E13ABF /* RendezVous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RendezVous.swift; sourceTree = "<group>"; };
 		7FB2E30C22E5BB5100E13ABF /* Invitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitation.swift; sourceTree = "<group>"; };
 		7FB2E30E22E5CA4E00E13ABF /* GuestCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestCollectionView.swift; sourceTree = "<group>"; };
-		7FB2E31022E5E09600E13ABF /* RendezVousApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RendezVousApplication.swift; sourceTree = "<group>"; };
 		7FB2E31322E5E85100E13ABF /* ConnectedRamonUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectedRamonUser.swift; sourceTree = "<group>"; };
 		7FB2E31522E5FB9700E13ABF /* ListeRestaurants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeRestaurants.swift; sourceTree = "<group>"; };
 		7FB2E31722E6054E00E13ABF /* ListeMatchingUtilisateurs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeMatchingUtilisateurs.swift; sourceTree = "<group>"; };
@@ -164,10 +235,9 @@
 		7FB2E33622E8ADB100E13ABF /* RestaurantCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCollectionView.swift; sourceTree = "<group>"; };
 		7FB2E33822E8ADF300E13ABF /* RestaurantTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableView.swift; sourceTree = "<group>"; };
 		7FB2E33D22E8B1DF00E13ABF /* WebServiceSubscribable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceSubscribable.swift; sourceTree = "<group>"; };
-		7FB2E33F22E8B45100E13ABF /* WebServiceRefreshable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceRefreshable.swift; sourceTree = "<group>"; };
-		7FB2E34122E98DFB00E13ABF /* ListeRendezVousAsHote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeRendezVousAsHote.swift; sourceTree = "<group>"; };
+		7FB2E34122E98DFB00E13ABF /* ListeRendezVous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeRendezVous.swift; sourceTree = "<group>"; };
 		7FB2E34322E98F7200E13ABF /* WebServiceListable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceListable.swift; sourceTree = "<group>"; };
-		7FB2E34D22E99F6B00E13ABF /* ListeRendezVousAsConvive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeRendezVousAsConvive.swift; sourceTree = "<group>"; };
+		7FB2E34D22E99F6B00E13ABF /* ListeInvitationsAsConvive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeInvitationsAsConvive.swift; sourceTree = "<group>"; };
 		7FB2E35022E9AA5600E13ABF /* MyInvitationsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInvitationsTableView.swift; sourceTree = "<group>"; };
 		7FB2E35222E9AF5E00E13ABF /* MyInvitationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInvitationsTableViewCell.swift; sourceTree = "<group>"; };
 		7FB2E35522E9B10E00E13ABF /* ConvivesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvivesCollectionView.swift; sourceTree = "<group>"; };
@@ -205,6 +275,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F153E5622F2E65F00819C94 /* FicheUtilisateur */ = {
+			isa = PBXGroup;
+			children = (
+				7F153E5722F2E67D00819C94 /* FicheUtilisateurViewController.swift */,
+			);
+			path = FicheUtilisateur;
+			sourceTree = "<group>";
+		};
+		7F153E5F22F2FF4300819C94 /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				7FB2E33C22E8AF5100E13ABF /* Lists */,
+				7FB2E30C22E5BB5100E13ABF /* Invitation.swift */,
+				7FB2E30A22E59DC600E13ABF /* RendezVous.swift */,
+				7F98533122E1E90200C28C8E /* Utilisateur.swift */,
+				7F55FF1922D474EB004C0683 /* NewProfile.swift */,
+				7FB2E31322E5E85100E13ABF /* ConnectedRamonUser.swift */,
+				7F55FF1B22D4B5CF004C0683 /* CentreInteretUtilisateur.swift */,
+				7F814B7D22D5D19900425325 /* StyleCuisineUtilisateur.swift */,
+				7FE66E4A22DCAE21005F46C1 /* Restaurant.swift */,
+				7F98533722E1ECF700C28C8E /* RankedUtilisateur.swift */,
+				7FA9320922F97B3200078529 /* TypeCuisine.swift */,
+				7FA9320B22F97EBE00078529 /* CentreInteret.swift */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		7F153E6022F2FF5100819C94 /* DataAccess */ = {
+			isa = PBXGroup;
+			children = (
+				7FA931D022F43FB500078529 /* Protocols */,
+			);
+			path = DataAccess;
+			sourceTree = "<group>";
+		};
 		7F1EB69922EA03FB0068EF48 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,6 +348,7 @@
 		7F35828122F0882E009CF192 /* FicheMyProfil */ = {
 			isa = PBXGroup;
 			children = (
+				7FA931E422F8138700078529 /* modales */,
 				7FDB33BB22F181C9004DAC19 /* Cells */,
 				7FDB33BA22F181BE004DAC19 /* CollectionViews */,
 				7F35828422F088CB009CF192 /* Views */,
@@ -310,7 +416,6 @@
 		7F814B8122D5E35300425325 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				7FB2E33322E8AB4100E13ABF /* Protocols */,
 				7FBB5E5B22CF782E00AB448C /* Controllers */,
 				7FBB5E5C22CF78D800AB448C /* UserControls */,
 				7F98532A22E0C7E100C28C8E /* WebService */,
@@ -346,8 +451,10 @@
 		7F98532A22E0C7E100C28C8E /* WebService */ = {
 			isa = PBXGroup;
 			children = (
+				7FA931F822F962BA00078529 /* RendezVous */,
+				7FA931F722F962A900078529 /* Authentification */,
+				7FB2E33322E8AB4100E13ABF /* Protocols */,
 				7F814B8B22D6244D00425325 /* RendezVousWebService.swift */,
-				7FB2E31022E5E09600E13ABF /* RendezVousApplication.swift */,
 				7F36AD1B22D875FF00F91E19 /* LocationManager.swift */,
 			);
 			path = WebService;
@@ -373,9 +480,8 @@
 		7FA7DC4A22C5F93100E74F6B /* MODELS */ = {
 			isa = PBXGroup;
 			children = (
-				7FA7DC4E22C5FB8600E74F6B /* NewAccount.swift */,
-				7FBB5E4C22C9EBFA00AB448C /* RamonUser.swift */,
-				7FBB5E5222CB580B00AB448C /* RegExp.swift */,
+				7FA931D722F4423C00078529 /* Business */,
+				7FA931D622F4423100078529 /* DataAccess */,
 			);
 			path = MODELS;
 			sourceTree = "<group>";
@@ -390,12 +496,150 @@
 			path = USERCONTROLS;
 			sourceTree = "<group>";
 		};
-		7FB2E31222E5E2C600E13ABF /* WebService */ = {
+		7FA931D022F43FB500078529 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				7FA9321322F9800600078529 /* CentreInteret */,
+				7FA9321222F97F8E00078529 /* TypeCuisine */,
+				7FA9321122F97F8700078529 /* Restaurant */,
+				7FA9321022F97F7D00078529 /* CentreInteretUtilisateur */,
+				7FA9320F22F97F7500078529 /* Invitation */,
+				7FA9320E22F97F6D00078529 /* RendezVous */,
+				7FA9320D22F97F6600078529 /* Utilisateur */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		7FA931D522F4421500078529 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				7FA931D322F4419500078529 /* RamonUserCrudable.swift */,
+				7F153E6D22F3235400819C94 /* RamonUserDataSource.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		7FA931D622F4423100078529 /* DataAccess */ = {
+			isa = PBXGroup;
+			children = (
+				7F153E6722F321F200819C94 /* WebServiceRamonUser.swift */,
+				7FA931D522F4421500078529 /* Protocols */,
+			);
+			path = DataAccess;
+			sourceTree = "<group>";
+		};
+		7FA931D722F4423C00078529 /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				7FA7DC4E22C5FB8600E74F6B /* NewAccount.swift */,
+				7FBB5E4C22C9EBFA00AB448C /* RamonUser.swift */,
+				7FBB5E5222CB580B00AB448C /* RegExp.swift */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		7FA931E422F8138700078529 /* modales */ = {
+			isa = PBXGroup;
+			children = (
+				7F2A4F5C22F2DDF800DAE601 /* Historiettes */,
+				7F2A4F5922F2DDD100DAE601 /* MesMatchs */,
+				7F2A4F5622F2DA4C00DAE601 /* MesFavoris */,
+				7FD04B0D22F1E84C0081DAD1 /* EditProfile */,
+			);
+			path = modales;
+			sourceTree = "<group>";
+		};
+		7FA931F722F962A900078529 /* Authentification */ = {
 			isa = PBXGroup;
 			children = (
 				7FBB5E4E22CA0C2100AB448C /* AuthWebService.swift */,
+				7FA9321822F9835F00078529 /* EnumAuthCommandWS.swift */,
 			);
-			path = WebService;
+			path = Authentification;
+			sourceTree = "<group>";
+		};
+		7FA931F822F962BA00078529 /* RendezVous */ = {
+			isa = PBXGroup;
+			children = (
+				7F153E6122F3004800819C94 /* WebServiceUtilisateur.swift */,
+				7FA931DC22F448D700078529 /* WebServiceRendezVous.swift */,
+				7FA931DE22F484CD00078529 /* WebServiceInvitation.swift */,
+				7FA931E922F819BA00078529 /* WebServiceCentreInteret.swift */,
+				7FA931ED22F8500300078529 /* WebServiceRestaurant.swift */,
+				7F153E6322F30A4400819C94 /* WebService.swift */,
+				7FA931FD22F96DF600078529 /* WebServiceCentreInteretUtilisateur.swift */,
+				7FA931FF22F9788600078529 /* WebServiceTypeCuisine.swift */,
+				7F153E6922F3222A00819C94 /* EnumCommandWebService.swift */,
+				7F153E6B22F3227100819C94 /* EnumEntityWebServiceTargeted.swift */,
+			);
+			path = RendezVous;
+			sourceTree = "<group>";
+		};
+		7FA9320D22F97F6600078529 /* Utilisateur */ = {
+			isa = PBXGroup;
+			children = (
+				7F153E6522F31A3200819C94 /* UtilisateurDataSource.swift */,
+				7FA931D122F4400300078529 /* UtilisateurCrudable.swift */,
+				7FA931F122F854B500078529 /* UtilisateurListable.swift */,
+			);
+			path = Utilisateur;
+			sourceTree = "<group>";
+		};
+		7FA9320E22F97F6D00078529 /* RendezVous */ = {
+			isa = PBXGroup;
+			children = (
+				7FA931D822F447C100078529 /* RendezVousDataSource.swift */,
+				7FA931DA22F447D300078529 /* RendezVousCrudable.swift */,
+				7FA931F322F85B4C00078529 /* RendezVousListable.swift */,
+			);
+			path = RendezVous;
+			sourceTree = "<group>";
+		};
+		7FA9320F22F97F7500078529 /* Invitation */ = {
+			isa = PBXGroup;
+			children = (
+				7FA931E022F484E900078529 /* InvitationDataSource.swift */,
+				7FA931E222F484F600078529 /* InvitationCrudable.swift */,
+				7FA931F522F8745F00078529 /* InvitationListable.swift */,
+			);
+			path = Invitation;
+			sourceTree = "<group>";
+		};
+		7FA9321022F97F7D00078529 /* CentreInteretUtilisateur */ = {
+			isa = PBXGroup;
+			children = (
+				7FA931E522F8185B00078529 /* CentreInteretUtilisateurDataSource.swift */,
+				7FA931FB22F9680D00078529 /* CentreInteretUtilisateurListable.swift */,
+				7FA931E722F8186E00078529 /* CentreInteretUtilisateurCrudable.swift */,
+			);
+			path = CentreInteretUtilisateur;
+			sourceTree = "<group>";
+		};
+		7FA9321122F97F8700078529 /* Restaurant */ = {
+			isa = PBXGroup;
+			children = (
+				7FA931EB22F84D6D00078529 /* RestaurantListable.swift */,
+				7FA931EF22F8502600078529 /* RestaurantDataSource.swift */,
+			);
+			path = Restaurant;
+			sourceTree = "<group>";
+		};
+		7FA9321222F97F8E00078529 /* TypeCuisine */ = {
+			isa = PBXGroup;
+			children = (
+				7FA9320122F978B500078529 /* TypeCuisineDataSource.swift */,
+				7FA9320522F978E900078529 /* TypeCuisineListable.swift */,
+			);
+			path = TypeCuisine;
+			sourceTree = "<group>";
+		};
+		7FA9321322F9800600078529 /* CentreInteret */ = {
+			isa = PBXGroup;
+			children = (
+				7FA9321422F9801B00078529 /* CentreInteretDataSource.swift */,
+				7FA9321622F9802D00078529 /* CentreInteretListable.swift */,
+			);
+			path = CentreInteret;
 			sourceTree = "<group>";
 		};
 		7FB2E31B22E6EC0C00E13ABF /* Agenda */ = {
@@ -422,11 +666,11 @@
 			children = (
 				7FB2E33422E8AB7F00E13ABF /* WebServiceLinkable.swift */,
 				7FB2E33D22E8B1DF00E13ABF /* WebServiceSubscribable.swift */,
-				7FB2E33F22E8B45100E13ABF /* WebServiceRefreshable.swift */,
 				7FB2E34322E98F7200E13ABF /* WebServiceListable.swift */,
-				7F1EB6A222EAF1950068EF48 /* WebServiceNotifiable.swift */,
+				7F153E5D22F2FA7600819C94 /* WebServiceParametre.swift */,
 			);
-			path = Protocols;
+			name = Protocols;
+			path = ../Protocols;
 			sourceTree = "<group>";
 		};
 		7FB2E33A22E8AEFA00E13ABF /* Cells */ = {
@@ -454,9 +698,11 @@
 			children = (
 				7FB2E31522E5FB9700E13ABF /* ListeRestaurants.swift */,
 				7FB2E31722E6054E00E13ABF /* ListeMatchingUtilisateurs.swift */,
-				7FB2E34122E98DFB00E13ABF /* ListeRendezVousAsHote.swift */,
-				7FB2E34D22E99F6B00E13ABF /* ListeRendezVousAsConvive.swift */,
+				7FB2E34122E98DFB00E13ABF /* ListeRendezVous.swift */,
+				7FB2E34D22E99F6B00E13ABF /* ListeInvitationsAsConvive.swift */,
 				7FDB33B822F17F85004DAC19 /* ListeCentreInteretUtilisateur.swift */,
+				7FA931F922F966B300078529 /* ListeCentreInterets.swift */,
+				7FA9320722F9795400078529 /* ListeTypeCuisine.swift */,
 			);
 			path = Lists;
 			sourceTree = "<group>";
@@ -551,7 +797,6 @@
 		7FBB5E4922C600C500AB448C /* RamonUser */ = {
 			isa = PBXGroup;
 			children = (
-				7FB2E31222E5E2C600E13ABF /* WebService */,
 				7FA7DC4822C5F91B00E74F6B /* VIEWS */,
 				7FA7DC4922C5F92300E74F6B /* CONTROLLERS */,
 				7FA7DC4A22C5F93100E74F6B /* MODELS */,
@@ -562,16 +807,8 @@
 		7FBB5E5922CF780F00AB448C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7FB2E33C22E8AF5100E13ABF /* Lists */,
-				7F55FF1922D474EB004C0683 /* NewProfile.swift */,
-				7F55FF1B22D4B5CF004C0683 /* CentreInteret.swift */,
-				7F814B7D22D5D19900425325 /* StyleCuisine.swift */,
-				7FE66E4A22DCAE21005F46C1 /* Restaurant.swift */,
-				7F98533122E1E90200C28C8E /* Utilisateur.swift */,
-				7F98533722E1ECF700C28C8E /* RankedUtilisateur.swift */,
-				7FB2E30A22E59DC600E13ABF /* RendezVous.swift */,
-				7FB2E30C22E5BB5100E13ABF /* Invitation.swift */,
-				7FB2E31322E5E85100E13ABF /* ConnectedRamonUser.swift */,
+				7F153E6022F2FF5100819C94 /* DataAccess */,
+				7F153E5F22F2FF4300819C94 /* Business */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -588,10 +825,7 @@
 		7FBB5E5B22CF782E00AB448C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				7F2A4F5C22F2DDF800DAE601 /* Historiettes */,
-				7F2A4F5922F2DDD100DAE601 /* MesMatchs */,
-				7F2A4F5622F2DA4C00DAE601 /* MesFavoris */,
-				7FD04B0D22F1E84C0081DAD1 /* EditProfile */,
+				7F153E5622F2E65F00819C94 /* FicheUtilisateur */,
 				7F35828122F0882E009CF192 /* FicheMyProfil */,
 				7FB2E34822E99DE500E13ABF /* FicheRestaurant */,
 				7FB2E34722E99DD500E13ABF /* CreationRendezVous */,
@@ -789,67 +1023,95 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FD04B0C22F191450081DAD1 /* FicheMonLongProfilCentreInteretView.swift in Sources */,
+				7FA931E622F8185B00078529 /* CentreInteretUtilisateurDataSource.swift in Sources */,
+				7FA931DB22F447D300078529 /* RendezVousCrudable.swift in Sources */,
+				7FA931FE22F96DF600078529 /* WebServiceCentreInteretUtilisateur.swift in Sources */,
 				7F2A4F5822F2DA6200DAE601 /* MesFavorisViewController.swift in Sources */,
 				7F55FF1E22D4B755004C0683 /* CentreInteretTableViewCell.swift in Sources */,
 				7F98532422E09E6B00C28C8E /* RoundUIView.swift in Sources */,
 				7FB2E33E22E8B1DF00E13ABF /* WebServiceSubscribable.swift in Sources */,
 				7FBB5E6222CF7F7F00AB448C /* PictureViewController.swift in Sources */,
+				7FA931E822F8186E00078529 /* CentreInteretUtilisateurCrudable.swift in Sources */,
 				7F36AD1C22D875FF00F91E19 /* LocationManager.swift in Sources */,
 				7FBB5E5822CC948900AB448C /* RamonViewController.swift in Sources */,
 				7F98532222E0993300C28C8E /* ListRestaurantView.swift in Sources */,
 				7FBB5E4F22CA0C2100AB448C /* AuthWebService.swift in Sources */,
 				7FB2E35822E9B20500E13ABF /* ConvivesCollectionViewCell.swift in Sources */,
+				7F153E6822F321F200819C94 /* WebServiceRamonUser.swift in Sources */,
 				7FB2E35122E9AA5600E13ABF /* MyInvitationsTableView.swift in Sources */,
-				7FB2E34022E8B45100E13ABF /* WebServiceRefreshable.swift in Sources */,
+				7FA931F622F8745F00078529 /* InvitationListable.swift in Sources */,
 				7FDB33B922F17F85004DAC19 /* ListeCentreInteretUtilisateur.swift in Sources */,
 				7FE66E5322DDB969005F46C1 /* RestaurantCollectionViewCell.swift in Sources */,
 				7F2A4F5B22F2DDE600DAE601 /* MesMatchsViewController.swift in Sources */,
-				7FB2E34222E98DFB00E13ABF /* ListeRendezVousAsHote.swift in Sources */,
+				7FB2E34222E98DFB00E13ABF /* ListeRendezVous.swift in Sources */,
 				7F1EB69D22EAE0D20068EF48 /* RestaurantView.swift in Sources */,
+				7F153E6422F30A4400819C94 /* WebService.swift in Sources */,
 				7F2A4F5E22F2DE0800DAE601 /* HistoriettesViewController.swift in Sources */,
 				7F1EB69F22EAE77B0068EF48 /* RendezVousView.swift in Sources */,
 				7FB2E33522E8AB7F00E13ABF /* WebServiceLinkable.swift in Sources */,
-				7FB2E34E22E99F6B00E13ABF /* ListeRendezVousAsConvive.swift in Sources */,
+				7FB2E34E22E99F6B00E13ABF /* ListeInvitationsAsConvive.swift in Sources */,
 				7FA7DC4F22C5FB8600E74F6B /* NewAccount.swift in Sources */,
 				7FDB33BD22F181ED004DAC19 /* CentreInteretUtilisateurCollectionView.swift in Sources */,
 				7F98533822E1ECF700C28C8E /* RankedUtilisateur.swift in Sources */,
+				7FA9321522F9801B00078529 /* CentreInteretDataSource.swift in Sources */,
+				7FA9321722F9802D00078529 /* CentreInteretListable.swift in Sources */,
+				7FA931E322F484F600078529 /* InvitationCrudable.swift in Sources */,
 				7F98532C22E1A7A000C28C8E /* CreateGroupViewController.swift in Sources */,
 				7FB2E30B22E59DC600E13ABF /* RendezVous.swift in Sources */,
 				7FBB5E5122CA0D8800AB448C /* AuthentificationVC.swift in Sources */,
 				7FB2E31E22E6EC4500E13ABF /* MyRendezVousTableViewCell.swift in Sources */,
+				7FA9320822F9795400078529 /* ListeTypeCuisine.swift in Sources */,
+				7FA931F222F854B500078529 /* UtilisateurListable.swift in Sources */,
 				7F55FF1A22D474EB004C0683 /* NewProfile.swift in Sources */,
 				7FB2E31422E5E85100E13ABF /* ConnectedRamonUser.swift in Sources */,
 				7FB2E35622E9B10E00E13ABF /* ConvivesCollectionView.swift in Sources */,
-				7F55FF1C22D4B5CF004C0683 /* CentreInteret.swift in Sources */,
+				7F55FF1C22D4B5CF004C0683 /* CentreInteretUtilisateur.swift in Sources */,
 				7FB2E32422E6FA3F00E13ABF /* MyRendezVousTableView.swift in Sources */,
 				7FE66E4B22DCAE21005F46C1 /* Restaurant.swift in Sources */,
 				7FB2E35322E9AF5E00E13ABF /* MyInvitationsTableViewCell.swift in Sources */,
+				7F153E5822F2E67D00819C94 /* FicheUtilisateurViewController.swift in Sources */,
+				7FA931FA22F966B300078529 /* ListeCentreInterets.swift in Sources */,
 				7FE66E5922DF5881005F46C1 /* RoundUILabel.swift in Sources */,
 				7FA7DC5122C5FCC800E74F6B /* RamonUserUIButton.swift in Sources */,
 				7F35828622F088F8009CF192 /* FicheMonShortProfilView.swift in Sources */,
-				7F1EB6A322EAF1950068EF48 /* WebServiceNotifiable.swift in Sources */,
 				7FBB5E6022CF7DA300AB448C /* RoundButtonUIButton.swift in Sources */,
-				7FB2E31122E5E09600E13ABF /* RendezVousApplication.swift in Sources */,
 				7F98532022E0989D00C28C8E /* RestaurantTableViewCell.swift in Sources */,
+				7FA9320022F9788600078529 /* WebServiceTypeCuisine.swift in Sources */,
 				7FB2E33922E8ADF300E13ABF /* RestaurantTableView.swift in Sources */,
 				7F55FF2022D4BCBD004C0683 /* InteretsViewController.swift in Sources */,
+				7FA931D422F4419500078529 /* RamonUserCrudable.swift in Sources */,
 				7F59937722C51090005658DD /* rendez_vous.xcdatamodeld in Sources */,
 				7FB2E32C22E733B100E13ABF /* InvitesCollectionView.swift in Sources */,
+				7FA931EC22F84D6D00078529 /* RestaurantListable.swift in Sources */,
 				7F98532722E0A05D00C28C8E /* MapRestaurantView.swift in Sources */,
 				7FBB5E4B22C6083000AB448C /* RegisterVC.swift in Sources */,
 				7FA7DC4D22C5FAA000E74F6B /* RamonUserUITextField.swift in Sources */,
 				7FB2E32E22E733FE00E13ABF /* InvitesCollectionViewCell.swift in Sources */,
+				7F153E5E22F2FA7600819C94 /* WebServiceParametre.swift in Sources */,
+				7F153E6A22F3222A00819C94 /* EnumCommandWebService.swift in Sources */,
 				7F98533C22E1EFC100C28C8E /* GuestRankedTableView.swift in Sources */,
 				7FB2E33222E8A7E600E13ABF /* RestaurantMapView.swift in Sources */,
 				7F677EAF22EB386F00018A8D /* MatchingPeopleView.swift in Sources */,
 				7FBB5E4D22C9EBFA00AB448C /* RamonUser.swift in Sources */,
+				7FA931DD22F448D700078529 /* WebServiceRendezVous.swift in Sources */,
+				7FA9321922F9835F00078529 /* EnumAuthCommandWS.swift in Sources */,
+				7FA931FC22F9680D00078529 /* CentreInteretUtilisateurListable.swift in Sources */,
 				7F1EB6A122EAE7EE0068EF48 /* TopBarView.swift in Sources */,
+				7F153E6222F3004800819C94 /* WebServiceUtilisateur.swift in Sources */,
+				7FA9320622F978E900078529 /* TypeCuisineListable.swift in Sources */,
+				7F153E6C22F3227100819C94 /* EnumEntityWebServiceTargeted.swift in Sources */,
 				7FBB5E5E22CF792B00AB448C /* RoundPortraitUIImageView.swift in Sources */,
+				7FA931F022F8502600078529 /* RestaurantDataSource.swift in Sources */,
 				7FBB5E5322CB580B00AB448C /* RegExp.swift in Sources */,
 				7F814B7C22D5D0EC00425325 /* StyleCuisineTableViewCell.swift in Sources */,
-				7F814B7E22D5D19900425325 /* StyleCuisine.swift in Sources */,
+				7FA931E122F484E900078529 /* InvitationDataSource.swift in Sources */,
+				7F814B7E22D5D19900425325 /* StyleCuisineUtilisateur.swift in Sources */,
 				7F98533A22E1EECF00C28C8E /* GuestRankedTableViewCell.swift in Sources */,
+				7FA931F422F85B4C00078529 /* RendezVousListable.swift in Sources */,
+				7FA9320A22F97B3200078529 /* TypeCuisine.swift in Sources */,
 				7F59936F22C51090005658DD /* AppDelegate.swift in Sources */,
+				7FA931EE22F8500300078529 /* WebServiceRestaurant.swift in Sources */,
+				7FA9320222F978B500078529 /* TypeCuisineDataSource.swift in Sources */,
 				7FB2E31622E5FB9700E13ABF /* ListeRestaurants.swift in Sources */,
 				7F35828322F08866009CF192 /* FicheMyProfilViewController.swift in Sources */,
 				7F814B9022D6365200425325 /* RamonUITextView.swift in Sources */,
@@ -861,12 +1123,19 @@
 				7FB2E34422E98F7200E13ABF /* WebServiceListable.swift in Sources */,
 				7FB2E32022E6F58B00E13ABF /* AgendaViewController.swift in Sources */,
 				7FE66E4D22DCB1F4005F46C1 /* MapRestaurantViewController.swift in Sources */,
+				7FA9320C22F97EBE00078529 /* CentreInteret.swift in Sources */,
 				7F814B8022D5D27800425325 /* TypeCuisineViewController.swift in Sources */,
 				7FB2E31822E6054E00E13ABF /* ListeMatchingUtilisateurs.swift in Sources */,
+				7F153E6E22F3235400819C94 /* RamonUserDataSource.swift in Sources */,
 				7F814B8822D5E7FA00425325 /* PreviewViewController.swift in Sources */,
+				7FA931EA22F819BA00078529 /* WebServiceCentreInteret.swift in Sources */,
+				7FA931D922F447C100078529 /* RendezVousDataSource.swift in Sources */,
 				7FD04B0A22F190280081DAD1 /* CentreInteretUtilisateurCollectionViewCell.swift in Sources */,
 				7F98532E22E1ADA200C28C8E /* GuestCollectionViewCell.swift in Sources */,
+				7FA931D222F4400300078529 /* UtilisateurCrudable.swift in Sources */,
 				7F814B8E22D62F2900425325 /* RamonUITextField.swift in Sources */,
+				7F153E6622F31A3200819C94 /* UtilisateurDataSource.swift in Sources */,
+				7FA931DF22F484CD00078529 /* WebServiceInvitation.swift in Sources */,
 				7F814B8622D5E7C700425325 /* CatchPhraseViewController.swift in Sources */,
 				7FB2E33722E8ADB100E13ABF /* RestaurantCollectionView.swift in Sources */,
 				7FB2E30D22E5BB5100E13ABF /* Invitation.swift in Sources */,

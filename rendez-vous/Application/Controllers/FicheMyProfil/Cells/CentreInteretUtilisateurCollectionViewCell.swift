@@ -16,7 +16,7 @@ class CentreInteretUtilisateurCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var centreInteretOrdreLabel: UILabel!
     @IBOutlet weak var cercleOrdre: RoundUIView!
     
-    func update(centreInteret:CentreInteret)
+    func update(centreInteret:CentreInteretUtilisateur)
     {
         self.centreInteretLabel.text = centreInteret.libelle
         self.centreInteretOrdreLabel.text = "\(centreInteret.order)"

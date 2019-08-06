@@ -21,7 +21,7 @@ class PreviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       NewProfile.SharedInstance.createUtilisateur { (json: JSON?, error: Error?) in
+      /* NewProfile.SharedInstance.createUtilisateur { (json: JSON?, error: Error?) in
             guard error == nil else {
                 print("Une erreur est survenue")
                 return
@@ -37,8 +37,8 @@ class PreviewViewController: UIViewController {
                     // activer le bouton next!
                 }
             }
-        }
-
+        }*/
+        Utilisateur.create(datasource: self)
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -61,5 +61,38 @@ class PreviewViewController: UIViewController {
     @IBAction func onClickNext(_ sender: RoundButtonUIButton) {
         performSegue(withIdentifier: "GoToInterets", sender: self)
     }
+    
+}
+extension PreviewViewController:UtilisateurDataSource
+{
+    func utilisateurOnLoaded(utilisateur: Utilisateur) {
+        print("PreviewViewController:UtilisateurDataSource:utilisateurOnLoaded - not implemented")
+    }
+    
+    func utilisateurOnLoaded(matchs: ListeMatchingUtilisateurs) {
+         print("PreviewViewController:UtilisateurDataSource:utilisateurOnLoaded - not implemented")
+    }
+    
+    func utilisateurOnUpdated() {
+         print("PreviewViewController:UtilisateurDataSource:utilisateurOnUpdated - not implemented")
+    }
+    
+    func utilisateurOnDeleted() {
+         print("PreviewViewController:UtilisateurDataSource:utilisateurOnDeleted - not implemented")
+    }
+    
+    func utilisateurOnCreated() {
+         print("PreviewViewController:UtilisateurDataSource:utilisateurOnCreated")
+        print("Utilisateur bien créé")
+    }
+    
+    func utilisateurOnNotFoundUtilisateur() {
+         print("PreviewViewController:UtilisateurDataSource:utilisateurOnNotFoundUtilisateur - not implemented")
+    }
+    
+    func utilisateurOnWebServiceError(code: Int) {
+         print("PreviewViewController:UtilisateurDataSource:utilisateurOnWebServiceError - not implemented")
+    }
+    
     
 }

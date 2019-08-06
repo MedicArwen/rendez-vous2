@@ -17,18 +17,18 @@ class MyInvitationsTableView: UITableView {
 extension MyInvitationsTableView:UITableViewDelegate,UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard ListeRendezVousAsConvive.sharedInstance != nil else {
+        guard ListeInvitationsAsConvive.sharedInstance != nil else {
             print("MyInvitationsTableView:count - aucune liste ListeRendezVousAsConvive trouvée")
             return 0
         }
-        print("MyInvitationsTableView:count - \(ListeRendezVousAsConvive.sharedInstance!.liste.count) invitation recue(s)")
-        return ListeRendezVousAsConvive.sharedInstance!.liste.count
+        print("MyInvitationsTableView:count - \(ListeInvitationsAsConvive.sharedInstance!.liste.count) invitation recue(s)")
+        return ListeInvitationsAsConvive.sharedInstance!.liste.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("MyInvitationsTableView: update the cell n°#\(indexPath.row)")
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyRendezVousConviveCell", for: indexPath) as! MyInvitationsTableViewCell
-        cell.update(rendezvous: ListeRendezVousAsConvive.sharedInstance!.liste[indexPath.row],controleur: self.currentControleur!)
+        cell.update(rendezvous: ListeInvitationsAsConvive.sharedInstance!.liste[indexPath.row],controleur: self.currentControleur!)
         return cell
     }
     
@@ -37,7 +37,8 @@ extension MyInvitationsTableView:UITableViewDelegate,UITableViewDataSource
         if editingStyle == UITableViewCell.EditingStyle.delete
         {
              print("MyInvitationsTableView: editingStyle = .delete")
-            ListeRendezVousAsConvive.remove(controleur: currentControleur!, indexPath: indexPath)
+            //ListeRendezVousAsConvive.remove(controleur: currentControleur!, indexPath: indexPath)
+            RendezVous.remove(indice: indexPath.row)
         }
     }
     

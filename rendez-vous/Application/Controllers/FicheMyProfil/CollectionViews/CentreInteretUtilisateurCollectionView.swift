@@ -37,7 +37,7 @@ extension CentreInteretUtilisateurCollectionView:UICollectionViewDataSource,UICo
         return true
     }
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        print("SWAP \(sourceIndexPath.row) to \(destinationIndexPath)")
+        print("SWAP \(sourceIndexPath.row) to \(destinationIndexPath.row)")
         ListeCentreInteretUtilisateur.swap(source:sourceIndexPath.row,dest:destinationIndexPath.row)
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

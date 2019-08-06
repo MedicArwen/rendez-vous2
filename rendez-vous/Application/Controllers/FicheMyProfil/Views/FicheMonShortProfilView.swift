@@ -12,7 +12,8 @@ import AlamofireImage
 import SwiftyJSON
 
 class FicheMonShortProfilView: UIView {
-
+    fileprivate var indiceSuscribedView = 0
+    
     @IBOutlet weak var portraitView:RoundPortraitUIImageView!
     @IBOutlet weak var pseudoLabel:RoundUILabel!
     @IBOutlet weak var catchPhrase:UILabel!
@@ -20,12 +21,12 @@ class FicheMonShortProfilView: UIView {
     let myPickerController = UIImagePickerController()
     var parentControleur:RamonViewController?
     /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
     @IBAction func onClickFavorites(_ sender: UIButton) {
     }
     
@@ -141,7 +142,8 @@ extension FicheMonShortProfilView:UIImagePickerControllerDelegate, UINavigationC
                     upload.responseJSON { response in
                         if let jsonResponse = response.result.value as? [String: Any] {
                             let imageinfo = JSON(jsonResponse["files"]!)
-                            RendezVousApplication.sharedInstance.connectedUtilisateur!.setImage(url: imageinfo["image"]["name"].stringValue)
+                            Utilisateur.sharedInstance!.setImage(url: imageinfo["image"]["name"].stringValue)
+                            Utilisateur.sharedInstance!.update(datasource: self)
                             print(imageinfo)
                         }
                     }
@@ -152,4 +154,49 @@ extension FicheMonShortProfilView:UIImagePickerControllerDelegate, UINavigationC
         )
     }
 }
-
+extension FicheMonShortProfilView:WebServiceLinkable
+{
+    func refresh() {
+        print("FicheMonShortProfilView:refresh")
+        self.update(controleur: self.parentControleur!, utilisateur: Utilisateur.sharedInstance!)
+    }
+    var indice: Int {
+        get {
+            return indiceSuscribedView
+        }
+        set {
+            indiceSuscribedView = newValue
+        }
+    }
+}
+extension FicheMonShortProfilView:UtilisateurDataSource
+{
+    func utilisateurOnLoaded(utilisateur: Utilisateur) {
+        print("FicheMonShortProfilView:UtilisateurDataSource:utilisateurOnLoaded")
+    }
+    func utilisateurOnLoaded(matchs: ListeMatchingUtilisateurs) {
+        print("FicheMonShortProfilView:UtilisateurDataSource:utilisateurOnLoaded (LIST)")
+    }
+    func utilisateurOnUpdated() {
+        print("FicheMonShortProfilView:UtilisateurDataSource:utilisateurOnUpdated")
+        print("-> Update de l'utilisateur réussi")
+    }
+    
+    func utilisateurOnDeleted() {
+        print("FicheMonShortProfilView:UtilisateurDataSource:utilisateurOnDeleted")
+    }
+    
+    func utilisateurOnCreated() {
+        print("FicheMonShortProfilView:UtilisateurDataSource:utilisateurOnCreated")
+    }
+    
+    func utilisateurOnNotFoundUtilisateur() {
+        print("FicheMonShortProfilView:UtilisateurDataSource:utilisateurOnNotFoundUtilisateur")
+    }
+    
+    func utilisateurOnWebServiceError(code: Int) {
+        print("FicheMonShortProfilView:UtilisateurDataSource:utilisateurOnWebServiceError")
+    }
+    
+    
+}

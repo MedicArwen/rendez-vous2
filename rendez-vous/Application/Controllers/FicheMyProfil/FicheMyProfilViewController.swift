@@ -23,12 +23,13 @@ class FicheMyProfilViewController: RamonViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        guard RendezVousApplication.sharedInstance.connectedUtilisateur != nil else {
+        guard Utilisateur.sharedInstance != nil else {
             print("Utilisateur non trouvé")
             return
         }
-        self.ficheUtilisateurShort.update(controleur: self, utilisateur: RendezVousApplication.sharedInstance.connectedUtilisateur!)
+        self.ficheUtilisateurShort.update(controleur: self, utilisateur: Utilisateur.sharedInstance!)
         self.ficheLongCentreInteret.update(controleur:self)
+        Utilisateur.subscribe(vue: self.ficheUtilisateurShort)
         
     }
     override func viewWillAppear(_ animated: Bool) {

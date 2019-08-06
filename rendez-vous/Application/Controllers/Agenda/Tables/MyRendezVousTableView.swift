@@ -25,18 +25,18 @@ class MyRendezVousTableView: UITableView {
 extension MyRendezVousTableView:UITableViewDelegate,UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard ListeRendezVousAsHote.sharedInstance != nil else {
+        guard ListeRendezVous.sharedInstance != nil else {
             print("MyRendezVousTableView: count - aucune liste ListeRendezVousAsHote trouvée")
             return 0
         }
-        print("MyRendezVousTableView: count - \(ListeRendezVousAsHote.sharedInstance!.liste.count) rendez-vous créé(s)")
-        return ListeRendezVousAsHote.sharedInstance!.liste.count
+        print("MyRendezVousTableView: count - \(ListeRendezVous.sharedInstance!.liste.count) rendez-vous créé(s)")
+        return ListeRendezVous.sharedInstance!.liste.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("MyRendezVousTableView: update cellune n°#\(indexPath.row) du tableau de mes rendez-vous")
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyRendezVousHostedCell", for: indexPath) as! MyRendezVousTableViewCell
-        cell.update(rendezvous: ListeRendezVousAsHote.sharedInstance!.liste[indexPath.row],controleur: self.currentControleur!)
+        cell.update(rendezvous: ListeRendezVous.sharedInstance!.liste[indexPath.row],controleur: self.currentControleur!)
         return cell
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -44,7 +44,8 @@ extension MyRendezVousTableView:UITableViewDelegate,UITableViewDataSource
         if editingStyle == UITableViewCell.EditingStyle.delete
         {
             print("MyRendezVousTableView: editingStyle == .delete")
-            ListeRendezVousAsHote.remove(controleur: currentControleur!, indexPath: indexPath)
+            //Utilisateur.remove(indice: indexPath.row)
+            RendezVous.remove(indice: indexPath.row)
         }
     }
     

@@ -21,7 +21,7 @@ class GuestCollectionViewCell: UICollectionViewCell {
      */
     func update(invitation:Invitation,controleur: UIViewController)
     {
-       print("GuestCollectionViewCell:update (invite:\(invitation.numInvite) - rdv:\(invitation.numRendezVous)")
+       print("GuestCollectionViewCell:update (invite:\(invitation.getInviteID()) - rdv:\(invitation.getRendezVousID())")
         self.currentControleur = controleur
         self.invitation = invitation
         self.pseudoLabel.text = invitation.utilisateur.pseudo

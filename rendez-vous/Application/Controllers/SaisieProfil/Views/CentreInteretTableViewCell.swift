@@ -25,7 +25,7 @@ class CentreInteretTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    public func update(centreInteret:CentreInteret)
+    public func update(centreInteret:CentreInteretUtilisateur)
     {
         self.OrdrePreferenceLabel.text = "\(centreInteret.order)"
         if centreInteret.order > 10

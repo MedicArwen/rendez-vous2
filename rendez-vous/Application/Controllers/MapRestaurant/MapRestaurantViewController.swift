@@ -127,8 +127,31 @@ extension MapRestaurantViewController:CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         recentrageCarte()
         LocationManager.SharedInstance.stopUpdatingLocation()
-        ListeRestaurants.load(controleur: self)
+      //  ListeRestaurants.load(controleur: self)
+        Restaurant.load(datasource: self, latitude: LocationManager.SharedInstance.location!.coordinate.latitude, longitude: LocationManager.SharedInstance.location!.coordinate.longitude, range: 10)
     }
+}
+extension MapRestaurantViewController:RestaurantDataSource
+{
+    func restaurantOnLoaded(restaurants: ListeRestaurants) {
+        print("MapRestaurantViewController:RestaurantDataSource:restaurantOnLoaded(LISTE)")
+        ListeRestaurants.sharedInstance = restaurants
+        ListeRestaurants.reloadViews()
+    }
+    
+    func restaurantOnLoaded(restaurant: Restaurant) {
+        print("MapRestaurantViewController:RestaurantDataSource:restaurantOnLoaded(UN) NOT IMPLENTED")
+    }
+    
+    func restaurantOnNotFoundRestaurant() {
+        print("MapRestaurantViewController:RestaurantDataSource:restaurantOnNotFoundRestaurant NOT IMPLENTED")
+    }
+    
+    func restaurantOnWebServiceError(code: Int) {
+        print("MapRestaurantViewController:RestaurantDataSource:restaurantOnWebServiceError NOT IMPLENTED")
+    }
+    
+    
 }
 
 

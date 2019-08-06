@@ -49,29 +49,59 @@ class GuestRankedTableViewCell: UITableViewCell {
             return
         }
         print("GuestRankedTableViewCell:onClickInvite (id:\(self.utilisateur!.idUtilisateur))")
-        let utilisateur = self.utilisateur as Utilisateur?
-        let invitation = Invitation(numInvite:self.utilisateur!.idUtilisateur,numRendezVous:RendezVous.sharedInstance!.idRendezVous ,numStatusInvitation:1,utilisateur: utilisateur!)
-        invitation.Save { (json: JSON?, error: Error?) in
-            guard error == nil else {
-                print("Une erreur est survenue")
-                return
-            }
-            if let json = json {
-                print(json)
-                if json["returnCode"].intValue != 200
-                {
-                    AuthWebService.sendAlertMessage(vc: self.currentControleur!, returnCode: json["returnCode"].intValue)
-                }
-                else
-                {
-                print("UtilisateurInvite")
-                RendezVous.sharedInstance!.addInvitation(invitation: invitation)
-                ListeMatchingUtilisateurs.remove(controleur: self.currentControleur!, item: self.utilisateur!)
-                  
-                }
-            }
-        }
+        let guest = self.utilisateur as! Utilisateur
+       // let invitation = Invitation(numInvite:self.utilisateur!.idUtilisateur,numRendezVous:RendezVous.sharedInstance!.idRendezVous ,numStatusInvitation:1,utilisateur: utilisateur!)
+        let invitation = Invitation(utilisateur: guest, rendezVous: RendezVous.sharedInstance!, numStatusInvitation: 1)
+        invitation.create(datasource: self)
+        RendezVous.sharedInstance!.addInvitation(invitation: invitation)
+        let indice = Utilisateur.find(utilisateur: utilisateur!)
+        Utilisateur.remove(indice:indice)
     }
+    
+}
+extension GuestRankedTableViewCell:InvitationDataSource
+{
+    func invitationOnLoaded(invitation: Invitation) {
+        print("GuestRankedTableViewCell:InvitationDataSource: - not implemented")
+    }
+    func invitationOnLoaded(invitations: ListeInvitationsAsConvive) {
+        print("GuestRankedTableViewCell:InvitationDataSource: - not implemented")
+    }
+    
+    func invitationOnUpdated() {
+        print("GuestRankedTableViewCell:InvitationDataSource: - not implemented")
+    }
+    
+    func invitationOnDeleted() {
+        print("GuestRankedTableViewCell:InvitationDataSource: - not implemented")
+    }
+    
+    func invitationOnCancelled() {
+        print("GuestRankedTableViewCell:InvitationDataSource: - not implemented")
+    }
+    
+    func invitationOnRejected() {
+        print("GuestRankedTableViewCell:InvitationDataSource: - not implemented")
+    }
+    
+    
+    func invitationOnAccepted() {
+        print("GuestRankedTableViewCell:InvitationDataSource: - not implemented")
+    }
+    
+    func invitationOnCreated() {
+        print("GuestRankedTableViewCell:InvitationDataSource:invitationOnCreated")
+        print("->UtilisateurInvite")
+    }
+    
+    func invitationOnNotFoundInvitation() {
+        print("GuestRankedTableViewCell:InvitationDataSource: - not implemented")
+    }
+    
+    func invitationOnWebServiceError(code: Int) {
+        print("GuestRankedTableViewCell:InvitationDataSource: - not implemented")
+    }
+    
     
 }
 

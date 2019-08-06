@@ -2222,9 +2222,9 @@ CQ
                                         <rect key="frame" x="32" y="18" width="256" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9K-CU-y41" customClass="RoundButtonUIButton" customModule="rendez_vous" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="124" height="30"/>
                                                 <color key="backgroundColor" red="0.99903339150000003" green="0.2516807318" blue="0.015378882179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Button">
+                                                <state key="normal" title="Save">
                                                     <color key="titleColor" red="0.94927436109999996" green="0.93755418059999995" blue="0.92066174749999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -2232,21 +2232,12 @@ CQ
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuc-j7-AFn" customClass="RoundButtonUIButton" customModule="rendez_vous" customModuleProvider="target">
-                                                <rect key="frame" x="88" y="0.0" width="80" height="30"/>
-                                                <color key="backgroundColor" red="0.99903339150000003" green="0.2516807318" blue="0.015378882179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Button">
-                                                    <color key="titleColor" red="0.94927436109999996" green="0.93755418059999995" blue="0.92066174749999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="onClickSave:" destination="JN4-Hd-Tj6" eventType="touchUpInside" id="Bm6-2D-c5a"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8j4-0W-xg3" customClass="RoundButtonUIButton" customModule="rendez_vous" customModuleProvider="target">
-                                                <rect key="frame" x="176" y="0.0" width="80" height="30"/>
+                                                <rect key="frame" x="132" y="0.0" width="124" height="30"/>
                                                 <color key="backgroundColor" red="0.99903339150000003" green="0.2516807318" blue="0.015378882179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Finish">
                                                     <color key="titleColor" red="0.94927436109999996" green="0.93755418059999995" blue="0.92066174749999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2284,6 +2275,11 @@ CQ
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xRk-Fc-cJf"/>
                     </view>
+                    <connections>
+                        <outlet property="catchPhraseTextField" destination="wgH-ck-TG3" id="k4D-KI-wI6"/>
+                        <outlet property="descriptionTextViews" destination="qiT-ou-TLL" id="Sui-BB-jAG"/>
+                        <outlet property="pseudonymeTextField" destination="LR5-B6-Ivb" id="sXd-5U-kCT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rn6-xn-vY5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

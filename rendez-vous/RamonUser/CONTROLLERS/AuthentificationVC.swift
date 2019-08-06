@@ -36,20 +36,6 @@ class AuthentificationVC: RamonViewController {
             return
         }
             tryConnect()
-    
-      /*  RendezVousApplication.sharedInstance.connectedRamonUser = ConnectedRamonUser.connectUtilisateurDefault()
-        RendezVousApplication.sharedInstance.connectedUtilisateur = Utilisateur.connectUtilisateurDefault()
-        guard RendezVousApplication.sharedInstance.connectedRamonUser == nil else {
-            print("RamonUser chargé depuis les préférences")
-            guard RendezVousApplication.sharedInstance.connectedUtilisateur == nil else {
-                print("Utilisateur chargé depuis les préférences")
-                self.performSegue(withIdentifier: "GoToHomePage", sender: self)
-                return
-            }
-            tryLoadProfile()
-            return
-        }
-    */
     }
     
 
@@ -69,8 +55,8 @@ class AuthentificationVC: RamonViewController {
     }
     func tryConnect()
     {
-        
-      AuthWebService.sharedInstance.loginWithPassword { (json: JSON?, error: Error?) in
+        RamonUser.login(datasource: self, courriel: AuthWebService.sharedInstance.userName!, motdepasse: AuthWebService.sharedInstance.password!)
+    /*  AuthWebService.sharedInstance.loginWithPassword { (json: JSON?, error: Error?) in
             guard error == nil else {
                 print("Une erreur est survenue")
                 return
@@ -83,11 +69,11 @@ class AuthentificationVC: RamonViewController {
                 }
                 else
                 {
-                    RendezVousApplication.sharedInstance.connectedRamonUser = ConnectedRamonUser(json: json["data"])
-                    ConnectedRamonUser.saveUserConnected(connectedRamonUser: RendezVousApplication.sharedInstance.connectedRamonUser!)
-                    if RendezVousApplication.sharedInstance.connectedRamonUser!.isEmailValide()
+                    ConnectedRamonUser.sharedInstance = ConnectedRamonUser(json: json["data"])
+                    ConnectedRamonUser.saveUserConnected(connectedRamonUser: ConnectedRamonUser.sharedInstance!)
+                    if ConnectedRamonUser.sharedInstance!.isEmailValide()
                     {
-                      self.tryLoadProfile()
+                     Utilisateur.read(datasource: self)
                     }
                     else
                     {
@@ -96,40 +82,9 @@ class AuthentificationVC: RamonViewController {
                    
                 }
             }
-        }
+        }*/
     }
 
-  func tryLoadProfile()
-  {
-    
-    RendezVousApplication.sharedInstance.connectedRamonUser!.loadProfile { (json: JSON?, error: Error?) in
-        guard error == nil else {
-            print("Une erreur est survenue")
-            return
-        }
-        if let json = json {
-            print(json)
-            if json["returnCode"].intValue != 200
-            {
-                AuthWebService.sendAlertMessage(vc: self, returnCode: json["returnCode"].intValue)
-            }
-            else
-            {
-                if json["data"] != "null"
-                {
-                    RendezVousApplication.sharedInstance.connectedUtilisateur = Utilisateur(json: json["data"])
-                    
-                    self.performSegue(withIdentifier: "GoToHomePage", sender: self)
-                }
-                else
-                {
-                    self.performSegue(withIdentifier: "GoToCreateProfile", sender: self)
-                }
-                
-            }
-        }
-    }
-    }
 }
 extension AuthentificationVC:UITextFieldDelegate
 {
@@ -162,5 +117,80 @@ extension AuthentificationVC:CLLocationManagerDelegate
             manager.startUpdatingLocation()
             print("update changement autorisation")
         }
+    }
+}
+extension AuthentificationVC:RamonUserDataSource
+{
+    func ramonUserOnConnected(connectedRamonUser: ConnectedRamonUser) {
+         print("AuthentificationVC:RamonUserDataSource:ramonUserOnConnected")
+        ConnectedRamonUser.sharedInstance = connectedRamonUser
+        if ConnectedRamonUser.sharedInstance!.isEmailValide()
+        {
+            Utilisateur.read(datasource: self)
+        }
+        else
+        {
+            self.performSegue(withIdentifier: "goregister", sender: self)
+        }
+    }
+    
+    func ramonUserOnLoginError() {
+         print("AuthentificationVC:RamonUserDataSource:ramonUserOnLoginError non implementé ")
+    }
+    
+    func ramonUserOnLoaded(ramonUser: RamonUser) {
+         print("AuthentificationVC:RamonUserDataSource:onUpdated non implementé ")
+        
+    }
+    
+    func ramonUserOnUpdated() {
+        print("AuthentificationVC:RamonUserDataSource:onUpdated non implementé ")
+    }
+    
+    func ramonUserOnDeleted() {
+        print("AuthentificationVC:RamonUserDataSource:ramonUserOnDeleted non implementé ")
+    }
+    
+    func ramonUserOnCreated() {
+        print("AuthentificationVC:RamonUserDataSource:ramonUserOnCreated non implementé ")
+    }
+    
+    func ramonUserOnNotFoundRamonUser() {
+        print("AuthentificationVC:RamonUserDataSource:ramonUserOnNotFoundRamonUser non implementé ")
+    }
+    
+    func ramonUserOnWebServiceError(code: Int) {
+        print("AuthentificationVC:RamonUserDataSource:ramonUserOnWebServiceError non implementé ")
+    }
+    
+    
+}
+extension AuthentificationVC:UtilisateurDataSource
+{
+    func utilisateurOnUpdated() {
+        print("AuthentificationVC:UtilisateurDataSource:onUpdated non implementé ")
+    }
+    
+    func utilisateurOnDeleted() {
+        print("AuthentificationVC:UtilisateurDataSource:onDeleted non implementé ")
+    }
+    
+    func utilisateurOnCreated() {
+        print("AuthentificationVC:UtilisateurDataSource:onCreated non implementé ")
+    }
+    
+    func  utilisateurOnLoaded(utilisateur: Utilisateur) {
+        Utilisateur.sharedInstance = utilisateur
+        self.performSegue(withIdentifier: "GoToHomePage", sender: self)
+    }
+    func  utilisateurOnLoaded(matchs:ListeMatchingUtilisateurs) {
+        print("AuthentificationVC:UtilisateurDataSource:utilisateurOnLoaded(list) non implementé ")
+    }
+    func utilisateurOnNotFoundUtilisateur() {
+         self.performSegue(withIdentifier: "GoToCreateProfile", sender: self)
+    }
+    
+    func utilisateurOnWebServiceError(code: Int) {
+        AuthWebService.sendAlertMessage(vc: self, returnCode: code)
     }
 }

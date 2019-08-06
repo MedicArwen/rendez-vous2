@@ -21,7 +21,7 @@ class InteretsViewController: UIViewController {
         table.dataSource = self
         table.dragInteractionEnabled = true
         
-        RendezVousWebService.sharedInstance.listeCentreInteret { (json: JSON?, error: Error?) in
+        /*RendezVousWebService.sharedInstance.listeCentreInteret { (json: JSON?, error: Error?) in
             guard error == nil else {
                 print("Une erreur est survenue")
                 return
@@ -40,8 +40,8 @@ class InteretsViewController: UIViewController {
                     self.table.reloadData()
                 }
             }
-        }
-        
+        }*/
+        //CentreInteret.lo
         
         table.setEditing(true, animated: true)
         
