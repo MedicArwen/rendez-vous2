@@ -46,7 +46,7 @@ class PreviewViewController: UIViewController {
         pseudoUILabel.text = NewProfile.SharedInstance.pseudo
         catchPhraseUILabel.text = "\"\(NewProfile.SharedInstance.catchPhrase)\""
         descriptionUILabel.text = NewProfile.SharedInstance.description
-        
+
     }
 
     /*
@@ -66,7 +66,9 @@ class PreviewViewController: UIViewController {
 extension PreviewViewController:UtilisateurDataSource
 {
     func utilisateurOnLoaded(utilisateur: Utilisateur) {
-        print("PreviewViewController:UtilisateurDataSource:utilisateurOnLoaded - not implemented")
+        print("PreviewViewController:UtilisateurDataSource:utilisateurOnLoaded ")
+        Utilisateur.sharedInstance = utilisateur
+        print("utilisateur rechargé")
     }
     
     func utilisateurOnLoaded(matchs: ListeMatchingUtilisateurs) {
@@ -84,6 +86,7 @@ extension PreviewViewController:UtilisateurDataSource
     func utilisateurOnCreated() {
          print("PreviewViewController:UtilisateurDataSource:utilisateurOnCreated")
         print("Utilisateur bien créé")
+        Utilisateur.read(datasource: self)
     }
     
     func utilisateurOnNotFoundUtilisateur() {

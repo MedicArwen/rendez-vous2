@@ -39,21 +39,7 @@ struct RendezVousWebService {
             }
         }
     }
-   
-    func listeTypeCuisine(_ completion: @escaping ServiceResponse) {
-        let timestamp = String(NSDate().timeIntervalSince1970)
-        var params = [String:String]()
-        params["APIKEY"] = ConnectedRamonUser.sharedInstance!.apiKey
-        params["CMD"] = "LIST"
-        params["ENTITY"] = "TypeCuisine"
-        params["NUMRAMONUSER"] = "\(ConnectedRamonUser.sharedInstance!.ramonUser.idRamonUser)"
-        params["TIMESTAMP"] = timestamp
-        params[ "SIGNATURE"] =  MD5("\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)onmangeensembleb20")
-        print("chargement des types de cuisine")
-        print("signature=\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)onmangeensembleb20")
-        print(webServiceCalling(params, completion))
-        
-    }
+   /*
     func registerCentreInteret(_ completion: @escaping ServiceResponse) {
         let timestamp = String(NSDate().timeIntervalSince1970)
         var params = [String:String]()
@@ -63,7 +49,7 @@ struct RendezVousWebService {
         params["NUMRAMONUSER"] = "\(ConnectedRamonUser.sharedInstance!.ramonUser.idRamonUser)"
         params["TIMESTAMP"] = timestamp
         var listeInteret = [Int] ()
-        for centreInteret in NewProfile.SharedInstance.centresInterets {
+        for centreInteret in ListeCentreInteretUtilisateur.sharedInstance!.liste {
             listeInteret.append(centreInteret.id)
         }
         print("json: \(JSON(listeInteret).rawString()!)")
@@ -73,8 +59,8 @@ struct RendezVousWebService {
         print("signature=\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)\(params["liste"]!)onmangeensembleb20")
         print(webServiceCalling(params, completion))
         
-    }
-    func registerTypeCuisine(_ completion: @escaping ServiceResponse) {
+    }*/
+  /*  func registerTypeCuisine(_ completion: @escaping ServiceResponse) {
         let timestamp = String(NSDate().timeIntervalSince1970)
         var params = [String:String]()
         params["APIKEY"] = ConnectedRamonUser.sharedInstance!.apiKey
@@ -83,7 +69,7 @@ struct RendezVousWebService {
         params["NUMRAMONUSER"] = "\(ConnectedRamonUser.sharedInstance!.ramonUser.idRamonUser)"
         params["TIMESTAMP"] = timestamp
         var listeCuisine = [Int] ()
-        for typeCuisine in NewProfile.SharedInstance.typeCuisines {
+        for typeCuisine in ListeTypeCuisineUtilisateur.sharedInstance!.liste {
             listeCuisine.append(typeCuisine.id)
         }
         print("json: \(JSON(listeCuisine).rawString()!)")
@@ -93,7 +79,7 @@ struct RendezVousWebService {
         print("signature=\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)\(params["liste"]!)onmangeensembleb20")
         print(webServiceCalling(params, completion))
         
-    }
+    }*/
     
     static func generateMessageAlert(returnCode: Int)-> String {
         let message: String

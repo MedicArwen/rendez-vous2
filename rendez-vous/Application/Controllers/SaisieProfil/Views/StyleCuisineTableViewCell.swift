@@ -26,7 +26,7 @@ class StyleCuisineTableViewCell: UITableViewCell {
             
             // Configure the view for the selected state
         }
-        public func update(typeCusine:StyleCuisineUtilisateur)
+        public func update(typeCusine:TypeCuisineUtilisateur)
         {
             self.OrdrePreferenceLabel.text = "\(typeCusine.order)"
 

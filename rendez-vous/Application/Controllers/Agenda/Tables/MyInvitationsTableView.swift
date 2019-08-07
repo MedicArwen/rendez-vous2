@@ -37,8 +37,7 @@ extension MyInvitationsTableView:UITableViewDelegate,UITableViewDataSource
         if editingStyle == UITableViewCell.EditingStyle.delete
         {
              print("MyInvitationsTableView: editingStyle = .delete")
-            //ListeRendezVousAsConvive.remove(controleur: currentControleur!, indexPath: indexPath)
-            RendezVous.remove(indice: indexPath.row)
+            RendezVous.remove(indice: indexPath.row,dataSource: self)
         }
     }
     
@@ -57,5 +56,41 @@ extension MyInvitationsTableView:WebServiceLinkable
             indiceSuscribedView = newValue
         }
     }
+    
+}
+extension MyInvitationsTableView:RendezVousDataSource
+{
+    func rendezVousOnLoaded(rendezVous: RendezVous) {
+        print("yInvitationsTableView:RendezVousDataSource:rendezVousOnLoaded NOT IMPLEMENTED")
+    }
+    
+    func rendezVousOnLoaded(lesRendezVous: ListeRendezVous) {
+        print("yInvitationsTableView:RendezVousDataSource:rendezVousOnLoaded NOT IMPLEMENTED")
+    }
+    
+    func rendezVousOnUpdated() {
+        print("yInvitationsTableView:RendezVousDataSource:rendezVousOnLoaded NOT IMPLEMENTED")
+    }
+    
+    func rendezVousOnDeleted() {
+        print("yInvitationsTableView:RendezVousDataSource:rendezVousOnLoaded NOT IMPLEMENTED")
+    }
+    
+    func rendezVousOnCancelled() {
+        print("yInvitationsTableView:RendezVousDataSource:rendezVousOnLoaded NOT IMPLEMENTED")
+    }
+    
+    func rendezVousOnCreated(rendezVous: RendezVous) {
+        print("yInvitationsTableView:RendezVousDataSource:rendezVousOnLoaded NOT IMPLEMENTED")
+    }
+    
+    func rendezVousOnNotFoundRendezVous() {
+        print("yInvitationsTableView:RendezVousDataSource:rendezVousOnLoaded NOT IMPLEMENTED")
+    }
+    
+    func rendezVousOnWebServiceError(code: Int) {
+        print("yInvitationsTableView:RendezVousDataSource:rendezVousOnLoaded NOT IMPLEMENTED")
+    }
+    
     
 }

@@ -12,7 +12,7 @@ enum EnumEntityWebServiceTargeted {
     case RendezVous
     case RamonUser
     case CentreInteret
-    case StyleCuisine_Utilisateur
+    case Utilisateur_TypeCuisine
     case TypeCuisine
     case Restaurant
     case Utilisateur_RendezVous

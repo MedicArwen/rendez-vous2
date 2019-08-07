@@ -20,4 +20,25 @@ class ListeTypeCuisine
             self.liste.append(TypeCuisine(json:jCuisine.1))
         }
     }
+    func returnListDefaut()->[TypeCuisineUtilisateur]
+    {
+        var liste =  [TypeCuisineUtilisateur]()
+        var i = 1
+        for item in self.liste {
+            liste.append(TypeCuisineUtilisateur(id: item.id, libelle: item.libelle, order: i))
+            i += 1
+        }
+        return liste
+    }
+    func register(datasource:TypeCuisineDataSource)
+    {
+        var listeCuisine = [Int] ()
+        for item in self.liste {
+            listeCuisine.append(item.id)
+        }
+        print("ListeCentreInteretUtilisateur::register")
+        let webservice = WebServiceTypeCuisine(commande: .CREATE, entite: .Utilisateur_TypeCuisine, datasource:datasource)
+        webservice.addParameter(parametre: WebServiceParametre(cle: "liste", valeur: JSON(listeCuisine).rawString()!))
+        webservice.execute()
+    }
 }

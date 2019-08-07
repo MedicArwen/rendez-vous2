@@ -131,7 +131,7 @@ extension ListeInvitationsAsConvive:RendezVousDataSource
         print("ListeRendezVousAsConvive:RendezVousDataSource: not implemented")
     }
     
-    func rendezVousOnCreated() {
+    func rendezVousOnCreated(rendezVous: RendezVous) {
         print("ListeRendezVousAsConvive:RendezVousDataSource: not implemented")
     }
     
@@ -176,7 +176,7 @@ extension ListeInvitationsAsConvive:InvitationDataSource
         ListeInvitationsAsConvive.reloadViews()
     }
     
-    func invitationOnCreated() {
+    func invitationOnCreated(invitation:Invitation) {
          print("ListeRendezVousAsConvive:RendezVousDataSource: not implemented")
     }
     

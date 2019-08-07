@@ -165,6 +165,12 @@ extension Utilisateur:UtilisateurCrudable
         webservice.addParameter(parametre: WebServiceParametre(cle: "idUtilisateur", valeur: "\(idUtilisateur)"))
         webservice.execute()
     }
+    static func read(datasource: UtilisateurDataSource, idRamonUser: Int) {
+        print("Utilisateur:UtilisateurCrudable:read(idRamonUser)")
+        let webservice = WebServiceUtilisateur(commande: .READ, entite: .Utilisateur, datasource: datasource)
+        webservice.addParameter(parametre: WebServiceParametre(cle: "numRamonUser", valeur: "\(idRamonUser)"))
+        webservice.execute()
+    }
     static func read(datasource:UtilisateurDataSource)
     {
         print("Utilisateur:UtilisateurCrudable:read")
@@ -176,6 +182,8 @@ extension Utilisateur:UtilisateurCrudable
         print("Utilisateur:UtilisateurCrudable:create")
         let webservice = WebServiceUtilisateur(commande: .CREATE, entite: .Utilisateur, datasource: datasource)
         webservice.addParameter(parametre: WebServiceParametre(cle: "catchPhrase", valeur: NewProfile.SharedInstance.catchPhrase.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!))
+        webservice.addParameter(parametre: WebServiceParametre(cle: "dateNaissance", valeur: "\(ConnectedRamonUser.sharedInstance!.ramonUser.dateNaissance)"))
+        
         webservice.addParameter(parametre: WebServiceParametre(cle: "description", valeur: NewProfile.SharedInstance.description.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!))
         webservice.addParameter(parametre: WebServiceParametre(cle: "latitude", valeur: "\(NewProfile.SharedInstance.latitude)"))
         webservice.addParameter(parametre: WebServiceParametre(cle: "longitude", valeur: "\(NewProfile.SharedInstance.longitude)"))

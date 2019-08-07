@@ -50,8 +50,10 @@ class RendezVousView: UIView{
         print("RendezVousView:onClickCreateGroupe")
        // RendezVous.sharedInstance = RendezVous(idRendezVous: 0, numUtilisateurSource: Utilisateur.sharedInstance!.idUtilisateur, date: "\(datePicker.date)", numStatusRendezVous: 1, numRestaurant: Restaurant.sharedInstance!.idRestaurant,hote:Utilisateur.sharedInstance!,restau: Restaurant.sharedInstance!)
        // ListeRendezVousAsHote.append(rendezVous: RendezVous.sharedInstance!)
-        RendezVous.append(rendezVous: RendezVous(idRendezVous: 0, numUtilisateurSource: Utilisateur.sharedInstance!.idUtilisateur, date: "\(datePicker.date)", numStatusRendezVous: 1, numRestaurant: Restaurant.sharedInstance!.idRestaurant,hote:Utilisateur.sharedInstance!,restau: Restaurant.sharedInstance!))
-        
+        let rdv = RendezVous(idRendezVous: 0, numUtilisateurSource: Utilisateur.sharedInstance!.idUtilisateur, date: "\(datePicker.date)", numStatusRendezVous: 1, numRestaurant: Restaurant.sharedInstance!.idRestaurant,hote:Utilisateur.sharedInstance!,restau: Restaurant.sharedInstance!)
+        //RendezVous.sharedInstance = RendezVous(idRendezVous: 0, numUtilisateurSource: Utilisateur.sharedInstance!.idUtilisateur, date: "\(datePicker.date)", numStatusRendezVous: 1, numRestaurant: Restaurant.sharedInstance!.idRestaurant,hote:Utilisateur.sharedInstance!,restau: Restaurant.sharedInstance!)
+        RendezVous.sharedInstance = rdv
+        RendezVous.append(rendezVous:rdv ,dataSource: self)
     }
 }
 extension  RendezVousView:WebServiceLinkable {
@@ -103,8 +105,10 @@ extension RendezVousView:RendezVousDataSource
     {
           print("RendezVousView:RendezVousDataSource:rendezVousOnCancelled - NOT IMPLEMENTED")
     }
-    func rendezVousOnCreated() {
+    func rendezVousOnCreated(rendezVous: RendezVous) {
         print("RendezVousView:RendezVousDataSource:rendezVousOnCreated")
+        RendezVous.sharedInstance = rendezVous
+        setRendezVous(rendezVous: RendezVous.sharedInstance!)
     }
     
     func rendezVousOnNotFoundRendezVous() {

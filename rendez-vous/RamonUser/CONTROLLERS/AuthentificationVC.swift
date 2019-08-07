@@ -124,9 +124,10 @@ extension AuthentificationVC:RamonUserDataSource
     func ramonUserOnConnected(connectedRamonUser: ConnectedRamonUser) {
          print("AuthentificationVC:RamonUserDataSource:ramonUserOnConnected")
         ConnectedRamonUser.sharedInstance = connectedRamonUser
+        ConnectedRamonUser.saveUserConnected(connectedRamonUser: ConnectedRamonUser.sharedInstance!)
         if ConnectedRamonUser.sharedInstance!.isEmailValide()
         {
-            Utilisateur.read(datasource: self)
+            Utilisateur.read(datasource: self,idRamonUser:ConnectedRamonUser.sharedInstance!.ramonUser.idRamonUser )
         }
         else
         {
@@ -143,6 +144,18 @@ extension AuthentificationVC:RamonUserDataSource
         
     }
     
+    func ramonUserOnRegistered(ramonUser:RamonUser)
+    {
+        print("AuthentificationVC:RamonUserDataSource:ramonUserOnRegistered non implementé ")
+    }
+    func ramonUserOnMailAsked()
+    {
+        print("AuthentificationVC:RamonUserDataSource:ramonUserOnMailAsked non implementé ")
+    }
+    func ramonUserOnCodeChecked()
+    {print("AuthentificationVC:RamonUserDataSource:ramonUserOnCodeChecked non implementé ")
+        
+    }
     func ramonUserOnUpdated() {
         print("AuthentificationVC:RamonUserDataSource:onUpdated non implementé ")
     }
@@ -180,8 +193,17 @@ extension AuthentificationVC:UtilisateurDataSource
     }
     
     func  utilisateurOnLoaded(utilisateur: Utilisateur) {
-        Utilisateur.sharedInstance = utilisateur
-        self.performSegue(withIdentifier: "GoToHomePage", sender: self)
+
+        if  utilisateur.idUtilisateur == 0
+        {
+            self.performSegue(withIdentifier: "GoToCreateProfile", sender: self)
+        }
+        else
+        {
+            Utilisateur.sharedInstance = utilisateur
+            self.performSegue(withIdentifier: "GoToHomePage", sender: self)
+        }
+        
     }
     func  utilisateurOnLoaded(matchs:ListeMatchingUtilisateurs) {
         print("AuthentificationVC:UtilisateurDataSource:utilisateurOnLoaded(list) non implementé ")

@@ -64,7 +64,7 @@ class RegisterVC: RamonViewController {
         firstNameUITextField.delegate = self
         lastNameUITextField.delegate = self
         validationEmailCode.delegate = self
-        if AuthWebService.sharedInstance.ramonUser != nil
+        if ConnectedRamonUser.sharedInstance != nil
         {
             currentStep = 4
             emailUITextField.isHidden = true
@@ -269,69 +269,19 @@ viewContentDate.isHidden = birthDayUIDatePicker.isHidden
         formatter.dateFormat = "yyyy-MM-dd"
         let date = formatter.string(from: birthDayUIDatePicker.date)
         
-        AuthWebService.sharedInstance.ramonUser = RamonUser(idRamonUser: 0, courriel: emailUITextField.text!, motdepasse: MD5("\(passwordUITextField.text!)mercicaroleb20"), dateNaissance: date, pseudonyme: pseudonymeUITextField.text!, prenom: firstNameUITextField.text!, nom: lastNameUITextField.text!, codeValidation: "", estCompteValide: 0, numGenre: genderUISegmentedControl.selectedSegmentIndex + 1)
-        
-        AuthWebService.sharedInstance.register { (json: JSON?, error: Error?) in
-            guard error == nil else {
-                print("Une erreur est survenue")
-                return
-            }
-            if let json = json {
-                print(json)
-                if json["returnCode"].intValue != 200
-                {
-                    AuthWebService.sendAlertMessage(vc: self, returnCode: json["returnCode"].intValue)
-                }
-                else
-                {
-                    AuthWebService.sharedInstance.ramonUser = RamonUser(ramonUserJson: json["data"])
-                     self.askEmail()
-                    
-                }
-            }
-        }
+       let ramonUser = RamonUser(idRamonUser: 0, courriel: emailUITextField.text!, motdepasse: MD5("\(passwordUITextField.text!)mercicaroleb20"), dateNaissance: date, pseudonyme: pseudonymeUITextField.text!, prenom: firstNameUITextField.text!, nom: lastNameUITextField.text!, codeValidation: "", estCompteValide: 0, numGenre: genderUISegmentedControl.selectedSegmentIndex + 1)
+        ramonUser.register(datasource: self)
+       // ConnectedRamonUser.sharedInstance.ramonUser!.register(datasource: self)
+       
     }
     //askValidationCode
     func askEmail()
     {
-        AuthWebService.sharedInstance.askValidationCode { (json: JSON?, error: Error?) in
-            guard error == nil else {
-                print("Une erreur est survenue")
-                return
-            }
-            if let json = json {
-                print(json)
-                if json["returnCode"].intValue != 200
-                {
-                    AuthWebService.sendAlertMessage(vc: self, returnCode: json["returnCode"].intValue)
-                }
-                else
-                {
-                    AuthWebService.sendAlertMessage(vc: self, returnCode: 1)
-                }
-            }
-        }
+        RamonUser.sharedInstance!.askMail(datasource: self)
     }
     func checkEmail()
     {
-        AuthWebService.sharedInstance.checkValidationCode { (json: JSON?, error: Error?) in
-            guard error == nil else {
-                print("Une erreur est survenue")
-                return
-            }
-            if let json = json {
-                print(json)
-                if json["returnCode"].intValue != 200
-                {
-                    AuthWebService.sendAlertMessage(vc: self, returnCode: json["returnCode"].intValue)
-                }
-                else
-                {
-                    self.currentStep += 1
-                    self.changeStepShow()
-                }
-            }
-        }
+        RamonUser.sharedInstance!.checkCode(datasource:self)
     }
 }
 extension RegisterVC:UITextFieldDelegate
@@ -367,4 +317,57 @@ extension RegisterVC:UITextFieldDelegate
         return true
     }
 
+}
+extension RegisterVC:RamonUserDataSource
+{
+    func ramonUserOnLoaded(ramonUser: RamonUser) {
+        print("RegisterVC:RamonUserDataSource:ramonUserOnLoaded - NOT IMPLEMENTED")
+    }
+    
+    func ramonUserOnConnected(connectedRamonUser: ConnectedRamonUser) {
+        print("RegisterVC:RamonUserDataSource:ramonUserOnConnected - NOT IMPLEMENTED")
+    }
+    
+    func ramonUserOnLoginError() {
+        print("RegisterVC:RamonUserDataSource:ramonUserOnLoginError - NOT IMPLEMENTED")
+    }
+    
+    func ramonUserOnRegistered(ramonUser:RamonUser) {
+        print("RegisterVC:RamonUserDataSource:ramonUserOnRegistered")
+        RamonUser.sharedInstance = ramonUser
+        self.askEmail()
+    }
+    
+    func ramonUserOnMailAsked() {
+        print("RegisterVC:RamonUserDataSource:ramonUserOnMailAsked - NOT IMPLEMENTED")
+    }
+    
+    func ramonUserOnCodeChecked() {
+        print("RegisterVC:RamonUserDataSource:ramonUserOnCodeChecked ")
+        self.currentStep += 1
+        self.changeStepShow()
+    }
+    
+    func ramonUserOnUpdated() {
+         print("RegisterVC:RamonUserDataSource:ramonUserOnUpdated - NOT IMPLEMENTED")
+    }
+    
+    func ramonUserOnDeleted() {
+        print("RegisterVC:RamonUserDataSource:ramonUserOnDeleted - NOT IMPLEMENTED")
+    }
+    
+    func ramonUserOnCreated() {
+        print("RegisterVC:RamonUserDataSource:ramonUserOnCreated - NOT IMPLEMENTED")
+    }
+    
+    func ramonUserOnNotFoundRamonUser() {
+         print("RegisterVC:RamonUserDataSource:ramonUserOnNotFoundRamonUser - NOT IMPLEMENTED")
+    }
+    
+    func ramonUserOnWebServiceError(code: Int) {
+         print("RegisterVC:RamonUserDataSource:ramonUserOnWebServiceError")
+        print(AuthWebService.generateMessageAlert(returnCode: code))
+    }
+    
+    
 }

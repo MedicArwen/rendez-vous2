@@ -12,6 +12,7 @@ import SwiftyJSON
 class CentreInteret
 {   var id = 0
     var libelle = ""
+    
     init(id:Int,libelle:String) {
         self.id = id
         self.libelle = libelle

@@ -13,7 +13,7 @@ protocol RendezVousDataSource {
     func rendezVousOnUpdated()
     func rendezVousOnDeleted()
     func rendezVousOnCancelled()
-    func rendezVousOnCreated()
+    func rendezVousOnCreated(rendezVous:RendezVous)
     func rendezVousOnNotFoundRendezVous()
     func rendezVousOnWebServiceError(code:Int)
 }

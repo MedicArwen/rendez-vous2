@@ -33,7 +33,7 @@ class AgendaViewController: RamonViewController {
         self.tableRendezVousHosted.dataSource = self.tableRendezVousHosted
         ListeRendezVous.subscribe(vue: self.tableRendezVousHosted)
         //ListeRendezVousAsHote.load(controleur: self)
-        RendezVous.load(datasource: self)
+        RendezVous.load(dataSource: self)
         //Configuration de la table des invitations recues.
         self.tableInvitationsReceived.currentControleur = self
         self.tableInvitationsReceived.delegate = self.tableInvitationsReceived
@@ -64,7 +64,7 @@ class AgendaViewController: RamonViewController {
             tableRendezVousHosted.isHidden = false
             tableInvitationsReceived.isHidden = true
             //ListeRendezVousAsHote.load(controleur: self)
-            RendezVous.load(datasource: self)
+            RendezVous.load(dataSource: self)
         }
         else
         {
@@ -121,7 +121,7 @@ extension AgendaViewController:RendezVousDataSource
         print("AgendaViewController:RendezVousDataSource:rendezVousOnCancelled - NOT IMPLEMENTED")
     }
     
-    func rendezVousOnCreated() {
+    func rendezVousOnCreated(rendezVous: RendezVous) {
         print("AgendaViewController:RendezVousDataSource:AgendaViewController - NOT IMPLEMENTED")
     }
     
@@ -166,7 +166,7 @@ extension AgendaViewController:InvitationDataSource
         print("AgendaViewController:InvitationDataSource:invitationOnAccepted - NOT IMPLEMENTED")
     }
     
-    func invitationOnCreated() {
+    func invitationOnCreated(invitation:Invitation) {
         print("AgendaViewController:InvitationDataSource:invitationOnCreated - NOT IMPLEMENTED")
     }
     

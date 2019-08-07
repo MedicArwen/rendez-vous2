@@ -11,6 +11,9 @@ import SwiftyJSON
 
 
 class RamonUser{
+    
+    static var sharedInstance : RamonUser?
+    
     var idRamonUser: Int
     var courriel: String
     var motdepasse: String
@@ -78,5 +81,33 @@ extension RamonUser: RamonUserCrudable
         webservice.execute()
         
     }
-}
+    func register(datasource:RamonUserDataSource)
+    {
+        print("RamonUser: register")
+        let webservice = WebServiceAuth(commande: .REGISTER,datasource:datasource)
+        webservice.addParameter(parametre: WebServiceParametre(cle: "courriel", valeur: "\(self.courriel)"))
+        webservice.addParameter(parametre: WebServiceParametre(cle: "dateNaissance", valeur: "\(self.dateNaissance)"))
+        webservice.addParameter(parametre: WebServiceParametre(cle: "motdepasse", valeur: "\(self.motdepasse)"))
+        webservice.addParameter(parametre: WebServiceParametre(cle: "nom", valeur: "\(self.nom)"))
+        webservice.addParameter(parametre: WebServiceParametre(cle: "numGenre", valeur: "\(self.numGenre)"))
+        webservice.addParameter(parametre: WebServiceParametre(cle: "prenom", valeur: "\(self.prenom)"))
+        webservice.addParameter(parametre: WebServiceParametre(cle: "pseudonyme", valeur: "\(self.pseudonyme)"))
+        webservice.execute()
+    }
+    func askMail(datasource:RamonUserDataSource)
+    {
+        print("RamonUser: askMail")
+        let webservice = WebServiceAuth(commande: .MAIL,datasource:datasource)
+        webservice.addParameter(parametre: WebServiceParametre(cle: "courriel", valeur: "\(self.courriel)"))
+        webservice.execute()
+    }
+    func checkCode(datasource:RamonUserDataSource)
+    {
+        print("RamonUser: checkCode")
+        let webservice = WebServiceAuth(commande: .CODE,datasource:datasource)
+        webservice.addParameter(parametre: WebServiceParametre(cle: "codeValidation", valeur: "\(self.codeValidation)"))
+        webservice.addParameter(parametre: WebServiceParametre(cle: "courriel", valeur: "\(self.courriel)"))
+        webservice.execute()
+    }
+} 
 

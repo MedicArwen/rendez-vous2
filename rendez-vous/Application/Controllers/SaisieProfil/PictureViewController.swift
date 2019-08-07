@@ -25,9 +25,9 @@ class PictureViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let ramonUser = AuthWebService.sharedInstance.ramonUser
+        if let connectedRamonUser = ConnectedRamonUser.sharedInstance
         {
-            NewProfile.SharedInstance.pseudo = ramonUser.pseudonyme
+            NewProfile.SharedInstance.pseudo = connectedRamonUser.ramonUser.pseudonyme
         }
     }
 

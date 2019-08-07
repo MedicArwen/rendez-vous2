@@ -25,18 +25,15 @@ class MyRendezVousTableView: UITableView {
 extension MyRendezVousTableView:UITableViewDelegate,UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard ListeRendezVous.sharedInstance != nil else {
-            print("MyRendezVousTableView: count - aucune liste ListeRendezVousAsHote trouvée")
-            return 0
-        }
-        print("MyRendezVousTableView: count - \(ListeRendezVous.sharedInstance!.liste.count) rendez-vous créé(s)")
-        return ListeRendezVous.sharedInstance!.liste.count
+
+        print("MyRendezVousTableView: count - \(ListeRendezVous.sharedInstance.liste.count) rendez-vous créé(s)")
+        return ListeRendezVous.sharedInstance.liste.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("MyRendezVousTableView: update cellune n°#\(indexPath.row) du tableau de mes rendez-vous")
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyRendezVousHostedCell", for: indexPath) as! MyRendezVousTableViewCell
-        cell.update(rendezvous: ListeRendezVous.sharedInstance!.liste[indexPath.row],controleur: self.currentControleur!)
+        cell.update(rendezvous: ListeRendezVous.sharedInstance.liste[indexPath.row],controleur: self.currentControleur!)
         return cell
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -45,7 +42,7 @@ extension MyRendezVousTableView:UITableViewDelegate,UITableViewDataSource
         {
             print("MyRendezVousTableView: editingStyle == .delete")
             //Utilisateur.remove(indice: indexPath.row)
-            RendezVous.remove(indice: indexPath.row)
+            RendezVous.remove(indice: indexPath.row, dataSource: self)
         }
     }
     
@@ -53,7 +50,7 @@ extension MyRendezVousTableView:UITableViewDelegate,UITableViewDataSource
 extension MyRendezVousTableView:WebServiceLinkable
 {
     func refresh() {
-          print("MyRendezVousTableView:refresh")
+        print("MyRendezVousTableView:refresh")
         self.reloadData()
     }
     var indice: Int {
@@ -66,3 +63,38 @@ extension MyRendezVousTableView:WebServiceLinkable
     }
     
 }
+extension MyRendezVousTableView:RendezVousDataSource
+{
+    func rendezVousOnLoaded(rendezVous: RendezVous) {
+        print("yInvitationsTableView:RendezVousDataSource:rendezVousOnLoaded NOT IMPLEMENTED")
+    }
+    
+    func rendezVousOnLoaded(lesRendezVous: ListeRendezVous) {
+        print("yInvitationsTableView:RendezVousDataSource:rendezVousOnLoaded NOT IMPLEMENTED")
+    }
+    
+    func rendezVousOnUpdated() {
+        print("yInvitationsTableView:RendezVousDataSource:rendezVousOnUpdated NOT IMPLEMENTED")
+    }
+    
+    func rendezVousOnDeleted() {
+        print("yInvitationsTableView:RendezVousDataSource:rendezVousOnDeleted NOT IMPLEMENTED")
+    }
+    
+    func rendezVousOnCancelled() {
+        print("yInvitationsTableView:RendezVousDataSource:rendezVousOnCancelled NOT IMPLEMENTED")
+    }
+    
+    func rendezVousOnCreated(rendezVous: RendezVous) {
+        print("yInvitationsTableView:RendezVousDataSource:rendezVousOnCreated NOT IMPLEMENTED")
+    }
+    
+    func rendezVousOnNotFoundRendezVous() {
+        print("yInvitationsTableView:RendezVousDataSource:rendezVousOnNotFoundRendezVous NOT IMPLEMENTED")
+    }
+    
+    func rendezVousOnWebServiceError(code: Int) {
+        print("yInvitationsTableView:RendezVousDataSource:rendezVousOnWebServiceError NOT IMPLEMENTED")
+    }
+}
+

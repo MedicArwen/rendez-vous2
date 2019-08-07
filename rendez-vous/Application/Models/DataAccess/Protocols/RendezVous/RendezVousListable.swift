@@ -8,8 +8,8 @@
 
 import Foundation
 protocol RendezVousListable {
-    static func load(datasource:RendezVousDataSource)
-    static func append(rendezVous:RendezVous)
-    static func remove(indice:Int)
+    static func load(dataSource:RendezVousDataSource)
+    static func append(rendezVous:RendezVous,dataSource:RendezVousDataSource)
+    static func remove(indice:Int,dataSource:RendezVousDataSource)
     static func find(rendezVous:RendezVous)->Int
 }

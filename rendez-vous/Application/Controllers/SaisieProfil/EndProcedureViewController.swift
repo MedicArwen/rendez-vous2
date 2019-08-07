@@ -13,30 +13,7 @@ class EndProcedureViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        print("\(String(describing: NewProfile.SharedInstance.centresInterets.count))")
-        print("\(String(describing: NewProfile.SharedInstance.typeCuisines.count))")
-        print("\(NewProfile.SharedInstance.catchPhrase)")
-        print("\(NewProfile.SharedInstance.description)")
-        print("\(String(describing: NewProfile.SharedInstance.urlImage))")
-        RendezVousWebService.sharedInstance.registerTypeCuisine{ (json: JSON?, error: Error?) in
-            guard error == nil else {
-                print("Une erreur est survenue")
-                return
-            }
-            if let json = json {
-                print(json)
-                if json["returnCode"].intValue != 200
-                {
-                    AuthWebService.sendAlertMessage(vc: self, returnCode: json["returnCode"].intValue)
-                }
-                else
-                {
-                    // activer le bouton next!
-                }
-            }
-        }
+        ListeTypeCuisineUtilisateur.sharedInstance!.register(datasource: self)
     }
     
 
@@ -50,4 +27,29 @@ class EndProcedureViewController: UIViewController {
     }
     */
 
+}
+extension EndProcedureViewController:TypeCuisineUtilisateurDataSource
+{
+    func typeCuisineUtilisateurOnLoaded(typeCuisines: ListeTypeCuisineUtilisateur) {
+        print("EndProcedureViewController:TypeCuisineUtilisateurDataSource:typeCuisineUtilisateurOnLoaded NOT IMPLEMENTED")
+    }
+    
+    func typeCuisineUtilisateurOnUpdated() {
+        print("EndProcedureViewController:TypeCuisineUtilisateurDataSource:typeCuisineUtilisateurOnUpdated NOT IMPLEMENTED")
+    }
+    
+    func typeCuisineUtilisateurOnCreated() {
+        print("EndProcedureViewController:TypeCuisineUtilisateurDataSource:typeCuisineUtilisateurOnCreated")
+        print("Creation des types cuisines utilisateurs réussie")
+    }
+    
+    func typeCuisineUtilisateurOnNotFoundTypeCuisine() {
+        print("EndProcedureViewController:TypeCuisineUtilisateurDataSource:typeCuisineUtilisateurOnNotFoundTypeCuisine NOT IMPLEMENTED")
+    }
+    
+    func typeCuisineUtilisateurOnWebServiceError(code: Int) {
+        print("EndProcedureViewController:TypeCuisineUtilisateurDataSource:typeCuisineUtilisateurOnWebServiceError NOT IMPLEMENTED")
+    }
+    
+    
 }

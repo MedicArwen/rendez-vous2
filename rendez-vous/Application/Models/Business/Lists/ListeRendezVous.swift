@@ -12,11 +12,15 @@ import SwiftyJSON
 import SwiftHash
 
 class ListeRendezVous {
-    static var sharedInstance : ListeRendezVous?
+    static var sharedInstance = ListeRendezVous()
     var liste = [RendezVous]()
-    
-    init(json:JSON) {
-        print("ListeRendezVousAsHote:init")
+    init()
+    {
+        print("ListeRendezVousAsHote:init()")
+    }
+    convenience init(json:JSON) {
+        self.init()
+        print("ListeRendezVousAsHote:init(json)")
         var i = 1
         print("-> ajout des \(json.arrayValue.count) rendez-vous à la liste")
         for item in json.arrayValue
@@ -28,7 +32,7 @@ class ListeRendezVous {
                 let invitation = Invitation(jsonInvitation: jUtilisateur.1["Invitation"], jsonUtilisateur: jUtilisateur.1["Utilisateur"],jsonRendezVous: jUtilisateur.1["Rendez-Vous"])
                 rendezVous.addInvitation(invitation: invitation)
             }
-            liste.append(rendezVous)
+            self.liste.append(rendezVous)
             i += 1
         }
     }
@@ -92,7 +96,7 @@ extension ListeRendezVous:RendezVousDataSource
         print("ListeRendezVousAsHote:rendezVousOnCancelled:rendezVousOnCancelled annulation réussie")
     }
     
-    func rendezVousOnCreated() {
+    func rendezVousOnCreated(rendezVous: RendezVous) {
          print("ListeRendezVousAsHote:RendezVousDataSource:rendezVousOnCreated")
         ListeRendezVous.reloadViews()
     }

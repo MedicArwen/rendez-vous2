@@ -12,13 +12,22 @@ import SwiftyJSON
 class ListeCentreInterets
 {
     static var sharedInstance : ListeCentreInterets?
-    var liste = [CentreInteretUtilisateur]()
+    var liste = [CentreInteret]()
     
     init(json:JSON) {
-        var i = 1
+        
         for jCentreInteret in json {
-            self.liste.append(CentreInteretUtilisateur(json:jCentreInteret.1,ordre:i))
+            self.liste.append(CentreInteret(json:jCentreInteret.1))
+        }
+    }
+    func returnListDefaut()->[CentreInteretUtilisateur]
+    {
+        var liste =  [CentreInteretUtilisateur]()
+        var i = 1
+        for item in self.liste {
+            liste.append(CentreInteretUtilisateur(id: item.id, libelle: item.libelle, order: i))
             i += 1
         }
+        return liste
     }
 }

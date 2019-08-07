@@ -14,23 +14,41 @@ import MapKit
 
 class ListeCentreInteretUtilisateur
 {
-   static var sharedInstance : ListeCentreInteretUtilisateur?
-    var liste = [CentreInteretUtilisateur]()
+    static var sharedInstance : ListeCentreInteretUtilisateur?
+    var liste : [CentreInteretUtilisateur]
     
-    init(json:JSON) {
+    init() {
+        self.liste = [CentreInteretUtilisateur]()
+    }
+    convenience init(json:JSON) {
         print("ListeCentreInteretUtilisateur:init")
+        self.init()
+       // self.liste = [CentreInteretUtilisateur]()
         var i = 1
         for jCentreInteret in json {
             self.liste.append(CentreInteretUtilisateur(json: jCentreInteret.1, ordre: i))
             i += 1
         }
     }
-    // cette méthode permet d'invoquer le web service et de gérer le call back
-    // cela utilise la classe mère WebServiceSubscribable pour abonner les différences éléments d'interface à sa mise à jour
-    // afin de les synchroniser
-/*}
-extension ListeCentreInteretUtilisateur:WebServiceListable
-{*/
+    convenience init(centreInterets:ListeCentreInterets) {
+        self.init()
+        var i = 1
+        for item in centreInterets.liste{
+            self.liste.append(CentreInteretUtilisateur(id: item.id, libelle: item.libelle, order: i))
+            i += 1
+        }
+    }
+    func register(datasource:CentreInteretUtilisateurDataSource)
+    {
+        var listeInteret = [Int] ()
+        for item in self.liste {
+            listeInteret.append(item.id)
+        }
+        print("ListeCentreInteretUtilisateur::register")
+        let webservice = WebServiceCentreInteretUtilisateur(commande: .CREATE, entite: .Utilisateur_CentreInteret, datasource:datasource)
+        webservice.addParameter(parametre: WebServiceParametre(cle: "liste", valeur: JSON(listeInteret).rawString()!))
+        webservice.execute()
+    }
     static func remove(controleur: RamonViewController, indexPath: IndexPath) {
         print("ListeCentreInteretUtilisateur:remove - pas implanté ")
     }
@@ -44,10 +62,7 @@ extension ListeCentreInteretUtilisateur:WebServiceListable
     }
     static func swap(source:Int,dest:Int)
     {
-       // ListeCentreInteretUtilisateur.sharedInstance!.liste[source].order = dest + 1
-       // ListeCentreInteretUtilisateur.sharedInstance!.liste[dest].order = source + 1
         ListeCentreInteretUtilisateur.sharedInstance!.liste.swapAt(source, dest)
-        
         var i = 1
         for item in ListeCentreInteretUtilisateur.sharedInstance!.liste
         {
@@ -61,47 +76,6 @@ extension ListeCentreInteretUtilisateur:WebServiceListable
             }
         }
         ListeCentreInteretUtilisateur.reloadViews()
-        
-    }
-  /*  static func load(controleur: RamonViewController)
-    {
-        print("ListeCentreInteretUtilisateur:Load")
-        ListeCentreInteretUtilisateur.createListRequest
-            { (json: JSON?, error: Error?) in
-                guard error == nil else
-                {
-                    print("Une erreur est survenue")
-                    return
-                }
-                if let json = json
-                {
-                    print(json)
-                    if json["returnCode"].intValue != 200
-                    {
-                        AuthWebService.sendAlertMessage(vc: controleur, returnCode: json["returnCode"].intValue)
-                    }
-                    else
-                    {
-                        ListeCentreInteretUtilisateur.sharedInstance = ListeCentreInteretUtilisateur(json:json["data"])
-                        ListeCentreInteretUtilisateur.reloadViews()
-                    }
-                }
-        }
-        print("end of load")
-    }*/
-    // cette méthode permet de construire l'appel du web service en lui-même ainsi que la requête http qui est envoyée.
-    static func createListRequest(_ completion: @escaping ServiceResponse) {
-        let timestamp = String(NSDate().timeIntervalSince1970)
-        var params = [String:String]()
-        params["APIKEY"] = ConnectedRamonUser.sharedInstance!.apiKey
-        params["CMD"] = "LIST"
-        params["ENTITY"] = "UtilisateurCentreInteret"
-        params["NUMRAMONUSER"] = "\(ConnectedRamonUser.sharedInstance!.ramonUser.idRamonUser)"
-        params["TIMESTAMP"] = timestamp
-        params[ "SIGNATURE"] =  MD5("\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)onmangeensembleb20")
-        print("-> chargement des centres d'interet de l'utilisateur")
-        print("signature=\(params["APIKEY"]!)\(params["CMD"]!)\(params["ENTITY"]!)\(params["NUMRAMONUSER"]!)\(params["TIMESTAMP"]!)onmangeensembleb20")
-        print(RendezVousWebService.sharedInstance.webServiceCalling(params, completion))
         
     }
 }

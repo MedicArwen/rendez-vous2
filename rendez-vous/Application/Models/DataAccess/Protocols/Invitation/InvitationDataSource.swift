@@ -15,7 +15,7 @@ protocol InvitationDataSource {
     func invitationOnCancelled()
     func invitationOnRejected()
     func invitationOnAccepted()
-    func invitationOnCreated()
+    func invitationOnCreated(invitation:Invitation)
     func invitationOnNotFoundInvitation()
     func invitationOnWebServiceError(code:Int)
 }

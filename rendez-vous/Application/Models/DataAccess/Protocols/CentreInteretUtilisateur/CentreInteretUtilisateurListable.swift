@@ -11,5 +11,4 @@ import Foundation
 
 protocol CentreInteretUtilisateurListable {
     static func load(datasource:CentreInteretUtilisateurDataSource)
-    static func loadDefault(datasource:CentreInteretUtilisateurDataSource)
 }

@@ -20,29 +20,7 @@ class InteretsViewController: UIViewController {
         table.delegate = self
         table.dataSource = self
         table.dragInteractionEnabled = true
-        
-        /*RendezVousWebService.sharedInstance.listeCentreInteret { (json: JSON?, error: Error?) in
-            guard error == nil else {
-                print("Une erreur est survenue")
-                return
-            }
-            if let json = json {
-                print(json)
-                if json["returnCode"].intValue != 200
-                {
-                    AuthWebService.sendAlertMessage(vc: self, returnCode: json["returnCode"].intValue)
-                }
-                else
-                {
-                    NewProfile.SharedInstance.centresInterets = CentreInteret.getCentreInteretList(json:json["data"])
-                    // activer le bouton next!
-                    print("\(NewProfile.SharedInstance.centresInterets.count)")
-                    self.table.reloadData()
-                }
-            }
-        }*/
-        //CentreInteret.lo
-        
+        CentreInteret.load(datasource: self)
         table.setEditing(true, animated: true)
         
       
@@ -60,13 +38,16 @@ extension InteretsViewController:UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return NewProfile.SharedInstance.centresInterets.count
+        guard ListeCentreInteretUtilisateur.sharedInstance != nil else {
+            return 0
+        }
+        return ListeCentreInteretUtilisateur.sharedInstance!.liste.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "celluleInteret", for: indexPath) as! CentreInteretTableViewCell
-        cell.update(centreInteret: NewProfile.SharedInstance.centresInterets[indexPath.row])
-        print("\(NewProfile.SharedInstance.centresInterets[indexPath.row].libelle)")
+        cell.update(centreInteret: ListeCentreInteretUtilisateur.sharedInstance!.liste[indexPath.row])
+        print("\(ListeCentreInteretUtilisateur.sharedInstance!.liste[indexPath.row].libelle)")
         return cell
     }
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
@@ -78,9 +59,30 @@ extension InteretsViewController:UITableViewDelegate, UITableViewDataSource
     }
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         //liste[sourceIndexPath.row] =
-        NewProfile.SharedInstance.centresInterets.swapAt(sourceIndexPath.row, destinationIndexPath.row)
-        NewProfile.SharedInstance.centresInterets[sourceIndexPath.row].order = sourceIndexPath.row + 1
-        NewProfile.SharedInstance.centresInterets[destinationIndexPath.row].order = destinationIndexPath.row + 1
+        ListeCentreInteretUtilisateur.sharedInstance!.liste.swapAt(sourceIndexPath.row, destinationIndexPath.row)
+        ListeCentreInteretUtilisateur.sharedInstance!.liste[sourceIndexPath.row].order = sourceIndexPath.row + 1
+        ListeCentreInteretUtilisateur.sharedInstance!.liste[destinationIndexPath.row].order = destinationIndexPath.row + 1
         table.reloadData()
     }
+}
+extension InteretsViewController:CentreInteretDataSource
+{
+    func centreInteretOnNotFoundCentreInteret() {
+         print("InteretsViewController:CentreInteretUtilisateurDataSource:centreInteretOnNotFoundCentreInteret NOT IMPLEMENTED ")
+    }
+    
+    func centreInteretOnWebServiceError(code: Int) {
+         print("InteretsViewController:CentreInteretUtilisateurDataSource:centreInteretOnWebServiceError NOT IMPLEMENTED ")
+    }
+    
+    func centreInteretOnLoaded(centreInteret:CentreInteret) {
+        print("InteretsViewController:CentreInteretUtilisateurDataSource:centreInteretrOnLoaded NOT IMPLEMENTED ")
+    }
+    
+    func centreInteretOnLoaded(centresInterets:ListeCentreInterets) {
+        ListeCentreInteretUtilisateur.sharedInstance = ListeCentreInteretUtilisateur(centreInterets: centresInterets)
+        // activer le bouton next!
+        print("-> il y a \(ListeCentreInteretUtilisateur.sharedInstance!.liste.count) centres d'intérêts disponibles")
+        self.table.reloadData()
+    }  
 }

@@ -38,12 +38,15 @@ class RendezVous{
     }
     func getDate()->Date
     {
-        print("RendezVous:getDate")
+        print("RendezVous:getDate(string: \(self.date))")
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
+        print("\(String(describing: dateFormatter.date(from:self.date)))")
         guard dateFormatter.date(from:self.date) != nil else {
-            return Date()
+            print("-> date null ERROR")
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            return dateFormatter.date(from:self.date)!
         }
         return dateFormatter.date(from:self.date)!
     }
@@ -78,15 +81,18 @@ class RendezVous{
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale.init(identifier: "fr_FR")
         dateFormatter.dateFormat = "dd/MM/yyyy"
-        return dateFormatter.string(from: self.getDate())
+        let leJour = dateFormatter.string(from: self.getDate())
+        print("-> \(leJour)")
+        return leJour
     }
    func getHour()->String
    {
-    print("RendezVous:getHour")
     let dateFormatter = DateFormatter()
     dateFormatter.locale = Locale.init(identifier: "fr_FR")
     dateFormatter.dateFormat = "hh:mm"
-    return dateFormatter.string(from: self.getDate())
+    let lHeure = dateFormatter.string(from: self.getDate())
+    print("-> \(lHeure)")
+    return lHeure
     }
     
 }
@@ -169,9 +175,9 @@ extension RendezVous:RendezVousCrudable
 }
 extension RendezVous:RendezVousListable
 {
-    static func load(datasource: RendezVousDataSource) {
+    static func load(dataSource: RendezVousDataSource) {
         print("RendezVous:RendezVousListable:load (\(Utilisateur.sharedInstance!.pseudo)[\(Utilisateur.sharedInstance!.idUtilisateur)]")
-        let webservice = WebServiceRendezVous(commande: .LIST, entite: .RendezVous, datasource: datasource)
+        let webservice = WebServiceRendezVous(commande: .LIST, entite: .RendezVous, datasource: dataSource)
         webservice.execute()
     }
     static func find(rendezVous:RendezVous)->Int
@@ -179,7 +185,7 @@ extension RendezVous:RendezVousListable
         print("ListeMatchingUtilisateurs:find")
         var i = 0
         var indice = -1
-        for item in ListeRendezVous.sharedInstance!.liste
+        for item in ListeRendezVous.sharedInstance.liste
         {
             if item.idRendezVous == rendezVous.idRendezVous
             {
@@ -190,27 +196,19 @@ extension RendezVous:RendezVousListable
         print("-> indice trouvé: \(indice) (-1 = rien trouvé)")
         return indice
     }
-    static func remove(indice:Int)
+    static func remove(indice:Int,dataSource:RendezVousDataSource)
     {
-        guard ListeRendezVous.sharedInstance != nil else {
-            print("ListeRendezVousAsHote:remove(indexPath) - aucune liste ListeRendezVousAsHote trouvée")
-            return
-        }
         print("ListeRendezVousAsHote:removein(dexPath) - il faut annuler le rendez-vous")
-        print("rendez vous n° \(ListeRendezVous.sharedInstance!.liste[indice].idRendezVous)")
-        ListeRendezVous.sharedInstance!.liste[indice].cancel(datasource:ListeRendezVous.sharedInstance!)
-        ListeRendezVous.sharedInstance!.liste.remove(at: indice)
+        print("rendez vous n° \(ListeRendezVous.sharedInstance.liste[indice].idRendezVous)")
+        ListeRendezVous.sharedInstance.liste[indice].cancel(datasource:ListeRendezVous.sharedInstance)
+        ListeRendezVous.sharedInstance.liste.remove(at: indice)
         ListeRendezVous.reloadViews()
     }
     
-    static func append(rendezVous:RendezVous)
+    static func append(rendezVous:RendezVous,dataSource:RendezVousDataSource)
     {
-        guard ListeRendezVous.sharedInstance != nil else {
-            print("ListeRendezVousAsHote:append(item) - aucune liste ListeRendezVousAsHote trouvée")
-            return
-        }
-        rendezVous.create(datasource: ListeRendezVous.sharedInstance!)
-        ListeRendezVous.sharedInstance!.liste.append(rendezVous)
+        rendezVous.create(datasource: dataSource)
+        ListeRendezVous.sharedInstance.liste.append(rendezVous)
         ListeRendezVous.reloadViews()
     }
     

@@ -53,9 +53,6 @@ class GuestRankedTableViewCell: UITableViewCell {
        // let invitation = Invitation(numInvite:self.utilisateur!.idUtilisateur,numRendezVous:RendezVous.sharedInstance!.idRendezVous ,numStatusInvitation:1,utilisateur: utilisateur!)
         let invitation = Invitation(utilisateur: guest, rendezVous: RendezVous.sharedInstance!, numStatusInvitation: 1)
         invitation.create(datasource: self)
-        RendezVous.sharedInstance!.addInvitation(invitation: invitation)
-        let indice = Utilisateur.find(utilisateur: utilisateur!)
-        Utilisateur.remove(indice:indice)
     }
     
 }
@@ -89,9 +86,12 @@ extension GuestRankedTableViewCell:InvitationDataSource
         print("GuestRankedTableViewCell:InvitationDataSource: - not implemented")
     }
     
-    func invitationOnCreated() {
+    func invitationOnCreated(invitation:Invitation) {
         print("GuestRankedTableViewCell:InvitationDataSource:invitationOnCreated")
         print("->UtilisateurInvite")
+        RendezVous.sharedInstance!.addInvitation(invitation: invitation)
+        let indice = Utilisateur.find(utilisateur: utilisateur!)
+        Utilisateur.remove(indice:indice)
     }
     
     func invitationOnNotFoundInvitation() {
