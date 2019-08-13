@@ -21,7 +21,7 @@ class MyInvitationsTableViewCell: UITableViewCell {
     @IBOutlet weak var buttonAccept: RoundButtonUIButton!
     
     var rendezVous:RendezVous?
-    var currentControleur: RamonViewController?
+    var currentControleur: AgendaViewController?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,7 +33,7 @@ class MyInvitationsTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
-    func update(rendezvous:RendezVous, controleur:RamonViewController)
+    func update(rendezvous:RendezVous, controleur:AgendaViewController)
     {
         print("MyInvitationsTableViewCell:update (id rdv:\(rendezvous.idRendezVous))")
         self.dateRendezVousLabel.text = rendezvous.getDay()
@@ -56,16 +56,16 @@ class MyInvitationsTableViewCell: UITableViewCell {
     
     @IBAction func onClickCancel(_ sender: RoundButtonUIButton) {
         print("MyInvitationsTableViewCell:onClickCancel ")
-        ListeInvitationsAsConvive.sharedInstance!.reject(controleur: currentControleur!, rendezVous: rendezVous!)
+        ListeInvitationsAsConvive.sharedInstance!.reject(controleur: currentControleur!, rendezVous: rendezVous!, dataSource: self)
     }
     
     @IBAction func onClickReject(_ sender: RoundButtonUIButton) {
         print("MyInvitationsTableViewCell:onClickReject ")
-        ListeInvitationsAsConvive.sharedInstance!.reject(controleur: currentControleur!, rendezVous: rendezVous!)
+        ListeInvitationsAsConvive.sharedInstance!.reject(controleur: currentControleur!, rendezVous: rendezVous!,dataSource: self)
     }
     @IBAction func onClickAccept(_ sender: RoundButtonUIButton) {
         print("MyInvitationsTableViewCell:onClickAccept ")
-        ListeInvitationsAsConvive.sharedInstance!.accept(controleur: currentControleur!,rendezVous: rendezVous!)
+        ListeInvitationsAsConvive.sharedInstance!.accept(controleur: currentControleur!,rendezVous: rendezVous!,dataSource: self)
         buttonAccept.isHidden = true
         buttonReject.isHidden = true
         buttonCancel.isHidden = false
@@ -75,7 +75,7 @@ class MyInvitationsTableViewCell: UITableViewCell {
         /* let vc = self.currentControleur as! AgendaViewController
          vc.currentRendezVous = rendezVous
          vc.currentRestaurant = rendezVous!.restaurant*/
-        RendezVous.sharedInstance = self.rendezVous!
+        currentControleur!.selectedRendezVous = self.rendezVous!
         Restaurant.sharedInstance = self.rendezVous!.restaurant!
         self.currentControleur!.performSegue(withIdentifier: "showUpdateGroup", sender: self.currentControleur!)
     }
@@ -93,6 +93,51 @@ extension MyInvitationsTableViewCell:UICollectionViewDelegate,UICollectionViewDa
         cell.update(invitation: self.rendezVous!.invitationList[indexPath.row], controleur: self.currentControleur!)
         
         return cell
+    }
+    
+    
+}
+extension MyInvitationsTableViewCell:InvitationDataSource
+{
+    func invitationOnLoaded(invitation: Invitation) {
+        print("MyInvitationsTableViewCell:InvitationDataSource:invitationOnLoaded NOT IMPLEMENTED")
+    }
+    
+    func invitationOnLoaded(invitations: ListeInvitationsAsConvive) {
+        print("MyInvitationsTableViewCell:InvitationDataSource:invitationOnLoaded NOT IMPLEMENTED")
+    }
+    
+    func invitationOnUpdated() {
+        print("MyInvitationsTableViewCell:InvitationDataSource:invitationOnUpdated NOT IMPLEMENTED")
+    }
+    
+    func invitationOnDeleted() {
+        print("MyInvitationsTableViewCell:InvitationDataSource:invitationOnDeleted NOT IMPLEMENTED")
+    }
+    
+    func invitationOnCancelled() {
+        print("MyInvitationsTableViewCell:InvitationDataSource:invitationOnCancelled NOT IMPLEMENTED")
+    }
+    
+    func invitationOnRejected() {
+        print("MyInvitationsTableViewCell:InvitationDataSource:invitationOnRejected NOT IMPLEMENTED")
+    }
+    
+    func invitationOnAccepted() {
+        print("MyInvitationsTableViewCell:InvitationDataSource:invitationOnAccepted NOT IMPLEMENTED")
+    }
+    
+    func invitationOnCreated(invitation: Invitation) {
+        print("MyInvitationsTableViewCell:InvitationDataSource:invitationOnCreated NOT IMPLEMENTED")
+    }
+    
+    func invitationOnNotFoundInvitation() {
+        print("MyInvitationsTableViewCell:InvitationDataSource:invitationOnNotFoundInvitation NOT IMPLEMENTED")
+    }
+    
+    func invitationOnWebServiceError(code: Int) {
+        print("MyInvitationsTableViewCell:InvitationDataSource:invitationOnWebServiceError")
+        AlerteBoxManager.sendAlertMessage(vc: self.currentControleur!, returnCode: code)
     }
     
     

@@ -38,7 +38,7 @@ extension CentreInteretUtilisateurCollectionView:UICollectionViewDataSource,UICo
     }
     func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         print("SWAP \(sourceIndexPath.row) to \(destinationIndexPath.row)")
-        ListeCentreInteretUtilisateur.swap(source:sourceIndexPath.row,dest:destinationIndexPath.row)
+        ListeCentreInteretUtilisateur.swap(source:sourceIndexPath.row,dest:destinationIndexPath.row,datasource: self)
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         print("CentreInteretUtilisateurCollectionView n°#\(indexPath.row) updated")
@@ -62,4 +62,37 @@ extension CentreInteretUtilisateurCollectionView:WebServiceLinkable
             indiceSuscribedView = newValue
         }
     }
+}
+extension CentreInteretUtilisateurCollectionView:CentreInteretUtilisateurDataSource
+{
+    func centreInteretUtilisateurOnLoaded(centreInteret: CentreInteretUtilisateur) {
+        print("CentreInteretUtilisateurCollectionView:CentreInteretUtilisateurDataSource:centreInteretUtilisateurOnLoaded NOT IMPLEMENTED")
+    }
+    
+    func centreInteretUtilisateurOnLoaded(centresInterets: ListeCentreInteretUtilisateur) {
+        print("CentreInteretUtilisateurCollectionView:CentreInteretUtilisateurDataSource:centreInteretUtilisateurOnLoaded NOT IMPLEMENTED")
+    }
+    
+    func centreInteretUtilisateurOnUpdated() {
+        print("CentreInteretUtilisateurCollectionView:CentreInteretUtilisateurDataSource:centreInteretUtilisateurOnLoaded NOT IMPLEMENTED")
+    }
+    
+    func centreInteretUtilisateurOnDeleted() {
+        print("CentreInteretUtilisateurCollectionView:CentreInteretUtilisateurDataSource:centreInteretUtilisateurOnLoaded NOT IMPLEMENTED")
+    }
+    
+    func centreInteretUtilisateurOnCreated() {
+        print("CentreInteretUtilisateurCollectionView:CentreInteretUtilisateurDataSource:centreInteretUtilisateurOnLoaded NOT IMPLEMENTED")
+    }
+    
+    func centreInteretUtilisateurOnNotFoundCentreInteret() {
+        print("CentreInteretUtilisateurCollectionView:CentreInteretUtilisateurDataSource:centreInteretUtilisateurOnLoaded NOT IMPLEMENTED")
+    }
+    
+    func centreInteretUtilisateurOnWebServiceError(code: Int) {
+        print("CentreInteretUtilisateurCollectionView:CentreInteretUtilisateurDataSource:centreInteretUtilisateurOnLoaded")
+        AlerteBoxManager.sendAlertMessage(vc: self.parentControleur!, returnCode: code)
+    }
+    
+    
 }

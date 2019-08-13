@@ -11,7 +11,7 @@ import SwiftHash
 import SwiftyJSON
 
 class MyInvitationsTableView: UITableView {
-    var currentControleur : RamonViewController?
+    var currentControleur : AgendaViewController?
     fileprivate var indiceSuscribedView = 0
 }
 extension MyInvitationsTableView:UITableViewDelegate,UITableViewDataSource
@@ -89,7 +89,8 @@ extension MyInvitationsTableView:RendezVousDataSource
     }
     
     func rendezVousOnWebServiceError(code: Int) {
-        print("yInvitationsTableView:RendezVousDataSource:rendezVousOnLoaded NOT IMPLEMENTED")
+        print("yInvitationsTableView:RendezVousDataSource:rendezVousOnLoaded")
+        AlerteBoxManager.sendAlertMessage(vc: self.currentControleur!, returnCode: code)
     }
     
     

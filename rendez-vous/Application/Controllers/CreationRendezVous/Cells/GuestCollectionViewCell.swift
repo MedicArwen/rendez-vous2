@@ -9,7 +9,7 @@
 import UIKit
 
 class GuestCollectionViewCell: UICollectionViewCell {
-    var currentControleur: UIViewController?
+    var currentControleur: CreateGroupViewController?
     var invitation:Invitation?
     @IBOutlet weak var pseudoLabel: UILabel!
     /*
@@ -19,7 +19,7 @@ class GuestCollectionViewCell: UICollectionViewCell {
      // Drawing code
      }
      */
-    func update(invitation:Invitation,controleur: UIViewController)
+    func update(invitation:Invitation,controleur: CreateGroupViewController)
     {
        print("GuestCollectionViewCell:update (invite:\(invitation.getInviteID()) - rdv:\(invitation.getRendezVousID())")
         self.currentControleur = controleur

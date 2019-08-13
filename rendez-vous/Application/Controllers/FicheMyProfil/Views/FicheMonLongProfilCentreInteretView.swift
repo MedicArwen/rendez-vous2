@@ -90,7 +90,8 @@ extension FicheMonLongProfilCentreInteretView:CentreInteretUtilisateurDataSource
     }
     
     func centreInteretUtilisateurOnWebServiceError(code: Int) {
-        print("FicheMonLongProfilCentreInteretView:CentreInteretDataSource:centreInteretOnWebServiceError NOT IMPLEMENTED")
+        print("FicheMonLongProfilCentreInteretView:CentreInteretDataSource:centreInteretOnWebServiceError")
+        AlerteBoxManager.sendAlertMessage(vc: self.parentControleur!, returnCode: code)
     }
     
     

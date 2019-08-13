@@ -48,7 +48,8 @@ extension EndProcedureViewController:TypeCuisineUtilisateurDataSource
     }
     
     func typeCuisineUtilisateurOnWebServiceError(code: Int) {
-        print("EndProcedureViewController:TypeCuisineUtilisateurDataSource:typeCuisineUtilisateurOnWebServiceError NOT IMPLEMENTED")
+        print("EndProcedureViewController:TypeCuisineUtilisateurDataSource:typeCuisineUtilisateurOnWebServiceError")
+        AlerteBoxManager.sendAlertMessage(vc: self, returnCode: code)
     }
     
     

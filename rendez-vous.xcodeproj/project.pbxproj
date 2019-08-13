@@ -94,6 +94,18 @@
 		7FA9321522F9801B00078529 /* CentreInteretDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA9321422F9801B00078529 /* CentreInteretDataSource.swift */; };
 		7FA9321722F9802D00078529 /* CentreInteretListable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA9321622F9802D00078529 /* CentreInteretListable.swift */; };
 		7FA9321922F9835F00078529 /* EnumAuthCommandWS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA9321822F9835F00078529 /* EnumAuthCommandWS.swift */; };
+		7FB0E2DE22FC12E400CA950A /* FicheScoringUtilisateurViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0E2DD22FC12E400CA950A /* FicheScoringUtilisateurViewController.swift */; };
+		7FB0E2E122FC4C0100CA950A /* ScoringMyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0E2E022FC4C0100CA950A /* ScoringMyProfileView.swift */; };
+		7FB0E2E322FC4C1500CA950A /* ScoringOtherProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0E2E222FC4C1500CA950A /* ScoringOtherProfileView.swift */; };
+		7FB0E2E722FC658000CA950A /* ListeSelectionUtilisateur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0E2E622FC658000CA950A /* ListeSelectionUtilisateur.swift */; };
+		7FB0E2E922FC6D7600CA950A /* ListeUtilisateursFavoris.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0E2E822FC6D7600CA950A /* ListeUtilisateursFavoris.swift */; };
+		7FB0E2EE2302C4EC00CA950A /* FavorisDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0E2ED2302C4EB00CA950A /* FavorisDataSource.swift */; };
+		7FB0E2F02302C50900CA950A /* FavorisCrudable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0E2EF2302C50900CA950A /* FavorisCrudable.swift */; };
+		7FB0E2F22302C51C00CA950A /* FavorisListable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0E2F12302C51C00CA950A /* FavorisListable.swift */; };
+		7FB0E2F42302C85500CA950A /* Favoris.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0E2F32302C85500CA950A /* Favoris.swift */; };
+		7FB0E2F62302C8D400CA950A /* WebServiceFavoris.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0E2F52302C8D400CA950A /* WebServiceFavoris.swift */; };
+		7FB0E2F92302E1E800CA950A /* FavoriteTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0E2F82302E1E800CA950A /* FavoriteTableView.swift */; };
+		7FB0E2FC2302E22C00CA950A /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB0E2FB2302E22C00CA950A /* FavoriteTableViewCell.swift */; };
 		7FB2E30B22E59DC600E13ABF /* RendezVous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E30A22E59DC600E13ABF /* RendezVous.swift */; };
 		7FB2E30D22E5BB5100E13ABF /* Invitation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E30C22E5BB5100E13ABF /* Invitation.swift */; };
 		7FB2E30F22E5CA4E00E13ABF /* GuestCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E30E22E5CA4E00E13ABF /* GuestCollectionView.swift */; };
@@ -111,7 +123,6 @@
 		7FB2E33922E8ADF300E13ABF /* RestaurantTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E33822E8ADF300E13ABF /* RestaurantTableView.swift */; };
 		7FB2E33E22E8B1DF00E13ABF /* WebServiceSubscribable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E33D22E8B1DF00E13ABF /* WebServiceSubscribable.swift */; };
 		7FB2E34222E98DFB00E13ABF /* ListeRendezVous.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E34122E98DFB00E13ABF /* ListeRendezVous.swift */; };
-		7FB2E34422E98F7200E13ABF /* WebServiceListable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E34322E98F7200E13ABF /* WebServiceListable.swift */; };
 		7FB2E34E22E99F6B00E13ABF /* ListeInvitationsAsConvive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E34D22E99F6B00E13ABF /* ListeInvitationsAsConvive.swift */; };
 		7FB2E35122E9AA5600E13ABF /* MyInvitationsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E35022E9AA5600E13ABF /* MyInvitationsTableView.swift */; };
 		7FB2E35322E9AF5E00E13ABF /* MyInvitationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FB2E35222E9AF5E00E13ABF /* MyInvitationsTableViewCell.swift */; };
@@ -135,6 +146,9 @@
 		7FE66E4D22DCB1F4005F46C1 /* MapRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE66E4C22DCB1F4005F46C1 /* MapRestaurantViewController.swift */; };
 		7FE66E5322DDB969005F46C1 /* RestaurantCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE66E5222DDB969005F46C1 /* RestaurantCollectionViewCell.swift */; };
 		7FE66E5922DF5881005F46C1 /* RoundUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FE66E5822DF5881005F46C1 /* RoundUILabel.swift */; };
+		7FFC38CB22FAF73F0022F834 /* AlerteBoxManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC38CA22FAF73F0022F834 /* AlerteBoxManager.swift */; };
+		7FFC38CF22FAFE500022F834 /* MesMatchsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC38CE22FAFE500022F834 /* MesMatchsTableView.swift */; };
+		7FFC38D122FAFE660022F834 /* MesMatchsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFC38D022FAFE660022F834 /* MesMatchsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -183,7 +197,7 @@
 		7F814B8522D5E7C700425325 /* CatchPhraseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchPhraseViewController.swift; sourceTree = "<group>"; };
 		7F814B8722D5E7FA00425325 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		7F814B8922D5EF5800425325 /* EndProcedureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndProcedureViewController.swift; sourceTree = "<group>"; };
-		7F814B8B22D6244D00425325 /* RendezVousWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RendezVousWebService.swift; sourceTree = "<group>"; };
+		7F814B8B22D6244D00425325 /* RendezVousWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RendezVousWebService.swift; path = "rendez-vous/Application/WebService/RendezVousWebService.swift"; sourceTree = SOURCE_ROOT; };
 		7F814B8D22D62F2900425325 /* RamonUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamonUITextField.swift; sourceTree = "<group>"; };
 		7F814B8F22D6365200425325 /* RamonUITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RamonUITextView.swift; sourceTree = "<group>"; };
 		7F98531F22E0989D00C28C8E /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
@@ -229,6 +243,18 @@
 		7FA9321422F9801B00078529 /* CentreInteretDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreInteretDataSource.swift; sourceTree = "<group>"; };
 		7FA9321622F9802D00078529 /* CentreInteretListable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CentreInteretListable.swift; sourceTree = "<group>"; };
 		7FA9321822F9835F00078529 /* EnumAuthCommandWS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumAuthCommandWS.swift; sourceTree = "<group>"; };
+		7FB0E2DD22FC12E400CA950A /* FicheScoringUtilisateurViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FicheScoringUtilisateurViewController.swift; sourceTree = "<group>"; };
+		7FB0E2E022FC4C0100CA950A /* ScoringMyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringMyProfileView.swift; sourceTree = "<group>"; };
+		7FB0E2E222FC4C1500CA950A /* ScoringOtherProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringOtherProfileView.swift; sourceTree = "<group>"; };
+		7FB0E2E622FC658000CA950A /* ListeSelectionUtilisateur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeSelectionUtilisateur.swift; sourceTree = "<group>"; };
+		7FB0E2E822FC6D7600CA950A /* ListeUtilisateursFavoris.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeUtilisateursFavoris.swift; sourceTree = "<group>"; };
+		7FB0E2ED2302C4EB00CA950A /* FavorisDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavorisDataSource.swift; sourceTree = "<group>"; };
+		7FB0E2EF2302C50900CA950A /* FavorisCrudable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavorisCrudable.swift; sourceTree = "<group>"; };
+		7FB0E2F12302C51C00CA950A /* FavorisListable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavorisListable.swift; sourceTree = "<group>"; };
+		7FB0E2F32302C85500CA950A /* Favoris.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favoris.swift; sourceTree = "<group>"; };
+		7FB0E2F52302C8D400CA950A /* WebServiceFavoris.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceFavoris.swift; sourceTree = "<group>"; };
+		7FB0E2F82302E1E800CA950A /* FavoriteTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableView.swift; sourceTree = "<group>"; };
+		7FB0E2FB2302E22C00CA950A /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		7FB2E30A22E59DC600E13ABF /* RendezVous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RendezVous.swift; sourceTree = "<group>"; };
 		7FB2E30C22E5BB5100E13ABF /* Invitation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invitation.swift; sourceTree = "<group>"; };
 		7FB2E30E22E5CA4E00E13ABF /* GuestCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuestCollectionView.swift; sourceTree = "<group>"; };
@@ -246,7 +272,6 @@
 		7FB2E33822E8ADF300E13ABF /* RestaurantTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableView.swift; sourceTree = "<group>"; };
 		7FB2E33D22E8B1DF00E13ABF /* WebServiceSubscribable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceSubscribable.swift; sourceTree = "<group>"; };
 		7FB2E34122E98DFB00E13ABF /* ListeRendezVous.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeRendezVous.swift; sourceTree = "<group>"; };
-		7FB2E34322E98F7200E13ABF /* WebServiceListable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceListable.swift; sourceTree = "<group>"; };
 		7FB2E34D22E99F6B00E13ABF /* ListeInvitationsAsConvive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListeInvitationsAsConvive.swift; sourceTree = "<group>"; };
 		7FB2E35022E9AA5600E13ABF /* MyInvitationsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInvitationsTableView.swift; sourceTree = "<group>"; };
 		7FB2E35222E9AF5E00E13ABF /* MyInvitationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyInvitationsTableViewCell.swift; sourceTree = "<group>"; };
@@ -271,6 +296,9 @@
 		7FE66E4C22DCB1F4005F46C1 /* MapRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRestaurantViewController.swift; sourceTree = "<group>"; };
 		7FE66E5222DDB969005F46C1 /* RestaurantCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCollectionViewCell.swift; sourceTree = "<group>"; };
 		7FE66E5822DF5881005F46C1 /* RoundUILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundUILabel.swift; sourceTree = "<group>"; };
+		7FFC38CA22FAF73F0022F834 /* AlerteBoxManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlerteBoxManager.swift; sourceTree = "<group>"; };
+		7FFC38CE22FAFE500022F834 /* MesMatchsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesMatchsTableView.swift; sourceTree = "<group>"; };
+		7FFC38D022FAFE660022F834 /* MesMatchsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MesMatchsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,7 +316,9 @@
 		7F153E5622F2E65F00819C94 /* FicheUtilisateur */ = {
 			isa = PBXGroup;
 			children = (
-				7F153E5722F2E67D00819C94 /* FicheUtilisateurViewController.swift */,
+				7FB0E2E522FC4C8C00CA950A /* FicheProfile */,
+				7FB0E2E422FC4C8100CA950A /* FicheScoring */,
+				7FB0E2DD22FC12E400CA950A /* FicheScoringUtilisateurViewController.swift */,
 			);
 			path = FicheUtilisateur;
 			sourceTree = "<group>";
@@ -308,6 +338,7 @@
 				7F5C1FA022F9B8FE00CCB23D /* TypeCuisineUtilisateur.swift */,
 				7FA9320B22F97EBE00078529 /* CentreInteret.swift */,
 				7F55FF1B22D4B5CF004C0683 /* CentreInteretUtilisateur.swift */,
+				7FB0E2F32302C85500CA950A /* Favoris.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -334,6 +365,8 @@
 		7F2A4F5622F2DA4C00DAE601 /* MesFavoris */ = {
 			isa = PBXGroup;
 			children = (
+				7FB0E2FA2302E20B00CA950A /* Cells */,
+				7FB0E2F72302E1A700CA950A /* Tableviews */,
 				7F2A4F5722F2DA6200DAE601 /* MesFavorisViewController.swift */,
 			);
 			path = MesFavoris;
@@ -342,6 +375,8 @@
 		7F2A4F5922F2DDD100DAE601 /* MesMatchs */ = {
 			isa = PBXGroup;
 			children = (
+				7FFC38CD22FAFE1D0022F834 /* Tableviews */,
+				7FFC38CC22FAFE160022F834 /* Cells */,
 				7F2A4F5A22F2DDE600DAE601 /* MesMatchsViewController.swift */,
 			);
 			path = MesMatchs;
@@ -358,7 +393,6 @@
 		7F35828122F0882E009CF192 /* FicheMyProfil */ = {
 			isa = PBXGroup;
 			children = (
-				7FA931E422F8138700078529 /* modales */,
 				7FDB33BB22F181C9004DAC19 /* Cells */,
 				7FDB33BA22F181BE004DAC19 /* CollectionViews */,
 				7F35828422F088CB009CF192 /* Views */,
@@ -470,11 +504,11 @@
 		7F98532A22E0C7E100C28C8E /* WebService */ = {
 			isa = PBXGroup;
 			children = (
+				7FB2E33322E8AB4100E13ABF /* Protocols */,
 				7FA931F822F962BA00078529 /* RendezVous */,
 				7FA931F722F962A900078529 /* Authentification */,
-				7FB2E33322E8AB4100E13ABF /* Protocols */,
-				7F814B8B22D6244D00425325 /* RendezVousWebService.swift */,
 				7F36AD1B22D875FF00F91E19 /* LocationManager.swift */,
+				7FFC38CA22FAF73F0022F834 /* AlerteBoxManager.swift */,
 			);
 			path = WebService;
 			sourceTree = "<group>";
@@ -518,6 +552,7 @@
 		7FA931D022F43FB500078529 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				7FB0E2EC2302C4D800CA950A /* Favoris */,
 				7F5C1F9B22F9B79700CCB23D /* TypeCuisineUtilisateur */,
 				7FA9321322F9800600078529 /* CentreInteret */,
 				7FA9321222F97F8E00078529 /* TypeCuisine */,
@@ -558,7 +593,7 @@
 			path = Business;
 			sourceTree = "<group>";
 		};
-		7FA931E422F8138700078529 /* modales */ = {
+		7FA931E422F8138700078529 /* Modales */ = {
 			isa = PBXGroup;
 			children = (
 				7F2A4F5C22F2DDF800DAE601 /* Historiettes */,
@@ -566,7 +601,8 @@
 				7F2A4F5622F2DA4C00DAE601 /* MesFavoris */,
 				7FD04B0D22F1E84C0081DAD1 /* EditProfile */,
 			);
-			path = modales;
+			name = Modales;
+			path = FicheMyProfil/Modales;
 			sourceTree = "<group>";
 		};
 		7FA931F722F962A900078529 /* Authentification */ = {
@@ -593,6 +629,8 @@
 				7F153E6922F3222A00819C94 /* EnumCommandWebService.swift */,
 				7F153E6B22F3227100819C94 /* EnumEntityWebServiceTargeted.swift */,
 				7F5C1FA222F9C01300CCB23D /* WebServiceTypeCuisineUtilisateur.swift */,
+				7F814B8B22D6244D00425325 /* RendezVousWebService.swift */,
+				7FB0E2F52302C8D400CA950A /* WebServiceFavoris.swift */,
 			);
 			path = RendezVous;
 			sourceTree = "<group>";
@@ -664,6 +702,57 @@
 			path = CentreInteret;
 			sourceTree = "<group>";
 		};
+		7FB0E2DF22FC4BD000CA950A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7FB0E2E022FC4C0100CA950A /* ScoringMyProfileView.swift */,
+				7FB0E2E222FC4C1500CA950A /* ScoringOtherProfileView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7FB0E2E422FC4C8100CA950A /* FicheScoring */ = {
+			isa = PBXGroup;
+			children = (
+				7FB0E2DF22FC4BD000CA950A /* Views */,
+			);
+			path = FicheScoring;
+			sourceTree = "<group>";
+		};
+		7FB0E2E522FC4C8C00CA950A /* FicheProfile */ = {
+			isa = PBXGroup;
+			children = (
+				7F153E5722F2E67D00819C94 /* FicheUtilisateurViewController.swift */,
+			);
+			path = FicheProfile;
+			sourceTree = "<group>";
+		};
+		7FB0E2EC2302C4D800CA950A /* Favoris */ = {
+			isa = PBXGroup;
+			children = (
+				7FB0E2ED2302C4EB00CA950A /* FavorisDataSource.swift */,
+				7FB0E2EF2302C50900CA950A /* FavorisCrudable.swift */,
+				7FB0E2F12302C51C00CA950A /* FavorisListable.swift */,
+			);
+			path = Favoris;
+			sourceTree = "<group>";
+		};
+		7FB0E2F72302E1A700CA950A /* Tableviews */ = {
+			isa = PBXGroup;
+			children = (
+				7FB0E2F82302E1E800CA950A /* FavoriteTableView.swift */,
+			);
+			path = Tableviews;
+			sourceTree = "<group>";
+		};
+		7FB0E2FA2302E20B00CA950A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7FB0E2FB2302E22C00CA950A /* FavoriteTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		7FB2E31B22E6EC0C00E13ABF /* Agenda */ = {
 			isa = PBXGroup;
 			children = (
@@ -688,7 +777,6 @@
 			children = (
 				7FB2E33422E8AB7F00E13ABF /* WebServiceLinkable.swift */,
 				7FB2E33D22E8B1DF00E13ABF /* WebServiceSubscribable.swift */,
-				7FB2E34322E98F7200E13ABF /* WebServiceListable.swift */,
 				7F153E5D22F2FA7600819C94 /* WebServiceParametre.swift */,
 			);
 			name = Protocols;
@@ -726,6 +814,8 @@
 				7FA931F922F966B300078529 /* ListeCentreInterets.swift */,
 				7FA9320722F9795400078529 /* ListeTypeCuisine.swift */,
 				7F5C1F9922F9B75500CCB23D /* ListeTypeCuisineUtilisateur.swift */,
+				7FB0E2E622FC658000CA950A /* ListeSelectionUtilisateur.swift */,
+				7FB0E2E822FC6D7600CA950A /* ListeUtilisateursFavoris.swift */,
 			);
 			path = Lists;
 			sourceTree = "<group>";
@@ -848,6 +938,7 @@
 		7FBB5E5B22CF782E00AB448C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7FA931E422F8138700078529 /* Modales */,
 				7F153E5622F2E65F00819C94 /* FicheUtilisateur */,
 				7F35828122F0882E009CF192 /* FicheMyProfil */,
 				7FB2E34822E99DE500E13ABF /* FicheRestaurant */,
@@ -894,6 +985,22 @@
 				7FD04B0922F190280081DAD1 /* CentreInteretUtilisateurCollectionViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		7FFC38CC22FAFE160022F834 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7FFC38D022FAFE660022F834 /* MesMatchsTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		7FFC38CD22FAFE1D0022F834 /* Tableviews */ = {
+			isa = PBXGroup;
+			children = (
+				7FFC38CE22FAFE500022F834 /* MesMatchsTableView.swift */,
+			);
+			path = Tableviews;
 			sourceTree = "<group>";
 		};
 		8133343638046B0E129FEE23 /* Frameworks */ = {
@@ -1046,6 +1153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7FD04B0C22F191450081DAD1 /* FicheMonLongProfilCentreInteretView.swift in Sources */,
+				7FB0E2F62302C8D400CA950A /* WebServiceFavoris.swift in Sources */,
 				7FA931E622F8185B00078529 /* CentreInteretUtilisateurDataSource.swift in Sources */,
 				7FA931DB22F447D300078529 /* RendezVousCrudable.swift in Sources */,
 				7FA931FE22F96DF600078529 /* WebServiceCentreInteretUtilisateur.swift in Sources */,
@@ -1057,6 +1165,7 @@
 				7FA931E822F8186E00078529 /* CentreInteretUtilisateurCrudable.swift in Sources */,
 				7F36AD1C22D875FF00F91E19 /* LocationManager.swift in Sources */,
 				7FBB5E5822CC948900AB448C /* RamonViewController.swift in Sources */,
+				7FB0E2FC2302E22C00CA950A /* FavoriteTableViewCell.swift in Sources */,
 				7F98532222E0993300C28C8E /* ListRestaurantView.swift in Sources */,
 				7FBB5E4F22CA0C2100AB448C /* AuthWebService.swift in Sources */,
 				7FB2E35822E9B20500E13ABF /* ConvivesCollectionViewCell.swift in Sources */,
@@ -1088,6 +1197,7 @@
 				7FA9320822F9795400078529 /* ListeTypeCuisine.swift in Sources */,
 				7FA931F222F854B500078529 /* UtilisateurListable.swift in Sources */,
 				7F5C1F9D22F9B7B600CCB23D /* TypeCuisineUtilisateurDataSource.swift in Sources */,
+				7FFC38D122FAFE660022F834 /* MesMatchsTableViewCell.swift in Sources */,
 				7F55FF1A22D474EB004C0683 /* NewProfile.swift in Sources */,
 				7F5C1F9A22F9B75500CCB23D /* ListeTypeCuisineUtilisateur.swift in Sources */,
 				7FB2E31422E5E85100E13ABF /* ConnectedRamonUser.swift in Sources */,
@@ -1099,10 +1209,12 @@
 				7F153E5822F2E67D00819C94 /* FicheUtilisateurViewController.swift in Sources */,
 				7FA931FA22F966B300078529 /* ListeCentreInterets.swift in Sources */,
 				7FE66E5922DF5881005F46C1 /* RoundUILabel.swift in Sources */,
+				7FB0E2E322FC4C1500CA950A /* ScoringOtherProfileView.swift in Sources */,
 				7FA7DC5122C5FCC800E74F6B /* RamonUserUIButton.swift in Sources */,
 				7F35828622F088F8009CF192 /* FicheMonShortProfilView.swift in Sources */,
 				7FBB5E6022CF7DA300AB448C /* RoundButtonUIButton.swift in Sources */,
 				7F98532022E0989D00C28C8E /* RestaurantTableViewCell.swift in Sources */,
+				7FB0E2DE22FC12E400CA950A /* FicheScoringUtilisateurViewController.swift in Sources */,
 				7FA9320022F9788600078529 /* WebServiceTypeCuisine.swift in Sources */,
 				7FB2E33922E8ADF300E13ABF /* RestaurantTableView.swift in Sources */,
 				7F55FF2022D4BCBD004C0683 /* InteretsViewController.swift in Sources */,
@@ -1115,6 +1227,8 @@
 				7FBB5E4B22C6083000AB448C /* RegisterVC.swift in Sources */,
 				7FA7DC4D22C5FAA000E74F6B /* RamonUserUITextField.swift in Sources */,
 				7FB2E32E22E733FE00E13ABF /* InvitesCollectionViewCell.swift in Sources */,
+				7FFC38CF22FAFE500022F834 /* MesMatchsTableView.swift in Sources */,
+				7FB0E2F42302C85500CA950A /* Favoris.swift in Sources */,
 				7F153E5E22F2FA7600819C94 /* WebServiceParametre.swift in Sources */,
 				7F153E6A22F3222A00819C94 /* EnumCommandWebService.swift in Sources */,
 				7F98533C22E1EFC100C28C8E /* GuestRankedTableView.swift in Sources */,
@@ -1138,27 +1252,32 @@
 				7FA9320A22F97B3200078529 /* TypeCuisine.swift in Sources */,
 				7F59936F22C51090005658DD /* AppDelegate.swift in Sources */,
 				7FA931EE22F8500300078529 /* WebServiceRestaurant.swift in Sources */,
+				7FB0E2EE2302C4EC00CA950A /* FavorisDataSource.swift in Sources */,
 				7FA9320222F978B500078529 /* TypeCuisineDataSource.swift in Sources */,
 				7FB2E31622E5FB9700E13ABF /* ListeRestaurants.swift in Sources */,
 				7F35828322F08866009CF192 /* FicheMyProfilViewController.swift in Sources */,
+				7FB0E2F22302C51C00CA950A /* FavorisListable.swift in Sources */,
 				7F814B9022D6365200425325 /* RamonUITextView.swift in Sources */,
 				7FB2E30F22E5CA4E00E13ABF /* GuestCollectionView.swift in Sources */,
 				7F814B8422D5E7B200425325 /* DescriptionViewController.swift in Sources */,
 				7F98532922E0BE9200C28C8E /* AboutRestaurantViewController.swift in Sources */,
 				7F814B8A22D5EF5800425325 /* EndProcedureViewController.swift in Sources */,
 				7F98533222E1E90200C28C8E /* Utilisateur.swift in Sources */,
-				7FB2E34422E98F7200E13ABF /* WebServiceListable.swift in Sources */,
 				7FB2E32022E6F58B00E13ABF /* AgendaViewController.swift in Sources */,
 				7FE66E4D22DCB1F4005F46C1 /* MapRestaurantViewController.swift in Sources */,
 				7FA9320C22F97EBE00078529 /* CentreInteret.swift in Sources */,
 				7F814B8022D5D27800425325 /* TypeCuisineViewController.swift in Sources */,
+				7FFC38CB22FAF73F0022F834 /* AlerteBoxManager.swift in Sources */,
 				7FB2E31822E6054E00E13ABF /* ListeMatchingUtilisateurs.swift in Sources */,
+				7FB0E2F02302C50900CA950A /* FavorisCrudable.swift in Sources */,
 				7F153E6E22F3235400819C94 /* RamonUserDataSource.swift in Sources */,
 				7F814B8822D5E7FA00425325 /* PreviewViewController.swift in Sources */,
 				7FA931EA22F819BA00078529 /* WebServiceCentreInteret.swift in Sources */,
+				7FB0E2E922FC6D7600CA950A /* ListeUtilisateursFavoris.swift in Sources */,
 				7FA931D922F447C100078529 /* RendezVousDataSource.swift in Sources */,
 				7FD04B0A22F190280081DAD1 /* CentreInteretUtilisateurCollectionViewCell.swift in Sources */,
 				7F98532E22E1ADA200C28C8E /* GuestCollectionViewCell.swift in Sources */,
+				7FB0E2E722FC658000CA950A /* ListeSelectionUtilisateur.swift in Sources */,
 				7FA931D222F4400300078529 /* UtilisateurCrudable.swift in Sources */,
 				7F814B8E22D62F2900425325 /* RamonUITextField.swift in Sources */,
 				7F153E6622F31A3200819C94 /* UtilisateurDataSource.swift in Sources */,
@@ -1166,7 +1285,9 @@
 				7F5C1F9F22F9B7C800CCB23D /* TypeCuisineUtilisateurListable.swift in Sources */,
 				7F814B8622D5E7C700425325 /* CatchPhraseViewController.swift in Sources */,
 				7FB2E33722E8ADB100E13ABF /* RestaurantCollectionView.swift in Sources */,
+				7FB0E2E122FC4C0100CA950A /* ScoringMyProfileView.swift in Sources */,
 				7FB2E30D22E5BB5100E13ABF /* Invitation.swift in Sources */,
+				7FB0E2F92302E1E800CA950A /* FavoriteTableView.swift in Sources */,
 				7F814B8C22D6244D00425325 /* RendezVousWebService.swift in Sources */,
 				7FD04B1322F1EBEA0081DAD1 /* EditProfileViewController.swift in Sources */,
 			);

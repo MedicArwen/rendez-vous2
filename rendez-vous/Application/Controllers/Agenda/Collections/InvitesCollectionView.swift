@@ -9,7 +9,7 @@
 import UIKit
 
 class InvitesCollectionView: UICollectionView {
-    var currentControleur: CreateGroupViewController?
+    var currentControleur: AgendaViewController?
     fileprivate var indiceSuscribedView = 0
     /*
      // Only override draw() if you perform custom drawing.
@@ -23,18 +23,18 @@ class InvitesCollectionView: UICollectionView {
 extension InvitesCollectionView:UICollectionViewDelegate,UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard RendezVous.sharedInstance != nil else {
+        guard currentControleur!.selectedRendezVous != nil else {
             print("InvitesCollectionView:count - aucun rendez-vous trouvé")
             return 0
         }
-         print("InvitesCollectionView:count - \(RendezVous.sharedInstance!.invitationList.count) invitations")
-        return RendezVous.sharedInstance!.invitationList.count
+         print("InvitesCollectionView:count - \(currentControleur!.selectedRendezVous!.invitationList.count) invitations")
+        return currentControleur!.selectedRendezVous!.invitationList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         print("InvitesCollectionView: update the cell n°#\(indexPath.row)")
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "guestCollectionCell", for: indexPath) as! GuestCollectionViewCell
-        cell.update(invitation: RendezVous.sharedInstance!.invitationList[indexPath.row], controleur:  self.currentControleur!)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "guestCollectionCell", for: indexPath) as! ConvivesCollectionViewCell
+        cell.update(invitation: currentControleur!.selectedRendezVous!.invitationList[indexPath.row], controleur:  self.currentControleur!)
         return cell
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 protocol InvitationListable {
     static func load(datasource:InvitationDataSource)
-    static func append(rendezVous:RendezVous)
-    static func remove(indice:Int)
+    static func append(rendezVous:RendezVous,datasource:RendezVousDataSource)
+    static func remove(indice:Int,datasource:RendezVousDataSource)
     static func find(rendezVous:RendezVous)->Int
 }

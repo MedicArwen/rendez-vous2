@@ -94,7 +94,8 @@ extension PreviewViewController:UtilisateurDataSource
     }
     
     func utilisateurOnWebServiceError(code: Int) {
-         print("PreviewViewController:UtilisateurDataSource:utilisateurOnWebServiceError - not implemented")
+         print("PreviewViewController:UtilisateurDataSource:utilisateurOnWebServiceError")
+        AlerteBoxManager.sendAlertMessage(vc: self, returnCode: code)
     }
     
     

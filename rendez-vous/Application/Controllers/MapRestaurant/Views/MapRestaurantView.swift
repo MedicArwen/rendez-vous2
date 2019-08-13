@@ -14,6 +14,8 @@ class MapRestaurantView: UIView {
     var currentCollection :UICollectionView?
     var currentMap : MKMapView?
     var currentControleur: UIViewController?
+    @IBOutlet weak var nbInvites: RoundUILabel?
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

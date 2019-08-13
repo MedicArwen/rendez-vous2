@@ -1,5 +1,5 @@
 //
-//  FicheUtilisateurViewController.swift
+//  MesFavorisViewController.swift
 //  rendez-vous
 //
 //  Created by Thierry BRU on 01/08/2019.
@@ -8,12 +8,24 @@
 
 import UIKit
 
-class FicheUtilisateurViewController: UIViewController {
+class MesFavorisViewController: UIViewController {
 
+    @IBOutlet weak var favorisTableView: FavoriteTableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        favorisTableView.currentControleur = self
+    }
+    
+    
+    
+    
+    
+    @IBAction func onClickClose(_ sender: RoundButtonUIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
 

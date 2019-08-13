@@ -17,8 +17,6 @@ class NewProfile
     var uiImage : UIImage?
     var catchPhrase = ""
     var description = ""
-    //var centresInterets = ListeCentreInteretUtilisateur()
-   // var typeCuisines = ListeTypeCuisineUtilisateur()
     var pseudo = ""
     var latitude = 0.0
     var longitude = 0.0

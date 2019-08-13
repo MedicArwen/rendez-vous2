@@ -30,15 +30,5 @@ class ListeTypeCuisine
         }
         return liste
     }
-    func register(datasource:TypeCuisineDataSource)
-    {
-        var listeCuisine = [Int] ()
-        for item in self.liste {
-            listeCuisine.append(item.id)
-        }
-        print("ListeCentreInteretUtilisateur::register")
-        let webservice = WebServiceTypeCuisine(commande: .CREATE, entite: .Utilisateur_TypeCuisine, datasource:datasource)
-        webservice.addParameter(parametre: WebServiceParametre(cle: "liste", valeur: JSON(listeCuisine).rawString()!))
-        webservice.execute()
-    }
+
 }

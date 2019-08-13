@@ -9,7 +9,7 @@
 import UIKit
 
 class ConvivesCollectionView: UICollectionView {
-    var currentControleur: CreateGroupViewController?
+    var currentControleur: AgendaViewController?
     private var indiceSuscribedView = 0
     /*
      // Only override draw() if you perform custom drawing.
@@ -23,18 +23,18 @@ class ConvivesCollectionView: UICollectionView {
     extension ConvivesCollectionView:UICollectionViewDelegate,UICollectionViewDataSource
     {
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            guard RendezVous.sharedInstance != nil else {
+            guard currentControleur!.selectedRendezVous != nil else {
                 print("ConvivesCollectionView:count - aucun rendez-vous trouvé")
                 return 0
             }
-            print("ConvivesCollectionView:count - \(RendezVous.sharedInstance!.invitationList.count) invitation(s)")
-            return RendezVous.sharedInstance!.invitationList.count
+            print("ConvivesCollectionView:count - \(currentControleur!.selectedRendezVous!.invitationList.count) invitation(s)")
+            return currentControleur!.selectedRendezVous!.invitationList.count
         }
         
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             print("ConvivesCollectionView:update the convive cell n°#\(indexPath.row)")
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "conviveCollectionCell", for: indexPath) as! GuestCollectionViewCell
-            cell.update(invitation: RendezVous.sharedInstance!.invitationList[indexPath.row], controleur:  self.currentControleur!)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "conviveCollectionCell", for: indexPath) as! ConvivesCollectionViewCell
+            cell.update(invitation: currentControleur!.selectedRendezVous!.invitationList[indexPath.row], controleur:  self.currentControleur!)
             return cell
         }
     }

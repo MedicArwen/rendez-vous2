@@ -196,6 +196,7 @@ extension FicheMonShortProfilView:UtilisateurDataSource
     
     func utilisateurOnWebServiceError(code: Int) {
         print("FicheMonShortProfilView:UtilisateurDataSource:utilisateurOnWebServiceError")
+        AlerteBoxManager.sendAlertMessage(vc: self.parentControleur!, returnCode: code)
     }
     
     

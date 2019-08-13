@@ -23,18 +23,18 @@ class GuestRankedTableView: UITableView {
 extension GuestRankedTableView:UITableViewDelegate,UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard ListeMatchingUtilisateurs.sharedInstance != nil else {
-            print("GuestRankedTableView:Count - ListeMatchingUtilisateurs.sharedInstance = nil")
+        guard currentControleur!.listeMesMatchs != nil else {
+            print("GuestRankedTableView:Count - currentControleur!.listeMesMatchs  = nil")
             return 0
         }
-        print("GuestRankedTableView:Count - ListeMatchingUtilisateurs.sharedInstance != nil")
-        return ListeMatchingUtilisateurs.sharedInstance!.liste.count
+        print("GuestRankedTableView:Count - currentControleur!.listeMesMatchs  != nil")
+        return currentControleur!.listeMesMatchs!.liste.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         print("update GuestRankedTableViewCell n°#\(indexPath.row)")
         let cell = tableView.dequeueReusableCell(withIdentifier: "guestRankedCell", for: indexPath) as! GuestRankedTableViewCell
-        cell.update(rankedUtilisateur: ListeMatchingUtilisateurs.sharedInstance!.liste[indexPath.row],controleur:self.currentControleur!)
+        cell.update(rankedUtilisateur: currentControleur!.listeMesMatchs!.liste[indexPath.row],controleur:self.currentControleur!,indice:indexPath.row)
         return cell
     }
   
@@ -43,7 +43,11 @@ extension GuestRankedTableView:WebServiceLinkable
 {
     func refresh() {
         print("GuestRankedTableView:refresh")
-        print(" il y a \(ListeMatchingUtilisateurs.sharedInstance!.liste.count) personne(s) qui matche(nt)")
+        guard currentControleur!.listeMesMatchs != nil else {
+            print("-> liste des personnes qui matchent non  chargée")
+            return
+        }
+        print("->il y a \(currentControleur!.listeMesMatchs!.liste.count) personne(s) qui matche(nt)")
         self.reloadData()
     }
     var indice: Int {

@@ -17,7 +17,7 @@ class MyRendezVousTableViewCell: UITableViewCell {
     @IBOutlet weak var nomRestaurant: UILabel!
     
     var rendezVous:RendezVous?
-    var currentControleur: RamonViewController?
+    var currentControleur: AgendaViewController?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,7 +29,7 @@ class MyRendezVousTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
-    func update(rendezvous:RendezVous, controleur:RamonViewController)
+    func update(rendezvous:RendezVous, controleur:AgendaViewController)
     {
         print("MyRendezVousTableViewCell: update (id rdv:\(rendezvous.idRendezVous)")
         self.dateRendezVousLabel.text = rendezvous.getDay()
@@ -47,7 +47,8 @@ class MyRendezVousTableViewCell: UITableViewCell {
        /* let vc = self.currentControleur as! AgendaViewController
         vc.currentRendezVous = rendezVous
         vc.currentRestaurant = rendezVous!.restaurant*/
-        RendezVous.sharedInstance = self.rendezVous!
+       // RendezVous.sharedInstance = self.rendezVous!
+        currentControleur!.selectedRendezVous = self.rendezVous!
         Restaurant.sharedInstance = self.rendezVous!.restaurant!
         self.currentControleur!.performSegue(withIdentifier: "showUpdateGroup", sender: self.currentControleur!)
     }

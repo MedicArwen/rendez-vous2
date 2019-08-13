@@ -72,7 +72,8 @@ extension InteretsViewController:CentreInteretDataSource
     }
     
     func centreInteretOnWebServiceError(code: Int) {
-         print("InteretsViewController:CentreInteretUtilisateurDataSource:centreInteretOnWebServiceError NOT IMPLEMENTED ")
+         print("InteretsViewController:CentreInteretUtilisateurDataSource:centreInteretOnWebServiceError ")
+        AlerteBoxManager.sendAlertMessage(vc: self, returnCode: code)
     }
     
     func centreInteretOnLoaded(centreInteret:CentreInteret) {

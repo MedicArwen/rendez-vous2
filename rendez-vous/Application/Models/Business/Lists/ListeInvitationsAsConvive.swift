@@ -45,7 +45,7 @@ class ListeInvitationsAsConvive {
         print("-> indice trouvé: \(indice) (-1 = rien trouvé)")
         return indice
     }
-    func accept(controleur:RamonViewController,rendezVous:RendezVous)
+    func accept(controleur:RamonViewController,rendezVous:RendezVous, dataSource:InvitationDataSource)
     {
         print("ListeRendezVousAsConvive:accept")
         guard Utilisateur.sharedInstance != nil else {
@@ -55,9 +55,9 @@ class ListeInvitationsAsConvive {
         let utilisateur = Utilisateur.sharedInstance!
         print("-> utilisateur cherché:\(utilisateur.idUtilisateur)")
         let invitation = rendezVous.getInvitationOfOneUser(utilisateur: utilisateur)!
-        invitation.accept(datasource: self)
+        invitation.accept(datasource: dataSource)
     }
-    func reject(controleur:RamonViewController,rendezVous:RendezVous)
+    func reject(controleur:RamonViewController,rendezVous:RendezVous, dataSource:InvitationDataSource)
     {
         print("ListeRendezVousAsConvive:reject")
         guard Utilisateur.sharedInstance != nil else {
@@ -67,7 +67,7 @@ class ListeInvitationsAsConvive {
         let utilisateur = Utilisateur.sharedInstance!
         print("-> utilisateur cherché:\(utilisateur.idUtilisateur)")
         let invitation = rendezVous.getInvitationOfOneUser(utilisateur: utilisateur)!
-        invitation.reject(datasource: self)
+        invitation.reject(datasource: dataSource)
         
 
     }
@@ -109,84 +109,4 @@ extension ListeInvitationsAsConvive:WebServiceSubscribable
         
         print("Il y a \(self.suscribedViews.count) vue(s abonnée(s) à ListeRendezVousAsConvive")
     }
-}
-extension ListeInvitationsAsConvive:RendezVousDataSource
-{
-    func rendezVousOnLoaded(rendezVous: RendezVous) {
-        print("ListeRendezVousAsConvive:RendezVousDataSource: not implemented")
-    }
-    func rendezVousOnLoaded(lesRendezVous:ListeRendezVous)
-    {
-        print("ListeRendezVousAsConvive:RendezVousDataSource: not implemented")
-    }
-    func rendezVousOnUpdated() {
-        print("ListeRendezVousAsConvive:RendezVousDataSource: not implemented")
-    }
-    
-    func rendezVousOnDeleted() {
-        print("ListeRendezVousAsConvive:RendezVousDataSource: not implemented")
-    }
-    
-    func rendezVousOnCancelled() {
-        print("ListeRendezVousAsConvive:RendezVousDataSource: not implemented")
-    }
-    
-    func rendezVousOnCreated(rendezVous: RendezVous) {
-        print("ListeRendezVousAsConvive:RendezVousDataSource: not implemented")
-    }
-    
-    func rendezVousOnNotFoundRendezVous() {
-        print("ListeRendezVousAsConvive:RendezVousDataSource: not implemented")
-    }
-    
-    func rendezVousOnWebServiceError(code: Int) {
-        print("ListeRendezVousAsConvive:RendezVousDataSource: not implemented")
-    }
-}
-extension ListeInvitationsAsConvive:InvitationDataSource
-{
-    func invitationOnLoaded(invitation: Invitation) {
-        print("ListeRendezVousAsConvive:RendezVousDataSource: not implemented")
-    }
-    func invitationOnLoaded(invitations: ListeInvitationsAsConvive) {
-        print("ListeRendezVousAsConvive:RendezVousDataSource: not implemented")
-    }
-    
-    func invitationOnUpdated() {
-        print("ListeRendezVousAsConvive:RendezVousDataSource: not implemented")
-    }
-    
-    func invitationOnDeleted() {
-         print("ListeRendezVousAsConvive:RendezVousDataSource: not implemented")
-    }
-    
-    func invitationOnCancelled() {
-         print("ListeRendezVousAsConvive:RendezVousDataSource: not implemented")
-    }
-    
-    func invitationOnRejected() {
-        print("ListeRendezVousAsConvive:RendezVousDataSource:invitationOnRejected")
-        print("-> rechargement de la liste des rendez-vous")
-        ListeInvitationsAsConvive.reloadViews()
-    }
-    
-    func invitationOnAccepted() {
-        print("ListeRendezVousAsConvive:RendezVousDataSource:invitationOnAccepted")
-        print("-> rechargement de la liste des rendez-vous")
-        ListeInvitationsAsConvive.reloadViews()
-    }
-    
-    func invitationOnCreated(invitation:Invitation) {
-         print("ListeRendezVousAsConvive:RendezVousDataSource: not implemented")
-    }
-    
-    func invitationOnNotFoundInvitation() {
-         print("ListeRendezVousAsConvive:RendezVousDataSource: not implemented")
-    }
-    
-    func invitationOnWebServiceError(code: Int) {
-         print("ListeRendezVousAsConvive:RendezVousDataSource: not implemented")
-    }
-    
-    
 }

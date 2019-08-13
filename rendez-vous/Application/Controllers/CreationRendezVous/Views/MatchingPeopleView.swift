@@ -11,19 +11,18 @@ import UIKit
 
 class MatchingPeopleView: UIView
 {
-    var parentControleur : RamonViewController?
+    var currentControleur : CreateGroupViewController?
     
     @IBOutlet weak var GuestRankedTable: GuestRankedTableView!
     // liste des invités dans le groupe
     @IBOutlet weak var guestInvitedCollection: GuestCollectionView!
     
-    func show(controleur:RamonViewController)
+    func show(controleur:CreateGroupViewController)
     {
         print("MatchingPeopleView:show")
         self.isHidden = false
-        self.parentControleur = controleur
-        self.GuestRankedTable.currentControleur = (controleur as! CreateGroupViewController)
-        self.guestInvitedCollection.currentControleur = (controleur as! CreateGroupViewController)
+        self.currentControleur!.listeMesMatchs!.getPurgedList(rendezVous: self.currentControleur!.currentRendezVous!, hote:Utilisateur.sharedInstance!)
+        self.currentControleur!.viewMatchingPeople.GuestRankedTable.refresh()
         
     // création du lien entre la collection des invités et la source de données des invités
     self.guestInvitedCollection.delegate = self.guestInvitedCollection
@@ -33,14 +32,15 @@ class MatchingPeopleView: UIView
     // création du lien entre la liste des gens pouvant être invité et la table permettant de les choisir
     self.GuestRankedTable.delegate = self.GuestRankedTable
     self.GuestRankedTable.dataSource = self.GuestRankedTable
+    self.GuestRankedTable.refresh()
     
-    ListeMatchingUtilisateurs.subscribe(vue: self.GuestRankedTable)
+   // currentControleur!.listeMesMatchs!.subscribe(vue: self.GuestRankedTable)
     //ListeMatchingUtilisateurs.load(controleur: controleur)
-    Utilisateur.load(datasource: self, latitude: LocationManager.SharedInstance.location!.coordinate.latitude, longitude: LocationManager.SharedInstance.location!.coordinate.longitude, range: 10)
+    //Utilisateur.load(datasource: self, latitude: LocationManager.SharedInstance.location!.coordinate.latitude, longitude: LocationManager.SharedInstance.location!.coordinate.longitude, range: 10)
     }
     
 }
-extension MatchingPeopleView:UtilisateurDataSource
+/*extension MatchingPeopleView:UtilisateurDataSource
 {
     func utilisateurOnLoaded(utilisateur: Utilisateur) {
         print("MatchingPeopleView:UtilisateurDataSource:utilisateurOnLoaded NON IMPLEMENTED")
@@ -48,8 +48,8 @@ extension MatchingPeopleView:UtilisateurDataSource
     
     func utilisateurOnLoaded(matchs: ListeMatchingUtilisateurs) {
         print("MatchingPeopleView:UtilisateurDataSource:utilisateurOnLoaded")
-        ListeMatchingUtilisateurs.sharedInstance = matchs
-        ListeMatchingUtilisateurs.reloadViews()
+        currentControleur!.listeMesMatchs = matchs
+       // currentControleur!.listeMesMatchs!.reloadViews()
     }
     
     func utilisateurOnUpdated() {
@@ -69,8 +69,9 @@ extension MatchingPeopleView:UtilisateurDataSource
     }
     
     func utilisateurOnWebServiceError(code: Int) {
-        print("MatchingPeopleView:UtilisateurDataSource:utilisateurOnLoaded NON IMPLEMENTED")
+        print("MatchingPeopleView:UtilisateurDataSource:utilisateurOnLoaded")
+        AlerteBoxManager.sendAlertMessage(vc: self.currentControleur!, returnCode: code)
     }
     
     
-}
+}*/

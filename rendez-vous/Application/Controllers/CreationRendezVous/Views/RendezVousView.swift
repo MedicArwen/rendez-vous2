@@ -26,14 +26,14 @@ class RendezVousView: UIView{
     @IBOutlet weak var choixDateView : UIView!
     @IBOutlet weak var contrainteHauteur : NSLayoutConstraint!
     
-    private var parentControleur : RamonViewController?
+    private var currentControleur : CreateGroupViewController?
     fileprivate var indiceSuscribedView = 0
     
-    func update(restaurant:Restaurant, controleur:RamonViewController)
+    func update(restaurant:Restaurant, controleur:CreateGroupViewController)
     {
         print("RendezVousView:update (\(restaurant.raisonSociale))")
         fiche.update(restaurant: restaurant)
-        parentControleur = controleur
+        currentControleur = controleur
         
     }
     func setRendezVous(rendezVous:RendezVous)
@@ -52,23 +52,22 @@ class RendezVousView: UIView{
        // ListeRendezVousAsHote.append(rendezVous: RendezVous.sharedInstance!)
         let rdv = RendezVous(idRendezVous: 0, numUtilisateurSource: Utilisateur.sharedInstance!.idUtilisateur, date: "\(datePicker.date)", numStatusRendezVous: 1, numRestaurant: Restaurant.sharedInstance!.idRestaurant,hote:Utilisateur.sharedInstance!,restau: Restaurant.sharedInstance!)
         //RendezVous.sharedInstance = RendezVous(idRendezVous: 0, numUtilisateurSource: Utilisateur.sharedInstance!.idUtilisateur, date: "\(datePicker.date)", numStatusRendezVous: 1, numRestaurant: Restaurant.sharedInstance!.idRestaurant,hote:Utilisateur.sharedInstance!,restau: Restaurant.sharedInstance!)
-        RendezVous.sharedInstance = rdv
+        currentControleur!.currentRendezVous = rdv
         RendezVous.append(rendezVous:rdv ,dataSource: self)
     }
 }
 extension  RendezVousView:WebServiceLinkable {
     func refresh() {
         print("RendezVousView:refresh")
-        guard RendezVous.sharedInstance != nil else {
+        guard currentControleur!.currentRendezVous != nil else {
             print("->rendez-vous is empty")
             return
         }
         if self.choixDateView.isHidden == false
         {
             print("-> first refresh")
-            setRendezVous(rendezVous: RendezVous.sharedInstance!)
-            let controleur = self.parentControleur as! CreateGroupViewController
-            controleur.viewMatchingPeople.show(controleur: self.parentControleur!)
+            setRendezVous(rendezVous: currentControleur!.currentRendezVous!)
+            currentControleur!.viewMatchingPeople.show(controleur: self.currentControleur!)
         }
         else
         {
@@ -107,8 +106,9 @@ extension RendezVousView:RendezVousDataSource
     }
     func rendezVousOnCreated(rendezVous: RendezVous) {
         print("RendezVousView:RendezVousDataSource:rendezVousOnCreated")
-        RendezVous.sharedInstance = rendezVous
-        setRendezVous(rendezVous: RendezVous.sharedInstance!)
+        currentControleur!.currentRendezVous = rendezVous
+        setRendezVous(rendezVous: currentControleur!.currentRendezVous!)
+        ListeSelectionUtilisateur.sharedInstance.autoInvitation(rendezVous: currentControleur!.currentRendezVous!, dataSource: self)
     }
     
     func rendezVousOnNotFoundRendezVous() {
@@ -116,7 +116,52 @@ extension RendezVousView:RendezVousDataSource
     }
     
     func rendezVousOnWebServiceError(code: Int) {
-        print("RendezVousView:RendezVousDataSource:rendezVousOnWebServiceError - NOT IMPLEMENTED")
+        print("RendezVousView:RendezVousDataSource:rendezVousOnWebServiceError")
+        AlerteBoxManager.sendAlertMessage(vc: self.currentControleur!, returnCode: code)
     }
+    
+}
+extension RendezVousView:InvitationDataSource
+{
+    func invitationOnLoaded(invitation: Invitation) {
+        print("RendezVousView:InvitationDataSource:invitationOnLoaded")
+    }
+    
+    func invitationOnLoaded(invitations: ListeInvitationsAsConvive) {
+        print("RendezVousView:InvitationDataSource:invitationOnLoaded")
+    }
+    
+    func invitationOnUpdated() {
+        print("RendezVousView:InvitationDataSource:invitationOnUpdated")
+    }
+    
+    func invitationOnDeleted() {
+        print("RendezVousView:InvitationDataSource:invitationOnDeleted")
+    }
+    
+    func invitationOnCancelled() {
+        print("RendezVousView:InvitationDataSource:invitationOnDeleted")
+    }
+    
+    func invitationOnRejected() {
+        print("RendezVousView:InvitationDataSource:invitationOnDeleted")
+    }
+    
+    func invitationOnAccepted() {
+        print("RendezVousView:InvitationDataSource:invitationOnDeleted")
+    }
+    
+    func invitationOnCreated(invitation: Invitation) {
+        print("RendezVousView:InvitationDataSource:invitationOnDeleted")
+    }
+    
+    func invitationOnNotFoundInvitation() {
+        print("RendezVousView:InvitationDataSource:invitationOnDeleted")
+    }
+    
+    func invitationOnWebServiceError(code: Int) {
+        print("RendezVousView:InvitationDataSource:invitationOnDeleted")
+    }
+    
     
 }

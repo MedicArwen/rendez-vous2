@@ -27,6 +27,8 @@ class Utilisateur {
     var pseudo = ""
     var latitude = 0.0
     var longitude = 0.0
+    
+    var friendList : ListeUtilisateursFavoris?
     /*
      // MARK: - Constructeurs
      */
@@ -43,7 +45,7 @@ class Utilisateur {
         print("Instantiation de l'utilisateur \(self.pseudo) id:  \(self.idUtilisateur) num: \(self.numRamonUser)")
         
     }
-    init(json:JSON) {
+    /*init(json:JSON) {
         self.construct(idUtilisateur:json["idUtilisateur"].intValue,
                        numRamonUser:json["libelle"].intValue,
                        urlImage:json["urlPhoto"].stringValue,
@@ -53,6 +55,36 @@ class Utilisateur {
                        latitude:json["latitude"].doubleValue,
                        longitude:json["longitude"].doubleValue
         )
+    }*/
+    init(idUtilisateur: Int,numRamonUser:Int,urlImage:String,catchPhrase:String,description:String,pseudo: String,latitude:Double,longitude:Double) {
+        self.idUtilisateur = idUtilisateur
+        self.numRamonUser = numRamonUser
+        self.urlImage = urlImage
+        self.catchPhrase = catchPhrase
+        self.description = description
+        self.pseudo = pseudo
+        self.latitude = latitude
+        self.longitude = longitude
+    }
+    convenience init(json:JSON) {
+        self.init(idUtilisateur:json["idUtilisateur"].intValue,
+                       numRamonUser:json["libelle"].intValue,
+                       urlImage:json["urlPhoto"].stringValue,
+                       catchPhrase:json["catchPhrase"].stringValue,
+                       description:json["description"].stringValue,
+                       pseudo:json["pseudonyme"].stringValue,
+                       latitude:json["latitude"].doubleValue,
+                       longitude:json["longitude"].doubleValue
+        
+        )
+        self.init(idUtilisateur:json["idUtilisateur"].intValue,
+                       numRamonUser:json["libelle"].intValue,
+                       urlImage:json["urlPhoto"].stringValue,
+                       catchPhrase:json["catchPhrase"].stringValue,
+                       description:json["description"].stringValue,
+                       pseudo:json["pseudonyme"].stringValue,
+                       latitude:json["latitude"].doubleValue,
+                       longitude:json["longitude"].doubleValue)
     }
     func debugPrint()
     {
@@ -224,45 +256,6 @@ extension Utilisateur:UtilisateurListable
         webservice.addParameter(parametre: WebServiceParametre(cle: "longitude", valeur: "\(longitude)"))
         webservice.execute()
     }
-    static func find(utilisateur:Utilisateur)->Int
-    {
-        print("ListeMatchingUtilisateurs:find")
-        var i = 0
-        var indice = -1
-        for item in ListeMatchingUtilisateurs.sharedInstance!.liste
-        {
-            if item.idUtilisateur == utilisateur.idUtilisateur
-            {
-                indice = i
-            }
-            i += 1
-        }
-        print("-> indice trouvé: \(indice) (-1 = rien trouvé)")
-        return indice
-    }
-    static func remove(indice: Int) {
-        guard ListeMatchingUtilisateurs.sharedInstance != nil else {
-            print("ListeMatchingUtilisateurs:remove(indexPath) - aucune liste ListeMatchingUtilisateurs trouvée")
-            return
-        }
-        if let currentList = ListeMatchingUtilisateurs.sharedInstance
-        {
-            print("ListeMatchingUtilisateurs:remove(indexPath) - indice:\(indice) ")
-            currentList.liste.remove(at: indice)
-            ListeMatchingUtilisateurs.reloadViews()
-        }
-    }
-        
     
-    static func append(utilisateur:RankedUtilisateur)
-    {
-        guard ListeMatchingUtilisateurs.sharedInstance != nil else {
-            print("ListeMatchingUtilisateurs:append - aucune liste ListeMatchingUtilisateurs trouvée")
-            return
-        }
-        print("ListeMatchingUtilisateurs:append - id utilisateur: \(utilisateur.idUtilisateur)")
-        ListeMatchingUtilisateurs.sharedInstance!.liste.append(utilisateur)
-        ListeMatchingUtilisateurs.reloadViews()
-    }
     
 }

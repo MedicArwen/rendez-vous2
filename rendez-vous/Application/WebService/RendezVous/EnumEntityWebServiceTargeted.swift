@@ -18,4 +18,5 @@ enum EnumEntityWebServiceTargeted {
     case Utilisateur_RendezVous
     case Utilisateur_CentreInteret
     case Invitation
+    case Favoris
 }

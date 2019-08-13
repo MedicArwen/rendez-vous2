@@ -15,6 +15,8 @@ import SwiftyJSON
 class CreateGroupViewController: RamonViewController {
     
     var mode = "create"
+    var listeMesMatchs: ListeMatchingUtilisateurs?
+    var currentRendezVous:RendezVous?
 
    // var currentRestaurant: Restaurant?
     // infos pour remplir la vue du groupe
@@ -36,18 +38,30 @@ class CreateGroupViewController: RamonViewController {
         self.ficheRendezVous.update(restaurant:Restaurant.sharedInstance!,controleur: self)
         RendezVous.subscribe(vue: self.ficheRendezVous)
         RendezVous.subscribe(vue: self.listeInvitesRDV)
+        self.viewMatchingPeople.currentControleur = self
+        self.viewMatchingPeople.GuestRankedTable.currentControleur = self
+        self.viewMatchingPeople.guestInvitedCollection.currentControleur = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         print("CreateGroupViewController: viewWillAppear")
         // Est ce qu'il y a un rendez-vous qui a été déjà créé?
       // bug, ca prend le dernier dans la liste à l'indice donné
-         if self.mode != "create"
+        print("->Lancement rechargement de la liste des gens qui matchent")
+        Utilisateur.load(datasource: self, latitude: Utilisateur.sharedInstance!.latitude, longitude: Utilisateur.sharedInstance!.longitude, range: 10)
+        /* if self.mode != "create"
             {
                 print("let rendez vous")
                 ficheRendezVous.setRendezVous(rendezVous: RendezVous.sharedInstance!)
                   self.viewMatchingPeople.show(controleur: self)
-            }
+            }*/
+        if let rdv = currentRendezVous
+        {
+            print("--> Modification d'un rendez-vous existant")
+            //ficheRendezVous.setRendezVous(rendezVous: RendezVous.sharedInstance!)
+            ficheRendezVous.setRendezVous(rendezVous: rdv)
+            self.viewMatchingPeople.show(controleur: self)
+        }
     }
     override func viewWillDisappear(_ animated: Bool) {
         print("MapRestaurantViewController:viewWillDisappear")
@@ -57,7 +71,7 @@ class CreateGroupViewController: RamonViewController {
     }
     override func viewDidDisappear(_ animated: Bool) {
         print("MapRestaurantViewController:viewDidDisappear")
-         print(self)
+        print(self)
     }
     
     /*
@@ -72,6 +86,41 @@ class CreateGroupViewController: RamonViewController {
     @IBAction func onClickClose(_ sender: RoundButtonUIButton) {
         print("CreateGroupViewController: onClickClose")
         self.dismiss(animated: true, completion: nil)
+    }
+    
+}
+extension CreateGroupViewController:UtilisateurDataSource
+{
+    
+    func utilisateurOnLoaded(utilisateur: Utilisateur) {
+        print("CreateGroupViewController:UtilisateurDataSource:utilisateurOnLoaded - NOT IMPLEMENTED")
+    }
+    
+    func utilisateurOnLoaded(matchs: ListeMatchingUtilisateurs) {
+        print("CreateGroupViewController:UtilisateurDataSource:utilisateurOnLoaded")
+        print("->Chargement des \(matchs.liste.count) matchs")
+       // matchs.liste = matchs.getPurgedList()
+        self.listeMesMatchs = matchs        
+    }
+    
+    func utilisateurOnUpdated() {
+        print("CreateGroupViewController:UtilisateurDataSource:utilisateurOnLoaded - NOT IMPLEMENTED")
+    }
+    
+    func utilisateurOnDeleted() {
+        print("CreateGroupViewController:UtilisateurDataSource:utilisateurOnLoaded - NOT IMPLEMENTED")
+    }
+    
+    func utilisateurOnCreated() {
+        print("CreateGroupViewController:UtilisateurDataSource:utilisateurOnLoaded - NOT IMPLEMENTED")
+    }
+    
+    func utilisateurOnNotFoundUtilisateur() {
+        print("CreateGroupViewController:UtilisateurDataSource:utilisateurOnLoaded - NOT IMPLEMENTED")
+    }
+    
+    func utilisateurOnWebServiceError(code: Int) {
+        print("CreateGroupViewController:UtilisateurDataSource:utilisateurOnLoaded - NOT IMPLEMENTED")
     }
     
 }

@@ -173,7 +173,8 @@ extension AuthentificationVC:RamonUserDataSource
     }
     
     func ramonUserOnWebServiceError(code: Int) {
-        print("AuthentificationVC:RamonUserDataSource:ramonUserOnWebServiceError non implementé ")
+        print("AuthentificationVC:RamonUserDataSource:ramonUserOnWebServiceError ")
+        AlerteBoxManager.sendAlertMessage(vc: self, returnCode: code)
     }
     
     
@@ -213,6 +214,6 @@ extension AuthentificationVC:UtilisateurDataSource
     }
     
     func utilisateurOnWebServiceError(code: Int) {
-        AuthWebService.sendAlertMessage(vc: self, returnCode: code)
+        AlerteBoxManager.sendAlertMessage(vc: self, returnCode: code)
     }
 }

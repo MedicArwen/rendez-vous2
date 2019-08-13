@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 
 class AgendaViewController: RamonViewController {
-    
+    var selectedRendezVous : RendezVous?
     @IBOutlet weak var tableRendezVousHosted: MyRendezVousTableView!
     @IBOutlet weak var tableInvitationsReceived: MyInvitationsTableView!
     
@@ -32,20 +32,24 @@ class AgendaViewController: RamonViewController {
         self.tableRendezVousHosted.delegate = self.tableRendezVousHosted
         self.tableRendezVousHosted.dataSource = self.tableRendezVousHosted
         ListeRendezVous.subscribe(vue: self.tableRendezVousHosted)
-        //ListeRendezVousAsHote.load(controleur: self)
-        RendezVous.load(dataSource: self)
+        
         //Configuration de la table des invitations recues.
         self.tableInvitationsReceived.currentControleur = self
         self.tableInvitationsReceived.delegate = self.tableInvitationsReceived
         self.tableInvitationsReceived.dataSource = self.tableInvitationsReceived
         ListeInvitationsAsConvive.subscribe(vue: self.tableInvitationsReceived)
        // ListeRendezVousAsConvive.load(controleur: self)
-        Invitation.load(datasource: self)
-        // Do any additional setup after loading the view.
+        
         
     }
-    
-    
+    override func viewWillAppear(_ animated: Bool) {
+        print("AgendaViewController:WillAppear")
+        //ListeRendezVousAsHote.load(controleur: self)
+        RendezVous.load(dataSource: self)
+        //Invitation.load(datasource: self)
+        // Do any additional setup after loading the view.
+    }
+    //
     /*
      // MARK: - Navigation
      
@@ -81,10 +85,8 @@ class AgendaViewController: RamonViewController {
         {
             let dest = segue.destination as! CreateGroupViewController
             print("AgendaViewController:prepare (segue.identifier = showUpdateGroup)")
-            print(RendezVous.sharedInstance!)
-         /*   Restaurant.sharedInstance = currentRestaurant!
-            RendezVous.sharedInstance = currentRendezVous!*/
-         //   dest.ficheRendezVous.setRendezVous(rendezVous: RendezVous.sharedInstance!)
+            print("-> rendez vous selectionné: \(self.selectedRendezVous!.idRendezVous)")
+            dest.currentRendezVous = self.selectedRendezVous!
             dest.mode = "update"
         }
     }
@@ -175,7 +177,8 @@ extension AgendaViewController:InvitationDataSource
     }
     
     func invitationOnWebServiceError(code: Int) {
-        print("AgendaViewController:InvitationDataSource:invitationOnWebServiceError - NOT IMPLEMENTED")
+        print("AgendaViewController:InvitationDataSource:invitationOnWebServiceError")
+        AlerteBoxManager.sendAlertMessage(vc: self, returnCode: code)
     }
     
     

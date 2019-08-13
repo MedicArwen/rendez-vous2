@@ -10,6 +10,7 @@ import UIKit
 
 class FicheMyProfilViewController: RamonViewController {
 //var listeCentreInteret = ListeCentreInteretUtilisateur.load(controleur: self)
+  
     
     @IBOutlet weak var ficheUtilisateurShort: FicheMonShortProfilView!
     
@@ -30,21 +31,40 @@ class FicheMyProfilViewController: RamonViewController {
         self.ficheUtilisateurShort.update(controleur: self, utilisateur: Utilisateur.sharedInstance!)
         self.ficheLongCentreInteret.update(controleur:self)
         Utilisateur.subscribe(vue: self.ficheUtilisateurShort)
+        Favoris.load(datasource: self)
         
     }
     override func viewWillAppear(_ animated: Bool) {
           print("FicheMyProfilViewController:viewWillAppear")
         self.ficheLongCentreInteret.centreInteretCollection.refresh()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+}
+extension FicheMyProfilViewController:FavorisDataSource
+{
+    func favorisOnLoaded(ami: Favoris) {
+        print("FicheMyProfilViewController:FavorisDataSource:favorisOnLoaded NOT IMPLEMENTED")
     }
-    */
-
+    
+    func favorisOnLoaded(amis: ListeUtilisateursFavoris) {
+        print("FicheMyProfilViewController:FavorisDataSource:favorisOnLoaded")
+        Utilisateur.sharedInstance!.friendList = amis
+    }
+    
+    func favorisOnDeleted() {
+        print("FicheMyProfilViewController:FavorisDataSource:favorisOnLoaded NOT IMPLEMENTED")
+    }
+    
+    func favorisOnCreated(ami: Favoris) {
+        print("FicheMyProfilViewController:FavorisDataSource:favorisOnLoaded NOT IMPLEMENTED")
+    }
+    
+    func favorisOnNotFoundFavoris() {
+        print("FicheMyProfilViewController:FavorisDataSource:favorisOnLoaded NOT IMPLEMENTED")
+    }
+    
+    func favorisOnWebServiceError(code: Int) {
+        print("FicheMyProfilViewController:FavorisDataSource:favorisOnLoaded NOT IMPLEMENTED")
+    }
+    
+    
 }

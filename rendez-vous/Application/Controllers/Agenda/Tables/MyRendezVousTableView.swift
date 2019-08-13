@@ -11,7 +11,7 @@ import SwiftyJSON
 import SwiftHash
 
 class MyRendezVousTableView: UITableView {
-    var currentControleur : RamonViewController?
+    var currentControleur : AgendaViewController?
     fileprivate var indiceSuscribedView = 0
     /*
      // Only override draw() if you perform custom drawing.
@@ -34,6 +34,7 @@ extension MyRendezVousTableView:UITableViewDelegate,UITableViewDataSource
         print("MyRendezVousTableView: update cellune n°#\(indexPath.row) du tableau de mes rendez-vous")
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyRendezVousHostedCell", for: indexPath) as! MyRendezVousTableViewCell
         cell.update(rendezvous: ListeRendezVous.sharedInstance.liste[indexPath.row],controleur: self.currentControleur!)
+        
         return cell
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -94,7 +95,8 @@ extension MyRendezVousTableView:RendezVousDataSource
     }
     
     func rendezVousOnWebServiceError(code: Int) {
-        print("yInvitationsTableView:RendezVousDataSource:rendezVousOnWebServiceError NOT IMPLEMENTED")
+        print("yInvitationsTableView:RendezVousDataSource:rendezVousOnWebServiceError")
+        AlerteBoxManager.sendAlertMessage(vc: self.currentControleur!, returnCode: code)
     }
 }
 

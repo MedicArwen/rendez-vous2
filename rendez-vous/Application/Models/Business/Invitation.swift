@@ -81,19 +81,19 @@ extension Invitation:InvitationCrudable
     
    static func read(datasource:InvitationDataSource,numRendezVous:Int,numInvite:Int)
    {
-    
+        print("Invitation:InvitationCrudable:read NOT IMPLEMENTED")
     }
     
     func update(datasource: InvitationDataSource) {
-        
+        print("Invitation:InvitationCrudable:update NOT IMPLEMENTED")
     }
     
     func delete(datasource: InvitationDataSource) {
-        
+        print("Invitation:InvitationCrudable:delete NOT IMPLEMENTED")
     }
     
     func cancel(datasource: InvitationDataSource) {
-        
+        print("Invitation:InvitationCrudable:cancel NOT IMPLEMENTED")
     }
     
     
@@ -106,7 +106,7 @@ extension Invitation:InvitationListable
         webservice.execute()
     }
     
-    static func append(rendezVous: RendezVous) {
+    static func append(rendezVous: RendezVous,datasource: RendezVousDataSource) {
         guard ListeInvitationsAsConvive.sharedInstance != nil else {
             print("Invitation:InvitationListable:append- aucune liste ListeRendezVousAsConvive trouvée")
             return
@@ -116,13 +116,13 @@ extension Invitation:InvitationListable
         ListeInvitationsAsConvive.reloadViews()
     }
     
-    static func remove(indice: Int) {
+    static func remove(indice: Int,datasource: RendezVousDataSource) {
         guard ListeInvitationsAsConvive.sharedInstance != nil else {
             print("Invitation:InvitationListable:remove(indexPath) - aucune liste ListeRendezVousAsConvive trouvée")
             return
         }
         print("-> il faut annuler l'invitation'")
-        ListeInvitationsAsConvive.sharedInstance!.liste[indice].cancel(datasource: ListeInvitationsAsConvive.sharedInstance!)
+        ListeInvitationsAsConvive.sharedInstance!.liste[indice].cancel(datasource: datasource)
     }
     
     static func find(rendezVous: RendezVous) -> Int {

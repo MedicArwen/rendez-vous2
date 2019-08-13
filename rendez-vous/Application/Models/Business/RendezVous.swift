@@ -12,7 +12,7 @@ import SwiftHash
 import UIKit
 
 class RendezVous{
-    static var sharedInstance:RendezVous?
+   // static var sharedInstance:RendezVous?
     var idRendezVous:Int
     var numUtilisateurSource:Int
     var date:String
@@ -200,7 +200,7 @@ extension RendezVous:RendezVousListable
     {
         print("ListeRendezVousAsHote:removein(dexPath) - il faut annuler le rendez-vous")
         print("rendez vous n° \(ListeRendezVous.sharedInstance.liste[indice].idRendezVous)")
-        ListeRendezVous.sharedInstance.liste[indice].cancel(datasource:ListeRendezVous.sharedInstance)
+        ListeRendezVous.sharedInstance.liste[indice].cancel(datasource:dataSource)
         ListeRendezVous.sharedInstance.liste.remove(at: indice)
         ListeRendezVous.reloadViews()
     }

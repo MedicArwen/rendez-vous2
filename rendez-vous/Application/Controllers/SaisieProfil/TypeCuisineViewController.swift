@@ -95,7 +95,8 @@ extension TypeCuisineViewController:TypeCuisineDataSource{
     }
     
     func typeCuisineOnWebServiceError(code: Int) {
-        print("typeCuisineViewController:TypeCuisineDataSource:typeCuisineOnWebServiceError NOT IMPLANTED")
+        print("typeCuisineViewController:TypeCuisineDataSource:typeCuisineOnWebServiceError")
+        AlerteBoxManager.sendAlertMessage(vc: self, returnCode: code)
     }
     
     
@@ -128,7 +129,8 @@ extension TypeCuisineViewController:CentreInteretUtilisateurDataSource
     }
     
     func centreInteretUtilisateurOnWebServiceError(code: Int) {
-        print("TypeCuisineViewController:CentreInteretUtilisateurDataSource:centreInteretUtilisateurOnWebServiceError NOT IMPLEMENTED")
+        print("TypeCuisineViewController:CentreInteretUtilisateurDataSource:centreInteretUtilisateurOnWebServiceError")
+        AlerteBoxManager.sendAlertMessage(vc: self, returnCode: code)
     }
     
     

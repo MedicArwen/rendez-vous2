@@ -77,7 +77,7 @@ extension EditProfileViewController:UtilisateurDataSource
     }
     
     func utilisateurOnWebServiceError(code: Int) {
-        AuthWebService.sendAlertMessage(vc: self, returnCode: code)
+        AlerteBoxManager.sendAlertMessage(vc: self, returnCode: code)
     }
     
     

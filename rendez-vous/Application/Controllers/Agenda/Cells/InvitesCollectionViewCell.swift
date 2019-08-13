@@ -9,7 +9,7 @@
 import UIKit
 
 class InvitesCollectionViewCell: UICollectionViewCell {
-    var currentControleur: RamonViewController?
+    var currentControleur: AgendaViewController?
     var invitation:Invitation?
     @IBOutlet weak var pseudoLabel: UILabel!
     @IBOutlet weak var statusInvitationLabel: UILabel!
@@ -21,7 +21,7 @@ class InvitesCollectionViewCell: UICollectionViewCell {
      // Drawing code
      }
      */
-    func update(invitation:Invitation,controleur: RamonViewController)
+    func update(invitation:Invitation,controleur: AgendaViewController)
     {
         print("InvitesCollectionViewCell: update (num rdv:\(invitation.getRendezVousID()), num invite:\(invitation.getInviteID()))")
         self.currentControleur = controleur

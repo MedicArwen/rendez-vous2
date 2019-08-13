@@ -14,6 +14,7 @@ import SwiftyJSON
 class GuestRankedTableViewCell: UITableViewCell {
     var currentControleur: CreateGroupViewController?
     var utilisateur: RankedUtilisateur?
+    var indice: Int = 0
     
     @IBOutlet weak var photoUtilisateur: RoundPortraitUIImageView!
     @IBOutlet weak var pseudoUtilisateur: UILabel!
@@ -32,7 +33,7 @@ class GuestRankedTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func update(rankedUtilisateur:RankedUtilisateur,controleur: CreateGroupViewController)
+    func update(rankedUtilisateur:RankedUtilisateur,controleur: CreateGroupViewController,indice: Int)
     {
         print("GuestRankedTableViewCell:update (id:\(rankedUtilisateur.idUtilisateur))")
         self.currentControleur = controleur
@@ -42,6 +43,7 @@ class GuestRankedTableViewCell: UITableViewCell {
         self.photoUtilisateur.layer.cornerRadius = 50.0
         self.pseudoUtilisateur.text = rankedUtilisateur.pseudo
         self.scoreRanking.text = "\(trunc(rankedUtilisateur.ranking!*100))"
+        self.indice = indice
     }
     @IBAction func onClickInvite(_ sender: RoundButtonUIButton) {
         guard self.utilisateur != nil else {
@@ -49,10 +51,19 @@ class GuestRankedTableViewCell: UITableViewCell {
             return
         }
         print("GuestRankedTableViewCell:onClickInvite (id:\(self.utilisateur!.idUtilisateur))")
-        let guest = self.utilisateur as! Utilisateur
+       // let guest = self.utilisateur //as Utilisateur
        // let invitation = Invitation(numInvite:self.utilisateur!.idUtilisateur,numRendezVous:RendezVous.sharedInstance!.idRendezVous ,numStatusInvitation:1,utilisateur: utilisateur!)
-        let invitation = Invitation(utilisateur: guest, rendezVous: RendezVous.sharedInstance!, numStatusInvitation: 1)
-        invitation.create(datasource: self)
+        if let rdv = currentControleur!.currentRendezVous
+        {
+           // let invitation = Invitation(utilisateur: self.utilisateur!, rendezVous: RendezVous.sharedInstance!, numStatusInvitation: 1)
+            let invitation = Invitation(utilisateur: self.utilisateur!, rendezVous: rdv, numStatusInvitation: 1)
+            invitation.create(datasource: self)
+            // let indice = currentControleur!.listeMesMatchs!.find(utilisateur: self.utilisateur!)
+            currentControleur!.listeMesMatchs!.remove(indice:self.indice)
+            currentControleur!.viewMatchingPeople.GuestRankedTable.refresh()
+            currentControleur!.viewMatchingPeople.guestInvitedCollection.refresh()
+        }
+        
     }
     
 }
@@ -89,9 +100,9 @@ extension GuestRankedTableViewCell:InvitationDataSource
     func invitationOnCreated(invitation:Invitation) {
         print("GuestRankedTableViewCell:InvitationDataSource:invitationOnCreated")
         print("->UtilisateurInvite")
-        RendezVous.sharedInstance!.addInvitation(invitation: invitation)
-        let indice = Utilisateur.find(utilisateur: utilisateur!)
-        Utilisateur.remove(indice:indice)
+        currentControleur!.currentRendezVous!.addInvitation(invitation: invitation)
+        
+       
     }
     
     func invitationOnNotFoundInvitation() {
@@ -99,7 +110,8 @@ extension GuestRankedTableViewCell:InvitationDataSource
     }
     
     func invitationOnWebServiceError(code: Int) {
-        print("GuestRankedTableViewCell:InvitationDataSource: - not implemented")
+        print("GuestRankedTableViewCell:InvitationDataSource:")
+        AlerteBoxManager.sendAlertMessage(vc: self.currentControleur!, returnCode: code)
     }
     
     

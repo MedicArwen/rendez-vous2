@@ -366,7 +366,7 @@ extension RegisterVC:RamonUserDataSource
     
     func ramonUserOnWebServiceError(code: Int) {
          print("RegisterVC:RamonUserDataSource:ramonUserOnWebServiceError")
-        print(AuthWebService.generateMessageAlert(returnCode: code))
+        print(AlerteBoxManager.generateMessageAlert(returnCode: code))
     }
     
     

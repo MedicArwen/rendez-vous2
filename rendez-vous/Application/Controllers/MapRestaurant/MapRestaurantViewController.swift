@@ -60,6 +60,16 @@ class MapRestaurantViewController: RamonViewController {
     override func viewWillAppear(_ animated: Bool) {
         print("MapRestaurantViewController:viewWillAppear")
         setViewMapMode(switchViewMode)
+        if ListeSelectionUtilisateur.sharedInstance.listeInvites.count > 0
+        {
+            viewWithMap.nbInvites!.text = "\(ListeSelectionUtilisateur.sharedInstance.listeInvites.count)"
+            viewWithMap.nbInvites!.layer.cornerRadius = 13.0
+            viewWithMap.nbInvites!.isHidden = false
+        }
+        else
+        {
+            viewWithMap.nbInvites!.isHidden = true
+        }
     }
     override func viewWillDisappear(_ animated: Bool) {
         print("MapRestaurantViewController:viewWillDisappear")
@@ -148,7 +158,8 @@ extension MapRestaurantViewController:RestaurantDataSource
     }
     
     func restaurantOnWebServiceError(code: Int) {
-        print("MapRestaurantViewController:RestaurantDataSource:restaurantOnWebServiceError NOT IMPLENTED")
+        print("MapRestaurantViewController:RestaurantDataSource:restaurantOnWebServiceError")
+        AlerteBoxManager.sendAlertMessage(vc: self, returnCode: code)
     }
     
     

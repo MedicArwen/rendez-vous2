@@ -75,39 +75,3 @@ extension ListeRendezVous:WebServiceSubscribable
         print("Il y a \(self.suscribedViews.count) vue(s abonnée(s) à ListeRendezVousAsHote")
     }
 }
-extension ListeRendezVous:RendezVousDataSource
-{
-    func rendezVousOnLoaded(rendezVous: RendezVous) {
-        print("ListeRendezVousAsHote:RendezVousDataSource:rendezVousOnLoaded not implemented")
-    }
-    func rendezVousOnLoaded(lesRendezVous:ListeRendezVous)
-    {
-        print("ListeRendezVousAsHote:RendezVousDataSource:rendezVousOnLoaded not implemented")
-    }
-    func rendezVousOnUpdated() {
-         print("ListeRendezVousAsHote:RendezVousDataSource:rendezVousOnUpdated not implemented")
-    }
-    
-    func rendezVousOnDeleted() {
-         print("ListeRendezVousAsHote:RendezVousDataSource:rendezVousOnDeleted not implemented")
-    }
-    
-    func rendezVousOnCancelled() {
-        print("ListeRendezVousAsHote:rendezVousOnCancelled:rendezVousOnCancelled annulation réussie")
-    }
-    
-    func rendezVousOnCreated(rendezVous: RendezVous) {
-         print("ListeRendezVousAsHote:RendezVousDataSource:rendezVousOnCreated")
-        ListeRendezVous.reloadViews()
-    }
-    
-    func rendezVousOnNotFoundRendezVous() {
-         print("ListeRendezVousAsHote:RendezVousDataSource: not implemented")
-    }
-    
-    func rendezVousOnWebServiceError(code: Int) {
-         print("ListeRendezVousAsHote:RendezVousDataSource: not implemented")
-    }
-    
-    
-}

@@ -49,18 +49,8 @@ class ListeCentreInteretUtilisateur
         webservice.addParameter(parametre: WebServiceParametre(cle: "liste", valeur: JSON(listeInteret).rawString()!))
         webservice.execute()
     }
-    static func remove(controleur: RamonViewController, indexPath: IndexPath) {
-        print("ListeCentreInteretUtilisateur:remove - pas implanté ")
-    }
-    
-    static func remove(controleur: RamonViewController, item: Any) {
-        print("ListeCentreInteretUtilisateur:remove - pas implanté ")
-    }
-    
-    static func append(controleur: RamonViewController, item: Any) {
-        print("ListeCentreInteretUtilisateur:append - pas implanté ")
-    }
-    static func swap(source:Int,dest:Int)
+
+    static func swap(source:Int,dest:Int,datasource:CentreInteretUtilisateurDataSource)
     {
         ListeCentreInteretUtilisateur.sharedInstance!.liste.swapAt(source, dest)
         var i = 1
@@ -72,7 +62,7 @@ class ListeCentreInteretUtilisateur
             if item.order == source + 1 || item.order == dest + 1
             {
                 print("->update to db")
-                item.update(datasource: ListeCentreInteretUtilisateur.sharedInstance!)
+                item.update(datasource: datasource)
             }
         }
         ListeCentreInteretUtilisateur.reloadViews()
@@ -115,35 +105,4 @@ extension ListeCentreInteretUtilisateur:WebServiceSubscribable
         
         print("Il y a \(self.suscribedViews.count) vue(s abonnée(s) à ListeCentreInteretUtilisateur")
     }
-}
-extension ListeCentreInteretUtilisateur:CentreInteretUtilisateurDataSource
-{
-    func centreInteretUtilisateurOnLoaded(centreInteret: CentreInteretUtilisateur) {
-        print("ListeCentreInteretUtilisateur:CentreInteretDataSource:centreInteretOnLoaded  NOT IMPLEMENTED")
-    }
-    func centreInteretUtilisateurOnLoaded(centresInterets: ListeCentreInteretUtilisateur) {
-        print("ListeCentreInteretUtilisateur:CentreInteretDataSource:centreInteretOnLoaded  NOT IMPLEMENTED")
-    }
-    func centreInteretUtilisateurOnUpdated() {
-        print("ListeCentreInteretUtilisateur:CentreInteretDataSource:centreInteretOnUpdated")
-        ListeCentreInteretUtilisateur.reloadViews()
-    }
-    
-    func centreInteretUtilisateurOnDeleted() {
-        print("ListeCentreInteretUtilisateur:CentreInteretDataSource:centreInteretOnDeleted  NOT IMPLEMENTED")
-    }
-    
-    func centreInteretUtilisateurOnCreated() {
-        print("ListeCentreInteretUtilisateur:CentreInteretDataSource:centreInteretOnCreated  NOT IMPLEMENTED")
-    }
-    
-    func centreInteretUtilisateurOnNotFoundCentreInteret() {
-        print("ListeCentreInteretUtilisateur:CentreInteretDataSource:centreInteretOnNotFoundCentreInteret  NOT IMPLEMENTED")
-    }
-    
-    func centreInteretUtilisateurOnWebServiceError(code: Int) {
-        print("ListeCentreInteretUtilisateur:CentreInteretDataSource:centreInteretOnWebServiceError  NOT IMPLEMENTED")
-    }
-    
-    
 }
